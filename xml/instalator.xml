@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<instalacja lang="pl">
+    <tekst1>&lt;h1>Witaj w instalatorze systemu &lt;b>Oversee&lt;/b>.&lt;br /> &lt;small>Przejdziemy przez ten proces krok po kroku. :)&lt;/small>&lt;/h1>&lt;br/>&lt;br/>&lt;h3>Proszę uzupełnić wszystkie pola (jeśli potrzebujesz pomocy kliknij &lt;span class="glyphicon glyphicon-question-sign">&lt;/span>):&lt;/h3></tekst1>
+    
+    <tekst2>&lt;h2>Udało się nawiązać połączenie z serwerem MySQL!&lt;/h2>&lt;br/>&lt;br/>&lt;h3>Proszę nadać nazwę bazie danych:&lt;/h3></tekst2>
+    
+    <tekst3>&lt;h2>Czas stworzyć konto właściciela. ;)&lt;/h2>&lt;br/>&lt;br/>&lt;h3>Proszę uzupełnić wymagane pola:&lt;/h3></tekst3>
+    
+    <tekst4>&lt;h2>Potwierdź adres email.&lt;/h2>&lt;br/>&lt;br/></tekst4>
+    
+    <tekst5>&lt;h2>Ustaw logo strony.&lt;/h2></tekst5>
+    
+    <tekst6>&lt;h2>Ustaw nazwę strony.&lt;/h2></tekst6>
+    
+    <tekst7>&lt;h2>Instalacja zakończyła się powodzeniem!&lt;br />&lt;small>Strona jest już gotowa. Życzymy miłego korzystania z naszego systemu. ;)&lt;/small>&lt;/h2></tekst7>
+    
+    <placeholder1>Nazwa serwera (host)</placeholder1>
+    <modaltekst1>Jest to nazwa serwera MySQL (inaczej host). &lt;br/> Może występować w postaci adresu strony lub adresu IP serwera. &lt;br/>&lt;br/> Powinna znajdować się w panelu administracyjnym hostingu lub emailu z danymi od firmy hostingowej.</modaltekst1>
+    
+    <placeholder2>Nazwa użytkownika</placeholder2>
+    <modaltekst2>Jest to login administratora bazy danych. &lt;br/>&lt;br/> Powinien znajdować się w panelu administracyjnym hostingu lub emailu z danymi od firmy hostingowej. </modaltekst2>
+    
+    <placeholder3>Hasło</placeholder3>
+    <modaltekst3>Jest to hasło administratora bazy danych. &lt;br/>&lt;br/> Powinno znajdować się w panelu administracyjnym hostingu lub emailu z danymi od firmy hostingowej. </modaltekst3>
+    
+    <placeholder4>Nazwa bazy danych</placeholder4>
+    <modaltekst4>Jest to nazwa bazy danych. &lt;br/> Służy do łączenia się z baza i manipulowania nią. &lt;br/> Zazwyczaj niewidoczna dla użytkowników. &lt;br/>&lt;br/> Zasady nazewnictwa: &lt;br/>&lt;ul>&lt;li>Musi składać się wyłącznie z liter lub cyfr.&lt;/li>&lt;li>Maksymalna długość to 64 znaki.&lt;/li>&lt;li>Minimalna długość to 4 znaki.&lt;/li>&lt;li>Nie może zawierać spacji.&lt;/li>&lt;/ul></modaltekst4>
+    
+    <placeholder5>Nazwa użytkownika (generowana automatycznie)</placeholder5>
+    <modaltekst5></modaltekst5>
+    
+    <placeholder6>Imię</placeholder6>
+    <modaltekst6></modaltekst6>
+    
+    <placeholder7>Nazwisko</placeholder7>
+    <modaltekst7></modaltekst7>
+    
+    <placeholder8>Hasło</placeholder8>
+    <modaltekst8>Hasło nie może być krótsze niż 5 znaków i dłuższe niż 30 znaków.</modaltekst8>
+    
+    <placeholder9>Powtórz hasło</placeholder9>
+    <modaltekst9></modaltekst9>
+    
+    <placeholder10>Email</placeholder10>
+    <modaltekst10></modaltekst10>
+    
+    <placeholder11>Wybierz specjalizację (opcjonalnie):</placeholder11>
+    <modaltekst11></modaltekst11>
+    
+    <placeholder12>Podaj kod potwierdzający, który został wysłany na podany adres email:</placeholder12>
+    <modaltekst12></modaltekst12>
+    
+    <placeholder13>Podaj adres URL do obrazu:</placeholder13>
+    <modaltekst13>Logo w formacie 1:1 (kwadrat) będzie wyświetlane najlepiej. Obsługiwane formaty to .jpeg / .jpg / .gif / .png. &lt;br/>&lt;br/> W celu zdobycia adresu URL zdjęcia, można skorzystać z hostingów obrazów takich jak: &lt;ul>&lt;li>&lt;a href="https://imgur.com" target="_blank">imgur.com&lt;/a>&lt;/li>&lt;li>&lt;a href="https://imgsafe.org" target="_blank">imgsafe.org&lt;/a>&lt;/li>&lt;li>&lt;a href="https://postimage.io" target="_blank">postimage.io&lt;/a>&lt;/li>&lt;li>&lt;a href="https://tinypic.com" target="_blank">tinypic.com&lt;/a>&lt;/li>&lt;/ul> &lt;br/>&lt;br/> Obraz zostanie automatycznie przeskalowany do porządanych rozmiarów.&lt;br/>&lt;br/>Istnieje możliwość późniejszej zmiany loga.</modaltekst13>
+    
+    <placeholder14>Nazwa strony</placeholder14>
+    <modaltekst14>Wyświetlana będzie obok loga na pasku nawigacji oraz na zakładce w przeglądarce internetowej.&lt;br/>&lt;br/> Może być również wyszukiwana w wyszukiwarkach (Google, Yahoo!, Bing). &lt;br/>&lt;br/>Nazwa powinna mieć od 4 do 50 znaków.</modaltekst14>
+    
+    <option1>Architektura</option1>
+    <option2>Bibliotekarstwo</option2>
+    <option3>Blacharstwo</option3>
+    <option4>Hydraulika</option4>
+    <option5>Elektronika</option5>
+    <option6>Elektryka</option6>
+    <option7>Informatyka</option7>
+    <option8>Lakiernictwo</option8>
+    <option9>Mechanika</option9>
+    <option10>Stolarstwo</option10>
+    
+    <zamknij>Zamknij</zamknij>
+    <dalej>Dalej</dalej>
+    <stworz>Stwórz</stworz>
+    <pomin>Pomiń</pomin>
+    <podglad>Podgląd obrazu:</podglad>
+    <stronaglowna>Przejdź do strony głównej</stronaglowna>
+    
+    <blad1>Wypełnienie wszystkich pól jest wymagane aby przejść dalej...</blad1>
+    <blad2>Wypełnienie wszystkich pól jest wymagane aby przejść dalej... &lt;br/>&lt;br/> Jeśli nie masz hasła do serwera MySQL, zalecamy jego ustawienie w panelu administracyjnym.</blad2>
+    <blad3>Niestety nie udało się ustanowić połączenia z serwerem MySQL, podane dane są nieprawidłowe.</blad3>
+    <blad4>Niestety nie udało się zapisać danych do pliku. Spróbuj ponownie.</blad4>
+    <blad5>Pole jest wymagane. Proszę zapoznać się z zasadami nazewnictwa (&lt;span class="glyphicon glyphicon-question-sign">&lt;/span>).</blad5>
+    <blad6>Nie udało się ustanowić połączenia z serwerem MySQL, spróbuj ponownie...</blad6>
+    <blad7>Wystąpił błąd podczas próby zapisu danych do pliku, spróbuj ponownie...</blad7>
+    <blad8>Wystąpił błąd podczas próby utworzenia bazy danych, spróbuj ponownie...</blad8>
+    <blad9>Wystąpił błąd podczas próby utworzenia tabeli "użytkownicy", spróbuj ponownie...</blad9>
+    <blad10>Wszystkie wymagane pola muszą być uzupełnione.</blad10>
+    <blad11>Hasło musi mieć od 5 do 30 znaków.</blad11>
+    <blad12>Podane hasła nie są takie same...</blad12>
+    <blad13>Podany adres email jest nieprawidłowy...</blad13>
+    <blad14>Imię może składać się wyłącznie z liter...</blad14>
+    <blad15>Nazwisko może składać się wyłącznie z liter...</blad15>
+    <blad16>Login może składać się wyłącznie z liter i cyfr...</blad16>
+    <blad17>Podany adres email jest już przypisany do innego użytkownika...</blad17>
+    <blad18>Wygląda na to, że w bazie figuruje już osoba o takim loginie, dlatego wygenerowano nowy login.</blad18>
+    <blad19>Wystąpił błąd podczas próby dodania użytkownika do bazy danych, spróbuj ponownie...</blad19>
+    <blad20>Proszę uzupełnić wymagane pole.</blad20>
+    <blad21>Podany kod jest za krótki, spróbuj ponownie...</blad21>
+    <blad22>Podany kod jest za długi, spróbuj ponownie...</blad22>
+    <blad23>Podany kod jest nieprawidłowy, spróbuj ponownie...</blad23>
+    <blad24>Podany link nie prowadzi do obrazu w formacie .jpg / .jpeg / .gif / .png, spróbuj ponownie...</blad24>
+    <blad25>Niewłaściwa długość nazwy strony. Proszę zapoznać się z zasadami nazewnictwa (&lt;span class="glyphicon glyphicon-question-sign">&lt;/span>).</blad25>
+</instalacja>

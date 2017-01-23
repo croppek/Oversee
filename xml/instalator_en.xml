@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<instalacja lang="en">
+    <tekst1>&lt;h1>Welcome to the &lt;b>Oversee&lt;/b> system installer.&lt;br /> &lt;small>We will go through this process step by step. :)&lt;/small>&lt;/h1>&lt;br/>&lt;br/>&lt;h3>Please fill in all the fields (if you need help, click &lt;span class="glyphicon glyphicon-question-sign">&lt;/span>):&lt;/h3></tekst1>
+    
+    <tekst2>&lt;h2>We were able to connect to the MySQL server!&lt;/h2>&lt;br/>&lt;br/>&lt;h3>Please give the name of the database:&lt;/h3></tekst2>
+    
+    <tekst3>&lt;h2>Time to create an owner account. ;)&lt;/h2>&lt;br/>&lt;br/>&lt;h3>Please complete the required fields:&lt;/h3></tekst3>
+    
+    <tekst4>&lt;h2>Confirm email address.&lt;/h2></tekst4>
+    
+    <tekst5>&lt;h2>Set the page logo.&lt;/h2></tekst5>
+    
+    <tekst6>&lt;h2>Set the page name.&lt;/h2></tekst6>
+    
+    <tekst7>&lt;h2>The installation was successful!&lt;br />&lt;small>The website is ready. Enjoy the use of our system. ;)&lt;/small>&lt;/h2></tekst7>
+    
+    <placeholder1>Server name (host)</placeholder1>
+    <modaltekst1>This is the name of the MySQL server (or host).&lt;br/>Can be in the form of a website address or IP address of the server.&lt;br/>&lt;br/>It should be in the hosting admin panel or in email with the data from the hosting company.</modaltekst1>
+    
+    <placeholder2>User name</placeholder2>
+    <modaltekst2>This is the login of database administrator.&lt;br/>&lt;br/>It should be in the hosting admin panel or in email with the data from the hosting company.</modaltekst2>
+    
+    <placeholder3>Password</placeholder3>
+    <modaltekst3>It is the password of database administrator.&lt;br/>&lt;br/>It should be in the hosting admin panel or in email with the data from the hosting company.</modaltekst3>
+    
+    <placeholder4>Database name</placeholder4>
+    <modaltekst4>This is the name of the database.&lt;br/>It is used to connect to a database and manipulate it.&lt;br/>&lt;br/>Naming rules:&lt;br/>&lt;ul>&lt;li>It must consist entirely of letters or numbers.&lt;/li>&lt;li>The maximum length is 64 characters.&lt;/li>&lt;li>The minimum length is 4 characters.&lt;/li>&lt;li>It can not contain spaces.&lt;/li>&lt;/ul></modaltekst4>
+    
+    <placeholder5>User name (generated automatically)</placeholder5>
+    <modaltekst5></modaltekst5>
+    
+    <placeholder6>Name</placeholder6>
+    <modaltekst6></modaltekst6>
+    
+    <placeholder7>Lastname</placeholder7>
+    <modaltekst7></modaltekst7>
+    
+    <placeholder8>Password</placeholder8>
+    <modaltekst8>Password can not be shorter than 5 characters and longer than 30 characters.</modaltekst8>
+    
+    <placeholder9>Repeat password</placeholder9>
+    <modaltekst9></modaltekst9>
+    
+    <placeholder10>Email</placeholder10>
+    <modaltekst10></modaltekst10>
+    
+    <placeholder11>Select specialization (optional):</placeholder11>
+    <modaltekst11></modaltekst11>
+    
+    <placeholder12>Please enter confirmation code that was sent to your email address:</placeholder12>
+    <modaltekst12></modaltekst12>
+    
+    <placeholder13>Enter the URL to the image:</placeholder13>
+    <modaltekst13>Logo in the format 1:1 (square) will be displayed best. Supported formats are .jpeg / .jpg / .gif / .png. &lt;br/>&lt;br/>In order to obtain the URL of images, you can use the hosting images such as: &lt;ul>&lt;li>&lt;a href="https://imgur.com" target="_blank">imgur.com&lt;/a>&lt;/li>&lt;li>&lt;a href="https://imgsafe.org" target="_blank">imgsafe.org&lt;/a>&lt;/li>&lt;li>&lt;a href="https://postimage.io" target="_blank">postimage.io&lt;/a>&lt;/li>&lt;li>&lt;a href="https://tinypic.com" target="_blank">tinypic.com&lt;/a>&lt;/li>&lt;/ul> &lt;br/>&lt;br/>The image will be automatically scaled to the desired size.&lt;br/>&lt;br/>You can later change the logo.</modaltekst13>
+    
+    <placeholder14>Page name</placeholder14>
+    <modaltekst14>Will be displayed next to the logo on the navigation bar and the tab in the browser.&lt;br/>&lt;br/>It can also be searched for in the search engines (Google, Yahoo!, Bing).&lt;br/>&lt;br/>The name should be 4 to 50 characters.</modaltekst14>
+    
+    <option1>Architecture</option1>
+    <option2>Librarianship</option2>
+    <option3>Tin-smithing </option3>
+    <option4>Hydraulics</option4>
+    <option5>Electronics</option5>
+    <option6>Electricity</option6>
+    <option7>Informatics</option7>
+    <option8>Varnishing</option8>
+    <option9>Mechanics</option9>
+    <option10>Carpentry</option10>
+    
+    <zamknij>Close</zamknij>
+    <dalej>Next</dalej>
+    <stworz>Create</stworz>
+    <pomin>Skip</pomin>
+    <podglad>Image preview:</podglad>
+    <stronaglowna>Go to the home page</stronaglowna>
+    
+    <blad1>All fields are required to continue...</blad1>
+    <blad2>All fields are required to continue... &lt;br/>&lt;br/>If you do not have a password for the MySQL server, we recommend set in the administration panel.</blad2>
+    <blad3>Unfortunately, failed to establish a connection to the MySQL server, these figures are incorrect.</blad3>
+    <blad4>Unfortunately we failed to write data to a file. Try again.</blad4>
+    <blad5>The field is required. Please refer to the rules of nomenclature (&lt;span class="glyphicon glyphicon-question-sign">&lt;/span>).</blad5>
+    <blad6>Failed to establish a connection to the MySQL server, try again...</blad6>
+    <blad7>An error occurred while trying to write data to a file, try again...</blad7>
+    <blad8>An error occurred while trying to create a database, try again...</blad8>
+    <blad9>An error occurred while trying to create a table "users", try again...</blad9>
+    <blad10>All required fields must be completed.</blad10>
+    <blad11>The password must be between 5 and 30 characters.</blad11>
+    <blad12>The passwords are not the same...</blad12>
+    <blad13>The address email is incorrect...</blad13>
+    <blad14>Name may contain only letters...</blad14>
+    <blad15>Lastname may consist of only letters...</blad15>
+    <blad16>Login can contain only letters and numbers...</blad16>
+    <blad17>The specified email address is already assigned to another user...</blad17>
+    <blad18>It seems that the database already listed person with such a login name, and therefore generated a new login.</blad18>
+    <blad19>An error occurred while trying to add the user to the database, try again...</blad19>
+    <blad20>Please fill the required box.</blad20>
+    <blad21>The following code is too short, try again...</blad21>
+    <blad22>The following code is too long, try again...</blad22>
+    <blad23>The following code is incorrect, try again...</blad23>
+    <blad24>Given link does not lead to image in format .jpg / .jpeg / .gif / .png, try again...</blad24>
+    <blad25>Incorrect length of the name of the page. Please refer to the rules of nomenclature (&lt;span class="glyphicon glyphicon-question-sign">&lt;/span>).</blad25>
+</instalacja>

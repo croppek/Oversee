@@ -1,0 +1,33 @@
+.vertical-center 
+{
+    min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
+    min-height: 100vh; /* These two lines are counted as one :-)       */
+
+    display: flex;
+    align-items: center;
+}
+
+.input_error
+{
+    outline: #ea7676 solid thin;
+    background-color: #f2dede;
+}
+
+.password_ok
+{
+    outline: #7aea76 solid thin;
+    background-color: #dff2de;
+}
+
+.animate_progressbar
+{
+    animation-name: progressbar;
+    animation-duration: 5s;
+    animation-timing-function: linear;
+}
+
+@keyframes progressbar 
+{
+    from {width: 0%;}
+    to {width: 100%;}
+}
