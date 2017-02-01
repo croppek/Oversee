@@ -13,7 +13,7 @@
     
     <tekst6>&lt;h2>Ustaw nazwę strony.&lt;/h2></tekst6>
     
-    <tekst7>&lt;h2>Instalacja zakończyła się powodzeniem!&lt;br />&lt;small>Strona jest już gotowa. Życzymy miłego korzystania z naszego systemu. ;)&lt;/small>&lt;/h2></tekst7>
+    <tekst7>&lt;h2>Instalacja zakończyła się powodzeniem!&lt;br />&lt;small>Strona jest już gotowa. Aby przeprowadzić dalszą konfigurację strony, proszę odwiedzić Panel Administratora. Życzymy miłego korzystania z naszego systemu. ;)&lt;/small>&lt;/h2></tekst7>
     
     <placeholder1>Nazwa serwera (host)</placeholder1>
     <modaltekst1>Jest to nazwa serwera MySQL (inaczej host). &lt;br/> Może występować w postaci adresu strony lub adresu IP serwera. &lt;br/>&lt;br/> Powinna znajdować się w panelu administracyjnym hostingu lub emailu z danymi od firmy hostingowej.</modaltekst1>

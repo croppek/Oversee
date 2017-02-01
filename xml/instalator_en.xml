@@ -13,7 +13,7 @@
     
     <tekst6>&lt;h2>Set the page name.&lt;/h2></tekst6>
     
-    <tekst7>&lt;h2>The installation was successful!&lt;br />&lt;small>The website is ready. Enjoy the use of our system. ;)&lt;/small>&lt;/h2></tekst7>
+    <tekst7>&lt;h2>The installation was successful!&lt;br />&lt;small>The website is ready. To perform further page configuration, please visit the Administrator Panel. Enjoy the use of our system. ;)&lt;/small>&lt;/h2></tekst7>
     
     <placeholder1>Server name (host)</placeholder1>
     <modaltekst1>This is the name of the MySQL server (or host).&lt;br/>Can be in the form of a website address or IP address of the server.&lt;br/>&lt;br/>It should be in the hosting admin panel or in email with the data from the hosting company.</modaltekst1>

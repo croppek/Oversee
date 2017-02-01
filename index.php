@@ -1,3 +1,3 @@
  <?php
-    require 'php/instalator.php';
+    require_once 'php/home.php';
 ?>

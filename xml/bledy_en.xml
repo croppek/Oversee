@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<bledy lang="pl">    
+    <blad1>All fields are required to continue...</blad1>
+    <blad2>All fields are required to continue... &lt;br/>&lt;br/>If you do not have a password for the MySQL server, we recommend set in the administration panel.</blad2>
+    <blad3>Unfortunately, failed to establish a connection to the MySQL server, these figures are incorrect.</blad3>
+    <blad4>Unfortunately we failed to write data to a file. Try again.</blad4>
+    <blad5>The field is required. Please refer to the rules of nomenclature (&lt;span class="glyphicon glyphicon-question-sign">&lt;/span>).</blad5>
+    <blad6>Failed to establish a connection to the MySQL server, try again...</blad6>
+    <blad7>An error occurred while trying to write data to a file, try again...</blad7>
+    <blad8>An error occurred while trying to create a database, try again...</blad8>
+    <blad9>An error occurred while trying to create a table "users", try again...</blad9>
+    <blad10>All required fields must be completed.</blad10>
+    <blad11>The password must be between 5 and 30 characters.</blad11>
+    <blad12>The passwords are not the same...</blad12>
+    <blad13>The address email is incorrect...</blad13>
+    <blad14>Name may contain only letters...</blad14>
+    <blad15>Lastname may consist of only letters...</blad15>
+    <blad16>Login can contain only letters and numbers...</blad16>
+    <blad17>The specified email address is already assigned to another user...</blad17>
+    <blad18>It seems that the database already listed person with such a login name, and therefore generated a new login.</blad18>
+    <blad19>An error occurred while trying to add the user to the database, try again...</blad19>
+    <blad20>Please fill the required box.</blad20>
+    <blad21>The following code is too short, try again...</blad21>
+    <blad22>The following code is too long, try again...</blad22>
+    <blad23>The following code is incorrect, try again...</blad23>
+    <blad24>Given link does not lead to image in format .jpg / .jpeg / .gif / .png, try again...</blad24>
+    <blad25>Incorrect length of the name of the page. Please refer to the rules of nomenclature (&lt;span class="glyphicon glyphicon-question-sign">&lt;/span>).</blad25>
+</bledy>

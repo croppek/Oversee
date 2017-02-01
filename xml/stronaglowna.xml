@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<stronaglowna lang="en">
+    
+    <naglowek1>Szukaj</naglowek1>
+    <naglowek2>O projekcie</naglowek2>
+    <naglowek3>Rozwiń menu</naglowek3>
+    
+    <content1>Podaj ID:</content1>
+    <content2>Wyszukaj według kategorii:</content2>
+    
+    <modal_tytul1>Numer ID</modal_tytul1>
+    <modal_tekst1>Numer ID zapisany jest w kodzie QR.</modal_tekst1>
+    
+    <modal_tytul2>Zaloguj się do Oversee Systems</modal_tytul2>
+    <modal_tekst2></modal_tekst2>
+    
+    <placeholder1>Login</placeholder1>
+    <placeholder2>Hasło</placeholder2>
+    
+    <szukaj>Szukaj</szukaj>
+    <zamknij>Zamknij</zamknij>
+    <zaloguj>Zaloguj się</zaloguj>
+    <wybierz>Wybierz</wybierz>
+    
+    <brakkategorii>Brak kategorii do wyświetlenia</brakkategorii>
+    
+</stronaglowna>

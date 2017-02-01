@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<stronaglowna lang="en">
+    
+    <naglowek1>Search</naglowek1>
+    <naglowek2>About the project</naglowek2>
+    <naglowek3>Rozwiń menu</naglowek3>
+    
+    <content1>Provide ID:</content1>
+    <content2>Search by category:</content2>
+    
+    <modal_tytul1>ID number</modal_tytul1>
+    <modal_tekst1>ID number is stored in the QR code.</modal_tekst1>
+    
+    <modal_tytul2>Log in to the Oversee Systems</modal_tytul2>
+    <modal_tekst2></modal_tekst2>
+    
+    <placeholder1>Login</placeholder1>
+    <placeholder2>Password</placeholder2>
+    
+    <szukaj>Search</szukaj>
+    <zamknij>Close</zamknij>
+    <zaloguj>Sign in</zaloguj>
+    <wybierz>Choose</wybierz>
+    
+    <brakkategorii>No categories to display</brakkategorii>
+    
+</stronaglowna>

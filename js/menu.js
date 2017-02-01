@@ -1,5 +1,9 @@
 $(document).ready(function(){
     
+    //#####################################################################
+    
+    //obsługa ustawień przycisków menu dla wersji mobilnej
+    
     var menu_toggled = false;
     
     $('#toggle_menu_btn').on('click', function(){
@@ -9,7 +13,8 @@ $(document).ready(function(){
             menu_toggled = true;
             
             $('#bs-example-navbar-collapse-1').css('text-align', 'center');
-            $('#sign_in_btn').removeClass('pull-right').addClass('center-block');
+            $('#nav_sign_in_btn').removeClass('pull-right').addClass('center-block');
+            $('#lang_btns').removeClass('pull-right').removeClass('btn-group-xs').removeClass('lang_btns').addClass('lang_btns_mobile');
         }
         else
         {
@@ -18,7 +23,8 @@ $(document).ready(function(){
             setTimeout(function(){
                 
                 $('#bs-example-navbar-collapse-1').css('text-align', 'left');
-                $('#sign_in_btn').removeClass('center-block').addClass('pull-right');
+                $('#nav_sign_in_btn').removeClass('center-block').addClass('pull-right');
+                $('#lang_btns').removeClass('lang_btns_mobile').addClass('pull-right').addClass('btn-group-xs').addClass('lang_btns');
                 
             }, 250);
         }
@@ -30,14 +36,34 @@ $(document).ready(function(){
         if($('#toggle_menu_btn').css('display') == 'none')
         {
             $('#bs-example-navbar-collapse-1').css('text-align', 'left');
-            $('#sign_in_btn').removeClass('center-block').addClass('pull-right');
+            $('#nav_sign_in_btn').removeClass('center-block').addClass('pull-right');
+            $('#lang_btns').removeClass('lang_btns_mobile').addClass('pull-right').addClass('btn-group-xs').addClass('lang_btns');
         }
         else
         {
             $('#bs-example-navbar-collapse-1').css('text-align', 'center');
-            $('#sign_in_btn').removeClass('pull-right').addClass('center-block');
+            $('#nav_sign_in_btn').removeClass('pull-right').addClass('center-block');
+            $('#lang_btns').removeClass('pull-right').removeClass('btn-group-xs').removeClass('lang_btns').addClass('lang_btns_mobile');
         }
         
     });
+    
+    //#####################################################################
+    
+    //osbługa zmiany języka strony
+    
+    $('#lang_btn_pl, #lang_btn_en').on('click', function(){
+        
+        var lang = $(this).data('language');
+        
+        $.post("php/set_page_language.php", {language: lang}, function(data){
+            
+            location.reload();
+            
+        });
+        
+    });
+    
+    //#####################################################################
     
 });

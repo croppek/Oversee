@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<bledy lang="pl">    
+    <blad1>Wypełnienie wszystkich pól jest wymagane aby przejść dalej...</blad1>
+    <blad2>Wypełnienie wszystkich pól jest wymagane aby przejść dalej... &lt;br/>&lt;br/> Jeśli nie masz hasła do serwera MySQL, zalecamy jego ustawienie w panelu administracyjnym.</blad2>
+    <blad3>Niestety nie udało się ustanowić połączenia z serwerem MySQL, podane dane są nieprawidłowe.</blad3>
+    <blad4>Niestety nie udało się zapisać danych do pliku. Spróbuj ponownie.</blad4>
+    <blad5>Pole jest wymagane. Proszę zapoznać się z zasadami nazewnictwa (&lt;span class="glyphicon glyphicon-question-sign">&lt;/span>).</blad5>
+    <blad6>Nie udało się ustanowić połączenia z serwerem MySQL, spróbuj ponownie...</blad6>
+    <blad7>Wystąpił błąd podczas próby zapisu danych do pliku, spróbuj ponownie...</blad7>
+    <blad8>Wystąpił błąd podczas próby utworzenia bazy danych, spróbuj ponownie...</blad8>
+    <blad9>Wystąpił błąd podczas próby utworzenia tabeli "użytkownicy", spróbuj ponownie...</blad9>
+    <blad10>Wszystkie wymagane pola muszą być uzupełnione.</blad10>
+    <blad11>Hasło musi mieć od 5 do 30 znaków.</blad11>
+    <blad12>Podane hasła nie są takie same...</blad12>
+    <blad13>Podany adres email jest nieprawidłowy...</blad13>
+    <blad14>Imię może składać się wyłącznie z liter...</blad14>
+    <blad15>Nazwisko może składać się wyłącznie z liter...</blad15>
+    <blad16>Login może składać się wyłącznie z liter i cyfr...</blad16>
+    <blad17>Podany adres email jest już przypisany do innego użytkownika...</blad17>
+    <blad18>Wygląda na to, że w bazie figuruje już osoba o takim loginie, dlatego wygenerowano nowy login.</blad18>
+    <blad19>Wystąpił błąd podczas próby dodania użytkownika do bazy danych, spróbuj ponownie...</blad19>
+    <blad20>Proszę uzupełnić wymagane pole.</blad20>
+    <blad21>Podany kod jest za krótki, spróbuj ponownie...</blad21>
+    <blad22>Podany kod jest za długi, spróbuj ponownie...</blad22>
+    <blad23>Podany kod jest nieprawidłowy, spróbuj ponownie...</blad23>
+    <blad24>Podany link nie prowadzi do obrazu w formacie .jpg / .jpeg / .gif / .png, spróbuj ponownie...</blad24>
+    <blad25>Niewłaściwa długość nazwy strony. Proszę zapoznać się z zasadami nazewnictwa (&lt;span class="glyphicon glyphicon-question-sign">&lt;/span>).</blad25>
+</bledy>

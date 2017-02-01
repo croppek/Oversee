@@ -1,5 +1,5 @@
-W celu zainstalowania naszego systemu dla Pañstwa zastosowañ potrzebny bêdzie serwer, na którym zostanie umieszczona strona. 
-Mo¿na go wykupiæ na stronach hostingowych lub skonfigurowaæ w³asn¹ maszynê.
+W celu zainstalowania naszego systemu dla PaÅ„stwa zastosowaÅ„ potrzebny bÄ™dzie serwer, na ktÃ³rym zostanie umieszczona strona. 
+MoÅ¼na go wykupiÄ‡ na stronach hostingowych lub skonfigurowaÄ‡ wÅ‚asnÄ… maszynÄ™.
 
-Jeœli mamy ju¿ serwer, wystarczy skopiowaæ wszystkie pliki z folderu Oversee na serwer.
-Nastêpnym krokiem bêdzie przejœcie pod adres serwera (np http://adres-mojej-strony.pl) gdzie przez kolejne kroki poprowadzi instalator systemu. :)
+JeÅ›li mamy juÅ¼ serwer, wystarczy skopiowaÄ‡ wszystkie pliki z folderu Oversee na serwer.
+NastÄ™pnym krokiem bÄ™dzie przejÅ›cie pod adres serwera (np http://adres-mojej-strony.pl) gdzie przez kolejne kroki poprowadzi instalator systemu. :)

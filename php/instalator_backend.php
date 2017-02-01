@@ -1062,8 +1062,11 @@
                         {
                             if($polaczenie->query("CREATE TABLE $new_db_name.installation ( id INT NOT NULL AUTO_INCREMENT , what TEXT NOT NULL, saved TINYINT NOT NULL DEFAULT '0' , PRIMARY KEY (id)) ENGINE = InnoDB")) 
                             {
-                                // DOPISAĆ TWORZENIE TABELI Z ITEMAMI, WYMYŚLIĆ KOLUMNY
-                                echo 'saved';
+                                if($polaczenie->query("CREATE TABLE $new_db_name.categories ( id INT NOT NULL AUTO_INCREMENT , name TEXT NOT NULL , PRIMARY KEY (id)) ENGINE = InnoDB")) 
+                                {
+                                    // DOPISAĆ TWORZENIE TABELI Z ITEMAMI, WYMYŚLIĆ KOLUMNY, DODAĆ DO TABELI KATEGORIE
+                                    echo 'saved';
+                                }
                             }
                         }
                     }
