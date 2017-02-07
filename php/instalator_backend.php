@@ -1068,6 +1068,7 @@
                         $polaczenie->query("CREATE TABLE $new_db_name.categories ( id INT NOT NULL AUTO_INCREMENT , name TEXT NOT NULL , PRIMARY KEY (id)) ENGINE = InnoDB");
                         
                         //#### tworzenie tabel z kategoriami
+                        $polaczenie->query("CREATE TABLE $new_db_name.devices ( id INT NOT NULL AUTO_INCREMENT , name TEXT NOT NULL , placement TEXT NOT NULL , last_location TEXT NOT NULL , type TEXT NOT NULL , comments TEXT NOT NULL , damaged BOOLEAN NOT NULL , PRIMARY KEY (id)) ENGINE = InnoDB");
                         
                         //#### dodawanie wszystkich kategorii do zbiorczej tabeli
                         $polaczenie->query("INSERT INTO $new_db_name.categories (id, name) VALUES (NULL, 'devices')");
