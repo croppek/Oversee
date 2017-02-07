@@ -1,8 +1,8 @@
 <?php
 
-    $host = "--host--";
-    $db_user = "--username--";
-    $db_password = "--password--";
-    $db_name = "--database--";
+    $host = "localhost";
+    $db_user = "root";
+    $db_password = "";
+    $db_name = "testowa";
 
 ?>

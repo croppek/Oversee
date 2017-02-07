@@ -24,6 +24,8 @@
         $support_location = "img/support-btn-pl.png";
     }
 
+    require 'connect.php';
+
 ?>
 
 <!DOCTYPE html>
@@ -34,7 +36,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-        <title>--page_title--</title>
+        <title>Kulnemj</title>
 
         <!-- Bootstrap -->
         <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -42,7 +44,7 @@
         <link href="css/style.css" rel="stylesheet">
         
         <!-- FAVICON LINKING -->
-        <link rel="icon" type="image/png" sizes="32x32" href="img/oversee-logo.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/J_Church_logo.svg/2000px-J_Church_logo.svg.png">
     
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -52,8 +54,8 @@
         <![endif]-->
       
     </head>
-    <body>
-        <img id="logo-saver" src="img/oversee-logo.png" style="display: none;"/>
+    <body data-version="0.1">
+        <img id="logo-saver" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/J_Church_logo.svg/2000px-J_Church_logo.svg.png" style="display: none;"/>
         
         <nav class="navbar navbar-inverse navbar-static-top">
             <div class="container-fluid">
@@ -66,16 +68,28 @@
                         <span class="icon-bar"></span>
                       </button>
                     
-                    <a class="navbar-brand" href="#">
-                        <img alt="Brand" class="logo_img" src="img/oversee-logo.png">
+                    <a class="navbar-brand" href="./">
+                        <img alt="Brand" class="logo_img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/J_Church_logo.svg/2000px-J_Church_logo.svg.png">
                     </a>
-                    <p class="navbar-text" style="font-weight: bold; font-style: italic;">--page_title--</p>
+                    <p class="navbar-text" style="font-weight: bold; font-style: italic;">Kulnemj</p>
                     
                 </div>
                 
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="#"><?php echo $xml->naglowek1; ?></a></li>
+                        
+                        <?php
+                            if(isset($_GET['id']) || isset($_GET['category']))
+                            {
+                                echo '<li>';
+                            }
+                            else
+                            {
+                                echo '<li class="active">';
+                            }
+                        ?>
+                        
+                        <a href="./"><?php echo $xml->naglowek1; ?></a></li>
                         <li><a href="#"><?php echo $xml->naglowek2; ?></a></li>
                     </ul>
                     
@@ -91,90 +105,191 @@
             </div>
         </nav>
         
-        <div class="col-md-6">
-            <div class="jumbotron">
-                <h2 style="text-align: center;"><?php echo $xml->content1; ?></h2>
-                <div class="input-group" style="width: 450px; margin: 0 auto;"> 
-                    <input id="id_number_input" class="form-control" type="number" min="1" aria-label="Text input with multiple buttons"> 
-                    <div class="input-group-btn"> 
-                        <button id="id_help_btn" type="button" class="btn btn-default" aria-label="Help" data-toggle="modal" data-target="#infoModal1"><span class="glyphicon glyphicon-question-sign"></span></button> 
-                        <button id="search_by_id" type="button" class="btn btn-default"><?php echo $xml->szukaj; ?></button> 
-                    </div> 
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-6">  
-            <div class="jumbotron">  
-                
-                <h2 style="text-align: center;"><?php echo $xml->content2; ?></h2>
-                
-                <div class="dropdown">
-                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                        <?php echo $xml->wybierz; ?> <span class="caret"></span>
-                    </button>
+        <?php
+            
+            if(isset($_GET['id']) || isset($_GET['category']))
+            {
+                if(isset($_GET['id']))
+                {
+                    $id = $_GET['id'];
                     
-                    <ul class="dropdown-menu" id="search_by_categories" aria-labelledby="dropdownMenu1" id="dropdownMenu1-menu">
-                        
-                        <?php
-                            require 'connect.php';
+                    $polaczenie = @new mysqli($host, $db_user, $db_password, $db_name);
+                    @mysqli_set_charset($polaczenie,"utf8");
 
-                            $polaczenie = @new mysqli($host, $db_user, $db_password, $db_name);
-                            @mysqli_set_charset($polaczenie,"utf8");
-
-                            if($polaczenie->connect_errno == 0)
-                            {  
-                                if($result = $polaczenie->query("SELECT * FROM categories ORDER BY name ASC")) 
-                                {
-                                    if($result->num_rows > 0) 
-                                    {
-                                        while($row = mysqli_fetch_array($result))
-                                        {
-                                            $name = $row['name'];
-
-                                            echo '<li>'. $name .'</li>';
-                                        }
-                                    }
-                                    else
-                                    {
-                                        echo $xml->brakkategorii;
-                                    }
-                                }
-                                else 
-                                {
-                                    echo $xml_errors->blad6;
-                                }
+                    if($polaczenie->connect_errno == 0)
+                    {  
+                        if($result = $polaczenie->query("SELECT category FROM item_category WHERE id='$id'")) 
+                        {
+                            if($result->num_rows > 0) 
+                            {
+                                $row = mysqli_fetch_assoc($result);
                                 
-                                $polaczenie->close();
+                                $category = $row['category'];
+
+                                if($result = $polaczenie->query("SELECT * FROM $category WHERE id='$id'")) 
+                                {
+                                    $row = mysqli_fetch_assoc($result);
+                                    
+                                    switch($category)
+                                    {
+                                        case 'devices':
+                                            include 'php/kategorie/devices.php';
+                                            break;
+                                    }
+                                }
                             }
                             else
                             {
-                                echo $xml_errors->blad6;
+                                echo $xml->brakwyniku;
                             }
-                        ?>
-                        
-                    </ul>
+                        }
+                        else 
+                        {
+                            echo $xml_errors->blad6;
+                        }
+
+                        $polaczenie->close();
+                    }
+                    else
+                    {
+                        echo $xml_errors->blad6;
+                    }
+                }
+                else if(isset($_GET['category']))
+                {
+                    $category = $_GET['category'];
+                    
+                    $polaczenie = @new mysqli($host, $db_user, $db_password, $db_name);
+                    @mysqli_set_charset($polaczenie,"utf8");
+
+                    if($polaczenie->connect_errno == 0)
+                    {  
+                        if($result = $polaczenie->query("SELECT * FROM $category ORDER BY id ASC")) 
+                        {
+                            if($result->num_rows > 0) 
+                            {
+                                switch($category)
+                                {
+                                    case 'devices':
+                                        include 'php/kategorie/devices.php';
+                                        break;
+                                }
+                            }
+                            else
+                            {
+                                echo $xml->brakwkategorii;
+                            }
+                        }
+                        else 
+                        {
+                            echo $xml_errors->blad6;
+                        }
+
+                        $polaczenie->close();
+                    }
+                    else
+                    {
+                        echo $xml_errors->blad6;
+                    }
+                }
+            }
+            else
+            {
+                echo '
+                
+                <div class="col-md-6">
+                    <div class="jumbotron">
+
+                        <h2 style="text-align: center; margin-bottom: 15px;">'; echo $xml->content1; echo '</h2>
+
+                        <form method="get">
+                            <div class="input-group" style="width: 450px; margin: 0 auto;"> 
+                                <input id="id_number_input" class="form-control" name="id" type="number" min="1" value="1" aria-label="Text input with multiple buttons"> 
+                                <div class="input-group-btn"> 
+                                    <button id="id_help_btn" type="button" class="btn btn-default" aria-label="Help" data-toggle="modal" data-target="#infoModal1"><span class="glyphicon glyphicon-question-sign"></span></button> 
+                                    <button id="search_by_id" type="submit" class="btn btn-default">'; echo $xml->szukaj; echo '</button> 
+                                </div>
+                            </div>
+                        </form>
+
+                    </div>
                 </div>
 
-            </div>
-        </div>
+                <div class="col-md-6">  
+                    <div class="jumbotron">  
+
+                        <h2 style="text-align: center; margin-bottom: 15px;">'; echo $xml->content2; echo '</h2>
+
+                        <form method="get">
+                            <div class="input-group input-group-md" style="width: 450px; margin: 0 auto; float: none;">
+                                <select class="form-control" name="category" id="categories_select">
+                                    <option selected disabled>'; echo $xml->wybierz; echo '</option>';
+
+                                        $polaczenie = @new mysqli($host, $db_user, $db_password, $db_name);
+                                        @mysqli_set_charset($polaczenie,"utf8");
+
+                                        if($polaczenie->connect_errno == 0)
+                                        {  
+                                            if($result = $polaczenie->query("SELECT * FROM categories ORDER BY name ASC")) 
+                                            {
+                                                if($result->num_rows > 0) 
+                                                {
+                                                    while($row = mysqli_fetch_array($result))
+                                                    {
+                                                        $name = $row['name'];
+
+                                                        echo '<option value="'. $name .'">'. $xml->$name .'</option>';
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    echo $xml->brakkategorii;
+                                                }
+                                            }
+                                            else 
+                                            {
+                                                echo $xml_errors->blad6;
+                                            }
+
+                                            $polaczenie->close();
+                                        }
+                                        else
+                                        {
+                                            echo $xml_errors->blad6;
+                                        }
+                    
+                                    
+                                echo '</select>
+                                <span class="input-group-btn">
+                                    <button id="search_by_category" type="submit" class="btn btn-default">'; echo $xml->szukaj; echo '</button>
+                                </span>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+
+                <div id="infoModal1" class="modal fade" role="dialog">
+                    <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">'; echo $xml->modal_tytul1; echo '</h4>
+                        </div>
+                    <div class="modal-body">
+                        <p>'; echo $xml->modal_tekst1; echo '</p>
+                    </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" data-dismiss="modal">'; echo $xml->zamknij; echo '</button>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                
+                ';
+            }
         
-        <div id="infoModal1" class="modal fade" role="dialog">
-            <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title"><?php echo $xml->modal_tytul1; ?></h4>
-                </div>
-            <div class="modal-body">
-                <p><?php echo $xml->modal_tekst1; ?></p>
-            </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-dismiss="modal"><?php echo $xml->zamknij; ?></button>
-                </div>
-            </div>
-            </div>
-        </div>
+        ?>
         
         <div id="loginModal" class="modal fade" role="dialog">
             <div class="modal-dialog">
@@ -204,7 +319,7 @@
             </div>
         </div>
         
-        <footer class="footer">
+        <footer class="footer navbar-fixed-bottom">
             <div class="container">
                 <p class="text-muted">Bartosz Kropidłowski &nbsp;</p>
                 <a href="#" target="_blank"><img src="<?php echo $support_location ?>" style="height: 25px; width: auto; margin-top: 7.5px;"/></a>

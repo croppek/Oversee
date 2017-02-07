@@ -23,6 +23,21 @@
     <zaloguj>Sign in</zaloguj>
     <wybierz>Choose</wybierz>
     
+    <devices>Devices</devices>
+    
     <brakkategorii>No categories to display</brakkategorii>
+    <brakwyniku>&lt;p class="no_info_paragraph">No information about an item.&lt;/p></brakwyniku>
+    <brakwkategorii>&lt;p class="no_info_paragraph">There are no items in this category.&lt;/p></brakwkategorii>
+    
+    <nazwa>Name</nazwa>
+    <ulokowanie>Placement</ulokowanie>
+    <ostatnialokalizacja>Last location</ostatnialokalizacja>
+    <typ>Type</typ>
+    <uwagi>Comments</uwagi>
+    <uszkodzony>Damaged</uszkodzony>
+    
+    <tak>Yes</tak>
+    <nie>No</nie>
+    <brak>No comments</brak>
     
 </stronaglowna>

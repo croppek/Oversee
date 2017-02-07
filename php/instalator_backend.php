@@ -1045,6 +1045,7 @@
         }
         else
         {
+            //tworzenie bazy danych o podanej nazwie
             if($polaczenie->query("CREATE DATABASE $new_db_name CHARACTER SET utf8 COLLATE utf8_polish_ci")) 
             {
                 $searchF = '--database--';
@@ -1056,19 +1057,22 @@
                 $fh = fopen("connect.php", 'w');
                 if(fwrite($fh, $file) != false)
                 {
+                    //tworzenie tabeli użytkownicy
                     if($polaczenie->query("CREATE TABLE $new_db_name.users ( id INT NOT NULL AUTO_INCREMENT , login TEXT NOT NULL , password TEXT NOT NULL , email TEXT NOT NULL , name TEXT NOT NULL , lastname TEXT NOT NULL , specialization TEXT NOT NULL , code TEXT NOT NULL , permissions TINYINT NOT NULL DEFAULT '1' , email_confirmed TINYINT NOT NULL DEFAULT '0' , PRIMARY KEY (id)) ENGINE = InnoDB")) 
                     {
-                        if($polaczenie->query("CREATE TABLE $new_db_name.item_categories ( id INT NOT NULL , category TEXT NOT NULL , PRIMARY KEY (id)) ENGINE = InnoDB")) 
-                        {
-                            if($polaczenie->query("CREATE TABLE $new_db_name.installation ( id INT NOT NULL AUTO_INCREMENT , what TEXT NOT NULL, saved TINYINT NOT NULL DEFAULT '0' , PRIMARY KEY (id)) ENGINE = InnoDB")) 
-                            {
-                                if($polaczenie->query("CREATE TABLE $new_db_name.categories ( id INT NOT NULL AUTO_INCREMENT , name TEXT NOT NULL , PRIMARY KEY (id)) ENGINE = InnoDB")) 
-                                {
-                                    // DOPISAĆ TWORZENIE TABELI Z ITEMAMI, WYMYŚLIĆ KOLUMNY, DODAĆ DO TABELI KATEGORIE
-                                    echo 'saved';
-                                }
-                            }
-                        }
+                        //tworzenie podstawowych tabel w bazie danych
+                        $polaczenie->query("CREATE TABLE $new_db_name.item_category ( id INT NOT NULL , category TEXT NOT NULL , PRIMARY KEY (id)) ENGINE = InnoDB");
+                        
+                        $polaczenie->query("CREATE TABLE $new_db_name.installation ( id INT NOT NULL AUTO_INCREMENT , what TEXT NOT NULL, saved TINYINT NOT NULL DEFAULT '0' , PRIMARY KEY (id)) ENGINE = InnoDB");
+                            
+                        $polaczenie->query("CREATE TABLE $new_db_name.categories ( id INT NOT NULL AUTO_INCREMENT , name TEXT NOT NULL , PRIMARY KEY (id)) ENGINE = InnoDB");
+                        
+                        //#### tworzenie tabel z kategoriami
+                        
+                        //#### dodawanie wszystkich kategorii do zbiorczej tabeli
+                        $polaczenie->query("INSERT INTO $new_db_name.categories (id, name) VALUES (NULL, 'devices')");
+                        
+                        echo 'saved';
                     }
                     else
                     {

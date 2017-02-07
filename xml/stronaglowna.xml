@@ -23,6 +23,21 @@
     <zaloguj>Zaloguj się</zaloguj>
     <wybierz>Wybierz</wybierz>
     
+    <devices>Urządzenia</devices>
+    
     <brakkategorii>Brak kategorii do wyświetlenia</brakkategorii>
+    <brakwyniku>&lt;p class="no_info_paragraph">Brak informacji o danym przedmiocie.&lt;/p></brakwyniku>
+    <brakwkategorii>&lt;p class="no_info_paragraph">Brak elementów w danej kategorii.&lt;/p></brakwkategorii>
+    
+    <nazwa>Nazwa</nazwa>
+    <ulokowanie>Ulokowanie</ulokowanie>
+    <ostatnialokalizacja>Ostatnia lokalizacja</ostatnialokalizacja>
+    <typ>Typ</typ>
+    <uwagi>Uwagi</uwagi>
+    <uszkodzony>Uszkodzony</uszkodzony>
+    
+    <tak>Tak</tak>
+    <nie>Nie</nie>
+    <brak>Brak</brak>
     
 </stronaglowna>
