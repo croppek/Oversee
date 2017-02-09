@@ -1,4 +1,6 @@
 <?php 
+
+    session_start();
     
     if(isset($_COOKIE['language']))
     {
@@ -22,6 +24,19 @@
         $xml = simplexml_load_file("xml/stronaglowna.xml");
         $xml_errors = simplexml_load_file("xml/bledy.xml"); 
         $support_location = "img/support-btn-pl.png";
+    }
+
+    $logged = false;
+    $permissions = 0;
+
+    if(isset($_SESSION['zalogowany']))
+    {
+        $logged = $_SESSION['zalogowany'];
+        
+        if($logged == true)
+        {
+            $permissions = $_SESSION['permissions'];
+        }
     }
 
     require 'connect.php';
@@ -54,7 +69,7 @@
         <![endif]-->
       
     </head>
-    <body data-version="0.1">
+    <body data-version="0.2">
         <img id="logo-saver" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/J_Church_logo.svg/2000px-J_Church_logo.svg.png" style="display: none;"/>
         
         <nav class="navbar navbar-inverse navbar-static-top">
@@ -91,9 +106,28 @@
                         
                         <a href="./"><?php echo $xml->naglowek1; ?></a></li>
                         <li><a href="#"><?php echo $xml->naglowek2; ?></a></li>
+                        
+                        <?php
+                        
+                            if($permissions >= 3)
+                            {
+                                echo '<li><a href="#">'. $xml->naglowek4 .'</a></li>';
+                            }
+                    
+                        ?>
+                    
                     </ul>
                     
-                    <button type="button" id="nav_sign_in_btn" class="btn btn-primary navbar-btn pull-right" data-toggle="modal" data-target="#loginModal"><?php echo $xml->zaloguj; ?></button>
+                    <?php
+                        if($logged == true)
+                        {
+                            echo '<button type="button" id="log_out_btn" class="btn btn-primary navbar-btn pull-right">'. $xml->wyloguj .'</button>';
+                        }
+                        else
+                        {
+                            echo '<button type="button" id="nav_sign_in_btn" class="btn btn-primary navbar-btn pull-right" data-toggle="modal" data-target="#loginModal">'. $xml->zaloguj .'</button>';
+                        }
+                    ?>
                     
                     <div class="btn-group btn-group-xs pull-right lang_btns" id="lang_btns" role="group">
                         <button type="button" id="lang_btn_pl" data-language="PL" class="btn btn-default">PL</button>
@@ -200,14 +234,14 @@
                 <div class="col-md-6">
                     <div class="jumbotron">
 
-                        <h2 style="text-align: center; margin-bottom: 15px;">'; echo $xml->content1; echo '</h2>
+                        <h2 style="text-align: center; margin-bottom: 15px;">' . $xml->content1 . '</h2>
 
                         <form method="get">
                             <div class="input-group" style="width: 450px; margin: 0 auto;"> 
                                 <input id="id_number_input" class="form-control" name="id" type="number" min="1" value="1" aria-label="Text input with multiple buttons"> 
                                 <div class="input-group-btn"> 
                                     <button id="id_help_btn" type="button" class="btn btn-default" aria-label="Help" data-toggle="modal" data-target="#infoModal1"><span class="glyphicon glyphicon-question-sign"></span></button> 
-                                    <button id="search_by_id" type="submit" class="btn btn-default">'; echo $xml->szukaj; echo '</button> 
+                                    <button id="search_by_id" type="submit" class="btn btn-default">' . $xml->szukaj . '</button> 
                                 </div>
                             </div>
                         </form>
@@ -218,12 +252,12 @@
                 <div class="col-md-6">  
                     <div class="jumbotron">  
 
-                        <h2 style="text-align: center; margin-bottom: 15px;">'; echo $xml->content2; echo '</h2>
+                        <h2 style="text-align: center; margin-bottom: 15px;">' . $xml->content2 . '</h2>
 
                         <form method="get">
                             <div class="input-group input-group-md" style="width: 450px; margin: 0 auto; float: none;">
                                 <select class="form-control" name="category" id="categories_select">
-                                    <option selected disabled>'; echo $xml->wybierz; echo '</option>';
+                                    <option selected disabled>' . $xml->wybierz . '</option>';
 
                                         $polaczenie = @new mysqli($host, $db_user, $db_password, $db_name);
                                         @mysqli_set_charset($polaczenie,"utf8");
@@ -261,7 +295,7 @@
                                     
                                 echo '</select>
                                 <span class="input-group-btn">
-                                    <button id="search_by_category" type="submit" class="btn btn-default">'; echo $xml->szukaj; echo '</button>
+                                    <button id="search_by_category" type="submit" class="btn btn-default">' . $xml->szukaj . '</button>
                                 </span>
                             </div>
                         </form>
@@ -274,13 +308,13 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title">'; echo $xml->modal_tytul1; echo '</h4>
+                            <h4 class="modal-title">' . $xml->modal_tytul1 . '</h4>
                         </div>
                     <div class="modal-body">
-                        <p>'; echo $xml->modal_tekst1; echo '</p>
+                        <p>' . $xml->modal_tekst1 . '</p>
                     </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-primary" data-dismiss="modal">'; echo $xml->zamknij; echo '</button>
+                            <button type="button" class="btn btn-primary" data-dismiss="modal">' . $xml->zamknij . '</button>
                         </div>
                     </div>
                     </div>
@@ -308,6 +342,10 @@
                     <input id="password_input" type="password" class="form-control" name="password_input" placeholder="<?php echo $xml->placeholder2 ?>" />
                 </div>
                 <br/>
+                
+                <div id="error_alert" class="alert alert-danger" role="alert" style="width: 60%; margin: 10px auto 10px; display: none;"></div>
+
+                <br/>
 
                 <button type="button" id="sign_in_btn" class="btn btn-primary"><?php echo $xml->zaloguj; ?></button>
 
@@ -318,7 +356,7 @@
             </div>
             </div>
         </div>
-        
+    
         <footer class="footer navbar-fixed-bottom">
             <div class="container">
                 <p class="text-muted">Bartosz Kropidłowski &nbsp;</p>
@@ -332,5 +370,6 @@
         <!-- Include all compiled plugins (below), or include individual files as needed -->
         <script src="js/bootstrap.min.js"></script>
         <script src="js/menu.js"></script>
+        <script src="js/login.js"></script>
     </body>
 </html>

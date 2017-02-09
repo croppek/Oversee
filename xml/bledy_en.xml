@@ -26,4 +26,6 @@
     <blad23>The following code is incorrect, try again...</blad23>
     <blad24>Given link does not lead to image in format .jpg / .jpeg / .gif / .png, try again...</blad24>
     <blad25>Incorrect length of the name of the page. Please refer to the rules of nomenclature (&lt;span class="glyphicon glyphicon-question-sign">&lt;/span>).</blad25>
+    <blad26>You must enter your username and password to login.</blad26>
+    <blad27>Username or password is incorrect, try again...</blad27>
 </bledy>

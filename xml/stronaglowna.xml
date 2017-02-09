@@ -5,6 +5,7 @@
     <naglowek1>Szukaj</naglowek1>
     <naglowek2>O projekcie</naglowek2>
     <naglowek3>Rozwiń menu</naglowek3>
+    <naglowek4>Panel administratora</naglowek4>
     
     <content1>Podaj ID:</content1>
     <content2>Wyszukaj według kategorii:</content2>
@@ -21,6 +22,7 @@
     <szukaj>Szukaj</szukaj>
     <zamknij>Zamknij</zamknij>
     <zaloguj>Zaloguj się</zaloguj>
+    <wyloguj>Wyloguj się</wyloguj>
     <wybierz>Wybierz</wybierz>
     
     <devices>Urządzenia</devices>

@@ -669,7 +669,6 @@ function set_error(error_number)
         });
         
     }
-
 }
 
 //funkcja sprawdzająca stan przerwanej instalacji

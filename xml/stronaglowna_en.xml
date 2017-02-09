@@ -5,6 +5,7 @@
     <naglowek1>Search</naglowek1>
     <naglowek2>About the project</naglowek2>
     <naglowek3>Rozwiń menu</naglowek3>
+    <naglowek4>Administration panel</naglowek4>
     
     <content1>Provide ID:</content1>
     <content2>Search by category:</content2>
@@ -21,6 +22,7 @@
     <szukaj>Search</szukaj>
     <zamknij>Close</zamknij>
     <zaloguj>Sign in</zaloguj>
+    <wyloguj>Log out</wyloguj>
     <wybierz>Choose</wybierz>
     
     <devices>Devices</devices>

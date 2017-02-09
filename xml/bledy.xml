@@ -26,4 +26,6 @@
     <blad23>Podany kod jest nieprawidłowy, spróbuj ponownie...</blad23>
     <blad24>Podany link nie prowadzi do obrazu w formacie .jpg / .jpeg / .gif / .png, spróbuj ponownie...</blad24>
     <blad25>Niewłaściwa długość nazwy strony. Proszę zapoznać się z zasadami nazewnictwa (&lt;span class="glyphicon glyphicon-question-sign">&lt;/span>).</blad25>
+    <blad26>Musisz podać login i hasło aby się zalogować.</blad26>
+    <blad27>Podany login lub hasło jest nieprawidłowe, spróbuj ponownie...</blad27>
 </bledy>
