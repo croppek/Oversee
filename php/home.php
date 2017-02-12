@@ -2,6 +2,7 @@
 
     session_start();
     
+    //ustawianie języka strony na podstawie zapisanych ciasteczek
     if(isset($_COOKIE['language']))
     {
         $lang = $_COOKIE['language'];
@@ -25,7 +26,8 @@
         $xml_errors = simplexml_load_file("xml/bledy.xml"); 
         $support_location = "img/support-btn-pl.png";
     }
-
+    
+    //sprawdzenie czy użytkownik jest zalogowany oraz ustalenie jego permisji
     $logged = false;
     $permissions = 0;
 
@@ -69,7 +71,7 @@
         <![endif]-->
       
     </head>
-    <body data-version="0.2">
+    <body data-version="0.3">
         <img id="logo-saver" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/J_Church_logo.svg/2000px-J_Church_logo.svg.png" style="display: none;"/>
         
         <nav class="navbar navbar-inverse navbar-static-top">
@@ -141,9 +143,53 @@
         
         <?php
             
-            if(isset($_GET['id']) || isset($_GET['category']))
+            //jeśli istnieje któraś ze zmiennych, wyświetlam konkretne informację zamiast strony głównej
+            if(isset($_GET['id']) || isset($_GET['category']) || isset($_GET['history']))
             {
-                if(isset($_GET['id']))
+                //odczytywanie i wyświetlanie danych z historią komentarzy 
+                if(isset($_GET['history']))
+                {
+                    $id = $_GET['id'];
+                    
+                    $polaczenie = @new mysqli($host, $db_user, $db_password, $db_name);
+                    @mysqli_set_charset($polaczenie,"utf8");
+
+                    if($polaczenie->connect_errno == 0)
+                    {  
+                        if($result = $polaczenie->query("SELECT category FROM item_category WHERE id='$id'")) 
+                        {
+                            if($result->num_rows > 0) 
+                            {
+                                $row = mysqli_fetch_assoc($result);
+                                
+                                $category = $row['category'];
+                                    
+                                switch($category)
+                                {
+                                    case 'devices':
+                                        include 'php/kategorie/devices.php';
+                                        break;
+                                }
+                            }
+                            else
+                            {
+                                echo $xml->brakwyniku;
+                            }
+                        }
+                        else 
+                        {
+                            echo $xml_errors->blad6;
+                        }
+
+                        $polaczenie->close();
+                    }
+                    else
+                    {
+                        echo $xml_errors->blad6;
+                    }
+                }
+                //odczytywanie i wyświetlanie danych o danych przedmiocie
+                else if(isset($_GET['id']))
                 {
                     $id = $_GET['id'];
                     
@@ -189,6 +235,7 @@
                         echo $xml_errors->blad6;
                     }
                 }
+                //odczytywanie i wyświetlanie danych o danej kategorii
                 else if(isset($_GET['category']))
                 {
                     $category = $_GET['category'];
@@ -216,7 +263,7 @@
                         }
                         else 
                         {
-                            echo $xml_errors->blad6;
+                            echo $xml->kategorianieinstnieje;
                         }
 
                         $polaczenie->close();
@@ -229,7 +276,7 @@
             }
             else
             {
-                echo '
+                echo  '
                 
                 <div class="col-md-6">
                     <div class="jumbotron">
@@ -332,22 +379,28 @@
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                     <h4 class="modal-title"><?php echo $xml->modal_tytul2; ?></h4>
                 </div>
-            <div class="modal-body">
+            <div id="modal_login_content" class="modal-body">
                 
-                <div class="input-group input-group-lg" style="width: 50%; margin: 0 auto; float: none;">
-                <input id="login_input" type="text" class="form-control" name="login_input" placeholder="<?php echo $xml->placeholder1 ?>" />
-                </div>
-                <br/>
-                <div class="input-group input-group-lg" style="width: 50%; margin: 0 auto; float: none;">
-                    <input id="password_input" type="password" class="form-control" name="password_input" placeholder="<?php echo $xml->placeholder2 ?>" />
-                </div>
-                <br/>
+                <div id="email_confirm_content" style="display: none;"></div>
                 
-                <div id="error_alert" class="alert alert-danger" role="alert" style="width: 60%; margin: 10px auto 10px; display: none;"></div>
+                <div id="login_content">
+                    
+                    <div class="input-group input-group-lg" style="width: 50%; margin: 0 auto; float: none;">
+                    <input id="login_input" type="text" class="form-control" name="login_input" placeholder="<?php echo $xml->placeholder1 ?>" />
+                    </div>
+                    <br/>
+                    <div class="input-group input-group-lg" style="width: 50%; margin: 0 auto; float: none;">
+                        <input id="password_input" type="password" class="form-control" name="password_input" placeholder="<?php echo $xml->placeholder2 ?>" />
+                    </div>
+                    <br/>
 
-                <br/>
+                    <div id="error_alert" class="alert alert-danger" role="alert" style="width: 60%; margin: 10px auto 10px; display: none;"></div>
 
-                <button type="button" id="sign_in_btn" class="btn btn-primary"><?php echo $xml->zaloguj; ?></button>
+                    <br/>
+
+                    <button type="button" id="sign_in_btn" class="btn btn-primary"><?php echo $xml->zaloguj; ?></button>
+                    
+                </div>
 
             </div>
                 <div class="modal-footer">

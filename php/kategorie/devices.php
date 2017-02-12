@@ -1,5 +1,6 @@
 <?php
 
+    //#### funkcja wypisująca dane od urządzeniu w okienkach
     function devices($tytul, $content)
     {
         echo '
@@ -16,7 +17,46 @@
         </div>';
     }
     
-    if(isset($id))
+    //tabela pokazująca historię dodanych komentarzy do danego urządzenia
+    if(isset($_GET['history']) && isset($id))
+    {  
+        if($result = $polaczenie->query("SELECT name FROM $category WHERE id='$id'")) 
+        {
+            $row = mysqli_fetch_assoc($result);
+
+            $nazwa = $row['name'];
+        }
+
+        if($result = $polaczenie->query("SELECT * FROM devices_comments_history WHERE device_id='$id' ORDER BY when_added DESC")) 
+        {
+            echo '
+
+                <table class="table table-striped" align="center" style="width: 95%;">
+                    <tr>
+                        <th>'.$xml->urzadzenie.'</th>
+                        <th style="width: 50%;">'.$xml->uwagi.'</th>
+                        <th>'.$xml->ktododal.'</th>
+                        <th>'.$xml->kiedy.'</th>
+                    </tr>';
+
+                    while($row = mysqli_fetch_array($result))
+                    {   
+                        echo '
+
+                            <tr>
+                                <td><a href="./?id='.$id.'">'.$nazwa.'</a></td>
+                                <td>'.$row['comment'].'</td>
+                                <td>'.$row['who_added'].'</td>
+                                <td style="word-spacing: 15px;"><b>'.$row['when_added'].'</b></td>
+                            </tr>
+                        ';
+                    }  
+
+            echo '</table>';
+        }
+    }
+    //wypisywanie informacji o urządzeniu z użyciem w/w funkcji
+    else if(isset($id))
     {
         $id = $row['id'];
         $name = $row['name'];
@@ -47,12 +87,26 @@
         devices($xml->typ,$type);
         devices($xml->uwagi,$comments);
         devices($xml->uszkodzony,$damaged);
+        
+        if($result = $polaczenie->query("SELECT * FROM devices_comments_history WHERE device_id='$id'")) 
+        {
+            $ile_komentarzy = $result->num_rows;
+        }
+        
+        if($ile_komentarzy > 0)
+        {
+            echo '
+            <div class="col-md-12">
+                <a href="./?history&id='.$id.'"><button class="btn btn-primary btn-lg" style="display: block; margin: 0 auto;">'. $xml->pokazhistorieuwag .'&nbsp;&nbsp;<span class="badge">'.$ile_komentarzy.'</span></button></a>
+            </div>';   
+        }
     }
+    //tabela z wszystkimi urządzeniami w kategorii "urządzenia"
     else
     {
         echo '
         
-            <table class="table" align="center" style="width: 95%;">
+            <table class="table table-striped" align="center" style="width: 95%;">
                 <tr>
                     <th>ID</th>
                     <th>'.$xml->nazwa.'</th>
@@ -84,7 +138,7 @@
                     ';
                 }  
         
-            echo '</table>';
+        echo '</table>';
     }
 
 ?>

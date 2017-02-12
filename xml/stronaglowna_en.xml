@@ -26,10 +26,12 @@
     <wybierz>Choose</wybierz>
     
     <devices>Devices</devices>
+    <urzadzenie>Device</urzadzenie>
     
     <brakkategorii>No categories to display</brakkategorii>
     <brakwyniku>&lt;p class="no_info_paragraph">No information about an item.&lt;/p></brakwyniku>
     <brakwkategorii>&lt;p class="no_info_paragraph">There are no items in this category.&lt;/p></brakwkategorii>
+    <kategorianieinstnieje>&lt;p class="no_info_paragraph">A category does not exist.&lt;/p></kategorianieinstnieje>
     
     <nazwa>Name</nazwa>
     <ulokowanie>Placement</ulokowanie>
@@ -37,6 +39,10 @@
     <typ>Type</typ>
     <uwagi>Comments</uwagi>
     <uszkodzony>Damaged</uszkodzony>
+    <pokazhistorieuwag>Show comments story</pokazhistorieuwag>
+    
+    <ktododal>Added by</ktododal>
+    <kiedy>Date and time</kiedy>
     
     <tak>Yes</tak>
     <nie>No</nie>

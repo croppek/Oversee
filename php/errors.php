@@ -1,26 +1,28 @@
 <?php
+    
+    session_start();
+
+    if(isset($_COOKIE['language']))
+    {
+        $lang = $_COOKIE['language'];
+
+        if($lang == 'pl')
+        {
+            $xml = simplexml_load_file("../xml/bledy.xml"); 
+        }
+        else if($lang == 'en')
+        {
+            $xml = simplexml_load_file("../xml/bledy_en.xml"); 
+        }
+    }
+    else
+    {
+        $xml = simplexml_load_file("../xml/bledy.xml"); 
+    }
 
     if(isset($_POST['error_number']))
     {
         $error_number = $_POST['error_number'];
-        
-        if(isset($_COOKIE['language']))
-        {
-            $lang = $_COOKIE['language'];
-
-            if($lang == 'pl')
-            {
-                $xml = simplexml_load_file("../xml/bledy.xml"); 
-            }
-            else if($lang == 'en')
-            {
-                $xml = simplexml_load_file("../xml/bledy_en.xml"); 
-            }
-        }
-        else
-        {
-            $xml = simplexml_load_file("../xml/bledy.xml"); 
-        }
         
         switch($error_number) 
         {
@@ -105,9 +107,49 @@
             case 'blad27':
                 echo $xml->blad27;
                 break;
+            case 'blad28':
+                echo $xml->blad28;
+                break;
         }
         
         return;
+    }
+    else if(isset($_POST['confirmation_content']))
+    {
+        require_once("connect.php");
+    
+        $polaczenie = @new mysqli($host, $db_user, $db_password, $db_name);
+        @mysqli_set_charset($polaczenie,"utf8");
+
+        if($polaczenie->connect_errno != 0)
+        {  
+            echo 'bladpolaczeniazbaza';
+        }
+        else
+        {
+            $login = $_SESSION['login'];
+
+            $rezultat = $polaczenie -> query("SELECT email FROM users WHERE login = '$login'");
+
+            $email = mysqli_fetch_assoc($rezultat);
+            $email = $email['email'];
+
+            echo '
+
+                <p style="text-align: center;">'. $xml->confirm_label . ' ' . $email .'</p>
+                <div class="input-group input-group-lg" style="width: 50%; margin: 0 auto; float: none;">
+                    <input id="confirm_code_input" type="text" class="form-control" style="text-align: center;">
+                </div>
+
+                <div id="error_alert" class="alert alert-danger" role="alert" style="width: 50%; margin: 20px auto 0; display: none;"></div>
+
+                <br/>
+                <button id="email_confirm_btn" class="btn btn-primary btn-md" type="button" style="width: 200px; margin: 10px auto 0; display: block;">'. $xml->potwierdz .'</button>
+                
+                <button id="back_to_login_btn" class="btn btn-primary btn-sm" type="button" style="width: 160px; margin: 10px auto 0; display: block;">'. $xml->powrotdologowania .'</button>
+
+            ';
+        }
     }
 
 ?>

@@ -1,0 +1,4 @@
+RewriteEngine on
+
+RewriteRule ^o-projekcie about.php [NC]
+RewriteRule ^about-project about.php [NC]

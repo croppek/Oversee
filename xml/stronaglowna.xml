@@ -26,17 +26,23 @@
     <wybierz>Wybierz</wybierz>
     
     <devices>Urządzenia</devices>
+    <urzadzenie>Urządzenie</urzadzenie>
     
     <brakkategorii>Brak kategorii do wyświetlenia</brakkategorii>
     <brakwyniku>&lt;p class="no_info_paragraph">Brak informacji o danym przedmiocie.&lt;/p></brakwyniku>
     <brakwkategorii>&lt;p class="no_info_paragraph">Brak elementów w danej kategorii.&lt;/p></brakwkategorii>
+    <kategorianieinstnieje>&lt;p class="no_info_paragraph">Dana kategoria nie istnieje.&lt;/p></kategorianieinstnieje>
     
     <nazwa>Nazwa</nazwa>
     <ulokowanie>Ulokowanie</ulokowanie>
     <ostatnialokalizacja>Ostatnia lokalizacja</ostatnialokalizacja>
     <typ>Typ</typ>
-    <uwagi>Uwagi</uwagi>
+    <uwagi>Komentarz</uwagi>
     <uszkodzony>Uszkodzony</uszkodzony>
+    <pokazhistorieuwag>Pokaż historię komentarzy</pokazhistorieuwag>
+    
+    <ktododal>Dodany przez</ktododal>
+    <kiedy>Data i czas</kiedy>
     
     <tak>Tak</tak>
     <nie>Nie</nie>
