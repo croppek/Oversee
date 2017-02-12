@@ -71,7 +71,7 @@
         <![endif]-->
       
     </head>
-    <body data-version="0.3">
+    <body data-version="0.4">
         <img id="logo-saver" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/J_Church_logo.svg/2000px-J_Church_logo.svg.png" style="display: none;"/>
         
         <nav class="navbar navbar-inverse navbar-static-top">
@@ -96,7 +96,7 @@
                     <ul class="nav navbar-nav">
                         
                         <?php
-                            if(isset($_GET['id']) || isset($_GET['category']))
+                            if(isset($_GET['id']) || isset($_GET['category']) || isset($_GET['history']))
                             {
                                 echo '<li>';
                             }
@@ -111,7 +111,7 @@
                         
                         <?php
                         
-                            if($permissions >= 3)
+                            if($logged == true && $permissions >= 3)
                             {
                                 echo '<li><a href="#">'. $xml->naglowek4 .'</a></li>';
                             }
@@ -193,6 +193,8 @@
                 {
                     $id = $_GET['id'];
                     
+                    echo '<div id="item_id_holder" style="display: none;">'.$id.'</div>';
+                    
                     $polaczenie = @new mysqli($host, $db_user, $db_password, $db_name);
                     @mysqli_set_charset($polaczenie,"utf8");
 
@@ -221,6 +223,14 @@
                             else
                             {
                                 echo $xml->brakwyniku;
+                                
+                                if($logged == true && $permissions >= 3)
+                                {
+                                    echo '
+                                    <div class="col-md-12">
+                                        <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#add_to_db_modal1" style="display: block; margin: 20px auto 0;">'. $xml->dodajdobazy .'</button>
+                                    </div>';
+                                }
                             }
                         }
                         else 
@@ -368,6 +378,72 @@
                 </div>
                 
                 ';
+            }
+    
+            if($logged == true && $permissions >= 3)
+            {
+                echo '
+                <div id="add_to_db_modal1" class="modal fade" role="dialog">
+                    <div id="addtodb_modal_dialog" class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">'. $xml->modal_tytul3 .'</h4>
+                            </div>
+                            <div id="modal_addtodb_content" class="modal-body">
+
+                                <p style="text-align: center; font-weight: bold;">'. $xml->wybierzkategorie .'</p>
+                                <div class="input-group input-group-md" style="width: 450px; margin: 0 auto; float: none;">
+                                    <select class="form-control" name="category" id="add_todb_categories_select">
+                                        <option selected disabled>' . $xml->wybierz . '</option>';
+
+                                            $polaczenie = @new mysqli($host, $db_user, $db_password, $db_name);
+                                            @mysqli_set_charset($polaczenie,"utf8");
+
+                                            if($polaczenie->connect_errno == 0)
+                                            {  
+                                                if($result = $polaczenie->query("SELECT * FROM categories ORDER BY name ASC")) 
+                                                {
+                                                    if($result->num_rows > 0) 
+                                                    {
+                                                        while($row = mysqli_fetch_array($result))
+                                                        {
+                                                            $name = $row['name'];
+
+                                                            echo '<option value="'. $name .'">'. $xml->$name .'</option>';
+                                                        }
+                                                    }
+                                                    else
+                                                    {
+                                                        echo $xml->brakkategorii;
+                                                    }
+                                                }
+                                                else 
+                                                {
+                                                    echo $xml_errors->blad6;
+                                                }
+
+                                                $polaczenie->close();
+                                            }
+                                            else
+                                            {
+                                                echo $xml_errors->blad6;
+                                            }
+
+
+                                    echo '</select>
+                                    <span class="input-group-btn">
+                                        <button id="add_todb_category" type="submit" class="btn btn-default">' . $xml->dalej . '</button>
+                                    </span>
+                                </div>
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary" data-dismiss="modal">'. $xml->zamknij .'</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>';
             }
         
         ?>

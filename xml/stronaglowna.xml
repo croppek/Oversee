@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<stronaglowna lang="en">
+<stronaglowna lang="pl">
     
+    <!-- Teksty dla strony głównej, menu i wyszukiwania -->
     <naglowek1>Szukaj</naglowek1>
     <naglowek2>O projekcie</naglowek2>
     <naglowek3>Rozwiń menu</naglowek3>
@@ -16,6 +17,10 @@
     <modal_tytul2>Zaloguj się do Oversee Systems</modal_tytul2>
     <modal_tekst2></modal_tekst2>
     
+    <modal_tytul3>Dodaj informację o przedmiocie do bazy danych</modal_tytul3>
+    <modal_tekst3></modal_tekst3>
+    
+    <!-- Logowanie -->
     <placeholder1>Login</placeholder1>
     <placeholder2>Hasło</placeholder2>
     
@@ -25,27 +30,99 @@
     <wyloguj>Wyloguj się</wyloguj>
     <wybierz>Wybierz</wybierz>
     
+    <!-- Nazwy kategorii -->
     <devices>Urządzenia</devices>
-    <urzadzenie>Urządzenie</urzadzenie>
     
+    <!-- Informację związane z kategoriami -->
     <brakkategorii>Brak kategorii do wyświetlenia</brakkategorii>
     <brakwyniku>&lt;p class="no_info_paragraph">Brak informacji o danym przedmiocie.&lt;/p></brakwyniku>
     <brakwkategorii>&lt;p class="no_info_paragraph">Brak elementów w danej kategorii.&lt;/p></brakwkategorii>
     <kategorianieinstnieje>&lt;p class="no_info_paragraph">Dana kategoria nie istnieje.&lt;/p></kategorianieinstnieje>
     
+    <!-- Nagłówki dla wyświetlania informacji o przedmiotach -->
     <nazwa>Nazwa</nazwa>
     <ulokowanie>Ulokowanie</ulokowanie>
     <ostatnialokalizacja>Ostatnia lokalizacja</ostatnialokalizacja>
     <typ>Typ</typ>
     <uwagi>Komentarz</uwagi>
-    <uszkodzony>Uszkodzony</uszkodzony>
+    <uszkodzony>Uszkodzenie</uszkodzony>
     <pokazhistorieuwag>Pokaż historię komentarzy</pokazhistorieuwag>
+    <dodajdobazy>Dodaj informację o przedmiocie do bazy danych</dodajdobazy>
+    <urzadzenie>Urządzenie</urzadzenie>
     
     <ktododal>Dodany przez</ktododal>
     <kiedy>Data i czas</kiedy>
     
+    <!-- Proste zwroty -->
     <tak>Tak</tak>
     <nie>Nie</nie>
     <brak>Brak</brak>
+    <dalej>Dalej</dalej>
+    <dodaj>Dodaj do bazy danych</dodaj>
+    
+    <wybierzkategorie>Wybierz do jakiej kategorii dodać przedmiot:</wybierzkategorie>
+    
+    <!-- Typy urządzeń -->
+    <stacjarobocza>Stacja robocza</stacjarobocza>
+    <serwer>Serwer</serwer>
+    <laptop>Komputer przenośny (laptop)</laptop>
+    <terminal>Terminal</terminal>
+    <monitor>Monitor</monitor>
+    <myszkomputerowa>Mysz komputerowa</myszkomputerowa>
+    <klawiatura>Klawiatura</klawiatura>
+    <glosniki>Głośniki</glosniki>
+    <sluchawki>Słuchawki</sluchawki>
+    <mikrofon>Mikrofon</mikrofon>
+    <kalkulator>Kalkulator</kalkulator>
+    <telefon>Telefon</telefon>
+    <smartphone>Smartphone</smartphone>
+    <automatycznasekretarka>Automatyczna sekretarka</automatycznasekretarka>
+    <drukarka>Drukarka</drukarka>
+    <faks>Faks</faks>
+    <ksero>Ksero</ksero>
+    <skaner>Skaner</skaner>
+    <urzadzeniewielofunkcyjne>Urządzenie wielofunkcyjne</urzadzeniewielofunkcyjne>
+    <telewizor>Telewizor</telewizor>
+    <dekoder>Dekoder</dekoder>
+    <radio>Radio</radio>
+    <odtwarzaczvideo>Odtwarzacz wideo</odtwarzaczvideo>
+    <wierzahifi>Wierza Hi-Fi</wierzahifi>
+    <wzmacniacz>Wzmacniacz</wzmacniacz>
+    <kamera>Kamera</kamera>
+    <tablicainteraktywna>Tablica interaktywna</tablicainteraktywna>
+    <lodowka>Lodówka</lodowka>
+    <pralka>Pralka</pralka>
+    <zmywarka>Zmywarka</zmywarka>
+    <mikrofalowka>Mikrofalówka</mikrofalowka>
+    <grzejnikelektryczny>Grzejnik elektryczny</grzejnikelektryczny>
+    <wentylator>Wentylator</wentylator>
+    <klimatyzator>Klimatyzator</klimatyzator>
+    <odkurzacz>Odkurzacz</odkurzacz>
+    <toster>Toster</toster>
+    <frytkownica>Frytkownica</frytkownica>
+    <suszarka>Suszarka</suszarka>
+    <waga>Waga</waga>
+    <zegar>Zegar</zegar>
+    <lampa>Lampa</lampa>
+    <pila>Piła</pila>
+    <wiertarka>Wiertarka</wiertarka>
+    <maszynadoszycia>Maszyna do szycia</maszynadoszycia>
+    <spawarka>Spawarka</spawarka>
+    <kosiarkaelektryczna>Kosiarka elektryczna</kosiarkaelektryczna>
+    <dmuchawa>Dmuchawa</dmuchawa>
+    <sprzetdoradioterapii>Sprzęt do radioterapii</sprzetdoradioterapii>
+    <sprzetdobadankardiologicznych>Sprzęt do badań kardiologicznych</sprzetdobadankardiologicznych>
+    <sprzetdodializoterapii>Sprzęt do dializoterapii</sprzetdodializoterapii>
+    <sprzetdowentylacjipluc>Sprzęt do wentylacji płuc</sprzetdowentylacjipluc>
+    <urzadzeniemedycznewykorzystujacetechnikenuklearna>Urządzenia medyczne wykorzystujące technikę nuklearną</urzadzeniemedycznewykorzystujacetechnikenuklearna>
+    <czujnikdymu>Czujnik dymu</czujnikdymu>
+    <regulatorciepla>Regulator ciepła</regulatorciepla>
+    <termostat>Termostat</termostat>
+    <automatdowydawanianajopowgoracych>Automat do wydawania napojów gorących</automatdowydawanianajopowgoracych>
+    <automatdowydawaniabutelekipuszek>Automat do wydawania butelek i puszek</automatdowydawaniabutelekipuszek>
+    <automatdowydawaniaproduktowstalych>Automat do wydawania produktów stałych</automatdowydawaniaproduktowstalych>
+    <bankomat>Bankomat</bankomat>
+    <innyautomat>Inny automat</innyautomat>
+    <inny>Inny</inny>
     
 </stronaglowna>

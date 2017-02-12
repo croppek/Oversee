@@ -2,6 +2,7 @@
 
 <stronaglowna lang="en">
     
+    <!-- Teksty dla strony głównej, menu i wyszukiwania -->
     <naglowek1>Search</naglowek1>
     <naglowek2>About the project</naglowek2>
     <naglowek3>Rozwiń menu</naglowek3>
@@ -16,6 +17,10 @@
     <modal_tytul2>Log in to the Oversee Systems</modal_tytul2>
     <modal_tekst2></modal_tekst2>
     
+    <modal_tytul3>Add information about an item to the database</modal_tytul3>
+    <modal_tekst3></modal_tekst3>
+    
+    <!-- Logowanie -->
     <placeholder1>Login</placeholder1>
     <placeholder2>Password</placeholder2>
     
@@ -25,14 +30,16 @@
     <wyloguj>Log out</wyloguj>
     <wybierz>Choose</wybierz>
     
+    <!-- Nazwy kategorii -->
     <devices>Devices</devices>
-    <urzadzenie>Device</urzadzenie>
     
+    <!-- Informację związane z kategoriami -->
     <brakkategorii>No categories to display</brakkategorii>
     <brakwyniku>&lt;p class="no_info_paragraph">No information about an item.&lt;/p></brakwyniku>
     <brakwkategorii>&lt;p class="no_info_paragraph">There are no items in this category.&lt;/p></brakwkategorii>
     <kategorianieinstnieje>&lt;p class="no_info_paragraph">A category does not exist.&lt;/p></kategorianieinstnieje>
     
+    <!-- Nagłówki dla wyświetlania informacji o przedmiotach -->
     <nazwa>Name</nazwa>
     <ulokowanie>Placement</ulokowanie>
     <ostatnialokalizacja>Last location</ostatnialokalizacja>
@@ -40,12 +47,82 @@
     <uwagi>Comments</uwagi>
     <uszkodzony>Damaged</uszkodzony>
     <pokazhistorieuwag>Show comments story</pokazhistorieuwag>
+    <dodajdobazy>Add information about an item to the database</dodajdobazy>
+    <urzadzenie>Device</urzadzenie>
     
     <ktododal>Added by</ktododal>
     <kiedy>Date and time</kiedy>
     
+    <!-- Proste zwroty -->
     <tak>Yes</tak>
     <nie>No</nie>
     <brak>No comments</brak>
+    <dalej>Next</dalej>
+    <dodaj>Add to the database</dodaj>
+    
+    <wybierzkategorie>Choose which category to add an item:</wybierzkategorie>
+    
+    <!-- Typy urządzeń -->
+    <stacjarobocza>Working station</stacjarobocza>
+    <serwer>Server</serwer>
+    <laptop>Laptop</laptop>
+    <terminal>Terminal</terminal>
+    <monitor>Display</monitor>
+    <myszkomputerowa>Computer mouse</myszkomputerowa>
+    <klawiatura>Keyboard</klawiatura>
+    <glosniki>Speakers</glosniki>
+    <sluchawki>Headphones</sluchawki>
+    <mikrofon>Microphone</mikrofon>
+    <kalkulator>Calculator</kalkulator>
+    <telefon>Phone</telefon>
+    <smartphone>Smartphone</smartphone>
+    <automatycznasekretarka>Voice mail</automatycznasekretarka>
+    <drukarka>Printer</drukarka>
+    <faks>Fax</faks>
+    <ksero>Photocopying</ksero>
+    <skaner>Scanner</skaner>
+    <urzadzeniewielofunkcyjne>Multifunction device</urzadzeniewielofunkcyjne>
+    <telewizor>Television</telewizor>
+    <dekoder>Decoder</dekoder>
+    <radio>Radio</radio>
+    <odtwarzaczvideo>Video player</odtwarzaczvideo>
+    <wierzahifi>Hi-Fi</wierzahifi>
+    <wzmacniacz>Amplifier</wzmacniacz>
+    <kamera>Camera</kamera>
+    <tablicainteraktywna>Interactive whiteboard</tablicainteraktywna>
+    <lodowka>Fridge</lodowka>
+    <pralka>Washer</pralka>
+    <zmywarka>Washing Machine</zmywarka>
+    <mikrofalowka>Microwave</mikrofalowka>
+    <grzejnikelektryczny>Electric heater</grzejnikelektryczny>
+    <wentylator>Fan</wentylator>
+    <klimatyzator>Air conditioner</klimatyzator>
+    <odkurzacz>Vacuum cleaner</odkurzacz>
+    <toster>Toaster</toster>
+    <frytkownica>Deep fryers</frytkownica>
+    <suszarka>Dryer</suszarka>
+    <waga>Weight</waga>
+    <zegar>Clock</zegar>
+    <lampa>Lamp</lampa>
+    <pila>Saw</pila>
+    <wiertarka>Drill</wiertarka>
+    <maszynadoszycia>Sewing Machine</maszynadoszycia>
+    <spawarka>Welder</spawarka>
+    <kosiarkaelektryczna>Electric mower</kosiarkaelektryczna>
+    <dmuchawa>Blower</dmuchawa>
+    <sprzetdoradioterapii>Equipment for radiotherapy</sprzetdoradioterapii>
+    <sprzetdobadankardiologicznych>Equipment for cardiological examinations</sprzetdobadankardiologicznych>
+    <sprzetdodializoterapii>Equipment for dialysis</sprzetdodializoterapii>
+    <sprzetdowentylacjipluc>Equipment for lung ventilation</sprzetdowentylacjipluc>
+    <urzadzeniemedycznewykorzystujacetechnikenuklearna>Medical devices using nuclear technology</urzadzeniemedycznewykorzystujacetechnikenuklearna>
+    <czujnikdymu>Smoke sensor</czujnikdymu>
+    <regulatorciepla>Heat regulator</regulatorciepla>
+    <termostat>Thermostat</termostat>
+    <automatdowydawanianajopowgoracych>Vending machine with hot drinks</automatdowydawanianajopowgoracych>
+    <automatdowydawaniabutelekipuszek>Vending machine with bottles and cans</automatdowydawaniabutelekipuszek>
+    <automatdowydawaniaproduktowstalych>Vending machine with solids</automatdowydawaniaproduktowstalych>
+    <bankomat>ATM</bankomat>
+    <innyautomat>Other vending machine</innyautomat>
+    <inny>Other</inny>
     
 </stronaglowna>

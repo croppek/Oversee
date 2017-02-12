@@ -611,7 +611,7 @@
 
             $fh = fopen("home.php", 'w');
             if(fwrite($fh, $file) != false)
-            {
+            {   
                 $xml = simplexml_load_file($_COOKIE['xml_url']) or die("Error: Cannot create object");
 
                 add_content7($xml);
@@ -1004,7 +1004,7 @@
 
             <br/><br/>
 
-            <button id="installation_next_btn" class="btn btn-primary btn-lg" type="button" name="submit_upload" style="width: 350px;">'. $xml->stronaglowna .'</button>
+            <button id="installation_next_btn" class="btn btn-primary btn-lg" type="button" style="width: 350px;">'. $xml->stronaglowna .'</button>
 
             ';
         }
@@ -1068,7 +1068,7 @@
                         $polaczenie->query("CREATE TABLE $new_db_name.categories ( id INT NOT NULL AUTO_INCREMENT , name TEXT NOT NULL , PRIMARY KEY (id)) ENGINE = InnoDB");
                         
                         //#### tworzenie tabel z kategoriami
-                        $polaczenie->query("CREATE TABLE $new_db_name.devices ( id INT NOT NULL AUTO_INCREMENT , name TEXT NOT NULL , placement TEXT NOT NULL , last_location TEXT NOT NULL , type TEXT NOT NULL , comments TEXT NOT NULL , who_added TEXT NOT NULL , damaged BOOLEAN NOT NULL , PRIMARY KEY (id)) ENGINE = InnoDB");
+                        $polaczenie->query("CREATE TABLE $new_db_name.devices ( id INT NOT NULL , name TEXT NOT NULL , placement TEXT NOT NULL , last_location TEXT NOT NULL , type TEXT NOT NULL , comments TEXT NOT NULL , who_added TEXT NOT NULL , damaged BOOLEAN NOT NULL , PRIMARY KEY (id)) ENGINE = InnoDB");
                         
                         //#### tworzenie tabeli z historią komentarzy dla kategorii "urządzenia"
                         $polaczenie->query("CREATE TABLE $new_db_name.devices_comments_history ( id INT NOT NULL , comment TEXT NOT NULL , who_added TEXT NOT NULL , when_added TIMESTAMP NOT NULL , device_id INT NOT NULL , PRIMARY KEY (id)) ENGINE = InnoDB");
