@@ -122,7 +122,7 @@
                     <?php
                         if($logged == true)
                         {
-                            echo '<button type="button" id="log_out_btn" class="btn btn-primary navbar-btn pull-right">'. $xml->wyloguj .'</button>';
+                            echo '<button type="button" id="log_out_btn" class="btn btn-warning navbar-btn pull-right">'. $xml->wyloguj .'</button>';
                         }
                         else
                         {
@@ -139,6 +139,8 @@
               
             </div>
         </nav>
+    
+        <div id="page_blend"></div>
         
         <?php
             
@@ -206,6 +208,8 @@
                                 $row = mysqli_fetch_assoc($result);
                                 
                                 $category = $row['category'];
+                                
+                                echo '<div id="item_category_holder" style="display: none;">'.$category.'</div>';
 
                                 if($result = $polaczenie->query("SELECT * FROM $category WHERE id='$id'")) 
                                 {

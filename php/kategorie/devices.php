@@ -1,18 +1,27 @@
 <?php
 
-    //#### funkcja wypisująca dane od urządzeniu w okienkach
-    function devices($tytul, $content)
+    //#### funkcja wypisująca dane o urządzeniu w okienkach
+    function devices($tytul, $content, $db_header, $edit)
     {
         echo '
 
         <div class="col-md-3">
-            <div class="panel panel-primary">
-                <div class="panel-heading">
-                    <h3 class="panel-title" style="text-align: center;">'. $tytul .'</h3>
-                </div>
-                <div class="panel-body">
-                    '. $content .'
-                </div>
+            <div class="panel panel-primary">';
+        
+            if($db_header != '')
+            {
+                echo '<div class="panel-heading" style="padding: 6px;">
+                <h3 class="panel-title" style="text-align: center;" data-header="'.$db_header.'">'. $tytul .'<button class="btn btn-info btn-sm edit_item_info_btn">'. $edit .'</button></h3>';
+            }
+            else
+            {
+                echo '<div class="panel-heading" style="height: 39px;">
+                <h3 class="panel-title" style="text-align: center;">'. $tytul .'</h3>';
+            }
+        
+        
+        echo       '</div>
+                <div class="panel-body">'. $content .'</div>
             </div>
         </div>';
     }
@@ -39,7 +48,7 @@
                 <table class="table table-striped" align="center" style="width: 95%;">
                     <tr>
                         <th>'.$xml->urzadzenie.'</th>
-                        <th style="width: 50%;">'.$xml->uwagi.'</th>
+                        <th style="width: 40%;">'.$xml->uwagi.'</th>
                         <th>'.$xml->ktododal.'</th>
                         <th>'.$xml->kiedy.'</th>';
                         
@@ -63,7 +72,7 @@
                                 
                                 if($permissions >= 2)
                                 {
-                                    echo '<td><button class="btn btn-primary btn-sm remove_comment_from_db_btn">'. $xml->usun .'</button></td>';
+                                    echo '<td><button class="btn btn-danger btn-sm remove_comment_from_db_btn">'. $xml->usun .'</button></td>';
                                 }
                                     
                         echo '</tr>';
@@ -104,14 +113,55 @@
         {
             $comment = $xml->brak;
         }
-
-        devices('ID',$id);
-        devices($xml->nazwa,$name);
-        devices($xml->ulokowanie,$placement);
-        devices($xml->ostatnialokalizacja,$last_location);
-        devices($xml->typ,$type);
-        devices($xml->uszkodzony,$damaged);
-        devices($xml->uwagi,$comment);
+        
+        $edit = $xml->edytuj;
+        
+        switch($permissions)
+        {
+            case 3:
+                devices('ID',$id,'',$edit);
+                devices($xml->nazwa,$name,'name',$edit);
+                devices($xml->ulokowanie,$placement,'placement',$edit);
+                devices($xml->ostatnialokalizacja,$last_location,'last_location',$edit);
+                devices($xml->typ,$type,'',$edit);
+                devices($xml->uszkodzony,$damaged,'damaged',$edit);
+                devices($xml->uwagi,$comment,'',$edit);
+                
+                break;
+            
+            case 2:
+                devices('ID',$id,'',$edit);
+                devices($xml->nazwa,$name,'name',$edit);
+                devices($xml->ulokowanie,$placement,'placement',$edit);
+                devices($xml->ostatnialokalizacja,$last_location,'last_location',$edit);
+                devices($xml->typ,$type,'',$edit);
+                devices($xml->uszkodzony,$damaged,'damaged',$edit);
+                devices($xml->uwagi,$comment,'',$edit);
+                
+                break;
+                
+            case 1:
+                devices('ID',$id,'',$edit);
+                devices($xml->nazwa,$name,'',$edit);
+                devices($xml->ulokowanie,$placement,'',$edit);
+                devices($xml->ostatnialokalizacja,$last_location,'last_location',$edit);
+                devices($xml->typ,$type,'',$edit);
+                devices($xml->uszkodzony,$damaged,'damaged',$edit);
+                devices($xml->uwagi,$comment,'',$edit);
+                
+                break;
+                
+            default:
+                devices('ID',$id,'',$edit);
+                devices($xml->nazwa,$name,'',$edit);
+                devices($xml->ulokowanie,$placement,'',$edit);
+                devices($xml->ostatnialokalizacja,$last_location,'',$edit);
+                devices($xml->typ,$type,'',$edit);
+                devices($xml->uszkodzony,$damaged,'',$edit);
+                devices($xml->uwagi,$comment,'',$edit);
+                
+                break;
+        }
         
         if($result = $polaczenie->query("SELECT * FROM devices_comments_history WHERE device_id='$id'")) 
         {
@@ -129,7 +179,7 @@
 
                 if($permissions >= 3)
                 {
-                    echo '<button id="remove_item_from_db_btn" class="btn btn-primary btn-md" style="display: block; margin: 20px auto 0;">'. $xml->usunprzedmiot .'</button>';
+                    echo '<button id="remove_item_from_db_btn" class="btn btn-danger btn-md" style="display: block; margin: 20px auto 0;">'. $xml->usunprzedmiot .'</button>';
                 }
 
             echo '</div>'; 
@@ -329,7 +379,7 @@
                 <div class="col-md-3">
                     <div class="panel panel-info">
                         <div class="panel-heading">
-                            <h3 class="panel-title" style="text-align: center;">'. $xml->uwagi .'</h3>
+                            <h3 class="panel-title" style="text-align: center;">'. $xml->komentarz .'</h3>
                         </div>
                         <div class="panel-body" style="height: 100px;">
                             <textarea id="adddb_comment_input" style="width: 100%; height: 75px;"></textarea>

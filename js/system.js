@@ -18,6 +18,7 @@ $(document).ready(function(){
             
             $('#bs-example-navbar-collapse-1').css('text-align', 'center');
             $('#nav_sign_in_btn').removeClass('pull-right').addClass('center-block');
+            $('#log_out_btn').removeClass('pull-right').addClass('center-block');
             $('#lang_btns').removeClass('pull-right').removeClass('btn-group-xs').removeClass('lang_btns').addClass('lang_btns_mobile');
         }
         else
@@ -28,6 +29,7 @@ $(document).ready(function(){
                 
                 $('#bs-example-navbar-collapse-1').css('text-align', 'left');
                 $('#nav_sign_in_btn').removeClass('center-block').addClass('pull-right');
+                $('#log_out_btn').removeClass('center-block').addClass('pull-right');
                 $('#lang_btns').removeClass('lang_btns_mobile').addClass('pull-right').addClass('btn-group-xs').addClass('lang_btns');
                 
             }, 250);
@@ -41,12 +43,14 @@ $(document).ready(function(){
         {
             $('#bs-example-navbar-collapse-1').css('text-align', 'left');
             $('#nav_sign_in_btn').removeClass('center-block').addClass('pull-right');
+            $('#log_out_btn').removeClass('center-block').addClass('pull-right');
             $('#lang_btns').removeClass('lang_btns_mobile').addClass('pull-right').addClass('btn-group-xs').addClass('lang_btns');
         }
         else
         {
             $('#bs-example-navbar-collapse-1').css('text-align', 'center');
             $('#nav_sign_in_btn').removeClass('pull-right').addClass('center-block');
+            $('#log_out_btn').removeClass('pull-right').addClass('center-block');
             $('#lang_btns').removeClass('pull-right').removeClass('btn-group-xs').removeClass('lang_btns').addClass('lang_btns_mobile');
         }
         
@@ -206,6 +210,55 @@ $(document).ready(function(){
 
             });
         }
+        
+    });
+    
+    //#####################################################################
+    
+    //obsługa edycji informacji o przedmiocie
+    
+    $('.edit_item_info_btn').on('click', function(){
+        
+        $(this).attr("disabled", "disabled");
+        
+        var category = $('#item_category_holder').text();
+        var header =  $(this).parent().data('header');
+        
+        var element = $(this).parent().parent().parent().parent();
+        var element_content = $(this).parent().parent().next();
+        
+        $('#page_blend').fadeIn(250, function(){
+            
+            var current_content = element_content.text();
+            var current_position = element.offset();
+            current_position_left = current_position.left + 'px';
+            current_position_top = current_position.top + 'px';
+
+            var def_position = element.css('position');
+            var def_left = element.css('left');
+            var def_top = element.css('top');
+            var def_zindex = element.css('z-index');
+            var def_width = element.css('width');
+
+            element.css({'position': 'fixed', 'left': current_position_left, 'top': current_position_top, 'z-index': '10', 'width': def_width});
+            $('.panel').css({'-webkit-box-shadow': '0px 0px 10px 0px rgba(255,255,255,1)', '-moz-box-shadow': '0px 0px 10px 0px rgba(255,255,255,1)', 'box-shadow': '0px 0px 10px 0px rgba(255,255,255,1)'});
+            
+            //dopisać przycisk zamknięcia oraz potwierdzenia zmian / dodać backend
+            element_content.html('<input style="width: 100%;" type="text" value="'+current_content+'">');
+
+            //to jest opcja zamknięcia okienka
+            setTimeout(function(){
+                
+                element.css({'position': def_position, 'left': def_left, 'top': def_top, 'z-index': def_zindex, 'width': ''});
+                $('.panel').css({'-webkit-box-shadow': '', '-moz-box-shadow': '', 'box-shadow': ''});
+                element_content.text(current_content);
+                $('#page_blend').fadeOut(500);
+                
+                setTimeout(function(){$(".edit_item_info_btn").removeAttr("disabled")}, 1500);
+
+            }, 3000); 
+            
+        });
         
     });
     

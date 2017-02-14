@@ -47,6 +47,7 @@
     <ostatnialokalizacja>Last location</ostatnialokalizacja>
     <typ>Type</typ>
     <uwagi>Last comment</uwagi>
+    <komentarz>Comment</komentarz>
     <uszkodzony>Damaged</uszkodzony>
     <pokazhistorieuwag>Show comments story</pokazhistorieuwag>
     <dodajdobazy>Add information about an item to the database</dodajdobazy>
@@ -62,6 +63,7 @@
     <dalej>Next</dalej>
     <usun>Delete</usun>
     <dodaj>Add to the database</dodaj>
+    <edytuj>Edit</edytuj>
     
     <wybierzkategorie>Choose which category to add an item:</wybierzkategorie>
     <usunprzedmiot>Remove an item from the database</usunprzedmiot>

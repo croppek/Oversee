@@ -47,6 +47,7 @@
     <ostatnialokalizacja>Ostatnia lokalizacja</ostatnialokalizacja>
     <typ>Typ</typ>
     <uwagi>Ostatni komentarz</uwagi>
+    <komentarz>Komentarz</komentarz>
     <uszkodzony>Uszkodzenie</uszkodzony>
     <pokazhistorieuwag>Pokaż historię komentarzy</pokazhistorieuwag>
     <dodajdobazy>Dodaj informację o przedmiocie do bazy danych</dodajdobazy>
@@ -62,6 +63,7 @@
     <dalej>Dalej</dalej>
     <usun>Usuń</usun>
     <dodaj>Dodaj do bazy danych</dodaj>
+    <edytuj>Edytuj</edytuj>
     
     <wybierzkategorie>Wybierz do jakiej kategorii dodać przedmiot:</wybierzkategorie>
     <usunprzedmiot>Usuń przedmiot z bazy danych</usunprzedmiot>
