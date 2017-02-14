@@ -31,7 +31,7 @@
     <wybierz>Choose</wybierz>
     
     <!-- Nazwy kategorii -->
-    <devices>Devices</devices>
+    <devices>Electrical and electronic devices</devices>
     
     <!-- Informację związane z kategoriami -->
     <brakkategorii>No categories to display</brakkategorii>
@@ -39,12 +39,14 @@
     <brakwkategorii>&lt;p class="no_info_paragraph">There are no items in this category.&lt;/p></brakwkategorii>
     <kategorianieinstnieje>&lt;p class="no_info_paragraph">A category does not exist.&lt;/p></kategorianieinstnieje>
     
+    <naglowekkategorii>All items in the category:</naglowekkategorii>
+    
     <!-- Nagłówki dla wyświetlania informacji o przedmiotach -->
     <nazwa>Name</nazwa>
     <ulokowanie>Placement</ulokowanie>
     <ostatnialokalizacja>Last location</ostatnialokalizacja>
     <typ>Type</typ>
-    <uwagi>Comments</uwagi>
+    <uwagi>Last comment</uwagi>
     <uszkodzony>Damaged</uszkodzony>
     <pokazhistorieuwag>Show comments story</pokazhistorieuwag>
     <dodajdobazy>Add information about an item to the database</dodajdobazy>
@@ -58,9 +60,11 @@
     <nie>No</nie>
     <brak>No comments</brak>
     <dalej>Next</dalej>
+    <usun>Delete</usun>
     <dodaj>Add to the database</dodaj>
     
     <wybierzkategorie>Choose which category to add an item:</wybierzkategorie>
+    <usunprzedmiot>Remove an item from the database</usunprzedmiot>
     
     <!-- Typy urządzeń -->
     <stacjarobocza>Working station</stacjarobocza>

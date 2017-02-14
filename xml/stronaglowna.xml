@@ -31,7 +31,7 @@
     <wybierz>Wybierz</wybierz>
     
     <!-- Nazwy kategorii -->
-    <devices>Urządzenia</devices>
+    <devices>Urządzenia elektryczne i elektroniczne</devices>
     
     <!-- Informację związane z kategoriami -->
     <brakkategorii>Brak kategorii do wyświetlenia</brakkategorii>
@@ -39,12 +39,14 @@
     <brakwkategorii>&lt;p class="no_info_paragraph">Brak elementów w danej kategorii.&lt;/p></brakwkategorii>
     <kategorianieinstnieje>&lt;p class="no_info_paragraph">Dana kategoria nie istnieje.&lt;/p></kategorianieinstnieje>
     
+    <naglowekkategorii>Wszystkie przedmioty w kategorii:</naglowekkategorii>
+    
     <!-- Nagłówki dla wyświetlania informacji o przedmiotach -->
     <nazwa>Nazwa</nazwa>
     <ulokowanie>Ulokowanie</ulokowanie>
     <ostatnialokalizacja>Ostatnia lokalizacja</ostatnialokalizacja>
     <typ>Typ</typ>
-    <uwagi>Komentarz</uwagi>
+    <uwagi>Ostatni komentarz</uwagi>
     <uszkodzony>Uszkodzenie</uszkodzony>
     <pokazhistorieuwag>Pokaż historię komentarzy</pokazhistorieuwag>
     <dodajdobazy>Dodaj informację o przedmiocie do bazy danych</dodajdobazy>
@@ -58,9 +60,11 @@
     <nie>Nie</nie>
     <brak>Brak</brak>
     <dalej>Dalej</dalej>
+    <usun>Usuń</usun>
     <dodaj>Dodaj do bazy danych</dodaj>
     
     <wybierzkategorie>Wybierz do jakiej kategorii dodać przedmiot:</wybierzkategorie>
+    <usunprzedmiot>Usuń przedmiot z bazy danych</usunprzedmiot>
     
     <!-- Typy urządzeń -->
     <stacjarobocza>Stacja robocza</stacjarobocza>

@@ -1,5 +1,9 @@
 $(document).ready(function(){
     
+    /*wyświetlanie aktualnego adresu URL
+        console.log(window.location.protocol + "//" + window.location.host + "" + window.location.pathname);
+    */
+    
     //#####################################################################
     
     //obsługa ustawień przycisków menu dla wersji mobilnej
@@ -133,7 +137,7 @@ $(document).ready(function(){
                 break;
         }
         
-        if(id != '' && name != '' && type != '' && damaged != '')
+        if(id != '' && name != '' && type != null && damaged != '')
         {
             $.post("php/kategorie/devices.php", {id: id, name: name, placement: placement, type: type, damaged: damaged, comment: comment}, function(data){
 
@@ -150,6 +154,58 @@ $(document).ready(function(){
         }
         
         setTimeout(function(){$("#add_item_to_db").removeAttr("disabled")}, 1500);
+        
+    });
+    
+    //#####################################################################
+    
+    //obsługa usuwania przedmiotu z bazy danych
+    
+    $('#remove_item_from_db_btn').on('click', function(){
+       
+        if(confirm("Czy na pewno chcesz usunąć ten przedmiot z bazy danych?\n\nAre you sure you want to remove this item from the database?"))
+        {
+            var id = $('#item_id_holder').text();
+            
+            $.post("php/kategorie/devices.php", {remove_item: id}, function(data){
+
+                if(data == 'success')
+                {
+                    location.reload();
+                }
+                else
+                {
+                    alert(data);
+                }
+
+            });
+        }
+        
+    });
+    
+    //#####################################################################
+    
+    //obsługa usuwania komentarza z bazy danych
+    
+    $('.remove_comment_from_db_btn').on('click', function(){
+        
+        if(confirm("Czy na pewno chcesz usunąć ten komentarz?\n\nAre you sure you want to remove this comment?"))
+        {
+            var id = $(this).parent().parent().children(':first-child').text();
+            
+            $.post("php/kategorie/devices.php", {remove_comment: id}, function(data){
+
+                if(data == 'success')
+                {
+                    location.reload();
+                }
+                else
+                {
+                    alert(data);
+                }
+
+            });
+        }
         
     });
     

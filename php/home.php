@@ -71,8 +71,7 @@
         <![endif]-->
       
     </head>
-    <body data-version="0.4">
-        <img id="logo-saver" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/J_Church_logo.svg/2000px-J_Church_logo.svg.png" style="display: none;"/>
+    <body data-version="0.5">
         
         <nav class="navbar navbar-inverse navbar-static-top">
             <div class="container-fluid">
@@ -86,7 +85,7 @@
                       </button>
                     
                     <a class="navbar-brand" href="./">
-                        <img alt="Brand" class="logo_img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/J_Church_logo.svg/2000px-J_Church_logo.svg.png">
+                        <img alt="Brand" id="page_logo" class="logo_img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/J_Church_logo.svg/2000px-J_Church_logo.svg.png">
                     </a>
                     <p class="navbar-text" style="font-weight: bold; font-style: italic;">Kulnemj</p>
                     
@@ -498,7 +497,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
         <!-- Include all compiled plugins (below), or include individual files as needed -->
         <script src="js/bootstrap.min.js"></script>
-        <script src="js/menu.js"></script>
+        <script src="js/system.js"></script>
         <script src="js/login.js"></script>
     </body>
 </html>
