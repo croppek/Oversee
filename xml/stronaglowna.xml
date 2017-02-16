@@ -6,7 +6,8 @@
     <naglowek1>Szukaj</naglowek1>
     <naglowek2>O projekcie</naglowek2>
     <naglowek3>Rozwiń menu</naglowek3>
-    <naglowek4>Panel administratora</naglowek4>
+    <naglowek4>Ustawienia konta</naglowek4>
+    <naglowek5>Panel administratora</naglowek5>
     
     <content1>Podaj ID:</content1>
     <content2>Wyszukaj według kategorii:</content2>
@@ -19,6 +20,9 @@
     
     <modal_tytul3>Dodaj informację o przedmiocie do bazy danych</modal_tytul3>
     <modal_tekst3></modal_tekst3>
+    
+    <modal_tytul4>Dodaj nowy komentarz</modal_tytul4>
+    <modal_tekst4></modal_tekst4>
     
     <!-- Logowanie -->
     <placeholder1>Login</placeholder1>
@@ -63,10 +67,28 @@
     <dalej>Dalej</dalej>
     <usun>Usuń</usun>
     <dodaj>Dodaj do bazy danych</dodaj>
+    <dodajkomentarz>Dodaj komentarz</dodajkomentarz>
     <edytuj>Edytuj</edytuj>
+    <potwierdz>Potwierdź</potwierdz>
+    <anuluj>Anuluj</anuluj>
+    <powiadomspecialistow>Poinformuj specjalistów</powiadomspecialistow>
     
     <wybierzkategorie>Wybierz do jakiej kategorii dodać przedmiot:</wybierzkategorie>
     <usunprzedmiot>Usuń przedmiot z bazy danych</usunprzedmiot>
+    <dodajnowykomentarz>Dodaj nowy komentarz</dodajnowykomentarz>
+    
+    <!-- Lista specjalistów -->
+    <wybierzspecjalistow>Wbierz specjalizacje:</wybierzspecjalistow>
+    <option1>Architektura</option1>
+    <option2>Bibliotekarstwo</option2>
+    <option3>Blacharstwo</option3>
+    <option4>Hydraulika</option4>
+    <option5>Elektronika</option5>
+    <option6>Elektryka</option6>
+    <option7>Informatyka</option7>
+    <option8>Lakiernictwo</option8>
+    <option9>Mechanika</option9>
+    <option10>Stolarstwo</option10>
     
     <!-- Typy urządzeń -->
     <stacjarobocza>Stacja robocza</stacjarobocza>

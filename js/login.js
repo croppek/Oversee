@@ -1,5 +1,7 @@
 $(document).ready(function(){
 
+    //#####################################################################
+    
     //obsługa zdarzenia kliknięcia przyciusku "Zaloguj się"
     $('#sign_in_btn').on('click',function(){
         
@@ -74,6 +76,8 @@ $(document).ready(function(){
         
     });
     
+    //#####################################################################
+    
     //obsługa zdarzenia kliknięcia przyciusku "Wyloguj się"
     $('#log_out_btn').on('click',function(){
         
@@ -91,6 +95,8 @@ $(document).ready(function(){
         });
         
     });
+    
+    //#####################################################################
     
     //obsługa zdarzenia kliknięcia przyciusku potwierdzającego adres email
     $('#modal_login_content').on('click', '#email_confirm_btn', function(){
@@ -147,6 +153,8 @@ $(document).ready(function(){
         
     });
     
+    //#####################################################################
+    
     //obsługa zdarzenia kliknięcia przyciusku powrotu do logowania
     $('#modal_login_content').on('click', '#back_to_login_btn', function(){
         
@@ -168,6 +176,8 @@ $(document).ready(function(){
         
     });
     
+    //#####################################################################
+    
     //wyświetlenie informacji przy potwierdzaniu emaila
     var email_help_clicked = false;
     
@@ -187,6 +197,8 @@ $(document).ready(function(){
         }
         
     });
+    
+    //#####################################################################
     
     //obsługa przycisku przekazująca podany adres email
     $('#modal_login_content').on('click', '#email_enter_btn', function(){
@@ -227,6 +239,8 @@ $(document).ready(function(){
     
 });
 
+//#####################################################################
+
 //funkcja uzupełniająca treść alertów z błędami
 function set_error(error_number)
 {   
@@ -252,6 +266,8 @@ function set_error(error_number)
         
     }
 }
+
+//#####################################################################
 
 //funkcja sprawdzająca poprawność email'a
 function validateEmail()

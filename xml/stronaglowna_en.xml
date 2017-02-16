@@ -6,7 +6,8 @@
     <naglowek1>Search</naglowek1>
     <naglowek2>About the project</naglowek2>
     <naglowek3>Rozwiń menu</naglowek3>
-    <naglowek4>Administration panel</naglowek4>
+    <naglowek4>Account settings</naglowek4>
+    <naglowek5>Administration panel</naglowek5>
     
     <content1>Provide ID:</content1>
     <content2>Search by category:</content2>
@@ -19,6 +20,9 @@
     
     <modal_tytul3>Add information about an item to the database</modal_tytul3>
     <modal_tekst3></modal_tekst3>
+    
+    <modal_tytul4>Add new comment</modal_tytul4>
+    <modal_tekst4></modal_tekst4>
     
     <!-- Logowanie -->
     <placeholder1>Login</placeholder1>
@@ -63,10 +67,28 @@
     <dalej>Next</dalej>
     <usun>Delete</usun>
     <dodaj>Add to the database</dodaj>
+    <dodajkomentarz>Add comment</dodajkomentarz>
     <edytuj>Edit</edytuj>
+    <potwierdz>Confirm</potwierdz>
+    <anuluj>Cancel</anuluj>
+    <powiadomspecialistow>Inform specialists</powiadomspecialistow>
     
     <wybierzkategorie>Choose which category to add an item:</wybierzkategorie>
     <usunprzedmiot>Remove an item from the database</usunprzedmiot>
+    <dodajnowykomentarz>Add new comment</dodajnowykomentarz>
+    
+    <!-- Lista specjalistów -->
+    <wybierzspecjalistow>Select specializations:</wybierzspecjalistow>
+    <option1>Architecture</option1>
+    <option2>Librarianship</option2>
+    <option3>Tin-smithing </option3>
+    <option4>Hydraulics</option4>
+    <option5>Electronics</option5>
+    <option6>Electricity</option6>
+    <option7>Informatics</option7>
+    <option8>Varnishing</option8>
+    <option9>Mechanics</option9>
+    <option10>Carpentry</option10>
     
     <!-- Typy urządzeń -->
     <stacjarobocza>Working station</stacjarobocza>

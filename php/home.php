@@ -71,7 +71,7 @@
         <![endif]-->
       
     </head>
-    <body data-version="0.52">
+    <body data-version="0.55">
         
         <nav class="navbar navbar-inverse navbar-static-top">
             <div class="container-fluid">
@@ -109,10 +109,15 @@
                         <li><a href="#"><?php echo $xml->naglowek2; ?></a></li>
                         
                         <?php
-                        
-                            if($logged == true && $permissions >= 3)
+                            
+                            if($logged == true && $permissions >= 1)
                             {
                                 echo '<li><a href="#">'. $xml->naglowek4 .'</a></li>';
+                            }
+                    
+                            if($logged == true && $permissions >= 3)
+                            {
+                                echo '<li><a href="#">'. $xml->naglowek5 .'</a></li>';
                             }
                     
                         ?>
@@ -493,7 +498,7 @@
             <div class="container">
                 <p class="text-muted">Bartosz Kropidłowski &nbsp;</p>
                 <a href="#" target="_blank"><img src="<?php echo $support_location ?>" style="height: 25px; width: auto; margin-top: 7.5px;"/></a>
-                <p class="text-muted">&nbsp;&nbsp; | &nbsp; Oversee Systems &copy; 2017</p>
+                <p class="text-muted">&nbsp;&nbsp; | &nbsp; Oversee Systems &copy; <?php echo date("Y"); ?></p>
             </div>
         </footer>
 

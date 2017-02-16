@@ -1,7 +1,7 @@
 body
 {
     margin: 0;
-    padding: 0 0 50px;
+    padding: 0 0 55px;
 }
 
 .vertical-center 
@@ -137,6 +137,20 @@ a:hover
     background-color: rgba(0, 0, 0, 0.90);
 }
 
+#label_for_comment_checkbox
+{
+    display: inline-block;
+    cursor: pointer;
+    margin-left: 5px;
+    margin-top: 5px;
+    font-size: 15px;
+}
+
+#comment_checkbox
+{
+    width: 15px;
+    height: 15px;
+}
 
 
 

@@ -1,5 +1,7 @@
 <?php
 
+    //#################################################### TUTAJ ZMIENIAĆ KATEGORIE ########################################################
+
     //#### funkcja wypisująca dane o urządzeniu w okienkach
     function devices($tytul, $content, $db_header, $edit)
     {
@@ -35,7 +37,8 @@
 
             $nazwa = $row['name'];
         }
-
+        
+        //#################################################### TUTAJ ZMIENIAĆ KATEGORIE ########################################################
         if($result = $polaczenie->query("SELECT * FROM devices_comments_history WHERE device_id='$id' ORDER BY when_added DESC")) 
         {
             if($result->num_rows < 1)
@@ -48,7 +51,7 @@
                 <table class="table table-striped" align="center" style="width: 95%;">
                     <tr>
                         <th>'.$xml->urzadzenie.'</th>
-                        <th style="width: 40%;">'.$xml->uwagi.'</th>
+                        <th style="width: 40%;">'.$xml->komentarz.'</th>
                         <th>'.$xml->ktododal.'</th>
                         <th>'.$xml->kiedy.'</th>';
                         
@@ -59,12 +62,14 @@
                         
                     echo '</tr>';
 
+                    //#################################################### TUTAJ ZMIENIAĆ KATEGORIE ########################################################
                     while($row = mysqli_fetch_array($result))
                     {   
                         echo '
 
                             <tr>
                                 <td style="display: none;">'.$row['id'].'</td>
+                                <td style="display: none;">devices</td>
                                 <td><a href="./?id='.$id.'">'.$nazwa.'</a></td>
                                 <td>'.$row['comment'].'</td>
                                 <td>'.$row['who_added'].'</td>
@@ -116,6 +121,8 @@
         
         $edit = $xml->edytuj;
         
+        
+        //#################################################### TUTAJ ZMIENIAĆ KATEGORIE ########################################################
         switch($permissions)
         {
             case 3:
@@ -163,18 +170,24 @@
                 break;
         }
         
+        //#################################################### TUTAJ ZMIENIAĆ KATEGORIE ########################################################
         if($result = $polaczenie->query("SELECT * FROM devices_comments_history WHERE device_id='$id'")) 
         {
             $ile_komentarzy = $result->num_rows;
         }
         
-        if($permissions >= 3 || $ile_komentarzy > 0)
+        if($permissions >= 1 || $ile_komentarzy > 0)
         {
             echo '<div class="col-md-12">';
 
                 if($ile_komentarzy > 0)
                 {
                         echo '<a href="./?history&id='.$id.'"><button class="btn btn-primary btn-lg" style="display: block; margin: 0 auto;">'. $xml->pokazhistorieuwag .'&nbsp;&nbsp;<span class="badge">'.$ile_komentarzy.'</span></button></a>';
+                }
+            
+                if($permissions >= 1)
+                {
+                    echo '<button id="add_new_comment_btn" class="btn btn-warning btn-lg" data-toggle="modal" data-target="#add_new_comment_modal" style="display: block; margin: 20px auto 0;">'. $xml->dodajnowykomentarz .'</button>';
                 }
 
                 if($permissions >= 3)
@@ -183,11 +196,64 @@
                 }
 
             echo '</div>'; 
+            
+            echo '
+            
+            <div id="add_new_comment_modal" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">'. $xml->modal_tytul4 .'</h4>
+                    </div>
+                <div id="new_comment_content" class="modal-body" style="padding-bottom: 75px;">
+                    
+                    <textarea id="new_comment_input" style="width: 100%; height: 150px; resize: vertical;"></textarea>
+                    
+                    <div id="error_alert" class="alert alert-danger" role="alert" style="width: 90%; margin: 5px auto 10px; display: none;">'. $xml_errors->blad20 .'</div>
+                    
+                    <input id="comment_checkbox" type="checkbox" name="notify_specialists">
+                    <label id="label_for_comment_checkbox" for="comment_checkbox">'. $xml->powiadomspecialistow .'</label>
+                
+                    <div id="notification_settings" class="well" style="margin-bottom: 0; display: none;">
+                    
+                        <div class="input-group input-group-md" style="width: 60%; margin: 0 auto; float: none;">
+                            <label for="specialization_input">'. $xml->wybierzspecjalistow .'</label>
+                            <select class="form-control" id="specialization_select">
+                                <option value="brak"></option>
+                                <option value="architektura">'. $xml->option1 .'</option>
+                                <option value="bibliotekarstwo">'. $xml->option2 .'</option>
+                                <option value="blacharstwo">'. $xml->option3 .'</option>
+                                <option value="hydraulika">'. $xml->option4 .'</option>
+                                <option value="elektronika">'. $xml->option5 .'</option>
+                                <option value="elektryka">'. $xml->option6 .'</option>
+                                <option value="informatyka">'. $xml->option7 .'</option>
+                                <option value="lakiernictwo">'. $xml->option8 .'</option>
+                                <option value="mechanika">'. $xml->option9 .'</option>
+                                <option value="stolarstwo">'. $xml->option10 .'</option>
+                            </select>
+                        </div>
+                    
+                    </div>
+                
+                    <div class="col-md-12">
+                        <button id="add_comment_to_db" type="button" class="btn btn-primary btn-lg" style="display: block; margin: 15px auto 0;">'. $xml->dodajkomentarz .'</button>
+                    </div>
+
+                </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">'. $xml->zamknij .'</button>
+                    </div>
+                </div>
+                </div>
+            </div>';
         }
+        
     }
     //tabela z wszystkimi urządzeniami w kategorii "urządzenia"
     else if(isset($_GET['category']))
     {
+        //#################################################### TUTAJ ZMIENIAĆ KATEGORIE ########################################################
         echo '
         
             <p style="text-align: center; font-size: 25px; margin-bottom: 15px;">'.$xml->naglowekkategorii.' <b>'.$xml->devices.'</b></p>
@@ -226,8 +292,10 @@
         
         echo '</table>';
     }
-    else if((isset($_POST['give_headlines'])) || (isset($_POST['id']) && isset($_POST['name']) && isset($_POST['type']) && isset($_POST['damaged'])) || (isset($_POST['remove_item'])) || (isset($_POST['remove_comment'])))
+    else if((isset($_POST['give_headlines'])) || (isset($_POST['id']) && isset($_POST['name']) && isset($_POST['type']) && isset($_POST['damaged'])) || (isset($_POST['remove_item'])) || (isset($_POST['remove_comment'])) || (isset($_POST['item_header']) && isset($_POST['current_content'])) || (isset($_POST['item_id']) && isset($_POST['item_header']) && isset($_POST['new_value'])) || (isset($_POST['item_id']) && isset($_POST['notification']) && isset($_POST['specialization']) && isset($_POST['new_comment']) && isset($_POST['fullurl'])))
     {
+        session_start();
+        
         if(isset($_COOKIE['language']))
         {
             $lang = $_COOKIE['language'];
@@ -252,6 +320,7 @@
         //zwrócenie informacji o nagłówkach tabeli aby umożliwić dodawanie informacji o przedmiotach do bazy
         if(isset($_POST['give_headlines']))
         {
+            //#################################################### TUTAJ ZMIENIAĆ KATEGORIE ########################################################
             echo '
 
             <form id="add_item_to_db_form">
@@ -382,7 +451,7 @@
                             <h3 class="panel-title" style="text-align: center;">'. $xml->komentarz .'</h3>
                         </div>
                         <div class="panel-body" style="height: 100px;">
-                            <textarea id="adddb_comment_input" style="width: 100%; height: 75px;"></textarea>
+                            <textarea id="adddb_comment_input" style="width: 100%; height: 75px; resize: vertical;"></textarea>
                         </div>
                     </div>
                 </div>
@@ -395,9 +464,9 @@
         }
         //dodanie informacji o przedmiocie do bazy danych
         else if(isset($_POST['id']) && isset($_POST['name']) && isset($_POST['type']) && isset($_POST['damaged']))
-        {
-            session_start();
-
+        {        
+            //#################################################### TUTAJ ZMIENIAĆ KATEGORIE ########################################################
+            
             if(isset($_SESSION['permissions']) && $_SESSION['permissions'] >= 3)
             {
                 $id = $_POST['id'];
@@ -465,8 +534,6 @@
         //usunięcie przedmiotu z bazy danych
         else if(isset($_POST['remove_item']))
         {
-            session_start();
-
             if(isset($_SESSION['permissions']) && $_SESSION['permissions'] >= 3)
             {
                 $id = $_POST['remove_item'];
@@ -478,6 +545,8 @@
 
                 if($polaczenie->connect_errno == 0)
                 {  
+                    //#################################################### TUTAJ ZMIENIAĆ KATEGORIE ########################################################
+                    
                     if($polaczenie->query("DELETE FROM devices WHERE id='$id'")) 
                     {
                         if($polaczenie->query("DELETE FROM item_category WHERE id='$id'")) 
@@ -509,8 +578,6 @@
         //usunięcie komentarza z bazy danych
         else if(isset($_POST['remove_comment']))
         {
-            session_start();
-
             if(isset($_SESSION['permissions']) && $_SESSION['permissions'] >= 3)
             {
                 $id = $_POST['remove_comment'];
@@ -522,6 +589,9 @@
 
                 if($polaczenie->connect_errno == 0)
                 {  
+                    
+                    //#################################################### TUTAJ ZMIENIAĆ KATEGORIE ########################################################
+                    
                     if($polaczenie->query("DELETE FROM devices_comments_history WHERE id='$id'")) 
                     {
                         echo 'success';
@@ -538,6 +608,170 @@
                     echo $xml_errors->blad6;
                 }
 
+            }
+            else
+            {
+                echo $xml_errors->brakpermisji;
+            }
+        }
+        //zwrócenie rodzaju inputu do edycji z przyciskami
+        else if(isset($_POST['item_header']) && isset($_POST['current_content']))
+        {
+            $item_header = $_POST['item_header'];
+            $current_content = $_POST['current_content'];
+            
+            //#################################################### TUTAJ ZMIENIAĆ KATEGORIE ########################################################
+            
+            switch($item_header)
+            {
+                case 'name':
+                    
+                    echo '<input id="new_value" style="width: 100%;" type="text" value="'. $current_content. '"><div id="error_alert" class="alert alert-danger" role="alert" style="width: 100%; margin: 20px auto 0; display: none;">'. $xml_errors->blad20 .'</div><div style="display: block; margin: 15px auto 0; width: 205px;"><button id="confirm_edit_btn" class="btn btn-default btn-md" style="margin: 0 40px 0 0">'. $xml->potwierdz .'</button><button id="close_edit_btn" class="btn btn-default btn-md">'. $xml->anuluj .'</button></div>';
+                    
+                    break;
+                    
+                case 'placement':
+                    
+                    echo '<input id="new_value" style="width: 100%;" type="text" value="'. $current_content. '"><div style="display: block; margin: 15px auto 0; width: 205px;"><button id="confirm_edit_btn" class="btn btn-default btn-md" style="margin: 0 40px 0 0">'. $xml->potwierdz .'</button><button id="close_edit_btn" class="btn btn-default btn-md">'. $xml->anuluj .'</button></div>';
+                    
+                    break;
+                    
+                case 'last_location':
+                    
+                    echo '<input id="new_value" style="width: 100%;" type="text" value="'. $current_content. '"><div style="display: block; margin: 15px auto 0; width: 205px;"><button id="confirm_edit_btn" class="btn btn-default btn-md" style="margin: 0 40px 0 0">'. $xml->potwierdz .'</button><button id="close_edit_btn" class="btn btn-default btn-md">'. $xml->anuluj .'</button></div>';
+                    
+                    break;
+                    
+                case 'damaged':
+                    
+                    echo '
+                    
+                    <div class="panel-body<div class="panel-body" style="height: 55px; text-align: center; padding-top: 20px;">';
+                    
+                    if($current_content == 'No' || $current_content == 'Nie')
+                    {
+                        echo '<input type="radio" name="new_value" value="0" checked>&nbsp;'. $xml->nie .'&nbsp;&nbsp;&nbsp;&nbsp;
+                            <input type="radio" name="new_value" value="1">&nbsp;'. $xml->tak;
+                    }
+                    else
+                    {
+                        echo '<input type="radio" name="new_value" value="0">'. $xml->nie .'&nbsp;&nbsp;
+                            <input type="radio" name="new_value" value="1" checked>'. $xml->tak;
+                    }
+                    
+                    
+                    echo '</div>
+                    
+                    <div style="display: block; margin: 15px auto 0; width: 205px;"><button id="confirm_edit_btn" class="btn btn-default btn-md" style="margin: 0 40px 0 0">'. $xml->potwierdz .'</button><button id="close_edit_btn" class="btn btn-default btn-md">'. $xml->anuluj .'</button></div>';
+                    
+                    break;
+            }
+        }
+        //edytowanie informacji o przedmiocie
+        else if(isset($_POST['item_id']) && isset($_POST['item_header']) && isset($_POST['new_value']))
+        {
+            $header = $_POST['item_header'];
+            $new_value = $_POST['new_value'];
+            $id = $_POST['item_id'];
+            
+            require '../connect.php';
+
+            $polaczenie = @new mysqli($host, $db_user, $db_password, $db_name);
+            @mysqli_set_charset($polaczenie,"utf8");
+
+            if($polaczenie->connect_errno == 0)
+            {  
+                if($polaczenie->query("UPDATE devices SET $header = '$new_value' WHERE id = '$id'")) 
+                {
+                    echo 'success';
+                }
+                else 
+                {
+                    echo $xml_errors->blad6;
+                }
+
+                $polaczenie->close();
+            }
+            else
+            {
+                echo $xml_errors->blad6;
+            }
+        }
+        //dodawanie nowego komentarza do przedmiotu
+        else if(isset($_POST['item_id']) && isset($_POST['notification']) && isset($_POST['specialization']) && isset($_POST['new_comment']) && isset($_POST['fullurl']))
+        {
+            $id = $_POST['item_id'];
+            $send_notification = $_POST['notification'];
+            $comment = $_POST['new_comment'];
+            
+            $user_name = $_SESSION['name'];
+            $user_lastname = $_SESSION['lastname'];
+
+            $who_added = $user_name.' '.$user_lastname;
+
+            if(isset($_SESSION['permissions']) && $_SESSION['permissions'] >= 1)
+            {
+                if($send_notification == true)
+                {
+                    $full_url = $_POST['fullurl'];
+                    $specialization = $_POST['specialization'];
+                    $datetime = date("d-m-Y H:i:s");
+                    $emails = array();
+
+                    require '../connect.php';
+
+                    $polaczenie = @new mysqli($host, $db_user, $db_password, $db_name);
+                    @mysqli_set_charset($polaczenie,"utf8");
+
+                    if($polaczenie->connect_errno == 0)
+                    {  
+                        if($rezultat = $polaczenie->query("SELECT email FROM users WHERE specialization = '$specialization'")) 
+                        {   
+                            while($row = mysqli_fetch_array($rezultat))
+                            {   
+                                array_push($emails, $row['email']);
+                            }  
+                        }
+                        else 
+                        {
+                            echo $xml_errors->blad6;
+                        }
+
+                        $polaczenie->close();
+                        
+                        //wysyłanie maila
+                    }
+                    else
+                    {
+                        echo $xml_errors->blad6;
+                    }
+                }
+
+                if($comment != '')
+                {
+                    require '../connect.php';
+
+                    $polaczenie = @new mysqli($host, $db_user, $db_password, $db_name);
+                    @mysqli_set_charset($polaczenie,"utf8");
+
+                    if($polaczenie->connect_errno == 0)
+                    {  
+                        if($polaczenie->query("INSERT INTO devices_comments_history VALUES(NULL, '$comment', '$who_added', CURRENT_TIMESTAMP, '$id')")) 
+                        {
+                            echo 'success';
+                        }
+                        else 
+                        {
+                            echo $xml_errors->blad6;
+                        }
+
+                        $polaczenie->close();
+                    }
+                    else
+                    {
+                        echo $xml_errors->blad6;
+                    }
+                }
             }
             else
             {
