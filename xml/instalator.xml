@@ -25,7 +25,7 @@
     <modaltekst3>Jest to hasło administratora bazy danych. &lt;br/>&lt;br/> Powinno znajdować się w panelu administracyjnym hostingu lub emailu z danymi od firmy hostingowej. </modaltekst3>
     
     <placeholder4>Nazwa bazy danych</placeholder4>
-    <modaltekst4>Jest to nazwa bazy danych. &lt;br/> Służy do łączenia się z baza i manipulowania nią. &lt;br/> Zazwyczaj niewidoczna dla użytkowników. &lt;br/>&lt;br/> Zasady nazewnictwa: &lt;br/>&lt;ul>&lt;li>Musi składać się wyłącznie z liter lub cyfr.&lt;/li>&lt;li>Maksymalna długość to 64 znaki.&lt;/li>&lt;li>Minimalna długość to 4 znaki.&lt;/li>&lt;li>Nie może zawierać spacji.&lt;/li>&lt;/ul></modaltekst4>
+    <modaltekst4>Jest to nazwa bazy danych. &lt;br/> Służy do łączenia się z bazą i manipulowania nią. &lt;br/> Zazwyczaj niewidoczna dla użytkowników. &lt;br/>&lt;br/> Zasady nazewnictwa: &lt;br/>&lt;ul>&lt;li>Musi składać się wyłącznie z liter lub cyfr.&lt;/li>&lt;li>Maksymalna długość to 64 znaki.&lt;/li>&lt;li>Minimalna długość to 4 znaki.&lt;/li>&lt;li>Nie może zawierać spacji.&lt;/li>&lt;/ul></modaltekst4>
     
     <placeholder5>Nazwa użytkownika (generowana automatycznie)</placeholder5>
     <modaltekst5></modaltekst5>
@@ -52,7 +52,7 @@
     <modaltekst12></modaltekst12>
     
     <placeholder13>Podaj adres URL do obrazu:</placeholder13>
-    <modaltekst13>Logo w formacie 1:1 (kwadrat) będzie wyświetlane najlepiej. Obsługiwane formaty to .jpeg / .jpg / .gif / .png. &lt;br/>&lt;br/> W celu zdobycia adresu URL zdjęcia, można skorzystać z hostingów obrazów takich jak: &lt;ul>&lt;li>&lt;a href="https://imgur.com" target="_blank">imgur.com&lt;/a>&lt;/li>&lt;li>&lt;a href="https://imgsafe.org" target="_blank">imgsafe.org&lt;/a>&lt;/li>&lt;li>&lt;a href="https://postimage.io" target="_blank">postimage.io&lt;/a>&lt;/li>&lt;li>&lt;a href="https://tinypic.com" target="_blank">tinypic.com&lt;/a>&lt;/li>&lt;/ul> &lt;br/>&lt;br/> Obraz zostanie automatycznie przeskalowany do porządanych rozmiarów.&lt;br/>&lt;br/>Istnieje możliwość późniejszej zmiany loga.</modaltekst13>
+    <modaltekst13>Logo w formacie 1:1 (kwadrat) będzie wyświetlane najlepiej. Dla poprawienia szybkości ładowania obrazów zaleca się przesłać obraz o wymiarach nie większych niż 200x200px. Obsługiwane formaty to .jpeg / .jpg / .gif / .png. &lt;br/>&lt;br/> W celu zdobycia adresu URL zdjęcia, można skorzystać z hostingów obrazów takich jak: &lt;ul>&lt;li>&lt;a href="https://imgur.com" target="_blank">imgur.com&lt;/a>&lt;/li>&lt;li>&lt;a href="https://imgsafe.org" target="_blank">imgsafe.org&lt;/a>&lt;/li>&lt;li>&lt;a href="https://postimage.io" target="_blank">postimage.io&lt;/a>&lt;/li>&lt;li>&lt;a href="https://tinypic.com" target="_blank">tinypic.com&lt;/a>&lt;/li>&lt;/ul> &lt;br/>&lt;br/> Obraz zostanie automatycznie przeskalowany do porządanych rozmiarów.&lt;br/>&lt;br/>Istnieje możliwość późniejszej zmiany loga.</modaltekst13>
     
     <placeholder14>Nazwa strony</placeholder14>
     <modaltekst14>Wyświetlana będzie obok loga na pasku nawigacji oraz na zakładce w przeglądarce internetowej.&lt;br/>&lt;br/> Może być również wyszukiwana w wyszukiwarkach (Google, Yahoo!, Bing). &lt;br/>&lt;br/>Nazwa powinna mieć od 4 do 50 znaków.</modaltekst14>

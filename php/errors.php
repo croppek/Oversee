@@ -116,40 +116,50 @@
     }
     else if(isset($_POST['confirmation_content']))
     {
-        require_once("connect.php");
-    
-        $polaczenie = @new mysqli($host, $db_user, $db_password, $db_name);
-        @mysqli_set_charset($polaczenie,"utf8");
-
-        if($polaczenie->connect_errno != 0)
-        {  
-            echo 'bladpolaczeniazbaza';
-        }
-        else
-        {
-            $login = $_SESSION['login'];
-
-            $rezultat = $polaczenie -> query("SELECT email FROM users WHERE login = '$login'");
-
-            $email = mysqli_fetch_assoc($rezultat);
-            $email = $email['email'];
-
             echo '
+                
+                <form id="confirm_email_form">
+                    <p style="text-align: center;">'. $xml->podajemail .'</p>
+                    <div class="input-group input-group-md" style="width: 50%; margin: 0 auto; float: none;">
+                        <input id="new_email_input" type="email" class="form-control" required>
+                        <div class="input-group-btn">
+                            <button id="email_help_btn" type="button" class="btn btn-default" aria-label="Help"><span class="glyphicon glyphicon-question-sign"></span></button>
+                        </div>
+                    </div>
 
-                <p style="text-align: center;">'. $xml->confirm_label . ' ' . $email .'</p>
-                <div class="input-group input-group-lg" style="width: 50%; margin: 0 auto; float: none;">
-                    <input id="confirm_code_input" type="text" class="form-control" style="text-align: center;">
-                </div>
+                    <div id="error_alert" class="alert alert-danger" role="alert" style="width: 70%; margin: 20px auto 0; display: none;"></div>
+                    <div id="info_alert" class="alert alert-info" role="alert" style="width: 70%; margin: 20px auto 0; display: none;">'. $xml->emailinfo .'</div>
 
-                <div id="error_alert" class="alert alert-danger" role="alert" style="width: 50%; margin: 20px auto 0; display: none;"></div>
-
-                <br/>
-                <button id="email_confirm_btn" class="btn btn-primary btn-md" type="button" style="width: 200px; margin: 10px auto 0; display: block;">'. $xml->potwierdz .'</button>
+                    <br/>
+                    <button id="email_enter_btn" class="btn btn-primary btn-md" type="submit" style="width: 200px; margin: 10px auto 0; display: block;">' . $xml->dalej . '</button>
+                </form>
                 
                 <button id="back_to_login_btn" class="btn btn-primary btn-sm" type="button" style="width: 160px; margin: 10px auto 0; display: block;">'. $xml->powrotdologowania .'</button>
 
             ';
-        }
+    }
+    else if(isset($_POST['confirmation_content2']) && isset($_POST['new_email']))
+    {
+        $login = $_SESSION['login'];
+
+        $email = $_POST['new_email'];
+
+        echo '
+
+            <p style="text-align: center;">'. $xml->confirm_label . ' <span id="new_email_holder">' . $email .'</span></p>
+            <div class="input-group input-group-lg" style="width: 50%; margin: 0 auto; float: none;">
+                <input id="confirm_code_input" type="text" class="form-control" style="text-align: center;">
+            </div>
+
+            <div id="error_alert" class="alert alert-danger" role="alert" style="width: 50%; margin: 20px auto 0; display: none;"></div>
+
+            <br/>
+            <button id="email_confirm_btn" class="btn btn-primary btn-md" type="button" style="width: 200px; margin: 10px auto 0; display: block;">'. $xml->potwierdz .'</button>
+
+            <button id="back_to_login_btn" class="btn btn-primary btn-sm" type="button" style="width: 160px; margin: 10px auto 0; display: block;">'. $xml->powrotdologowania .'</button>
+        ';
+        
+        //dopisać wysyłanie maila
     }
 
 ?>

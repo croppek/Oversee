@@ -71,7 +71,7 @@
         <![endif]-->
       
     </head>
-    <body data-version="0.5">
+    <body data-version="0.52">
         
         <nav class="navbar navbar-inverse navbar-static-top">
             <div class="container-fluid">

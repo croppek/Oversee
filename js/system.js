@@ -105,7 +105,7 @@ $(document).ready(function(){
                             
                             $('#modal_addtodb_content').empty().append(data);
                             
-                            $('#add_item_to_db_form').submit(function() {
+                            $('#add_item_to_db_form').submit(function(){
                                 return false;
                             });
                             
@@ -233,7 +233,12 @@ $(document).ready(function(){
             var current_position = element.offset();
             current_position_left = current_position.left + 'px';
             current_position_top = current_position.top + 'px';
-
+            
+            if($('#toggle_menu_btn').css('display') == 'block' || $('body').width() <= 974)
+            {
+                current_position_top = '100px';
+            }
+            
             var def_position = element.css('position');
             var def_left = element.css('left');
             var def_top = element.css('top');

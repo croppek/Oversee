@@ -50,11 +50,14 @@ $(document).ready(function(){
                                 
                                 $('#email_confirm_content').empty().append(data).css('display', 'block');
                                 
+                                $('#confirm_email_form').submit(function(){
+                                    return false;
+                                });
+                                
                                 $('#modal_login_content').fadeIn(500);
 
                             });
                         }
-
                     });
                 }
                 
@@ -95,6 +98,7 @@ $(document).ready(function(){
         $('#email_confirm_btn').attr("disabled", "disabled");
         
         var code = $('#confirm_code_input').val();
+        var new_email = $('#new_email_holder').text();
         
         if(code == '')
         {
@@ -102,7 +106,7 @@ $(document).ready(function(){
         }
         else
         {
-            $.post("php/login.php", {confirmation_code: code}, function(data){
+            $.post("php/login.php", {confirmation_code: code, new_email: new_email}, function(data){
 
                 if(data == 'confirmed')
                 {
@@ -164,6 +168,63 @@ $(document).ready(function(){
         
     });
     
+    //wyświetlenie informacji przy potwierdzaniu emaila
+    var email_help_clicked = false;
+    
+    $('#modal_login_content').on('click', '#email_help_btn', function(){
+        
+        if(email_help_clicked == false)
+        {
+            email_help_clicked = true;
+            
+            $('#info_alert').fadeIn(500);
+        }
+        else
+        {
+            email_help_clicked = false;
+            
+            $('#info_alert').fadeOut(500);
+        }
+        
+    });
+    
+    //obsługa przycisku przekazująca podany adres email
+    $('#modal_login_content').on('click', '#email_enter_btn', function(){
+        
+        var new_email = $('#new_email_input').val();
+        
+        if(new_email != '')
+        {
+            if(validateEmail() == true)
+            {
+                $.post("php/errors.php", {confirmation_content2: true, new_email: new_email}, function(data){
+                        
+                    if(data == 'bladpolaczeniazbaza')
+                    {
+                        set_error('blad6');
+                    }
+                    else
+                    {
+                        $('#error_alert').fadeOut(500);
+
+                        $('#modal_login_content').fadeOut(500, function(){
+
+                            $('#password_input').val('');
+
+                            $('#login_content').css('display', 'none');
+
+                            $('#email_confirm_content').empty().append(data).css('display', 'block');
+
+                            $('#modal_login_content').fadeIn(500);
+
+                        });
+                    }
+                });   
+            } 
+        }
+        
+    });
+    
 });
 
 //funkcja uzupełniająca treść alertów z błędami
@@ -189,6 +250,46 @@ function set_error(error_number)
 
         });
         
+    }
+}
+
+//funkcja sprawdzająca poprawność email'a
+function validateEmail()
+{
+    var x = $('#new_email_input').val();
+    var atpos = x.indexOf("@");
+    var dotpos = x.lastIndexOf(".");
+    
+    if (atpos<1 || dotpos<atpos+2 || dotpos+2>=x.length) 
+    {   
+        if($('#error_alert').css('display') == 'block')
+        {
+            $('#error_alert').fadeOut(500, function(){
+                
+                $('#new_email_input').addClass("input_error");
+                set_error('blad13');
+
+                $('#error_alert').fadeIn(500);
+
+            });
+        }
+        else
+        {
+            $('#new_email_input').addClass("input_error");
+            set_error('blad13');
+
+            $('#error_alert').fadeIn(500);
+        }
+        
+        return false;
+    }
+    else
+    {
+        $('#error_alert').fadeOut(500);
+        
+        $('#new_email_input').removeClass("input_error");
+        
+        return true;
     }
 }
     

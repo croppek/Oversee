@@ -123,9 +123,10 @@
                 }
             }
         }
-        else if(isset($_POST['confirmation_code']))
+        else if(isset($_POST['confirmation_code']) && isset($_POST['new_email']))
         {
             $code = $_POST['confirmation_code'];
+            $new_email = $_POST['new_email'];
             $login = $_SESSION['login'];
             
             $rezultat = $polaczenie -> query("SELECT code FROM users WHERE login = '$login'");
@@ -135,9 +136,13 @@
             
             if($db_code == $code)
             {
-                $polaczenie -> query("UPDATE users SET email_confirmed = '1' WHERE login = '$login'");
-                
-                echo 'confirmed';
+                if($polaczenie -> query("UPDATE users SET email_confirmed = '1' WHERE login = '$login'"))
+                {
+                    if($polaczenie -> query("UPDATE users SET email = '$new_email' WHERE login = '$login'"))
+                    {
+                        echo 'confirmed';
+                    }
+                }
             }
             else
             {

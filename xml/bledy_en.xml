@@ -32,6 +32,10 @@
     <confirm_label>Enter the activation code that we have sent to:</confirm_label>
     <potwierdz>Confirm</potwierdz>
     <powrotdologowania>Return to login</powrotdologowania>
+    <dalej>Next</dalej>
+    
+    <podajemail>Please enter your email address which will be assigned to your account:</podajemail>
+    <emailinfo>The address will be used to activate your account, contact, and send notifications to specialists.</emailinfo>
     
     <brakpermisji>You have insufficient permissions to do so.</brakpermisji>
     
