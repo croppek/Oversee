@@ -2,9 +2,9 @@
     
     session_start();
 
-    if(isset($_COOKIE['language']))
+    if(isset($_COOKIE['oversee_language']))
     {
-        $lang = $_COOKIE['language'];
+        $lang = $_COOKIE['oversee_language'];
 
         if($lang == 'pl')
         {
@@ -143,6 +143,65 @@
         $login = $_SESSION['login'];
 
         $email = $_POST['new_email'];
+        
+        $znaki = 'ACEFHJKM58NPRTUVWXY4937';
+        $kod = '';
+
+        for ($i = 0; $i < 6; $i++) 
+        {
+            $kod .= $znaki[rand(0, strlen($znaki) - 1)];
+        }
+        
+        require 'connect.php';
+
+        $polaczenie = @new mysqli($host, $db_user, $db_password, $db_name);
+        @mysqli_set_charset($polaczenie,"utf8");
+
+        if($polaczenie->connect_errno == 0)
+        {  
+            $polaczenie -> query("UPDATE users SET code = '$kod' WHERE login = '$login'");
+
+            $polaczenie->close();
+        }
+        else
+        {
+            echo $xml_errors->blad6;
+        }
+
+        $wiadomosc = '
+
+        <html>
+        <head>
+            <title>Aktywuj swoje konto!</title>
+        </head>
+        <body style="text-align: center; background-color: #fff; color: #033E6B; font-size: 1.2em; padding: 30px;">
+
+            <div style="font-size: 3em; border-bottom: 1px dashed #033E6B; padding: 10px; margin-bottom: 20px;">
+                <span style="color: #033E6B; font-weight: bold;">Oversee</span> <span style="color: #3F92D2">Systems</span>
+            </div>
+
+            <p>Kod aktywacyjny dla użytkownika <b>' . $login . '</b> to:</p>
+            <p style="padding: 20px; display: block; width: 150px; margin: 0 auto; border: 3px solid #033E6B; color: #fff; text-shadow:-1px -1px 0 #000,  1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000; border-radius: 10px; background-color: #66A3D2; font-size: 2em; "> ' . $kod . '</p>
+
+            <div style="width: 80%; height: 20px; background-color: #033E6B; color: #fff; margin: 35px auto 0; padding: 20px; display: block; border-radius: 10px; text-shadow:-1px -1px 0 #000,  1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;">Bartosz Kropidłowki | Oversee Systems © '. date("Y") .'</div>
+
+        </body>
+        </html>
+
+        ';
+
+        $ch = curl_init();
+
+        curl_setopt($ch, CURLOPT_URL,"http://kroptech.net/oversee/php/global_mailer.php");
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, 
+                    http_build_query(array('sender' => 'errors', 'code' => 'WzChrqeB', 'author_title' => 'Oversee Systems (no-reply)', 'recipient' => $email, 'subject' => 'Kod potwierdzający dla konta w systemie Oversee.', 'content' => $wiadomosc)));
+
+        // receive server response ...
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        $server_output = curl_exec ($ch);
+
+        curl_close ($ch);
 
         echo '
 
@@ -158,8 +217,6 @@
 
             <button id="back_to_login_btn" class="btn btn-primary btn-sm" type="button" style="width: 160px; margin: 10px auto 0; display: block;">'. $xml->powrotdologowania .'</button>
         ';
-        
-        //dopisać wysyłanie maila
     }
 
 ?>

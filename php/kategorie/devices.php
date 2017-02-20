@@ -296,9 +296,9 @@
     {
         session_start();
         
-        if(isset($_COOKIE['language']))
+        if(isset($_COOKIE['oversee_language']))
         {
-            $lang = $_COOKIE['language'];
+            $lang = $_COOKIE['oversee_language'];
 
             if($lang == 'pl')
             {
@@ -716,7 +716,30 @@
                     $full_url = $_POST['fullurl'];
                     $specialization = $_POST['specialization'];
                     $datetime = date("d-m-Y H:i:s");
-                    $emails = array();
+                    
+                    $wiadomosc = '
+
+                    <html>
+                    <head>
+                        <title>Nowy komentarz.</title>
+                    </head>
+                    <body style="text-align: center; background-color: #fff; color: #033E6B; font-size: 1.2em; padding: 30px;">
+
+                        <div style="font-size: 3em; border-bottom: 1px dashed #033E6B; padding: 10px; margin-bottom: 20px;">
+                            <span style="color: #033E6B; font-weight: bold;">Oversee</span> <span style="color: #3F92D2">Systems</span>
+                        </div>
+
+                        <p>Powiadomienie dla użytkowników ze specjalizacją: <b>' . $specialization . '</b>.<br/>
+                        Komentarz dodany: <span style="font-weight: bold; word-spacing: 10px;">'. $datetime .'</span>.<br/><br/>
+                        Komentarz dostępny: </p>
+                        <p style="padding: 20px; display: block; width: 150px; margin: 0 auto; border: 3px solid #033E6B; color: #fff; text-shadow:-1px -1px 0 #000,  1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000; border-radius: 10px; background-color: #66A3D2; font-size: 2em;"><a href="'. $full_url .'" target="_blank" style="color: #033E6B; text-decorations: none;"><b>TUTAJ</b></a></p>
+
+                        <div style="width: 80%; height: 20px; background-color: #033E6B; color: #fff; margin: 35px auto 0; padding: 20px; display: block; border-radius: 10px; text-shadow:-1px -1px 0 #000,  1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;">Bartosz Kropidłowki | Oversee Systems © '. date("Y") .'</div>
+
+                    </body>
+                    </html>
+
+                    ';
 
                     require '../connect.php';
 
@@ -729,7 +752,19 @@
                         {   
                             while($row = mysqli_fetch_array($rezultat))
                             {   
-                                array_push($emails, $row['email']);
+                                $email = $row['email'];
+                                
+                                $ch = curl_init();
+
+                                curl_setopt($ch, CURLOPT_URL,"http://kroptech.net/oversee/php/global_mailer.php");
+                                curl_setopt($ch, CURLOPT_POST, 1);
+                                curl_setopt($ch, CURLOPT_POSTFIELDS, 
+                                            http_build_query(array('sender' => 'notifier', 'code' => 'E5rdaZK9', 'author_title' => 'Oversee Systems (no-reply)', 'recipient' => $email, 'subject' => 'Ważny komentarz o przedmiocie w systemie Oversee.', 'content' => $wiadomosc)));
+                                
+                                curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                                $server_output = curl_exec ($ch);
+
+                                curl_close($ch);
                             }  
                         }
                         else 
@@ -738,8 +773,6 @@
                         }
 
                         $polaczenie->close();
-                        
-                        //wysyłanie maila
                     }
                     else
                     {

@@ -77,6 +77,10 @@
     <usunprzedmiot>Usuń przedmiot z bazy danych</usunprzedmiot>
     <dodajnowykomentarz>Dodaj nowy komentarz</dodajnowykomentarz>
     
+    <ciasteczkatekst>Nasz serwis korzysta z ciasteczek!</ciasteczkatekst>
+    <rozumiem>Rozumiem</rozumiem>
+    <dowiedzsiewiecej>Dowiedz się więcej</dowiedzsiewiecej>
+    
     <!-- Lista specjalistów -->
     <wybierzspecjalistow>Wbierz specjalizacje:</wybierzspecjalistow>
     <option1>Architektura</option1>

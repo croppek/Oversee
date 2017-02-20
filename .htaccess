@@ -1,4 +1,10 @@
 RewriteEngine on
 
-RewriteRule ^o-projekcie about.php [NC]
-RewriteRule ^about-project about.php [NC]
+RewriteRule ^o-projekcie ./php/about.php [NC]
+RewriteRule ^about-project ./php/about.php [NC]
+
+RewriteRule ^ustawienia-konta ./php/account_settings.php [NC]
+RewriteRule ^account-settings ./php/account_settings.php [NC]
+
+RewriteRule ^panel-administracyjny ./php/admin_panel.php [NC]
+RewriteRule ^administration-panel ./php/admin_panel.php [NC]

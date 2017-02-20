@@ -77,6 +77,10 @@
     <usunprzedmiot>Remove an item from the database</usunprzedmiot>
     <dodajnowykomentarz>Add new comment</dodajnowykomentarz>
     
+    <ciasteczkatekst>Our site uses cookies!</ciasteczkatekst>
+    <rozumiem>I understand</rozumiem>
+    <dowiedzsiewiecej>Learn more</dowiedzsiewiecej>
+    
     <!-- Lista specjalistów -->
     <wybierzspecjalistow>Select specializations:</wybierzspecjalistow>
     <option1>Architecture</option1>

@@ -3,21 +3,29 @@
     session_start();
     
     //ustawianie języka strony na podstawie zapisanych ciasteczek
-    if(isset($_COOKIE['language']))
+    if(isset($_COOKIE['oversee_language']))
     {
-        $lang = $_COOKIE['language'];
+        $lang = $_COOKIE['oversee_language'];
         
         if($lang == 'pl')
         {
             $xml = simplexml_load_file("xml/stronaglowna.xml");  
             $xml_errors = simplexml_load_file("xml/bledy.xml"); 
             $support_location = "img/support-btn-pl.png";
+            
+            $link1 = './o-projekcie';
+            $link2 = './ustawienia-konta';
+            $link3 = './panel-administracyjny';
         }
         else if($lang == 'en')
         {
             $xml = simplexml_load_file("xml/stronaglowna_en.xml");
             $xml_errors = simplexml_load_file("xml/bledy_en.xml"); 
             $support_location = "img/support-btn-en.png";
+            
+            $link1 = './about-project';
+            $link2 = './account-settings';
+            $link3 = './administration-panel';
         }
     }
     else
@@ -25,6 +33,10 @@
         $xml = simplexml_load_file("xml/stronaglowna.xml");
         $xml_errors = simplexml_load_file("xml/bledy.xml"); 
         $support_location = "img/support-btn-pl.png";
+        
+        $link1 = './o-projekcie';
+        $link2 = './ustawienia-konta';
+        $link3 = './panel-administracyjny';
     }
     
     //sprawdzenie czy użytkownik jest zalogowany oraz ustalenie jego permisji
@@ -71,7 +83,7 @@
         <![endif]-->
       
     </head>
-    <body data-version="0.55">
+    <body data-version="0.6">
         
         <nav class="navbar navbar-inverse navbar-static-top">
             <div class="container-fluid">
@@ -106,18 +118,18 @@
                         ?>
                         
                         <a href="./"><?php echo $xml->naglowek1; ?></a></li>
-                        <li><a href="#"><?php echo $xml->naglowek2; ?></a></li>
+                        <li><a href="<?php echo $link1. '">'. $xml->naglowek2; ?></a></li>
                         
                         <?php
                             
                             if($logged == true && $permissions >= 1)
                             {
-                                echo '<li><a href="#">'. $xml->naglowek4 .'</a></li>';
+                                echo '<li><a href="'. $link2 .'">'. $xml->naglowek4 .'</a></li>';
                             }
                     
                             if($logged == true && $permissions >= 3)
                             {
-                                echo '<li><a href="#">'. $xml->naglowek5 .'</a></li>';
+                                echo '<li><a href="'. $link3 .'">'. $xml->naglowek5 .'</a></li>';
                             }
                     
                         ?>
@@ -493,12 +505,52 @@
             </div>
             </div>
         </div>
+        
+        <!-- Alert o używaniu ciasteczek w serwisie -->
+        <?php 
+            if(!isset($_COOKIE['oversee_cookies']))
+            {               
+                echo '
+                <div id="cookies_politics">
+
+                    <!-- Ciasteczko pobrane ze strony ClipArtBest.com -->
+                    <div id="cookie_img"><img src="img/cookie.png" /></div>
+
+                    <div id="cookie_txt">'. $xml->ciasteczkatekst .'<br/>
+
+                        <div id="cookie_btns_wrap" class="btn-group-sm">';
+
+                            if(isset($lang) && $lang == 'pl')
+                            {
+                                $link = "https://pl.wikipedia.org/wiki/HTTP_cookie";  
+                            }
+                            else if(isset($lang) && $lang == 'en')
+                            {
+                                $link = "https://en.wikipedia.org/wiki/HTTP_cookie"; 
+                            }
+                            else
+                            {
+                                $link = "https://pl.wikipedia.org/wiki/HTTP_cookie";  
+                            }
+                            
+                            echo '
+                            <a href="'. $link .'" target="_blank" class="btn btn-info" role="button">'. $xml->dowiedzsiewiecej .'</a>
+                            <button id="rozumiem_cookie_btn" class="btn btn-info">'. $xml->rozumiem .'</button>
+
+                        </div>
+
+                    </div>
+
+                </div>';
+            }
+        ?>
     
+        <!-- Stopka z odnośnikami do stron autora -->
         <footer class="footer navbar-fixed-bottom">
             <div class="container">
-                <p class="text-muted">Bartosz Kropidłowski &nbsp;</p>
-                <a href="#" target="_blank"><img src="<?php echo $support_location ?>" style="height: 25px; width: auto; margin-top: 7.5px;"/></a>
-                <p class="text-muted">&nbsp;&nbsp; | &nbsp; Oversee Systems &copy; <?php echo date("Y"); ?></p>
+                <p class="text-muted"><a href="https://github.com/croppek" target="_blank">Bartosz Kropidłowski</a> &nbsp;</p>
+                <a id="support_img_link" href="#" target="_blank"><img src="<?php echo $support_location; ?>" style="height: 25px; width: auto; margin-top: 7.5px;"/></a>
+                <p class="text-muted">&nbsp;&nbsp; | &nbsp; <a href="#" target="_blank">Oversee Systems</a> &copy; <?php echo date("Y"); ?></p>
             </div>
         </footer>
 
@@ -508,5 +560,6 @@
         <script src="js/bootstrap.min.js"></script>
         <script src="js/system.js"></script>
         <script src="js/login.js"></script>
+        <script src="js/cookies.js"></script>
     </body>
 </html>

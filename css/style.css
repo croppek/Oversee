@@ -51,6 +51,11 @@ body
     width: 460px;
 }
 
+#support_img_link
+{
+    float: left;
+}
+
 footer p
 {
     font-size: 15px;
@@ -60,7 +65,13 @@ footer p
 
 footer a
 {
-    float: left;
+    text-decoration: none;
+    color: #777;
+}
+
+footer a:hover
+{
+    color: rgba(255, 255, 255, 0.75);
 }
 
 .modal-header
@@ -152,6 +163,64 @@ a:hover
     height: 15px;
 }
 
+#cookies_politics
+{
+    display: block;
+    position: fixed;
+    bottom: 75px;
+    left: 0;
+    height: 104px;
+    width: 355px;
+    background: #fffacf;
+    border: 2px solid #000;
+    border-radius: 10px;
+    border-left: none;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+#cookie_txt
+{
+    float: left;
+    display: block;
+    height: 100px;
+    width: 250px;
+    padding: 10px;
+    font-weight: bold;
+}
+
+#cookie_img
+{
+    float: left;
+    display: block;
+    height: 100px;
+    width: 100px;
+    padding: 10px;
+}
+
+#cookie_img img
+{
+    height: 85px;
+    width: 85px;
+}
+
+#cookie_btns_wrap
+{
+    display: block;
+    width: 230px;
+    height: 40px;
+    margin-top: 12px;
+}
+
+#cookie_btns_wrap .btn
+{
+    float: left;
+}
+
+#cookie_btns_wrap .btn:first-child
+{
+    margin-right: 20px;
+}
 
 
 

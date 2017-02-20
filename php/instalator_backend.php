@@ -10,9 +10,9 @@
             case 1:
                 
                 //sprawdzenie czy język instalatora został już wcześniej wybrany, jeśli tak pokazanie kolejnego kroku
-                if(isset($_COOKIE['language']) && isset($_COOKIE['xml_url']))
+                if(isset($_COOKIE['oversee_language']) && isset($_COOKIE['oversee_xml_url']))
                 {
-                    $xml = simplexml_load_file($_COOKIE['xml_url']) or die("Error: Cannot create object");
+                    $xml = simplexml_load_file($_COOKIE['oversee_xml_url']) or die("Error: Cannot create object");
                     
                     add_content1($xml);
                 }
@@ -35,7 +35,7 @@
                 {  
                     $polaczenie->close();
                     
-                    $xml = simplexml_load_file($_COOKIE['xml_url']) or die("Error: Cannot create object");
+                    $xml = simplexml_load_file($_COOKIE['oversee_xml_url']) or die("Error: Cannot create object");
                     
                     add_content2($xml);
                 }
@@ -60,7 +60,7 @@
                     {
                         if($result->num_rows == 1) 
                         {
-                            $xml = simplexml_load_file($_COOKIE['xml_url']) or die("Error: Cannot create object");
+                            $xml = simplexml_load_file($_COOKIE['oversee_xml_url']) or die("Error: Cannot create object");
                     
                             add_content3($xml);
                         }
@@ -97,7 +97,7 @@
                     {
                         if($result->num_rows > 0) 
                         {
-                            $xml = simplexml_load_file($_COOKIE['xml_url']) or die("Error: Cannot create object");
+                            $xml = simplexml_load_file($_COOKIE['oversee_xml_url']) or die("Error: Cannot create object");
                     
                             add_content4($xml);
                         }
@@ -136,7 +136,7 @@
                         
                         if($row['email_confirmed'] == 1)
                         {
-                            $xml = simplexml_load_file($_COOKIE['xml_url']) or die("Error: Cannot create object");
+                            $xml = simplexml_load_file($_COOKIE['oversee_xml_url']) or die("Error: Cannot create object");
                     
                             add_content5($xml);
                         }
@@ -175,7 +175,7 @@
                         
                         if($row['saved'] == '1')
                         {
-                            $xml = simplexml_load_file($_COOKIE['xml_url']) or die("Error: Cannot create object");
+                            $xml = simplexml_load_file($_COOKIE['oversee_xml_url']) or die("Error: Cannot create object");
                     
                             add_content6($xml);
                         }
@@ -211,8 +211,8 @@
         {
             $xml = simplexml_load_file("../xml/instalator.xml") or die("Error: Cannot create object");
         
-            setcookie('xml_url', "../xml/instalator.xml", time() + (1 * 365 * 24 * 60 * 60), "/");
-            setcookie('language', 'pl', time() + (10 * 365 * 24 * 60 * 60), "/");
+            setcookie('oversee_xml_url', "../xml/instalator.xml", time() + (1 * 365 * 24 * 60 * 60), "/");
+            setcookie('oversee_language', 'pl', time() + (10 * 365 * 24 * 60 * 60), "/");
             
             //funkcja pokazująca pierwszy krok instalacji
             add_content1($xml);
@@ -223,8 +223,8 @@
         {
             $xml = simplexml_load_file("../xml/instalator_en.xml") or die("Error: Cannot create object");
         
-            setcookie('xml_url', "../xml/instalator_en.xml", time() + (1 * 365 * 24 * 60 * 60), "/");
-            setcookie('language', 'en', time() + (10 * 365 * 24 * 60 * 60), "/");
+            setcookie('oversee_xml_url', "../xml/instalator_en.xml", time() + (1 * 365 * 24 * 60 * 60), "/");
+            setcookie('oversee_language', 'en', time() + (10 * 365 * 24 * 60 * 60), "/");
             
             //funkcja pokazująca pierwszy krok instalacji
             add_content1($xml);
@@ -236,7 +236,7 @@
     {
         $error_number = $_POST['error_number'];
         
-        $xml = simplexml_load_file($_COOKIE['xml_url']) or die("Error: Cannot create object");
+        $xml = simplexml_load_file($_COOKIE['oversee_xml_url']) or die("Error: Cannot create object");
         
         switch($error_number) 
         {
@@ -464,30 +464,40 @@
 
                 if($polaczenie->query("INSERT INTO users VALUES(NULL,'$login','$password_hash','$email','$name','$lastname','$specialization','$kod','$permissions',0)"))
                 {
-                    //treść maila przesłać do api na stronie głównej systemu, gdzie zostanie ona wysłana 
-                    
-                    /*$dokogo = $email;
-                    $temat = "Kod potwierdzający w systemie XXX";
-
                     $wiadomosc = '
+
                     <html>
                     <head>
                         <title>Aktywuj swoje konto!</title>
                     </head>
-                    <body style="text-align: center; background-color: rgb(255, 255, 255); color: #000000; font-size: 1.2em; padding: 30px;">
+                    <body style="text-align: center; background-color: #fff; color: #033E6B; font-size: 1.2em; padding: 30px;">
 
-                        <div style="font-size: 3em; border-bottom: 1px dashed rgba(64, 64, 64, 1); padding: 10px; margin-bottom: 20px;">
-                            Nazwa systemu
+                        <div style="font-size: 3em; border-bottom: 1px dashed #033E6B; padding: 10px; margin-bottom: 20px;">
+                            <span style="color: #033E6B; font-weight: bold;">Oversee</span> <span style="color: #3F92D2">Systems</span>
                         </div>
 
-                        <p>Kod aktywacyjny dla użytkownika ' . $login . ' to:</p>
-                        <p style="padding: 20px; display: block; width: 150px; margin: 0 auto; border: 3px solid rgba(64, 64, 64, 1); color: #fff; text-shadow:-1px -1px 0 #000,  1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000; border-radius: 10px; background-color: rgb(150, 150, 150); font-size: 2em; "> ' . $kod . '</p>
+                        <p>Kod aktywacyjny dla użytkownika <b>' . $login . '</b> to:</p>
+                        <p style="padding: 20px; display: block; width: 150px; margin: 0 auto; border: 3px solid #033E6B; color: #fff; text-shadow:-1px -1px 0 #000,  1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000; border-radius: 10px; background-color: #66A3D2; font-size: 2em; "> ' . $kod . '</p>
 
-                        <div style="width: 80%; height: 20px; background-color: rgb(64, 64, 64); color: #fff; margin: 35px auto 0; padding: 20px; display: block; border-radius: 10px;">Nazwa systemu | Bartosz Kropidłowki © 2017 | Wszelkie prawa zastrzeżone</div>
+                        <div style="width: 80%; height: 20px; background-color: #033E6B; color: #fff; margin: 35px auto 0; padding: 20px; display: block; border-radius: 10px; text-shadow:-1px -1px 0 #000,  1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;">Bartosz Kropidłowki | Oversee Systems © '. date("Y") .'</div>
 
                     </body>
                     </html>
-                    ';*/
+
+                    ';
+
+                    $ch = curl_init();
+
+                    curl_setopt($ch, CURLOPT_URL,"http://kroptech.net/oversee/php/global_mailer.php");
+                    curl_setopt($ch, CURLOPT_POST, 1);
+                    curl_setopt($ch, CURLOPT_POSTFIELDS, 
+                                http_build_query(array('sender' => 'instalator', 'code' => 'tvboFoCW', 'author_title' => 'Oversee Systems (no-reply)', 'recipient' => $email, 'subject' => 'Kod potwierdzający dla konta w systemie Oversee.', 'content' => $wiadomosc)));
+
+                    // receive server response ...
+                    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                    $server_output = curl_exec ($ch);
+
+                    curl_close ($ch);
 
                     echo 'success';
                 }
@@ -571,7 +581,7 @@
             {
                 if($polaczenie->query("INSERT INTO installation VALUES (NULL,'image','1')"))
                 {
-                    $xml = simplexml_load_file($_COOKIE['xml_url']) or die("Error: Cannot create object");
+                    $xml = simplexml_load_file($_COOKIE['oversee_xml_url']) or die("Error: Cannot create object");
             
                     add_content6($xml);
                 }
@@ -612,7 +622,7 @@
             $fh = fopen("home.php", 'w');
             if(fwrite($fh, $file) != false)
             {   
-                $xml = simplexml_load_file($_COOKIE['xml_url']) or die("Error: Cannot create object");
+                $xml = simplexml_load_file($_COOKIE['oversee_xml_url']) or die("Error: Cannot create object");
 
                 add_content7($xml);
             }
@@ -629,7 +639,7 @@
     //funkcja wypełniająca kontent kolejnych kroków intalacji
     else if(isset($_POST['content']))
     {
-        $xml = simplexml_load_file($_COOKIE['xml_url']) or die("Error: Cannot create object");
+        $xml = simplexml_load_file($_COOKIE['oversee_xml_url']) or die("Error: Cannot create object");
         
         switch($_POST['content'])
         {
