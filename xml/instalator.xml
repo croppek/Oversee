@@ -16,7 +16,7 @@
     <tekst7>&lt;h2>Instalacja zakończyła się powodzeniem!&lt;br />&lt;small>Strona jest już gotowa. Aby przeprowadzić dalszą konfigurację strony, proszę odwiedzić Panel Administratora. Życzymy miłego korzystania z naszego systemu. ;)&lt;/small>&lt;/h2></tekst7>
     
     <placeholder1>Nazwa serwera (host)</placeholder1>
-    <modaltekst1>Jest to nazwa serwera MySQL (inaczej host). &lt;br/> Może występować w postaci adresu strony lub adresu IP serwera. &lt;br/>&lt;br/> Powinna znajdować się w panelu administracyjnym hostingu lub emailu z danymi od firmy hostingowej.</modaltekst1>
+    <modaltekst1>Jest to nazwa serwera MySQL (inaczej host). &lt;br/> Może występować w postaci adresu strony lub adresu IP serwera. &lt;br/>&lt;br/> Powinna znajdować się w panelu administracyjnym hostingu lub emailu z danymi od firmy hostingowej. &lt;br/>&lt;br/> Nazwą może być również "localhost".</modaltekst1>
     
     <placeholder2>Nazwa użytkownika</placeholder2>
     <modaltekst2>Jest to login administratora bazy danych. &lt;br/>&lt;br/> Powinien znajdować się w panelu administracyjnym hostingu lub emailu z danymi od firmy hostingowej. </modaltekst2>
@@ -25,7 +25,7 @@
     <modaltekst3>Jest to hasło administratora bazy danych. &lt;br/>&lt;br/> Powinno znajdować się w panelu administracyjnym hostingu lub emailu z danymi od firmy hostingowej. </modaltekst3>
     
     <placeholder4>Nazwa bazy danych</placeholder4>
-    <modaltekst4>Jest to nazwa bazy danych. &lt;br/> Służy do łączenia się z bazą i manipulowania nią. &lt;br/> Zazwyczaj niewidoczna dla użytkowników. &lt;br/>&lt;br/> Zasady nazewnictwa: &lt;br/>&lt;ul>&lt;li>Musi składać się wyłącznie z liter lub cyfr.&lt;/li>&lt;li>Maksymalna długość to 64 znaki.&lt;/li>&lt;li>Minimalna długość to 4 znaki.&lt;/li>&lt;li>Nie może zawierać spacji.&lt;/li>&lt;/ul></modaltekst4>
+    <modaltekst4>Jest to nazwa bazy danych. &lt;br/> Służy do łączenia się z bazą i manipulowania nią. &lt;br/> Zazwyczaj niewidoczna dla użytkowników. &lt;br/>&lt;br/> Zasady nazewnictwa: &lt;br/>&lt;ul>&lt;li>Musi składać się wyłącznie z liter lub cyfr.&lt;/li>&lt;li>Maksymalna długość to 64 znaki.&lt;/li>&lt;li>Minimalna długość to 4 znaki.&lt;/li>&lt;li>Nie może zawierać spacji.&lt;/li>&lt;/ul> &lt;br/>&lt;br/> W przypadku braku uprawnień do tworzenia własnych baz danych należy podać nazwę wcześniej utworzonej bazy danych w panelu administracyjnym serwera.</modaltekst4>
     
     <placeholder5>Nazwa użytkownika (generowana automatycznie)</placeholder5>
     <modaltekst5></modaltekst5>
@@ -82,7 +82,7 @@
     <blad5>Pole jest wymagane. Proszę zapoznać się z zasadami nazewnictwa (&lt;span class="glyphicon glyphicon-question-sign">&lt;/span>).</blad5>
     <blad6>Nie udało się ustanowić połączenia z serwerem MySQL, spróbuj ponownie...</blad6>
     <blad7>Wystąpił błąd podczas próby zapisu danych do pliku, spróbuj ponownie...</blad7>
-    <blad8>Wystąpił błąd podczas próby utworzenia bazy danych, spróbuj ponownie...</blad8>
+    <blad8>Wystąpił błąd podczas próby utworzenia bazy danych, spróbuj ponownie... &lt;br/>&lt;br/> Jeśli błąd się powtarza, skontaktuj się z pomocą techniczną Oversee Systems.</blad8>
     <blad9>Wystąpił błąd podczas próby utworzenia tabeli "użytkownicy", spróbuj ponownie...</blad9>
     <blad10>Wszystkie wymagane pola muszą być uzupełnione.</blad10>
     <blad11>Hasło musi mieć od 5 do 30 znaków.</blad11>

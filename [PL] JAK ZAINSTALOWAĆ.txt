@@ -1,5 +1,9 @@
 W celu zainstalowania naszego systemu dla Państwa zastosowań potrzebny będzie serwer, na którym zostanie umieszczona strona. 
 Można go wykupić na stronach hostingowych lub skonfigurować własną maszynę.
 
-Jeśli mamy już serwer, wystarczy skopiować wszystkie pliki z folderu Oversee na serwer.
+Potrzebujemy adres serwera, login użytkownika FTP oraz jego hasło (wszystkie dane powinny zostać zawarte w korespondencji od firmy hostingowej lub w panelu administracyjnym serwera).
+
+W dowolnym programie do obsługi połączenia z serwerami FTP (np FileZilla, WinSCP, SmartFTP lub nawet Eksplorator Windows) wpisujemy wcześniej przygotowane dane.
+Po udanym połączeniu z naszym serwerem FTP wystarczy skopiować wszystkie pliki z folderu Oversee-Systems na serwer.
+
 Następnym krokiem będzie przejście pod adres serwera (np http://adres-mojej-strony.pl) gdzie przez kolejne kroki poprowadzi instalator systemu. :)

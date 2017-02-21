@@ -28,7 +28,6 @@
                 require 'connect.php';
                 
                 $polaczenie = @new mysqli($host, $db_user, $db_password);
-                @mysqli_set_charset($polaczenie,"utf8");
                 
                 //sprawdzanie czy zapisane dane w pliku connect.php są prawidłowe, jeśli tak pokazanie kolejnego kroku
                 if($polaczenie->connect_errno == 0)
@@ -561,7 +560,27 @@
         
         $searchF = array('img/oversee-logo.png');
         $replaceW = array($logo_url);
-
+        
+        //nadpisywanie w podstronach
+        $file = file_get_contents("about.php");
+        $file = str_replace($searchF, $replaceW, $file);
+        
+        $fh = fopen("about.php", 'w');
+        fwrite($fh, $file);
+        
+        $file = file_get_contents("account_settings.php");
+        $file = str_replace($searchF, $replaceW, $file);
+        
+        $fh = fopen("account_settings.php", 'w');
+        fwrite($fh, $file);
+        
+        $file = file_get_contents("admin_panel.php");
+        $file = str_replace($searchF, $replaceW, $file);
+        
+        $fh = fopen("admin_panel.php", 'w');
+        fwrite($fh, $file);
+        
+        //nadpisywanie w stronie domowej
         $file = file_get_contents("home.php");
         $file = str_replace($searchF, $replaceW, $file);
         
@@ -616,6 +635,26 @@
             $searchF = array('--page_title--');
             $replaceW = array($page_title);
 
+            //nadpisywanie w podstronach
+            $file = file_get_contents("about.php");
+            $file = str_replace($searchF, $replaceW, $file);
+
+            $fh = fopen("about.php", 'w');
+            fwrite($fh, $file);
+
+            $file = file_get_contents("account_settings.php");
+            $file = str_replace($searchF, $replaceW, $file);
+
+            $fh = fopen("account_settings.php", 'w');
+            fwrite($fh, $file);
+
+            $file = file_get_contents("admin_panel.php");
+            $file = str_replace($searchF, $replaceW, $file);
+
+            $fh = fopen("admin_panel.php", 'w');
+            fwrite($fh, $file);
+            
+            //nadpisywanie w stronie domowej
             $file = file_get_contents("home.php");
             $file = str_replace($searchF, $replaceW, $file);
 
@@ -1027,10 +1066,9 @@
     //funkcja testująca połączenie z serwerem MySQL
     function test_connection($host, $db_user, $db_password)
     {
-        $polaczenie = @new mysqli($host, $db_user, $db_password);
-        @mysqli_set_charset($polaczenie,"utf8");
+        $polaczenie = mysqli_connect($host, $db_user, $db_password);
 
-        if($polaczenie->connect_errno == 0)
+        if($polaczenie)
         {  
             $polaczenie->close();
             echo 'success';
@@ -1044,68 +1082,84 @@
     //funkcja tworząca bazę danych
     function create_database($new_db_name)
     {
+        $good_to_go = false;
+        
         require 'connect.php';
-
-        $polaczenie = @new mysqli($host, $db_user, $db_password);
+        
+        $polaczenie = @mysqli_connect($host, $db_user, $db_password, $new_db_name);
         @mysqli_set_charset($polaczenie,"utf8");
 
-        if($polaczenie->connect_errno != 0)
-        { 
-            echo 'connect_error';
+        if($polaczenie)
+        {  
+            $good_to_go = true;
         }
         else
         {
-            //tworzenie bazy danych o podanej nazwie
-            if($polaczenie->query("CREATE DATABASE $new_db_name CHARACTER SET utf8 COLLATE utf8_polish_ci")) 
+            $polaczenie = @new mysqli($host, $db_user, $db_password);
+            @mysqli_set_charset($polaczenie,"utf8");
+
+            if($polaczenie->connect_errno != 0)
+            { 
+                echo 'connect_error';
+            }
+        }
+        
+        if($good_to_go == false)
+        {
+            if($polaczenie->query("CREATE DATABASE $new_db_name CHARACTER SET utf8 COLLATE utf8_polish_ci"))
             {
-                $searchF = '--database--';
-                $replaceW = $new_db_name;
-
-                $file = file_get_contents("connect.php");
-                $file = str_replace($searchF, $replaceW, $file);
-
-                $fh = fopen("connect.php", 'w');
-                if(fwrite($fh, $file) != false)
-                {
-                    //tworzenie tabeli użytkownicy
-                    if($polaczenie->query("CREATE TABLE $new_db_name.users ( id INT NOT NULL AUTO_INCREMENT , login TEXT NOT NULL , password TEXT NOT NULL , email TEXT NOT NULL , name TEXT NOT NULL , lastname TEXT NOT NULL , specialization TEXT NOT NULL , code TEXT NOT NULL , permissions TINYINT NOT NULL DEFAULT '1' , email_confirmed TINYINT NOT NULL DEFAULT '0' , PRIMARY KEY (id)) ENGINE = InnoDB")) 
-                    {
-                        //tworzenie podstawowych tabel w bazie danych
-                        $polaczenie->query("CREATE TABLE $new_db_name.item_category ( id INT NOT NULL , category TEXT NOT NULL , PRIMARY KEY (id)) ENGINE = InnoDB");
-                        
-                        $polaczenie->query("CREATE TABLE $new_db_name.installation ( id INT NOT NULL AUTO_INCREMENT , what TEXT NOT NULL, saved TINYINT NOT NULL DEFAULT '0' , PRIMARY KEY (id)) ENGINE = InnoDB");
-                            
-                        $polaczenie->query("CREATE TABLE $new_db_name.categories ( id INT NOT NULL AUTO_INCREMENT , name TEXT NOT NULL , PRIMARY KEY (id)) ENGINE = InnoDB");
-                        
-                        //#### tworzenie tabel z kategoriami
-                        $polaczenie->query("CREATE TABLE $new_db_name.devices ( id INT NOT NULL , name TEXT NOT NULL , placement TEXT NOT NULL , last_location TEXT NOT NULL , type TEXT NOT NULL , damaged BOOLEAN NOT NULL , PRIMARY KEY (id)) ENGINE = InnoDB");
-                        
-                        //#### tworzenie tabeli z historią komentarzy dla kategorii "urządzenia"
-                        $polaczenie->query("CREATE TABLE $new_db_name.devices_comments_history ( id INT NOT NULL AUTO_INCREMENT , comment TEXT NOT NULL , who_added TEXT NOT NULL , when_added TIMESTAMP NOT NULL , device_id INT NOT NULL , PRIMARY KEY (id)) ENGINE = InnoDB");
-                        
-                        //#### dodawanie wszystkich kategorii do zbiorczej tabeli
-                        $polaczenie->query("INSERT INTO $new_db_name.categories (id, name) VALUES (NULL, 'devices')");
-                        
-                        echo 'saved';
-                    }
-                    else
-                    {
-                        echo 'creating_table_error';
-                    }
-                }
-                else
-                {
-                    echo 'saving_error';    
-                }
-
-                fclose($fh);
-                
-            } 
+                $good_to_go = true;
+            }
             else 
             {
                 echo 'creating_db_error';
             }
-            
+        }
+        
+        if($good_to_go == true)
+        {
+            $searchF = '--database--';
+            $replaceW = $new_db_name;
+
+            $file = file_get_contents("connect.php");
+            $file = str_replace($searchF, $replaceW, $file);
+
+            $fh = fopen("connect.php", 'w');
+            if(fwrite($fh, $file) != false)
+            {
+                //tworzenie tabeli użytkownicy
+                if($polaczenie->query("CREATE TABLE $new_db_name.users ( id INT NOT NULL AUTO_INCREMENT , login TEXT NOT NULL , password TEXT NOT NULL , email TEXT NOT NULL , name TEXT NOT NULL , lastname TEXT NOT NULL , specialization TEXT NOT NULL , code TEXT NOT NULL , permissions TINYINT NOT NULL DEFAULT '1' , email_confirmed TINYINT NOT NULL DEFAULT '0' , PRIMARY KEY (id)) ENGINE = InnoDB")) 
+                {
+                    //tworzenie podstawowych tabel w bazie danych
+                    $polaczenie->query("CREATE TABLE $new_db_name.item_category ( id INT NOT NULL , name TEXT NOT NULL , location TEXT NOT NULL , category TEXT NOT NULL , PRIMARY KEY (id)) ENGINE = InnoDB");
+
+                    $polaczenie->query("CREATE TABLE $new_db_name.installation ( id INT NOT NULL AUTO_INCREMENT , what TEXT NOT NULL, saved TINYINT NOT NULL DEFAULT '0' , PRIMARY KEY (id)) ENGINE = InnoDB");
+
+                    $polaczenie->query("CREATE TABLE $new_db_name.categories ( id INT NOT NULL AUTO_INCREMENT , name TEXT NOT NULL , PRIMARY KEY (id)) ENGINE = InnoDB");
+
+                    //#### tworzenie tabel z kategoriami
+                    $polaczenie->query("CREATE TABLE $new_db_name.devices ( id INT NOT NULL , name TEXT NOT NULL , placement TEXT NOT NULL , last_location TEXT NOT NULL , type TEXT NOT NULL , damaged BOOLEAN NOT NULL , PRIMARY KEY (id)) ENGINE = InnoDB");
+
+                    //#### tworzenie tabeli z historią komentarzy dla kategorii "urządzenia"
+                    $polaczenie->query("CREATE TABLE $new_db_name.devices_comments_history ( id INT NOT NULL AUTO_INCREMENT , comment TEXT NOT NULL , who_added TEXT NOT NULL , when_added TIMESTAMP NOT NULL , device_id INT NOT NULL , PRIMARY KEY (id)) ENGINE = InnoDB");
+
+                    //#### dodawanie wszystkich kategorii do zbiorczej tabeli
+                    $polaczenie->query("INSERT INTO $new_db_name.categories (id, name) VALUES (NULL, 'devices')");
+
+                    echo 'saved';
+                }
+                else
+                {
+                    echo 'creating_table_error';
+                }
+            }
+            else
+            {
+                echo 'saving_error';    
+            }
+
+            fclose($fh);
+
             $polaczenie->close();
         }
     }

@@ -65,7 +65,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-        <title>Kulnemj</title>
+        <title>--page_title--</title>
 
         <!-- Bootstrap -->
         <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -73,7 +73,7 @@
         <link href="css/style.css" rel="stylesheet">
         
         <!-- FAVICON LINKING -->
-        <link rel="icon" type="image/png" sizes="32x32" href="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/J_Church_logo.svg/2000px-J_Church_logo.svg.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="img/oversee-logo.png">
     
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -83,7 +83,7 @@
         <![endif]-->
       
     </head>
-    <body data-version="0.6">
+    <body data-version="0.65">
         
         <nav class="navbar navbar-inverse navbar-static-top">
             <div class="container-fluid">
@@ -97,9 +97,9 @@
                       </button>
                     
                     <a class="navbar-brand" href="./">
-                        <img alt="Brand" id="page_logo" class="logo_img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/J_Church_logo.svg/2000px-J_Church_logo.svg.png">
+                        <img alt="Brand" id="page_logo" class="logo_img" src="img/oversee-logo.png">
                     </a>
-                    <p class="navbar-text" style="font-weight: bold; font-style: italic;">Kulnemj</p>
+                    <p class="navbar-text" style="font-weight: bold; font-style: italic;">--page_title--</p>
                     
                 </div>
                 
@@ -314,8 +314,8 @@
                         <h2 style="text-align: center; margin-bottom: 15px;">' . $xml->content1 . '</h2>
 
                         <form method="get">
-                            <div class="input-group" style="width: 450px; margin: 0 auto;"> 
-                                <input id="id_number_input" class="form-control" name="id" type="number" min="1" value="1" aria-label="Text input with multiple buttons"> 
+                            <div class="input-group" style="width: 90%; margin: 0 auto;"> 
+                                <input id="id_number_input" class="form-control" name="id" type="number" min="1" value="1" style="text-align: center;" aria-label="Text input with multiple buttons"> 
                                 <div class="input-group-btn"> 
                                     <button id="id_help_btn" type="button" class="btn btn-default" aria-label="Help" data-toggle="modal" data-target="#infoModal1"><span class="glyphicon glyphicon-question-sign"></span></button> 
                                     <button id="search_by_id" type="submit" class="btn btn-default">' . $xml->szukaj . '</button> 
@@ -332,7 +332,7 @@
                         <h2 style="text-align: center; margin-bottom: 15px;">' . $xml->content2 . '</h2>
 
                         <form method="get">
-                            <div class="input-group input-group-md" style="width: 450px; margin: 0 auto; float: none;">
+                            <div class="input-group input-group-md" style="width: 90%; margin: 0 auto; float: none;">
                                 <select class="form-control" name="category" id="categories_select">
                                     <option selected disabled>' . $xml->wybierz . '</option>';
 
@@ -413,7 +413,7 @@
                             <div id="modal_addtodb_content" class="modal-body">
 
                                 <p style="text-align: center; font-weight: bold;">'. $xml->wybierzkategorie .'</p>
-                                <div class="input-group input-group-md" style="width: 450px; margin: 0 auto; float: none;">
+                                <div class="input-group input-group-md" style="width: 85%; margin: 0 auto; float: none;">
                                     <select class="form-control" name="category" id="add_todb_categories_select">
                                         <option selected disabled>' . $xml->wybierz . '</option>';
 
@@ -481,16 +481,16 @@
                 
                 <div id="login_content">
                     
-                    <div class="input-group input-group-lg" style="width: 50%; margin: 0 auto; float: none;">
-                    <input id="login_input" type="text" class="form-control" name="login_input" placeholder="<?php echo $xml->placeholder1 ?>" />
+                    <div class="input-group input-group-lg" style="width: 85%; margin: 0 auto; float: none;">
+                    <input id="login_input" type="text" class="form-control" name="login_input" style="text-align: center; border-radius: 5px;" placeholder="<?php echo $xml->placeholder1 ?>" onfocus="this.placeholder = '' " onblur="this.placeholder='<?php echo $xml->placeholder1 ?>'"/>
                     </div>
                     <br/>
-                    <div class="input-group input-group-lg" style="width: 50%; margin: 0 auto; float: none;">
-                        <input id="password_input" type="password" class="form-control" name="password_input" placeholder="<?php echo $xml->placeholder2 ?>" />
+                    <div class="input-group input-group-lg" style="width: 85%; margin: 0 auto; float: none;">
+                        <input id="password_input" type="password" class="form-control" name="password_input" style="text-align: center; border-radius: 5px;" placeholder="<?php echo $xml->placeholder2 ?>" onfocus="this.placeholder = '' " onblur="this.placeholder='<?php echo $xml->placeholder2 ?>'"/>
                     </div>
                     <br/>
 
-                    <div id="error_alert" class="alert alert-danger" role="alert" style="width: 60%; margin: 10px auto 10px; display: none;"></div>
+                    <div id="error_alert" class="alert alert-danger" role="alert" style="width: 90%; margin: 10px auto 10px; display: none;"></div>
 
                     <br/>
 
@@ -548,9 +548,9 @@
         <!-- Stopka z odnośnikami do stron autora -->
         <footer class="footer navbar-fixed-bottom">
             <div class="container">
-                <p class="text-muted"><a href="https://github.com/croppek" target="_blank">Bartosz Kropidłowski</a> &nbsp;</p>
+                <p class="text-muted" id="footer_content1"><a href="https://github.com/croppek" target="_blank">Bartosz Kropidłowski</a> &nbsp;</p>
                 <a id="support_img_link" href="#" target="_blank"><img src="<?php echo $support_location; ?>" style="height: 25px; width: auto; margin-top: 7.5px;"/></a>
-                <p class="text-muted">&nbsp;&nbsp; | &nbsp; <a href="#" target="_blank">Oversee Systems</a> &copy; <?php echo date("Y"); ?></p>
+                <p class="text-muted" id="footer_content2">&nbsp;&nbsp; | &nbsp; <a href="#" target="_blank">Oversee Systems</a> &copy; <?php echo date("Y"); ?></p>
             </div>
         </footer>
 

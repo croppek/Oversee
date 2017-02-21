@@ -45,6 +45,7 @@ $(document).ready(function(){
             $('#nav_sign_in_btn').removeClass('center-block').addClass('pull-right');
             $('#log_out_btn').removeClass('center-block').addClass('pull-right');
             $('#lang_btns').removeClass('lang_btns_mobile').addClass('pull-right').addClass('btn-group-xs').addClass('lang_btns');
+            $('#footer_content1, #footer_content2').css('float', 'left');
         }
         else
         {
@@ -52,9 +53,16 @@ $(document).ready(function(){
             $('#nav_sign_in_btn').removeClass('pull-right').addClass('center-block');
             $('#log_out_btn').removeClass('pull-right').addClass('center-block');
             $('#lang_btns').removeClass('pull-right').removeClass('btn-group-xs').removeClass('lang_btns').addClass('lang_btns_mobile');
+            $('#footer_content1, #footer_content2').css('float', 'none');
         }
         
     });
+    
+    //ustawienia stopki
+    if($('#toggle_menu_btn').css('display') == 'block')
+    {
+        $('#footer_content1, #footer_content2').css('float', 'none');
+    }
     
     //#####################################################################
     
@@ -87,13 +95,25 @@ $(document).ready(function(){
         if(category != null)
         {    
             $('#modal_addtodb_content').css('display', 'none');
-                
-            $('#addtodb_modal_dialog').animate({width: '80%'});
-            $('#modal_addtodb_content').animate({marginBottom: '320px'}, 500, function(){
-                
-                $('#modal_addtodb_content').fadeIn(500);
-                
-            });
+            
+            if($('#toggle_menu_btn').css('display') == 'block')
+            {
+                $('#addtodb_modal_dialog').animate({width: '95%'});
+                $('#modal_addtodb_content').animate({marginBottom: '50px'}, 500, function(){
+
+                    $('#modal_addtodb_content').fadeIn(500);
+
+                });
+            }
+            else
+            {
+                $('#addtodb_modal_dialog').animate({width: '80%'});
+                $('#modal_addtodb_content').animate({marginBottom: '320px'}, 500, function(){
+
+                    $('#modal_addtodb_content').fadeIn(500);
+
+                });   
+            }
 
             $.post("php/kategorie/"+category+".php", {give_headlines: true}, function(data){
 

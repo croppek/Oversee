@@ -63,7 +63,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-        <title>Kulnemj</title>
+        <title>--page_title--</title>
 
         <!-- Bootstrap -->
         <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -71,7 +71,7 @@
         <link href="css/style.css" rel="stylesheet">
         
         <!-- FAVICON LINKING -->
-        <link rel="icon" type="image/png" sizes="32x32" href="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/J_Church_logo.svg/2000px-J_Church_logo.svg.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="img/oversee-logo.png">
     
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -95,9 +95,9 @@
                       </button>
                     
                     <a class="navbar-brand" href="./">
-                        <img alt="Brand" id="page_logo" class="logo_img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/J_Church_logo.svg/2000px-J_Church_logo.svg.png">
+                        <img alt="Brand" id="page_logo" class="logo_img" src="img/oversee-logo.png">
                     </a>
-                    <p class="navbar-text" style="font-weight: bold; font-style: italic;">Kulnemj</p>
+                    <p class="navbar-text" style="font-weight: bold; font-style: italic;">--page_title--</p>
                     
                 </div>
                 
@@ -145,6 +145,44 @@
         </nav>
         
         <p>Test o projekcie</p>
+            
+        <div id="loginModal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title"><?php echo $xml->modal_tytul2; ?></h4>
+                </div>
+            <div id="modal_login_content" class="modal-body">
+                
+                <div id="email_confirm_content" style="display: none;"></div>
+                
+                <div id="login_content">
+                    
+                    <div class="input-group input-group-lg" style="width: 85%; margin: 0 auto; float: none;">
+                    <input id="login_input" type="text" class="form-control" name="login_input" style="text-align: center; border-radius: 5px;" placeholder="<?php echo $xml->placeholder1 ?>" onfocus="this.placeholder = '' " onblur="this.placeholder='<?php echo $xml->placeholder1 ?>'"/>
+                    </div>
+                    <br/>
+                    <div class="input-group input-group-lg" style="width: 85%; margin: 0 auto; float: none;">
+                        <input id="password_input" type="password" class="form-control" name="password_input" style="text-align: center; border-radius: 5px;" placeholder="<?php echo $xml->placeholder2 ?>" onfocus="this.placeholder = '' " onblur="this.placeholder='<?php echo $xml->placeholder2 ?>'"/>
+                    </div>
+                    <br/>
+
+                    <div id="error_alert" class="alert alert-danger" role="alert" style="width: 90%; margin: 10px auto 10px; display: none;"></div>
+
+                    <br/>
+
+                    <button type="button" id="sign_in_btn" class="btn btn-primary"><?php echo $xml->zaloguj; ?></button>
+                    
+                </div>
+
+            </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal"><?php echo $xml->zamknij; ?></button>
+                </div>
+            </div>
+            </div>
+        </div>
         
         <!-- Alert o używaniu ciasteczek w serwisie -->
         <?php 
@@ -188,9 +226,9 @@
         <!-- Stopka z odnośnikami do stron autora -->
         <footer class="footer navbar-fixed-bottom">
             <div class="container">
-                <p class="text-muted"><a href="https://github.com/croppek" target="_blank">Bartosz Kropidłowski</a> &nbsp;</p>
+                <p class="text-muted" id="footer_content1"><a href="https://github.com/croppek" target="_blank">Bartosz Kropidłowski</a> &nbsp;</p>
                 <a id="support_img_link" href="#" target="_blank"><img src="<?php echo $support_location; ?>" style="height: 25px; width: auto; margin-top: 7.5px;"/></a>
-                <p class="text-muted">&nbsp;&nbsp; | &nbsp; <a href="#" target="_blank">Oversee Systems</a> &copy; <?php echo date("Y"); ?></p>
+                <p class="text-muted" id="footer_content2">&nbsp;&nbsp; | &nbsp; <a href="#" target="_blank">Oversee Systems</a> &copy; <?php echo date("Y"); ?></p>
             </div>
         </footer>
 

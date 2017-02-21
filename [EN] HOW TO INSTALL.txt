@@ -1,0 +1,9 @@
+In order to install our system for your application, you will need a server on which to place the page.
+It can be purchased at hosting sites or set up your own machine.
+
+We need the server address, user login FTP and its password (all data should be included in the correspondence from the hosting company or in the admin server).
+
+In any program to handle the connection to the FTP servers (eg FileZilla, WinSCP, SmartFTP or even Windows Explorer), type the previously prepared data.
+After a successful connection to our FTP server just copy all the files from the folder Oversee-Systems server.
+
+The next step will be to pass the address of the server (eg http://my-site-url.com) where the next steps will guide the installer of the system. :)

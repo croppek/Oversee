@@ -72,8 +72,8 @@ $(document).ready(function(){
             var username = $('#username_input').val();
             var password = $('#password_input').val();
 
-            //if(server_name == '' || username == '' || password == '')
-            if(server_name == '' || username == '')
+            //if(server_name == '' || username == '')
+            if(server_name == '' || username == '' || password == '')
             {
                 error_number = 'blad1';
 
@@ -142,8 +142,8 @@ $(document).ready(function(){
                         });
 
                     }
-                    else if(data == 'fail')
-                    {
+                    else
+                    {   
                         error_number = 'blad3';
 
                         $('#loading_bar').fadeOut(250,function(){

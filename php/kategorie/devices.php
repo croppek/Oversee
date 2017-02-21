@@ -48,10 +48,11 @@
             
             echo '
 
-                <table class="table table-striped" align="center" style="width: 95%;">
+                <table class="table-striped rtable">
+                <thead>
                     <tr>
                         <th>'.$xml->urzadzenie.'</th>
-                        <th style="width: 40%;">'.$xml->komentarz.'</th>
+                        <th>'.$xml->komentarz.'</th>
                         <th>'.$xml->ktododal.'</th>
                         <th>'.$xml->kiedy.'</th>';
                         
@@ -60,7 +61,7 @@
                             echo '<th>Admin</th>';
                         }
                         
-                    echo '</tr>';
+                    echo '</tr></thead><tbody>';
 
                     //#################################################### TUTAJ ZMIENIAĆ KATEGORIE ########################################################
                     while($row = mysqli_fetch_array($result))
@@ -83,7 +84,7 @@
                         echo '</tr>';
                     }  
 
-            echo '</table>';
+            echo '</tbody></table>';
         }
     }
     //wypisywanie informacji o urządzeniu z użyciem w/w funkcji
@@ -217,7 +218,7 @@
                 
                     <div id="notification_settings" class="well" style="margin-bottom: 0; display: none;">
                     
-                        <div class="input-group input-group-md" style="width: 60%; margin: 0 auto; float: none;">
+                        <div class="input-group input-group-md" style="width: 80%; margin: 0 auto; float: none;">
                             <label for="specialization_input">'. $xml->wybierzspecjalistow .'</label>
                             <select class="form-control" id="specialization_select">
                                 <option value="brak"></option>
@@ -258,14 +259,17 @@
         
             <p style="text-align: center; font-size: 25px; margin-bottom: 15px;">'.$xml->naglowekkategorii.' <b>'.$xml->devices.'</b></p>
         
-            <table class="table table-striped" align="center" style="width: 95%;">
+            <table class="table-striped rtable">
+            <thead>
                 <tr>
                     <th>ID</th>
                     <th>'.$xml->nazwa.'</th>
                     <th>'.$xml->ulokowanie.'</th>
                     <th>'.$xml->typ.'</th>
                     <th>'.$xml->uszkodzony.'</th>
-                </tr>';
+                </tr>
+            </thead>
+            <tbody>';
         
                 while($row = mysqli_fetch_array($result))
                 {
@@ -290,7 +294,7 @@
                     ';
                 }  
         
-        echo '</table>';
+        echo '</tbody></table>';
     }
     else if((isset($_POST['give_headlines'])) || (isset($_POST['id']) && isset($_POST['name']) && isset($_POST['type']) && isset($_POST['damaged'])) || (isset($_POST['remove_item'])) || (isset($_POST['remove_comment'])) || (isset($_POST['item_header']) && isset($_POST['current_content'])) || (isset($_POST['item_id']) && isset($_POST['item_header']) && isset($_POST['new_value'])) || (isset($_POST['item_id']) && isset($_POST['notification']) && isset($_POST['specialization']) && isset($_POST['new_comment']) && isset($_POST['fullurl'])))
     {
@@ -498,7 +502,7 @@
                 {  
                     if($polaczenie->query("INSERT INTO devices VALUES ('$id', '$name', '$placement', '$placement', '$type', '$damaged')")) 
                     {
-                        if($polaczenie->query("INSERT INTO item_category VALUES ('$id', 'devices')")) 
+                        if($polaczenie->query("INSERT INTO item_category VALUES ('$id', '$name', '$placement', 'devices')")) 
                         {
                             if($comment != NULL)
                             {
