@@ -9,7 +9,7 @@
         
         if($lang == 'pl')
         {
-            $xml = simplexml_load_file("../xml/stronaglowna.xml");  
+            $xml = simplexml_load_file("../xml/ustawienia_konta.xml");  
             $xml_errors = simplexml_load_file("../xml/bledy.xml"); 
             $support_location = "img/support-btn-pl.png";
             
@@ -19,7 +19,7 @@
         }
         else if($lang == 'en')
         {
-            $xml = simplexml_load_file("../xml/stronaglowna_en.xml");
+            $xml = simplexml_load_file("../xml/ustawienia_konta_en.xml");
             $xml_errors = simplexml_load_file("../xml/bledy_en.xml"); 
             $support_location = "img/support-btn-en.png";
             
@@ -30,7 +30,7 @@
     }
     else
     {
-        $xml = simplexml_load_file("../xml/stronaglowna.xml");
+        $xml = simplexml_load_file("../xml/ustawienia_konta.xml");
         $xml_errors = simplexml_load_file("../xml/bledy.xml"); 
         $support_location = "img/support-btn-pl.png";
         
@@ -39,6 +39,31 @@
         $link3 = './panel-administracyjny';
     }
     
+    //zwrócenie nowego contentu zmiany hasła
+    if(isset($_POST['get_content']))
+    {
+        switch($_POST['get_content'])
+        {
+            case 'conf_code':
+                echo '
+        
+                <label for="confirm_code_input">'. $xml->potwierdzzmiane .'</label>
+                <input id="confirm_code_input" type="text" class="form-control" style="text-align: center; border-radius: 5px;">
+
+                ';
+                
+                break;
+                
+            case 'thanks':
+                
+                echo '<h2 style="text-align: center;">'. $xml->powodzeniezmianyhasla .'</h2>';
+                
+                break;
+        }
+        
+        return;
+    }
+
     //sprawdzenie czy użytkownik jest zalogowany oraz ustalenie jego permisji
     $logged = false;
     $permissions = 0;
@@ -51,6 +76,10 @@
         {
             $permissions = $_SESSION['permissions'];
         }
+    }
+    else
+    {
+        header('Location: ./');
     }
 
 ?>
@@ -143,8 +172,29 @@
               
             </div>
         </nav>
-        
-        <p>Test o account settings</p>
+            
+        <div class="jumbotron" id="account_settings_jumbotron">
+            <ul class="nav nav-tabs">
+                <li role="presentation" class="active"><a href="#"><?php echo $xml->tab1; ?></a></li>
+            </ul>
+            
+            <h3 style="margin-bottom: 20px;"><?php echo $xml->zmienhaslo; ?></h3>
+            
+            <div class="input-group input-group-lg" id="change_password_inputs" style="width: 45%; margin: 0 auto; float: none;">
+                <label for="old_password_input"><?php echo $xml->starehaslo; ?></label>
+                <input id="old_password_input" type="password" class="form-control" style="text-align: center; border-radius: 5px;"/>
+                <br/>
+                <label for="password_input" style="margin-top: 20px;"><?php echo $xml->nowehaslo; ?></label>
+                <input id="password_input" type="password" class="form-control" style="text-align: center; border-radius: 5px;"/>
+                <br/>
+                <label for="password2_input" style="margin-top: 20px;"><?php echo $xml->powtorzhaslo; ?></label>
+                <input id="password2_input" type="password" class="form-control" style="text-align: center; border-radius: 5px;"/>
+            </div>
+            
+            <div id="error_alert" class="alert alert-danger" role="alert" style="width: 45%; margin: 25px auto 0; display: none;"></div>
+            <button id="change_password_button" class="btn btn-primary btn-lg" type="button" style="width: 200px; margin-top: 20px;"><?php echo $xml->zmienhaslo; ?></button>
+            <button id="confirm_new_password_button" class="btn btn-primary btn-lg" type="button" style="width: 200px; margin-top: 20px; display: none;"><?php echo $xml->potwierdz; ?></button>
+        </div>
         
         <!-- Alert o używaniu ciasteczek w serwisie -->
         <?php 

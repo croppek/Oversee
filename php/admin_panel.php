@@ -9,7 +9,7 @@
         
         if($lang == 'pl')
         {
-            $xml = simplexml_load_file("../xml/stronaglowna.xml");  
+            $xml = simplexml_load_file("../xml/panel_admina.xml");  
             $xml_errors = simplexml_load_file("../xml/bledy.xml"); 
             $support_location = "img/support-btn-pl.png";
             
@@ -19,7 +19,7 @@
         }
         else if($lang == 'en')
         {
-            $xml = simplexml_load_file("../xml/stronaglowna_en.xml");
+            $xml = simplexml_load_file("../xml/panel_admina_en.xml");
             $xml_errors = simplexml_load_file("../xml/bledy_en.xml"); 
             $support_location = "img/support-btn-en.png";
             
@@ -30,7 +30,7 @@
     }
     else
     {
-        $xml = simplexml_load_file("../xml/stronaglowna.xml");
+        $xml = simplexml_load_file("../xml/panel_admina.xml");
         $xml_errors = simplexml_load_file("../xml/bledy.xml"); 
         $support_location = "img/support-btn-pl.png";
         
@@ -51,6 +51,10 @@
         {
             $permissions = $_SESSION['permissions'];
         }
+    }
+    else
+    {
+        header('Location: ./');
     }
 
 ?>

@@ -314,7 +314,7 @@
                         <h2 style="text-align: center; margin-bottom: 15px;">' . $xml->content1 . '</h2>
 
                         <form method="get">
-                            <div class="input-group" style="width: 90%; margin: 0 auto;"> 
+                            <div id="search_input_group" class="input-group" style="width: 65%; margin: 0 auto;"> 
                                 <input id="id_number_input" class="form-control" name="id" type="number" min="1" value="1" style="text-align: center;" aria-label="Text input with multiple buttons"> 
                                 <div class="input-group-btn"> 
                                     <button id="id_help_btn" type="button" class="btn btn-default" aria-label="Help" data-toggle="modal" data-target="#infoModal1"><span class="glyphicon glyphicon-question-sign"></span></button> 
@@ -332,7 +332,7 @@
                         <h2 style="text-align: center; margin-bottom: 15px;">' . $xml->content2 . '</h2>
 
                         <form method="get">
-                            <div class="input-group input-group-md" style="width: 90%; margin: 0 auto; float: none;">
+                            <div id="search_input_group2" class="input-group input-group-md" style="width: 65%; margin: 0 auto; float: none;">
                                 <select class="form-control" name="category" id="categories_select">
                                     <option selected disabled>' . $xml->wybierz . '</option>';
 
@@ -481,11 +481,11 @@
                 
                 <div id="login_content">
                     
-                    <div class="input-group input-group-lg" style="width: 85%; margin: 0 auto; float: none;">
-                    <input id="login_input" type="text" class="form-control" name="login_input" style="text-align: center; border-radius: 5px;" placeholder="<?php echo $xml->placeholder1 ?>" onfocus="this.placeholder = '' " onblur="this.placeholder='<?php echo $xml->placeholder1 ?>'"/>
+                    <div id="login_input_group" class="input-group input-group-lg" style="width: 45%; margin: 0 auto; float: none;">
+                        <input id="login_input" type="text" class="form-control" name="login_input" style="text-align: center; border-radius: 5px;" placeholder="<?php echo $xml->placeholder1 ?>" onfocus="this.placeholder = '' " onblur="this.placeholder='<?php echo $xml->placeholder1 ?>'"/>
                     </div>
                     <br/>
-                    <div class="input-group input-group-lg" style="width: 85%; margin: 0 auto; float: none;">
+                    <div id="login_input_group" class="input-group input-group-lg" style="width: 45%; margin: 0 auto; float: none;">
                         <input id="password_input" type="password" class="form-control" name="password_input" style="text-align: center; border-radius: 5px;" placeholder="<?php echo $xml->placeholder2 ?>" onfocus="this.placeholder = '' " onblur="this.placeholder='<?php echo $xml->placeholder2 ?>'"/>
                     </div>
                     <br/>

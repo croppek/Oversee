@@ -53,7 +53,7 @@
     <uwagi>Last comment</uwagi>
     <komentarz>Comment</komentarz>
     <uszkodzony>Damaged</uszkodzony>
-    <pokazhistorieuwag>Show comments story</pokazhistorieuwag>
+    <pokazhistorieuwag>Show comments history</pokazhistorieuwag>
     <dodajdobazy>Add information about an item to the database</dodajdobazy>
     <urzadzenie>Device</urzadzenie>
     
@@ -72,6 +72,7 @@
     <potwierdz>Confirm</potwierdz>
     <anuluj>Cancel</anuluj>
     <powiadomspecialistow>Inform specialists</powiadomspecialistow>
+    <historiakomentarzy>Comments history:</historiakomentarzy>
     
     <wybierzkategorie>Choose which category to add an item:</wybierzkategorie>
     <usunprzedmiot>Remove an item from the database</usunprzedmiot>

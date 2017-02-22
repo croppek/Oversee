@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ustawieniakonta lang="pl">
+    
+    <naglowek1>Szukaj</naglowek1>
+    <naglowek2>O projekcie</naglowek2>
+    <naglowek3>Rozwiń menu</naglowek3>
+    <naglowek4>Ustawienia konta</naglowek4>
+    <naglowek5>Panel administratora</naglowek5>
+    
+    <ciasteczkatekst>Nasz serwis korzysta z ciasteczek!</ciasteczkatekst>
+    <rozumiem>Rozumiem</rozumiem>
+    <dowiedzsiewiecej>Dowiedz się więcej</dowiedzsiewiecej>
+    
+    <wyloguj>Wyloguj się</wyloguj>
+    <potwierdz>Potwierdź</potwierdz>
+    
+    <tab1>Konto</tab1>
+    
+    <zmienhaslo>Zmień hasło</zmienhaslo>
+    <starehaslo>Podaj obecne hasło:</starehaslo>
+    <nowehaslo>Podaj nowe hasło:</nowehaslo>
+    <powtorzhaslo>Powtórz nowe hasło:</powtorzhaslo>
+    <potwierdzzmiane>Podaj kod potwierdzający zmianę hasła, który został wysłany na Twój adres email:</potwierdzzmiane>
+    
+    <powodzeniezmianyhasla>Zmiana hasła zakończyła się powodzeniem. &lt;br> &lt;small>Przy każdym kolejnym logowaniu wymagane będzie nowe hasło.&lt;/small></powodzeniezmianyhasla>
+    
+</ustawieniakonta>

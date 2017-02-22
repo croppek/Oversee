@@ -29,6 +29,7 @@
     <blad26>Musisz podać login i hasło aby się zalogować.</blad26>
     <blad27>Podany login lub hasło jest nieprawidłowe, spróbuj ponownie...</blad27>
     <blad28>Proszę podać kod potwierdzający.</blad28>
+    <blad29>Podane stare hasło jest nieprawidłowe.</blad29>
     
     <confirm_label>Podaj kod aktywacyjny, który wysłaliśmy na adres:</confirm_label>
     <potwierdz>Potwierdź</potwierdz>

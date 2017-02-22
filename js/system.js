@@ -37,6 +37,7 @@ $(document).ready(function(){
         
     });
     
+    //ustawienia wyświetlania elementów podczas zmiany rozmiarów okna
     $(window).resize(function(){
         
         if($('#toggle_menu_btn').css('display') == 'none')
@@ -46,6 +47,8 @@ $(document).ready(function(){
             $('#log_out_btn').removeClass('center-block').addClass('pull-right');
             $('#lang_btns').removeClass('lang_btns_mobile').addClass('pull-right').addClass('btn-group-xs').addClass('lang_btns');
             $('#footer_content1, #footer_content2').css('float', 'left');
+            $('#change_password_inputs, #error_alert, #login_input_group').css('width', '45%');
+            $('#search_input_group, #search_input_group2').css('width', '65%');
         }
         else
         {
@@ -54,14 +57,19 @@ $(document).ready(function(){
             $('#log_out_btn').removeClass('pull-right').addClass('center-block');
             $('#lang_btns').removeClass('pull-right').removeClass('btn-group-xs').removeClass('lang_btns').addClass('lang_btns_mobile');
             $('#footer_content1, #footer_content2').css('float', 'none');
+            $('#change_password_inputs, #error_alert, #login_input_group').css('width', '85%');
+            $('#search_input_group, #search_input_group2').css('width', '90%');
         }
         
     });
     
-    //ustawienia stopki
+    //ustawienia wyświetlania elementów na urządzeniach mobilnych
     if($('#toggle_menu_btn').css('display') == 'block')
     {
         $('#footer_content1, #footer_content2').css('float', 'none');
+        
+        $('#change_password_inputs, #error_alert, #login_input_group').css('width', '85%');
+        $('#search_input_group, #search_input_group2').css('width', '90%');
     }
     
     //#####################################################################

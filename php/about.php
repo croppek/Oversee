@@ -9,7 +9,7 @@
         
         if($lang == 'pl')
         {
-            $xml = simplexml_load_file("../xml/stronaglowna.xml");  
+            $xml = simplexml_load_file("../xml/oprojekcie.xml");  
             $xml_errors = simplexml_load_file("../xml/bledy.xml"); 
             $support_location = "img/support-btn-pl.png";
             
@@ -19,7 +19,7 @@
         }
         else if($lang == 'en')
         {
-            $xml = simplexml_load_file("../xml/stronaglowna_en.xml");
+            $xml = simplexml_load_file("../xml/oprojekcie_en.xml");
             $xml_errors = simplexml_load_file("../xml/bledy_en.xml"); 
             $support_location = "img/support-btn-en.png";
             
@@ -30,7 +30,7 @@
     }
     else
     {
-        $xml = simplexml_load_file("../xml/stronaglowna.xml");
+        $xml = simplexml_load_file("../xml/oprojekcie.xml");
         $xml_errors = simplexml_load_file("../xml/bledy.xml"); 
         $support_location = "img/support-btn-pl.png";
         
@@ -160,7 +160,7 @@
                 <div id="login_content">
                     
                     <div class="input-group input-group-lg" style="width: 85%; margin: 0 auto; float: none;">
-                    <input id="login_input" type="text" class="form-control" name="login_input" style="text-align: center; border-radius: 5px;" placeholder="<?php echo $xml->placeholder1 ?>" onfocus="this.placeholder = '' " onblur="this.placeholder='<?php echo $xml->placeholder1 ?>'"/>
+                        <input id="login_input" type="text" class="form-control" name="login_input" style="text-align: center; border-radius: 5px;" placeholder="<?php echo $xml->placeholder1 ?>" onfocus="this.placeholder = '' " onblur="this.placeholder='<?php echo $xml->placeholder1 ?>'"/>
                     </div>
                     <br/>
                     <div class="input-group input-group-lg" style="width: 85%; margin: 0 auto; float: none;">

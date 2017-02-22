@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<oprojekcie lang="en">
+    
+    <naglowek1>Search</naglowek1>
+    <naglowek2>About the project</naglowek2>
+    <naglowek3>Rozwiń menu</naglowek3>
+    <naglowek4>Account settings</naglowek4>
+    <naglowek5>Administration panel</naglowek5>
+    
+    <ciasteczkatekst>Our site uses cookies!</ciasteczkatekst>
+    <rozumiem>I understand</rozumiem>
+    <dowiedzsiewiecej>Learn more</dowiedzsiewiecej>
+    
+    <!-- Logowanie -->
+    <placeholder1>Login</placeholder1>
+    <placeholder2>Password</placeholder2>
+    
+    <szukaj>Search</szukaj>
+    <zamknij>Close</zamknij>
+    <zaloguj>Sign in</zaloguj>
+    <wyloguj>Log out</wyloguj>
+    <wybierz>Choose</wybierz>
+    
+</oprojekcie>

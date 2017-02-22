@@ -237,6 +237,154 @@ $(document).ready(function(){
         
     });
     
+    //obsługa przycisku zmieniająca hasło
+    $('#change_password_button').on('click', function(){
+        
+        var old_password = $('#old_password_input').val();
+        var password = $('#password_input').val();
+        var password2 = $('#password2_input').val();
+        
+        if(old_password != '')
+        {
+            validation_OK = true;
+            
+            if(password == '')
+            {
+                $('#password_input').addClass("input_error");
+                
+                validation_OK = false;
+                
+                error_number = 'blad10';
+            }
+            else
+            {
+                if(checkPassword() == 'ok')
+                {
+                    $('#password_input').removeClass("input_error");
+                    $('#password_input').addClass("password_ok");
+                }
+                else
+                {
+                    validation_OK = false;
+                    error_number = 'blad12';
+                    
+                    $('#password_input').removeClass("password_ok");
+                    $('#password_input').addClass("input_error"); 
+                }
+            }
+            
+            if(password2 == '')
+            {
+                $('#password2_input').addClass("input_error");
+                
+                validation_OK = false;
+                
+                error_number = 'blad10';
+            }
+            else
+            {
+                if(checkPassword() == 'ok')
+                {
+                    $('#password2_input').removeClass("input_error");
+                    $('#password2_input').addClass("password_ok");
+                }
+                else
+                {
+                    validation_OK = false;
+                    error_number = 'blad12';
+                    
+                    $('#password2_input').removeClass("password_ok");
+                    $('#password2_input').addClass("input_error"); 
+                }
+            }
+            
+            if(validation_OK == true)
+            {
+                $.post("php/login.php", {old_password: old_password, new_password: password}, function(data){
+
+                    if(data == 'bladpolaczeniazbaza')
+                    {
+                        set_error('blad6');
+                    }
+                    else if(data == 'nieprawidlowehaslo')
+                    {
+                        set_error('blad29');
+                    }
+                    else if(data == 'success')
+                    {
+                        $('#error_alert').fadeOut(500);
+                        
+                        $('#change_password_inputs').fadeOut(500,function(){
+                           
+                            $.post("php/account_settings.php", {get_content: 'conf_code'}, function(data){
+                                
+                                $('#change_password_inputs').empty().append(data).fadeIn(500);
+                                $('#change_password_button').fadeOut(250, function(){
+                                    
+                                   $('#confirm_new_password_button').fadeIn(250);
+                                    
+                                });
+                                
+                            });
+                            
+                        });
+                    }
+                });      
+            }
+            else
+            {
+                set_error(error_number);
+            }
+        }
+        else
+        {
+            set_error('blad10');
+        }
+        
+    });
+    
+     //obsługa przycisku zmieniająca hasło
+    $('#confirm_new_password_button').on('click', function(){
+        
+        var code = $('#confirm_code_input').val();
+        
+        if(code == '')
+        {
+            set_error('blad28');
+        }
+        else
+        {
+            $.post("php/login.php", {conf_code: code}, function(data){
+                                
+                if(data == 'bladpolaczeniazbaza')
+                {
+                    set_error('blad6');
+                }
+                else if(data == 'nieprawidlowykod')
+                {
+                    set_error('blad23');
+                }
+                else if(data == 'success')
+                {
+                    $('#error_alert').fadeOut(500);
+                    
+                    $('#confirm_new_password_button').fadeOut(500);
+                    $('#change_password_inputs').fadeOut(500,function(){
+                        
+                        $.post("php/account_settings.php", {get_content: 'thanks'}, function(data){
+                                
+                            $('#change_password_inputs').empty().append(data).fadeIn(500);
+
+                        });
+                        
+                    });
+                }
+
+            });
+        }
+        
+    });
+    
 });
 
 //#####################################################################
@@ -306,6 +454,96 @@ function validateEmail()
         $('#new_email_input').removeClass("input_error");
         
         return true;
+    }
+}
+
+//#####################################################################
+
+//funkcja sprawdzająca poprawność podanych haseł
+conf_pass = false;
+conf_pass2 = false;
+
+function checkPassword()
+{
+    var error_number;
+    
+    if($('#password_input').val().length < 5 || $('#password_input').val().length > 30)
+    {
+        conf_pass2 = false;
+        
+        $('#password_input, #password2_input').removeClass("password_ok");
+        $('#password_input, #password2_input').addClass("input_error");
+        
+        error_number = 'blad11';
+        
+        if($('#error_alert').css('display') == 'block')
+        {
+            $('#error_alert').fadeOut(500, function(){
+                
+                set_error(error_number);
+                
+                $('#error_alert').fadeIn(500);
+                
+            });
+        }
+        else
+        {
+            set_error(error_number);
+                
+            $('#error_alert').fadeIn(500);
+        }
+    }
+    else if($('#password_input').val().length >= 5 && $('#password_input').val().length <= 30)
+    {
+        conf_pass2 = true;
+        
+        if($('#password2_input').val() != "" && $('#password_input').val() != "")
+        {
+            var haslo1 = $('#password_input').val();
+            var haslo2 = $('#password2_input').val();
+
+            if(haslo1 == haslo2)
+            {
+                conf_pass = true;
+                
+                if(conf_pass == true)
+                {
+                    $('#password_input, #password2_input').removeClass("input_error");
+                    $('#password_input, #password2_input').addClass("password_ok");
+                    
+                    $('#error_alert').fadeOut(500);
+                    return 'ok';
+                }
+            }
+            else
+            {
+                $('#password_input, #password2_input').removeClass("password_ok");
+                $('#password_input, #password2_input').addClass("input_error");
+                
+                error_number = 'blad12';
+                
+                if($('#error_alert').css('display') == 'block')
+                {
+                    $('#error_alert').fadeOut(500, function(){
+                        
+                        set_error(error_number);
+
+                        $('#error_alert').fadeIn(500);
+
+                    });
+                }
+                else
+                {
+                    set_error(error_number);
+
+                    $('#error_alert').fadeIn(500);
+                }
+                
+                conf_pass = false;
+                
+                return 'fail';
+            }
+        }
     }
 }
     

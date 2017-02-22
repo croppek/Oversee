@@ -46,7 +46,7 @@
                 header('Location: ./?id='.$id);
             }
             
-            echo '
+            echo '<h3 style="text-align: center;">'.$xml->historiakomentarzy.'</h3>
 
                 <table class="table-striped rtable">
                 <thead>
@@ -71,14 +71,14 @@
                             <tr>
                                 <td style="display: none;">'.$row['id'].'</td>
                                 <td style="display: none;">devices</td>
-                                <td><a href="./?id='.$id.'">'.$nazwa.'</a></td>
-                                <td>'.$row['comment'].'</td>
+                                <td style="min-width: 100px; text-align: center; white-space: normal;"><a href="./?id='.$id.'">'.$nazwa.'</a></td>
+                                <td style="max-width: 820px; min-width: 400px; word-break: break-all; white-space: normal;">'.$row['comment'].'</td>
                                 <td>'.$row['who_added'].'</td>
                                 <td style="word-spacing: 15px;"><b>'.$row['when_added'].'</b></td>';
                                 
                                 if($permissions >= 2)
                                 {
-                                    echo '<td><button class="btn btn-danger btn-sm remove_comment_from_db_btn">'. $xml->usun .'</button></td>';
+                                    echo '<td><button class="btn btn-danger btn-sm remove_comment_from_db_btn" style="word-break: normal;">'. $xml->usun .'</button></td>';
                                 }
                                     
                         echo '</tr>';

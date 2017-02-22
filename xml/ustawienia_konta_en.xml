@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ustawieniakonta lang="en">
+    
+    <naglowek1>Search</naglowek1>
+    <naglowek2>About the project</naglowek2>
+    <naglowek3>Rozwiń menu</naglowek3>
+    <naglowek4>Account settings</naglowek4>
+    <naglowek5>Administration panel</naglowek5>
+    
+    <ciasteczkatekst>Our site uses cookies!</ciasteczkatekst>
+    <rozumiem>I understand</rozumiem>
+    <dowiedzsiewiecej>Learn more</dowiedzsiewiecej>
+    
+    <wyloguj>Log out</wyloguj>
+    <potwierdz>Confirm</potwierdz>
+    
+    <tab1>Account</tab1>
+    
+    <zmienhaslo>Change password</zmienhaslo>
+    <starehaslo>Enter your current password:</starehaslo>
+    <nowehaslo>Enter new password:</nowehaslo>
+    <powtorzhaslo>Repeat new password:</powtorzhaslo>
+    <potwierdzzmiane>Please enter confirmation code to change the password that was sent to your email address:</potwierdzzmiane>
+    
+    <powodzeniezmianyhasla>Changing the password was successful. &lt;br> &lt;small>Every time you log in, a new password will be required.&lt;/small></powodzeniezmianyhasla>
+        
+</ustawieniakonta>

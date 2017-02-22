@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<paneladmina lang="en">
+    
+    <naglowek1>Search</naglowek1>
+    <naglowek2>About the project</naglowek2>
+    <naglowek3>Rozwiń menu</naglowek3>
+    <naglowek4>Account settings</naglowek4>
+    <naglowek5>Administration panel</naglowek5>
+    
+    <ciasteczkatekst>Our site uses cookies!</ciasteczkatekst>
+    <rozumiem>I understand</rozumiem>
+    <dowiedzsiewiecej>Learn more</dowiedzsiewiecej>
+    
+    <wyloguj>Log out</wyloguj>
+    
+</paneladmina>

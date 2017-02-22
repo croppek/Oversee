@@ -110,6 +110,9 @@
             case 'blad28':
                 echo $xml->blad28;
                 break;
+            case 'blad29':
+                echo $xml->blad29;
+                break;
         }
         
         return;

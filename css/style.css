@@ -178,7 +178,7 @@ a:hover
     bottom: 75px;
     left: 0;
     height: 104px;
-    width: 355px;
+    width: 325px;
     background: #fffacf;
     border: 2px solid #000;
     border-radius: 10px;
@@ -201,15 +201,16 @@ a:hover
 {
     float: left;
     display: block;
-    height: 100px;
-    width: 100px;
+    height: 70px;
+    width: 70px;
     padding: 10px;
+    padding-top: 25px;
 }
 
 #cookie_img img
 {
-    height: 85px;
-    width: 85px;
+    height: 50px;
+    width: 50px;
 }
 
 #cookie_btns_wrap
@@ -237,7 +238,19 @@ a:hover
 
 .btn
 {
-    white-space:normal !important;
+    white-space: normal !important;
+}
+
+.panel-body
+{
+    word-break: break-all;
+}
+
+#account_settings_jumbotron
+{
+    width: 95%;
+    margin: 0 auto;
+    text-align: center;
 }
 
 /*!
