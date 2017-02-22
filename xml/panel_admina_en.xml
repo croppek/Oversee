@@ -14,4 +14,17 @@
     
     <wyloguj>Log out</wyloguj>
     
+    <tab1>Website</tab1>
+    <tab2>Users</tab2>
+    <tab3>QR Codes</tab3>
+    
+    <zmienlogo>Change logo of the page</zmienlogo>
+    <zmienlogobtn>Change logo</zmienlogobtn>
+    <adresurllogo>Enter the URL of the image:</adresurllogo>
+    
+    <modaltekstzmianalogo>Logo in the format 1:1 (square) will be displayed best. To improve the speed of loading images is recommended to upload an image not larger than 200x200px. Supported formats are .jpeg / .jpg / .gif / .png. &lt;br/>&lt;br/>In order to obtain the URL of images, you can use the hosting images such as: &lt;ul>&lt;li>&lt;a href="https://imgur.com" target="_blank">imgur.com&lt;/a>&lt;/li>&lt;li>&lt;a href="https://imgsafe.org" target="_blank">imgsafe.org&lt;/a>&lt;/li>&lt;li>&lt;a href="https://postimage.io" target="_blank">postimage.io&lt;/a>&lt;/li>&lt;li>&lt;a href="https://tinypic.com" target="_blank">tinypic.com&lt;/a>&lt;/li>&lt;/ul> &lt;br/>&lt;br/>The image will be automatically scaled to the desired size.</modaltekstzmianalogo>
+    
+    <zamknij>Close</zamknij>
+    <podglad>Preview</podglad>
+    
 </paneladmina>

@@ -148,7 +148,55 @@
             </div>
         </nav>
         
-        <p>Test admin panel</p>
+        <div class="jumbotron" id="admin_panel_jumbotron">
+            <ul class="nav nav-tabs">
+                <li role="presentation" class="active" id="tab1"><a class="not-active-link"><?php echo $xml->tab1; ?></a></li>
+                <li role="presentation" id="tab2"><a class="not-active-link"><?php echo $xml->tab2; ?></a></li>
+                <li role="presentation" id="tab3"><a class="not-active-link"><?php echo $xml->tab3; ?></a></li>
+            </ul>
+            
+            <h3 style="margin-bottom: 20px;"><?php echo $xml->zmienlogo; ?></h3>
+            
+            <div id="admin_panel_content" style="width: 45%; margin: 0 auto; float: none;">
+                <label for="set_image_input"><?php echo $xml->adresurllogo; ?></label>
+                <div class="input-group input-group-lg" style="margin: 0 auto; float: none;">
+                    <span class="input-group-btn">
+                        <button class="btn btn-info" type="button" data-toggle="modal" data-target="#infoModal_zmianalogo"><span class="glyphicon glyphicon-question-sign"></span></button>
+                    </span>
+                    <input id="set_image_input" onblur="logo_preview()" type="text" class="form-control">
+                </div>
+
+                <div id="infoModal_zmianalogo" class="modal fade" role="dialog">
+                    <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title"></h4>
+                        </div>
+                    <div class="modal-body">
+                        <p><?php echo $xml->modaltekstzmianalogo; ?></p>
+                    </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" data-dismiss="modal"><?php echo $xml->zamknij; ?></button>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+
+                <br/>
+
+                <?php echo $xml->podglad; ?>
+                <div id="image_preview_div" style="border: 2px solid #484848; padding: 5px; width: 165px; height: 165px; border-radius: 5px; margin: 10px auto 0;">
+
+                </div>
+
+                <div id="error_alert" class="alert alert-danger" role="alert" style="width: 65%; margin: 20px auto 0; display: none;"></div>
+
+                <br/><br/>
+
+                <button id="change_logo_btn" class="btn btn-primary btn-lg" type="button" style="width: 200px;" disabled><?php echo $xml->zmienlogobtn; ?></button>
+            </div>
+        </div>
         
         <!-- Alert o używaniu ciasteczek w serwisie -->
         <?php 

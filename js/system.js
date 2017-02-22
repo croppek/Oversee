@@ -47,7 +47,7 @@ $(document).ready(function(){
             $('#log_out_btn').removeClass('center-block').addClass('pull-right');
             $('#lang_btns').removeClass('lang_btns_mobile').addClass('pull-right').addClass('btn-group-xs').addClass('lang_btns');
             $('#footer_content1, #footer_content2').css('float', 'left');
-            $('#change_password_inputs, #error_alert, #login_input_group').css('width', '45%');
+            $('#change_password_inputs, #error_alert, #login_input_group, #admin_panel_content').css('width', '45%');
             $('#search_input_group, #search_input_group2').css('width', '65%');
         }
         else
@@ -57,7 +57,7 @@ $(document).ready(function(){
             $('#log_out_btn').removeClass('pull-right').addClass('center-block');
             $('#lang_btns').removeClass('pull-right').removeClass('btn-group-xs').removeClass('lang_btns').addClass('lang_btns_mobile');
             $('#footer_content1, #footer_content2').css('float', 'none');
-            $('#change_password_inputs, #error_alert, #login_input_group').css('width', '85%');
+            $('#change_password_inputs, #error_alert, #login_input_group, #admin_panel_content').css('width', '85%');
             $('#search_input_group, #search_input_group2').css('width', '90%');
         }
         
@@ -68,7 +68,7 @@ $(document).ready(function(){
     {
         $('#footer_content1, #footer_content2').css('float', 'none');
         
-        $('#change_password_inputs, #error_alert, #login_input_group').css('width', '85%');
+        $('#change_password_inputs, #error_alert, #login_input_group, #admin_panel_content').css('width', '85%');
         $('#search_input_group, #search_input_group2').css('width', '90%');
     }
     
@@ -405,4 +405,93 @@ $(document).ready(function(){
         
     });
     
+    //#####################################################################
+    
+    //obsługa przycisku zmiany logo strony
+    $('#change_logo_btn').on('click', function(){
+        
+        $(this).attr("disabled", "disabled");
+        
+        if(logo_preview() == true)
+        {
+            //post do php o zapisanie src zdjęcia
+            var image_url = $("#set_image_input").val();
+            var old_logo = $('.navbar-brand').children().attr('src');
+
+            $.post("php/instalator_backend.php", {logo_source: image_url, old_logo_url: old_logo}, function(data){
+
+                if(data == 'fail')
+                {
+                   set_error('blad7'); 
+                }
+                else if(data == 'bladpolaczeniazbazadanych')
+                {
+                    set_error('blad6');
+                }
+                else
+                {
+                    location.reload();
+                }
+            });
+        }
+        
+        setTimeout(function(){$("#change_logo_btn").removeAttr("disabled")}, 1500);
+        
+    });
+    
+    //#####################################################################
+    
+    //obsługa zmiany zakładek w panelu
+    $('.nav-tabs').children().on('click', function(){
+        
+        var id = $(this).attr("id");
+        
+        alert(id);
+        
+        //zmiana klasy acitve, zmiana kontentu jumbotrona
+        
+    });
+    
 });
+
+//#####################################################################
+
+//funkcja validująca i wyświetlająca podgląd loga strony
+function logo_preview()
+{
+    var image_url = $("#set_image_input").val();
+    
+    if(image_url != '')
+    {
+        if(checkURL(image_url) == true)
+        {
+            $('#error_alert').fadeOut(500);
+            
+            $('#image_preview_div').empty().append('<img id="img_logo_preview" src="'+image_url+'" style="width: 150px; height: 150px;" />');
+            
+            setTimeout(function(){$("#change_logo_btn").removeAttr("disabled")}, 1000);
+            
+            return true;
+        }
+        else
+        {
+            $('#image_preview_div').empty();
+            
+            $("#change_logo_btn").attr("disabled", "disabled");
+            
+            set_error('blad24');
+        }
+    }
+    else
+    {
+        $('#image_preview_div').empty();
+        
+        $("#change_logo_btn").attr("disabled", "disabled");
+    }
+    
+    //funkcja validuje format zdjęcia co jakiego prowadzi link
+    function checkURL(url) 
+    {
+        return(url.match(/\.(jpeg|jpg|gif|png)$/) != null);
+    }
+}

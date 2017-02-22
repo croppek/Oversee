@@ -558,7 +558,15 @@
     {
         $logo_url = $_POST['logo_source'];
         
-        $searchF = array('img/oversee-logo.png');
+        if(isset($_POST['old_logo_url']))
+        {
+            $searchF = array($_POST['old_logo_url']);
+        }
+        else
+        {
+            $searchF = array('img/oversee-logo.png');    
+        }
+        
         $replaceW = array($logo_url);
         
         //nadpisywanie w podstronach

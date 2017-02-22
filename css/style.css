@@ -246,11 +246,24 @@ a:hover
     word-break: break-all;
 }
 
-#account_settings_jumbotron
+#account_settings_jumbotron, #admin_panel_jumbotron
 {
     width: 95%;
     margin: 0 auto;
     text-align: center;
+}
+
+#admin_panel_jumbotron ul li
+{
+    cursor: pointer;
+}
+
+.not-active-link
+{
+    pointer-events: none;
+    cursor: pointer;
+    color: black;
+    text-decoration: none;
 }
 
 /*!

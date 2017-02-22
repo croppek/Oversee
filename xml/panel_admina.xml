@@ -14,4 +14,17 @@
     
     <wyloguj>Wyloguj się</wyloguj>
     
+    <tab1>Strona</tab1>
+    <tab2>Użytkownicy</tab2>
+    <tab3>Kody QR</tab3>
+    
+    <zmienlogo>Zmień logo strony</zmienlogo>
+    <zmienlogobtn>Zmień logo</zmienlogobtn>
+    <adresurllogo>Podaj adres URL obrazu:</adresurllogo>
+    
+    <modaltekstzmianalogo>Logo w formacie 1:1 (kwadrat) będzie wyświetlane najlepiej. Dla poprawienia szybkości ładowania obrazów zaleca się przesłać obraz o wymiarach nie większych niż 200x200px. Obsługiwane formaty to .jpeg / .jpg / .gif / .png. &lt;br/>&lt;br/> W celu zdobycia adresu URL zdjęcia, można skorzystać z hostingów obrazów takich jak: &lt;ul>&lt;li>&lt;a href="https://imgur.com" target="_blank">imgur.com&lt;/a>&lt;/li>&lt;li>&lt;a href="https://imgsafe.org" target="_blank">imgsafe.org&lt;/a>&lt;/li>&lt;li>&lt;a href="https://postimage.io" target="_blank">postimage.io&lt;/a>&lt;/li>&lt;li>&lt;a href="https://tinypic.com" target="_blank">tinypic.com&lt;/a>&lt;/li>&lt;/ul> &lt;br/>&lt;br/> Obraz zostanie automatycznie przeskalowany do porządanych rozmiarów.</modaltekstzmianalogo>
+    
+    <zamknij>Zamknij</zamknij>
+    <podglad>Podgląd</podglad>
+    
 </paneladmina>
