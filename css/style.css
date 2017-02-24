@@ -253,7 +253,7 @@ a:hover
     text-align: center;
 }
 
-#admin_panel_jumbotron ul li
+.nav-tabs li
 {
     cursor: pointer;
 }
@@ -290,8 +290,8 @@ a:hover
 .rtable,
 .rtable--flip tbody {
   -webkit-overflow-scrolling: touch;
-  background: -webkit-radial-gradient(left ellipse, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0) 75%) 0 center, -webkit-radial-gradient(right ellipse, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0) 75%) 100% center;
-  background: radial-gradient(ellipse at left, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0) 75%) 0 center, radial-gradient(ellipse at right, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0) 75%) 100% center;
+  /*background: -webkit-radial-gradient(left ellipse, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0) 75%) 0 center, -webkit-radial-gradient(right ellipse, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0) 75%) 100% center;
+  background: radial-gradient(ellipse at left, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0) 75%) 0 center, radial-gradient(ellipse at right, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0) 75%) 100% center;*/
   background-size: 10px 100%, 10px 100%;
   background-attachment: scroll, scroll;
   background-repeat: no-repeat;
@@ -299,16 +299,16 @@ a:hover
 
 .rtable td:first-child,
 .rtable--flip tbody tr:first-child {
-  background-image: -webkit-linear-gradient(left, white 50%, rgba(255, 255, 255, 0) 100%);
-  background-image: linear-gradient(to right, white 50%, rgba(255, 255, 255, 0) 100%);
+  /*background-image: -webkit-linear-gradient(left, white 50%, rgba(255, 255, 255, 0) 100%);
+  background-image: linear-gradient(to right, white 50%, rgba(255, 255, 255, 0) 100%);*/
   background-repeat: no-repeat;
   background-size: 20px 100%;
 }
 
 .rtable td:last-child,
 .rtable--flip tbody tr:last-child {
-  background-image: -webkit-linear-gradient(right, white 50%, rgba(255, 255, 255, 0) 100%);
-  background-image: linear-gradient(to left, white 50%, rgba(255, 255, 255, 0) 100%);
+  /*background-image: -webkit-linear-gradient(right, white 50%, rgba(255, 255, 255, 0) 100%);
+  background-image: linear-gradient(to left, white 50%, rgba(255, 255, 255, 0) 100%);*/
   background-repeat: no-repeat;
   background-position: 100% 0;
   background-size: 20px 100%;

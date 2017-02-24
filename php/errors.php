@@ -161,14 +161,28 @@
         @mysqli_set_charset($polaczenie,"utf8");
 
         if($polaczenie->connect_errno == 0)
-        {  
-            $polaczenie -> query("UPDATE users SET code = '$kod' WHERE login = '$login'");
+        {
+            //Sprawdzenie czy podany email jest już zajęty
+            $rezultat = $polaczenie -> query("SELECT id FROM users WHERE email='$email'");
+
+            $ile_maili = $rezultat->num_rows;
+
+            if($ile_maili > 0)
+            {
+                echo "zajetymail";
+                $polaczenie->close();
+                return;
+            }
+            else
+            {
+                $polaczenie -> query("UPDATE users SET code = '$kod' WHERE login = '$login'");
+            }
 
             $polaczenie->close();
         }
         else
         {
-            echo $xml_errors->blad6;
+            echo 'bladpolaczeniazbaza';
         }
 
         $wiadomosc = '

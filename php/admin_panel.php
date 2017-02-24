@@ -57,6 +57,383 @@
         header('Location: ./');
     }
 
+    //zwrócienie kontentu pozostałych zakładek panelu administracyjnego
+    if(isset($_POST['get_content']))
+    {
+        switch($_POST['get_content'])
+        {
+            case 'tab1':
+                echo '
+                    <h3 style="margin-bottom: 20px;">'. $xml->zmienlogo .'</h3>
+                
+                    <label for="set_image_input">'. $xml->adresurllogo .'</label>
+                    <div class="input-group input-group-lg" style="margin: 0 auto; float: none;">
+                        <span class="input-group-btn">
+                            <button class="btn btn-info" type="button" data-toggle="modal" data-target="#infoModal_zmianalogo"><span class="glyphicon glyphicon-question-sign"></span></button>
+                        </span>
+                        <input id="set_image_input" onblur="logo_preview()" type="text" class="form-control">
+                    </div>
+
+                    <div id="infoModal_zmianalogo" class="modal fade" role="dialog">
+                        <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title"></h4>
+                            </div>
+                        <div class="modal-body">
+                            <p>'. $xml->modaltekstzmianalogo .'</p>
+                        </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary" data-dismiss="modal">'. $xml->zamknij .'</button>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+
+                    <br/>
+
+                    '. $xml->podglad .'
+                    <div id="image_preview_div" style="border: 2px solid #484848; padding: 5px; width: 165px; height: 165px; border-radius: 5px; margin: 10px auto 0;">
+
+                    </div>
+
+                    <div id="error_alert" class="alert alert-danger" role="alert" style="width: 65%; margin: 20px auto 0; display: none;"></div>
+
+                    <br/><br/>
+
+                    <button id="change_logo_btn" class="btn btn-primary btn-lg" type="button" style="width: 200px;" disabled>'. $xml->zmienlogobtn .'</button>
+                ';
+                break; 
+        
+            case 'tab2':
+                
+                
+                if(isset($_SESSION['permissions']) && $_SESSION['permissions'] >= 3)
+                {
+                    echo '
+                        
+                        <h3 style="text-align: center;">'.$xml->dodajnowegouzytkownika.'</h3>
+                        
+                        <br />
+                        <label for="login_input">'. $xml->logintitle .'</label>
+                        <div class="input-group input-group-lg add_new_user_inputs" style="width: 75%; margin: 0 auto; float: none;">
+                            <input id="login_input" type="text" class="form-control" disabled />
+                        </div>
+
+                        <br />
+                        <label for="specialization_input">'. $xml->podajimie .'</label>
+                        <div class="input-group input-group-lg add_new_user_inputs" style="width: 75%; margin: 0 auto; float: none;">
+                            <input id="name_input" onblur="generate_login()" type="text" class="form-control" />
+                        </div>
+
+                        <br />
+                        <label for="specialization_input">'. $xml->podajnazwisko .'</label>
+                        <div class="input-group input-group-lg add_new_user_inputs" style="width: 75%; margin: 0 auto; float: none;">
+                            <input id="lastname_input" onblur="generate_login()" type="text" class="form-control" />
+                        </div>
+                        
+                        <br />
+                        <div class="input-group input-group-lg add_new_user_inputs" style="width: 75%; margin: 0 auto; float: none;">
+                            <button class="btn btn-info btn-xs" type="button" data-toggle="modal" data-target="#modal_permissions_info"><span class="glyphicon glyphicon-question-sign"></span></button><label for="permissions_input">&nbsp;&nbsp;'. $xml->wybierzpermisje .'</label>
+                            <select class="form-control" id="permissions_input">
+                                <option value="1">'. $xml->moderator .'</option>
+                                <option value="2">'. $xml->administrator .'</option>
+                                <option value="3">'. $xml->superadmin .'</option>
+                            </select>
+                        </div>
+                        
+                        <br />
+                        <div class="input-group input-group-lg add_new_user_inputs" style="width: 75%; margin: 0 auto; float: none;">
+                            <label for="specialization_input">'. $xml->wybierzspecializacje .'</label>
+                            <select class="form-control" id="specialization_input">
+                                <option value="brak"></option>
+                                <option value="architektura">'. $xml->option1 .'</option>
+                                <option value="bibliotekarstwo">'. $xml->option2 .'</option>
+                                <option value="blacharstwo">'. $xml->option3 .'</option>
+                                <option value="hydraulika">'. $xml->option4 .'</option>
+                                <option value="elektronika">'. $xml->option5 .'</option>
+                                <option value="elektryka">'. $xml->option6 .'</option>
+                                <option value="informatyka">'. $xml->option7 .'</option>
+                                <option value="lakiernictwo">'. $xml->option8 .'</option>
+                                <option value="mechanika">'. $xml->option9 .'</option>
+                                <option value="stolarstwo">'. $xml->option10 .'</option>
+                            </select>
+                        </div>
+
+                        <br />
+                        <div id="error_alert" class="alert alert-danger" role="alert" style="width: 65%; margin: 20px auto 0; display: none;"></div>
+
+                        <br/>
+                        <button id="add_user_btn" class="btn btn-primary btn-lg" type="button" style="width: 200px;">'. $xml->dodajuzytkownika .'</button>
+                        
+                        <div id="modal_permissions_info" class="modal fade" role="dialog">
+                            <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 class="modal-title">'. $xml->infoopermisjach .'</h4>
+                                </div>
+                            <div class="modal-body">
+                                <p>'. $xml->permisjetekst .'</p>
+                            </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-primary" data-dismiss="modal">'. $xml->zamknij .'</button>
+                                </div>
+                            </div>
+                            </div>
+                        </div> 
+                        
+                        <div style="border-bottom: 1px solid black; margin: 20px auto 15px; width: 100%; display: block;"></div>
+                    
+                    ';
+                    
+                    require 'connect.php';
+
+                    $polaczenie = @new mysqli($host, $db_user, $db_password, $db_name);
+                    @mysqli_set_charset($polaczenie,"utf8");
+
+                    if($polaczenie->connect_errno == 0)
+                    {  
+                        if($result = $polaczenie->query("SELECT * FROM users")) 
+                        {
+                            echo '
+                            
+                            <h3 style="text-align: center;">'.$xml->wszyscyuzytkownicy.'</h3>
+
+                            <table class="table-striped rtable" style="margin-top: 20px;">
+                            <thead>
+                                <tr>
+                                    <th>'.$xml->login.'</th>
+                                    <th>'.$xml->email.'</th>
+                                    <th>'.$xml->imie.'</th>
+                                    <th>'.$xml->nazwisko.'</th>
+                                    <th>'.$xml->specjalizacja.'</th>
+                                    <th>'.$xml->uprawnienia.'</th>
+                                    <th>'.$xml->edytujinformacje.'</th>
+                                    <th>'.$xml->usunuzytkownika.'</th>
+                                </tr>
+                            </thead><tbody>';
+                            
+                            while($row = mysqli_fetch_array($result))
+                            {   
+                                switch($row['permissions'])
+                                {
+                                    case '1':
+                                        $permissions = $xml->moderator;
+                                        break;
+                                    case '2':
+                                        $permissions = $xml->administrator;
+                                        break;
+                                    case '3':
+                                        $permissions = $xml->superadmin;
+                                        break;
+                                }
+                                
+                                echo '
+
+                                <tr>
+                                    <td>'.$row['login'].'</td>
+                                    <td>'.$row['email'].'</td>
+                                    <td>'.$row['name'].'</td>
+                                    <td>'.$row['lastname'].'</td>
+                                    <td>'.$row['specialization'].'</td>
+                                    <td>'.$permissions.'</td>
+                                    <td><button class="btn btn-info btn-sm edit_user_info_btn" style="word-break: normal;" title="Opcja tymczasowo niedostępna / This option is temporarily unavailable" disabled>'. $xml->edytuj .'</button></td>
+                                    <td><button class="btn btn-danger btn-sm remove_user_from_db_btn" style="word-break: normal;">'. $xml->usun .'</button></td>
+                                </tr>';
+                            }
+                            
+                            echo '</tbody></table>';
+                        }
+                        else 
+                        {
+                            echo $xml_errors->blad6;
+                        }
+
+                        $polaczenie->close();
+                    }
+                    else
+                    {
+                        echo $xml_errors->blad6;
+                    }
+
+                }
+                else
+                {
+                    echo $xml_errors->brakpermisji;
+                }
+                break;
+                
+            case 'tab3':
+                echo '
+                
+                    QR Codes generator
+                
+                ';
+                break;
+        }
+        return;
+    }
+
+    //dodawanie nowego użytkownika do bazy danych
+    if(isset($_POST['login']) && isset($_POST['password']) && isset($_POST['name']) && isset($_POST['lastname']) && isset($_POST['specialization']) && isset($_POST['permissions']))
+    {
+        $wszystko_OK = true;
+            
+        $login = $_POST['login'];
+        $name = $_POST['name'];
+        $lastname = $_POST['lastname'];
+        $password = $_POST['password'];
+        $specialization = $_POST['specialization'];
+        $permissions = $_POST['permissions'];
+        
+        require 'connect.php';
+
+        $polaczenie = @new mysqli($host, $db_user, $db_password, $db_name);
+        @mysqli_set_charset($polaczenie,"utf8");
+
+        if($polaczenie->connect_errno != 0)
+        {  
+            echo 'bladpolaczeniazbazadanych';
+        }
+        else
+        {
+            //Sprawdzenie czy imię składa się tylko z liter
+            if(preg_match('/^[a-ząćęłńóśźż]+$/ui', $name) == false)
+            {
+                $wszystko_OK = false;
+                echo "imietylkozliter";
+                return; 
+            }
+
+            //Sprawdzenie czy nazwisko składa się tylko z liter
+            if(preg_match('/^[a-ząćęłńóśźż]+$/ui', $lastname) == false)
+            {
+                $wszystko_OK = false;
+                echo "nazwiskotylkozliter";
+                return; 
+            }
+
+            //Sprawdzenie czy login składa się tylko z liter i cyfr
+            if(ctype_alnum($login) == false)
+            {
+                $wszystko_OK = false;
+                echo "logintylkozliterinumerow";
+                return; 
+            }
+            
+            //Sprawdzenie długości hasła
+            if(strlen($password) < 5 || strlen($password) > 30)
+            {
+                $wszystko_OK = false;
+                echo "zladlugoschasla";
+                return; 
+            }
+
+            $password_hash = password_hash($password, PASSWORD_DEFAULT);
+
+            //Sprawdzenie czy podany login jest już zajęty
+            $rezultat = $polaczenie -> query("SELECT id FROM users WHERE login='$login'");
+
+            $ile_loginow = $rezultat->num_rows;
+
+            if($ile_loginow > 0)
+            {
+                $wszystko_OK = false;
+                echo "zajetylogin";
+                $polaczenie->close();
+                return;
+            }
+
+            //Testy walidacyjne przeszły pomyślnie, wkładamy dane do bazy
+            if($wszystko_OK == true)
+            {      
+                if($polaczenie->query("INSERT INTO users VALUES(NULL,'$login','$password_hash','','$name','$lastname','$specialization','','$permissions',0)"))
+                {
+                    switch($permissions)
+                    {
+                        case '1':
+                            $permissions = $xml->moderator;
+                            break;
+                        case '2':
+                            $permissions = $xml->administrator;
+                            break;
+                        case '3':
+                            $permissions = $xml->superadmin;
+                            break;
+                    }
+                    
+                    echo '<h3 style="text-align: center;">'.$xml->uzytkownikdodany.'</h3>
+                    
+                    <br/>
+                    <div id="table_wrapper" style="width: 90%; margin: 0 auto; float: none;">
+                        <table class="table-striped rtable">
+                        <thead>
+                            <tr>
+                                <th>'.$xml->login.'</th>
+                                <th>'.$xml->haslo.'</th>
+                                <th>'.$xml->imie.'</th>
+                                <th>'.$xml->nazwisko.'</th>
+                                <th>'.$xml->specjalizacja.'</th>
+                                <th>'.$xml->uprawnienia.'</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>'.$login.'</td>
+                                <td>'.$password.'</td>
+                                <td>'.$name.'</td>
+                                <td>'.$lastname.'</td>
+                                <td>'.$specialization.'</td>
+                                <td>'.$permissions.'</td>
+                            </tr>
+                        </tbody>
+                        </table>
+                    </div>
+                    
+                    <br/><br/>
+                    <button id="confirm_new_user_data_btn" class="btn btn-primary btn-lg" type="button" style="width: 200px;">'. $xml->ok .'</button>
+                    ';
+                }
+                else
+                {
+                    echo "bladdodawania";
+                }
+
+                $polaczenie->close();
+                
+                return;
+            }
+        }
+    }
+
+    //usuwanie użytkownika z bazy danych
+    if(isset($_POST['remove_user']) && isset($_POST['remove_email']))
+    {
+        $user = $_POST['remove_user'];
+        $email = $_POST['remove_email'];
+        
+        require 'connect.php';
+
+        $polaczenie = @new mysqli($host, $db_user, $db_password, $db_name);
+        @mysqli_set_charset($polaczenie,"utf8");
+
+        if($polaczenie->connect_errno != 0)
+        {  
+            echo $polaczenie->connect_error;
+        }
+        else
+        {
+            if($polaczenie->query("DELETE FROM users WHERE login = '$user' AND email = '$email'"))
+            {
+                echo 'success';
+            }
+        }
+        
+        return;
+    }
+
 ?>
 
 <!DOCTYPE html>
@@ -155,9 +532,9 @@
                 <li role="presentation" id="tab3"><a class="not-active-link"><?php echo $xml->tab3; ?></a></li>
             </ul>
             
-            <h3 style="margin-bottom: 20px;"><?php echo $xml->zmienlogo; ?></h3>
-            
-            <div id="admin_panel_content" style="width: 45%; margin: 0 auto; float: none;">
+            <div id="admin_panel_content" style="width: 75%; margin: 0 auto; float: none;">
+                <h3 style="margin-bottom: 20px;"><?php echo $xml->zmienlogo; ?></h3>
+                
                 <label for="set_image_input"><?php echo $xml->adresurllogo; ?></label>
                 <div class="input-group input-group-lg" style="margin: 0 auto; float: none;">
                     <span class="input-group-btn">

@@ -83,7 +83,7 @@
         <![endif]-->
       
     </head>
-    <body data-version="0.65">
+    <body data-version="0.75">
         
         <nav class="navbar navbar-inverse navbar-static-top">
             <div class="container-fluid">
@@ -279,6 +279,8 @@
                         {
                             if($result->num_rows > 0) 
                             {
+                                $all_items_in_category = $result->num_rows; 
+                                
                                 switch($category)
                                 {
                                     case 'devices':

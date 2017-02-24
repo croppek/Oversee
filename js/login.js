@@ -215,6 +215,10 @@ $(document).ready(function(){
                     {
                         set_error('blad6');
                     }
+                    else if(data == 'zajetymail')
+                    {
+                        set_error('blad17');
+                    }
                     else
                     {
                         $('#error_alert').fadeOut(500);

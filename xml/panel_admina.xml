@@ -26,5 +26,47 @@
     
     <zamknij>Zamknij</zamknij>
     <podglad>Podgląd</podglad>
+    <usun>Usuń</usun>
+    <ok>OK</ok>
+    <edytuj>Edytuj</edytuj>
+    
+    <login>Login</login>
+    <email>Email</email>
+    <haslo>Hasło</haslo>
+    <imie>Imię</imie>
+    <nazwisko>Nazwisko</nazwisko>
+    <specjalizacja>Specjalizacja</specjalizacja>
+    <uprawnienia>Uprawnienia</uprawnienia>
+    <usunuzytkownika>Usuń użytkownika</usunuzytkownika>
+    <edytujinformacje>Edytuj dane</edytujinformacje>
+    
+    <moderator>Moderator</moderator>
+    <administrator>Administrator</administrator>
+    <superadmin>Super Administrator</superadmin>
+    
+    <uzytkownikdodany>Użytkownik dodany pomyślnie, zapisz te dane:</uzytkownikdodany>
+    <wszyscyuzytkownicy>Wszyscy użytkownicy:</wszyscyuzytkownicy>
+    
+    <dodajnowegouzytkownika>Dodaj nowego użytkownika:</dodajnowegouzytkownika>
+    <dodajuzytkownika>Dodaj użytkownika</dodajuzytkownika>
+    <podajimie>Podaj imię:</podajimie>
+    <podajnazwisko>Podaj nazwisko:</podajnazwisko>
+    <wybierzpermisje>Wybierz uprawnienia użytkownika:</wybierzpermisje>
+    <wybierzspecializacje>Wybierz specjalizację (opcjonalnie):</wybierzspecializacje>
+    <logintitle>Login (generowany automatycznie):</logintitle>
+    
+    <infoopermisjach>Rodzaje uprawnień</infoopermisjach>
+    <permisjetekst>Różne uprawnienia dają użytkownikom dostęp do wykonywania poszczególnych działań na stronie. &lt;br/>&lt;br/> &lt;ul>&lt;li>&lt;b>Moderator&lt;/b> - posiada dostęp do dodawania komentarzy, zmiany ostatniej lokalizacji oraz stanu uszkodzenia.&lt;/li>&lt;li>&lt;b>Administrator&lt;/b> - posiada wszystkie uprawnienia moderatora, dodatkowo ma dostęp do wyświetlania najnowszych kometnarzy (na stronie głównej), edytowania większej ilości informacji o przedmiotach oraz do usuwania komentarzy.&lt;/li>&lt;li>&lt;b>Super Administrator (właściciel)&lt;/b> - posiada wszystkie uprawnienia moderatora oraz administratora, dodatkowo ma dostęp do panelu administratora, dodawania i usuwania użytkowników, dodawania i usuwania przedmiotów, zmiany wyglądu strony.&lt;/li>&lt;/u></permisjetekst>
+    
+    <option1>Architektura</option1>
+    <option2>Bibliotekarstwo</option2>
+    <option3>Blacharstwo</option3>
+    <option4>Hydraulika</option4>
+    <option5>Elektronika</option5>
+    <option6>Elektryka</option6>
+    <option7>Informatyka</option7>
+    <option8>Lakiernictwo</option8>
+    <option9>Mechanika</option9>
+    <option10>Stolarstwo</option10>
     
 </paneladmina>

@@ -48,6 +48,7 @@
             
             echo '<h3 style="text-align: center;">'.$xml->historiakomentarzy.'</h3>
 
+            <div id="table_wrapper" style="width: 90%; margin: 0 auto; float: none;">
                 <table class="table-striped rtable">
                 <thead>
                     <tr>
@@ -56,7 +57,7 @@
                         <th>'.$xml->ktododal.'</th>
                         <th>'.$xml->kiedy.'</th>';
                         
-                        if($permissions >= 3)
+                        if($permissions >= 2)
                         {
                             echo '<th>Admin</th>';
                         }
@@ -84,7 +85,7 @@
                         echo '</tr>';
                     }  
 
-            echo '</tbody></table>';
+            echo '</tbody></table></div>';
         }
     }
     //wypisywanie informacji o urządzeniu z użyciem w/w funkcji
@@ -257,8 +258,9 @@
         //#################################################### TUTAJ ZMIENIAĆ KATEGORIE ########################################################
         echo '
         
-            <p style="text-align: center; font-size: 25px; margin-bottom: 15px;">'.$xml->naglowekkategorii.' <b>'.$xml->devices.'</b></p>
+        <p id="category_title" style="text-align: center; font-size: 25px; margin-bottom: 15px;">'.$xml->naglowekkategorii.' <b>'.$xml->devices.'</b> ('.$all_items_in_category.')</p>
         
+        <div id="table_wrapper" style="width: 90%; margin: 0 auto; float: none;">
             <table class="table-striped rtable">
             <thead>
                 <tr>
@@ -294,7 +296,7 @@
                     ';
                 }  
         
-        echo '</tbody></table>';
+        echo '</tbody></table></div>';
     }
     else if((isset($_POST['give_headlines'])) || (isset($_POST['id']) && isset($_POST['name']) && isset($_POST['type']) && isset($_POST['damaged'])) || (isset($_POST['remove_item'])) || (isset($_POST['remove_comment'])) || (isset($_POST['item_header']) && isset($_POST['current_content'])) || (isset($_POST['item_id']) && isset($_POST['item_header']) && isset($_POST['new_value'])) || (isset($_POST['item_id']) && isset($_POST['notification']) && isset($_POST['specialization']) && isset($_POST['new_comment']) && isset($_POST['fullurl'])))
     {
@@ -370,6 +372,7 @@
                                     <option value="sluchawki">' . $xml->sluchawki . '</option>
                                     <option value="mikrofon">' . $xml->mikrofon . '</option>
                                     <option value="kalkulator">' . $xml->kalkulator . '</option>
+                                    <option value="projektor">' . $xml->projektor . '</option>
                                     <option disabled="disabled">------------------------------------------------</option>
                                     <option value="telefon">' . $xml->telefon . '</option>
                                     <option value="smartphone">' . $xml->smartphone . '</option>
@@ -470,7 +473,6 @@
         else if(isset($_POST['id']) && isset($_POST['name']) && isset($_POST['type']) && isset($_POST['damaged']))
         {        
             //#################################################### TUTAJ ZMIENIAĆ KATEGORIE ########################################################
-            
             if(isset($_SESSION['permissions']) && $_SESSION['permissions'] >= 3)
             {
                 $id = $_POST['id'];
@@ -582,7 +584,7 @@
         //usunięcie komentarza z bazy danych
         else if(isset($_POST['remove_comment']))
         {
-            if(isset($_SESSION['permissions']) && $_SESSION['permissions'] >= 3)
+            if(isset($_SESSION['permissions']) && $_SESSION['permissions'] >= 2)
             {
                 $id = $_POST['remove_comment'];
 
