@@ -56,6 +56,8 @@
     <pokazhistorieuwag>Pokaż historię komentarzy</pokazhistorieuwag>
     <dodajdobazy>Dodaj informację o przedmiocie do bazy danych</dodajdobazy>
     <urzadzenie>Urządzenie</urzadzenie>
+    <przedmiot>Przedmiot</przedmiot>
+    <kategoria>Kategoria</kategoria>
     
     <ktododal>Dodany przez</ktododal>
     <kiedy>Data i czas</kiedy>
@@ -73,6 +75,11 @@
     <anuluj>Anuluj</anuluj>
     <powiadomspecialistow>Poinformuj specjalistów</powiadomspecialistow>
     <historiakomentarzy>Historia komentarzy:</historiakomentarzy>
+    <brakkomentarzy>Brak komentarzy</brakkomentarzy>
+    <najnowszekomentarze>Najnowsze komentarze:</najnowszekomentarze>
+    <nieteraz>Nie teraz</nieteraz>
+    <aktualizuj>Aktualizuj</aktualizuj>
+    <updatetekst>Dostępna jest nowa wersja Oversee Systems!</updatetekst>
     
     <wybierzkategorie>Wybierz do jakiej kategorii dodać przedmiot:</wybierzkategorie>
     <usunprzedmiot>Usuń przedmiot z bazy danych</usunprzedmiot>

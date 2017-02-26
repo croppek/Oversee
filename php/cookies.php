@@ -8,5 +8,13 @@
             echo 'success';   
         }
     }
+    else if(isset($_POST['update_checked']))
+    {
+        session_start();
+        
+        $_SESSION['update_checked'] = true;
+        
+        echo 'success';
+    }
 
 ?>

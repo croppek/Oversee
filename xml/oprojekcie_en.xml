@@ -12,14 +12,22 @@
     <rozumiem>I understand</rozumiem>
     <dowiedzsiewiecej>Learn more</dowiedzsiewiecej>
     
+    <nieteraz>Not now</nieteraz>
+    <aktualizuj>Update</aktualizuj>
+    <updatetekst>A new version of Oversee Systems is available!</updatetekst>
+    
     <!-- Logowanie -->
     <placeholder1>Login</placeholder1>
     <placeholder2>Password</placeholder2>
+    
+    <modal_tytul2>Log in to the Oversee Systems</modal_tytul2>
     
     <szukaj>Search</szukaj>
     <zamknij>Close</zamknij>
     <zaloguj>Sign in</zaloguj>
     <wyloguj>Log out</wyloguj>
     <wybierz>Choose</wybierz>
+    
+    <oprojekcietekst>Oversee project is a free tool that allows you to catalog and manage any objects, for example, in your school, business or home. &lt;br/>&lt;br/> Oversee Systems is based on QR codes, so  we can have easy and quick access to any information about any item in the database.</oprojekcietekst>
     
 </oprojekcie>

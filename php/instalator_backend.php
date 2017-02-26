@@ -597,7 +597,7 @@
         {
             if(!isset($_POST['old_logo_url']))
             {
-                require_once("connect.php");
+                require 'connect.php';
 
                 $polaczenie = @new mysqli($host, $db_user, $db_password, $db_name);
                 @mysqli_set_charset($polaczenie,"utf8");
@@ -621,6 +621,22 @@
 
                     $polaczenie->close();
                 }
+            }
+            
+            require 'connect.php';
+
+            $polaczenie = @new mysqli($host, $db_user, $db_password, $db_name);
+            @mysqli_set_charset($polaczenie,"utf8");
+
+            if($polaczenie->connect_errno != 0)
+            {  
+                echo 'bladpolaczeniazbazadanych';
+            }
+            else
+            {
+                $polaczenie->query("INSERT INTO page_info VALUES (NULL,'logo','$logo_url')");
+
+                $polaczenie->close();
             }
         }
         else
@@ -679,10 +695,29 @@
 
             $fh = fopen("home.php", 'w');
             if(fwrite($fh, $file) != false)
-            {   
-                $xml = simplexml_load_file($_COOKIE['oversee_xml_url']) or die("Error: Cannot create object");
+            {
+                if(!isset($_POST['old_name']))
+                {      
+                    $xml = simplexml_load_file($_COOKIE['oversee_xml_url']) or die("Error: Cannot create object");
 
-                add_content7($xml);
+                    add_content7($xml);
+                }
+                
+                require 'connect.php';
+
+                $polaczenie = @new mysqli($host, $db_user, $db_password, $db_name);
+                @mysqli_set_charset($polaczenie,"utf8");
+
+                if($polaczenie->connect_errno != 0)
+                {  
+                    echo 'bladpolaczeniazbazadanych';
+                }
+                else
+                {
+                    $polaczenie->query("INSERT INTO page_info VALUES (NULL,'name','$page_title')");
+
+                    $polaczenie->close();
+                }
             }
             else
             {
@@ -1151,17 +1186,21 @@
                 {
                     //tworzenie podstawowych tabel w bazie danych
                     $polaczenie->query("CREATE TABLE $new_db_name.item_category ( id INT NOT NULL , name TEXT NOT NULL , location TEXT NOT NULL , category TEXT NOT NULL , PRIMARY KEY (id)) ENGINE = InnoDB");
-
+                    
+                    //tabele związane z instalacją i zarządzaniem stroną
                     $polaczenie->query("CREATE TABLE $new_db_name.installation ( id INT NOT NULL AUTO_INCREMENT , what TEXT NOT NULL, saved INT NOT NULL DEFAULT '0' , PRIMARY KEY (id)) ENGINE = InnoDB");
                     $polaczenie->query("INSERT INTO $new_db_name.installation (id, what, saved) VALUES (NULL, 'lastid', '1')");
-
+                    
+                    $polaczenie->query("CREATE TABLE $new_db_name.page_info ( id INT NOT NULL AUTO_INCREMENT , type TEXT NOT NULL, info TEXT NOT NULL, PRIMARY KEY (id)) ENGINE = InnoDB");
+                    
+                    //#### główna tabela z listą wszystkich kategorii
                     $polaczenie->query("CREATE TABLE $new_db_name.categories ( id INT NOT NULL AUTO_INCREMENT , name TEXT NOT NULL , PRIMARY KEY (id)) ENGINE = InnoDB");
 
                     //#### tworzenie tabel z kategoriami
                     $polaczenie->query("CREATE TABLE $new_db_name.devices ( id INT NOT NULL , name TEXT NOT NULL , placement TEXT NOT NULL , last_location TEXT NOT NULL , type TEXT NOT NULL , damaged BOOLEAN NOT NULL , PRIMARY KEY (id)) ENGINE = InnoDB");
 
                     //#### tworzenie tabeli z historią komentarzy dla kategorii "urządzenia"
-                    $polaczenie->query("CREATE TABLE $new_db_name.devices_comments_history ( id INT NOT NULL AUTO_INCREMENT , comment TEXT NOT NULL , who_added TEXT NOT NULL , when_added TIMESTAMP NOT NULL , device_id INT NOT NULL , PRIMARY KEY (id)) ENGINE = InnoDB");
+                    $polaczenie->query("CREATE TABLE $new_db_name.devices_comments_history ( id INT NOT NULL AUTO_INCREMENT , comment TEXT NOT NULL , who_added TEXT NOT NULL , when_added TIMESTAMP NOT NULL , item_id INT NOT NULL , PRIMARY KEY (id)) ENGINE = InnoDB");
 
                     //#### dodawanie wszystkich kategorii do zbiorczej tabeli
                     $polaczenie->query("INSERT INTO $new_db_name.categories (id, name) VALUES (NULL, 'devices')");

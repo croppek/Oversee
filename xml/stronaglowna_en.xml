@@ -56,6 +56,8 @@
     <pokazhistorieuwag>Show comments history</pokazhistorieuwag>
     <dodajdobazy>Add information about an item to the database</dodajdobazy>
     <urzadzenie>Device</urzadzenie>
+    <przedmiot>Item</przedmiot>
+    <kategoria>Category</kategoria>
     
     <ktododal>Added by</ktododal>
     <kiedy>Date and time</kiedy>
@@ -73,6 +75,11 @@
     <anuluj>Cancel</anuluj>
     <powiadomspecialistow>Inform specialists</powiadomspecialistow>
     <historiakomentarzy>Comments history:</historiakomentarzy>
+    <brakkomentarzy>No comments</brakkomentarzy>
+    <najnowszekomentarze>Recent comments:</najnowszekomentarze>
+    <nieteraz>Not now</nieteraz>
+    <aktualizuj>Update</aktualizuj>
+    <updatetekst>A new version of Oversee Systems is available!</updatetekst>
     
     <wybierzkategorie>Choose which category to add an item:</wybierzkategorie>
     <usunprzedmiot>Remove an item from the database</usunprzedmiot>

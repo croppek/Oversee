@@ -12,14 +12,22 @@
     <rozumiem>Rozumiem</rozumiem>
     <dowiedzsiewiecej>Dowiedz się więcej</dowiedzsiewiecej>
     
+    <nieteraz>Nie teraz</nieteraz>
+    <aktualizuj>Aktualizuj</aktualizuj>
+    <updatetekst>Dostępna jest nowa wersja Oversee Systems!</updatetekst>
+    
     <!-- Logowanie -->
     <placeholder1>Login</placeholder1>
     <placeholder2>Hasło</placeholder2>
+    
+    <modal_tytul2>Zaloguj się do Oversee Systems</modal_tytul2>
     
     <szukaj>Szukaj</szukaj>
     <zamknij>Zamknij</zamknij>
     <zaloguj>Zaloguj się</zaloguj>
     <wyloguj>Wyloguj się</wyloguj>
     <wybierz>Wybierz</wybierz>
+    
+    <oprojekcietekst>Projekt Oversee jest darmowym systemem pozwalającym na katalogowanie i zarządzanie dowolnymi przedmiotami na przykład w szkole, firmie lub domu. &lt;br/>&lt;br/> Działanie Oversee Systems opiera się o kody QR, dzięki którym możemy mieć łatwy i szybki dostęp do dowolnych informacji na temat każdego przedmiotu znajdującego się w bazie danych.</oprojekcietekst>
     
 </oprojekcie>

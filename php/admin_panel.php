@@ -273,12 +273,57 @@
                                     <td>'.$row['lastname'].'</td>
                                     <td>'.$row['specialization'].'</td>
                                     <td>'.$permissions.'</td>
-                                    <td><button class="btn btn-info btn-sm edit_user_info_btn" style="word-break: normal;" title="Opcja tymczasowo niedostępna / This option is temporarily unavailable" disabled>'. $xml->edytuj .'</button></td>
+                                    <td><button class="btn btn-info btn-sm edit_user_info_btn" style="word-break: normal;" data-toggle="modal" data-target="#modal_edit_user_info">'. $xml->edytuj .'</button></td>
                                     <td><button class="btn btn-danger btn-sm remove_user_from_db_btn" style="word-break: normal;">'. $xml->usun .'</button></td>
                                 </tr>';
                             }
                             
-                            echo '</tbody></table>';
+                            echo '</tbody></table>
+                            
+                            <div id="modal_edit_user_info" class="modal fade" role="dialog">
+                                <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <h4 class="modal-title">'. $xml->edytujinformacjetitle .' <span id="edit_username_span" style="font-weight: bold;"></span><span id="edit_email_span" style="display: none;"></span>:</h4>
+                                    </div>
+                                <div class="modal-body">
+                                    <div class="input-group input-group-lg add_new_user_inputs" style="width: 75%; margin: 0 auto; float: none;">
+                                        <label for="edit_permissions_input">&nbsp;&nbsp;'. $xml->wybierzpermisje .'</label>
+                                        <select class="form-control" id="edit_permissions_input">
+                                            <option value="1">'. $xml->moderator .'</option>
+                                            <option value="2">'. $xml->administrator .'</option>
+                                            <option value="3">'. $xml->superadmin .'</option>
+                                        </select>
+                                    </div>
+
+                                    <br />
+                                    <div class="input-group input-group-lg add_new_user_inputs" style="width: 75%; margin: 0 auto; float: none;">
+                                        <label for="edit_specialization_input">'. $xml->wybierzspecializacje2 .'</label>
+                                        <select class="form-control" id="edit_specialization_input">
+                                            <option value="brak"></option>
+                                            <option value="architektura">'. $xml->option1 .'</option>
+                                            <option value="bibliotekarstwo">'. $xml->option2 .'</option>
+                                            <option value="blacharstwo">'. $xml->option3 .'</option>
+                                            <option value="hydraulika">'. $xml->option4 .'</option>
+                                            <option value="elektronika">'. $xml->option5 .'</option>
+                                            <option value="elektryka">'. $xml->option6 .'</option>
+                                            <option value="informatyka">'. $xml->option7 .'</option>
+                                            <option value="lakiernictwo">'. $xml->option8 .'</option>
+                                            <option value="mechanika">'. $xml->option9 .'</option>
+                                            <option value="stolarstwo">'. $xml->option10 .'</option>
+                                        </select>
+                                        
+                                    </div>
+                                    <br/><br/>
+                                    <button id="edit_user_data_btn" type="button" class="btn btn-primary" data-dismiss="modal">'. $xml->edytujinformacje .'</button>
+                                </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-primary" data-dismiss="modal">'. $xml->zamknij .'</button>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>';
                         }
                         else 
                         {
@@ -714,6 +759,45 @@
             </div>
         </div>
         
+        <!-- Sprawdzenie czy dostępna jest aktualizacja systemu -->
+        <?php 
+            if($permissions >= 3)
+            {
+                if(!isset($_SESSION['update_checked']))
+                {
+                    $ch = curl_init();
+
+                    curl_setopt($ch, CURLOPT_URL,"http://kroptech.net/oversee/php/check_update.php");
+                    curl_setopt($ch, CURLOPT_POST, 1);
+                    curl_setopt($ch, CURLOPT_POSTFIELDS, 
+                                http_build_query(array('version' => '1.0')));
+
+                    // receive server response ...
+                    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                    $server_output = curl_exec ($ch);
+
+                    curl_close ($ch);
+                    
+                    if($server_output == 'update')
+                    {
+                        echo '
+                        <div id="system_update">
+                                
+                                <p style="font-weight: bold; padding: 10px 10px 0 10px; text-align: center;">'.$xml->updatetekst.'</p>
+                                
+                                <div id="update_btns_wrap" class="btn-group-sm">
+
+                                    <a href="#" target="_blank" class="btn btn-info" role="button" style="margin-right: 40px;">'. $xml->aktualizuj .'</a>
+                                    <button id="nieteraz_update_btn" class="btn btn-info">'. $xml->nieteraz .'</button>
+
+                                </div>
+
+                        </div>';   
+                    }
+                }
+            }
+        ?>
+            
         <!-- Alert o używaniu ciasteczek w serwisie -->
         <?php 
             if(!isset($_COOKIE['oversee_cookies']))

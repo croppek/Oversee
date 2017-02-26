@@ -712,9 +712,42 @@ $(document).ready(function(){
     
     $('#admin_panel_content').on('click', '.edit_user_info_btn', function(){
         
-        //dopisać w kolejnych UPDATE'ach.
+        var login = $(this).parent().prev().prev().prev().prev().prev().prev().text();
+        var email = $(this).parent().prev().prev().prev().prev().prev().text();
         
-        // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! zrobić na modalu
+        $('#edit_username_span').empty().text(login);
+        $('#edit_email_span').empty().text(email);
+        
+    });
+    
+    $('#admin_panel_content').on('click', '#edit_user_data_btn', function(){
+        
+        var login = $('#edit_username_span').text();
+        var email = $('#edit_email_span').text();
+        
+        var new_permission = $('#edit_permissions_input').val();
+        var new_specialization = $('#edit_specialization_input').val();
+        
+        $.post("php/admin_panel.php", {edit_login: login, edit_email: email, new_permission: new_permission, new_specialization: new_specialization}, function(data){
+
+            if(data == 'success')
+            {
+                $.post("php/admin_panel.php", {get_content: 'tab2'}, function(data){
+
+                    $('#admin_panel_content').fadeOut(250, function(){
+
+                        $(this).empty().append(data).fadeIn(250);
+
+                    });
+
+                });
+            }
+            else
+            {
+                //hadnle errors
+            }
+
+        });
         
     });
     

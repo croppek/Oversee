@@ -209,6 +209,45 @@
             <button id="confirm_new_password_button" class="btn btn-primary btn-lg" type="button" style="width: 200px; margin-top: 20px; display: none;"><?php echo $xml->potwierdz; ?></button>
         </div>
         
+        <!-- Sprawdzenie czy dostępna jest aktualizacja systemu -->
+        <?php 
+            if($permissions >= 3)
+            {
+                if(!isset($_SESSION['update_checked']))
+                {
+                    $ch = curl_init();
+
+                    curl_setopt($ch, CURLOPT_URL,"http://kroptech.net/oversee/php/check_update.php");
+                    curl_setopt($ch, CURLOPT_POST, 1);
+                    curl_setopt($ch, CURLOPT_POSTFIELDS, 
+                                http_build_query(array('version' => '1.0')));
+
+                    // receive server response ...
+                    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                    $server_output = curl_exec ($ch);
+
+                    curl_close ($ch);
+                    
+                    if($server_output == 'update')
+                    {
+                        echo '
+                        <div id="system_update">
+                                
+                                <p style="font-weight: bold; padding: 10px 10px 0 10px; text-align: center;">'.$xml->updatetekst.'</p>
+                                
+                                <div id="update_btns_wrap" class="btn-group-sm">
+
+                                    <a href="#" target="_blank" class="btn btn-info" role="button" style="margin-right: 40px;">'. $xml->aktualizuj .'</a>
+                                    <button id="nieteraz_update_btn" class="btn btn-info">'. $xml->nieteraz .'</button>
+
+                                </div>
+
+                        </div>';   
+                    }
+                }
+            }
+        ?>
+            
         <!-- Alert o używaniu ciasteczek w serwisie -->
         <?php 
             if(!isset($_COOKIE['oversee_cookies']))

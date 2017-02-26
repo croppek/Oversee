@@ -12,6 +12,10 @@
     <rozumiem>Rozumiem</rozumiem>
     <dowiedzsiewiecej>Dowiedz się więcej</dowiedzsiewiecej>
     
+    <nieteraz>Nie teraz</nieteraz>
+    <aktualizuj>Aktualizuj</aktualizuj>
+    <updatetekst>Dostępna jest nowa wersja Oversee Systems!</updatetekst>
+    
     <wyloguj>Wyloguj się</wyloguj>
     
     <tab1>Strona</tab1>
@@ -58,7 +62,10 @@
     <podajnazwisko>Podaj nazwisko:</podajnazwisko>
     <wybierzpermisje>Wybierz uprawnienia użytkownika:</wybierzpermisje>
     <wybierzspecializacje>Wybierz specjalizację (opcjonalnie):</wybierzspecializacje>
+    <wybierzspecializacje2>Wybierz specjalizację:</wybierzspecializacje2>
     <logintitle>Login (generowany automatycznie):</logintitle>
+    
+    <edytujinformacjetitle>Edytujesz dane użytkownika</edytujinformacjetitle>
     
     <infoopermisjach>Rodzaje uprawnień</infoopermisjach>
     <permisjetekst>Różne uprawnienia dają użytkownikom dostęp do wykonywania poszczególnych działań na stronie. &lt;br/>&lt;br/> &lt;ul>&lt;li>&lt;b>Moderator&lt;/b> - posiada dostęp do dodawania komentarzy, zmiany ostatniej lokalizacji oraz stanu uszkodzenia.&lt;/li>&lt;li>&lt;b>Administrator&lt;/b> - posiada wszystkie uprawnienia moderatora, dodatkowo ma dostęp do wyświetlania najnowszych kometnarzy (na stronie głównej), edytowania większej ilości informacji o przedmiotach oraz do usuwania komentarzy.&lt;/li>&lt;li>&lt;b>Super Administrator (właściciel)&lt;/b> - posiada wszystkie uprawnienia moderatora oraz administratora, dodatkowo ma dostęp do panelu administratora, dodawania i usuwania użytkowników, dodawania i usuwania przedmiotów, zmiany wyglądu strony.&lt;/li>&lt;/u></permisjetekst>

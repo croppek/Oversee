@@ -321,6 +321,87 @@
             }
             else
             {
+                //wyświetlanie najnowszych komentarzy dla administratora i super administratora
+                if($permissions >= 2)
+                {
+                    echo  '
+                    <div class="col-md-12">
+                        <div class="jumbotron" style="max-height: 350px; overflow: auto; padding-top: 0;">';
+
+                        //#################################################### TUTAJ ZMIENIAĆ KATEGORIE ########################################################
+                        $polaczenie = @new mysqli($host, $db_user, $db_password, $db_name);
+                        @mysqli_set_charset($polaczenie,"utf8");
+
+                        if($polaczenie->connect_errno == 0)
+                        {  
+                            //if($result = $polaczenie->query("SELECT * FROM devices_comments_history UNION SELECT * FROM innakategoria UNION SELECT * FROM innakategoria ORDER BY when_added DESC LIMIT 25")) 
+                            if($result = $polaczenie->query("SELECT * FROM devices_comments_history ORDER BY when_added DESC LIMIT 25")) 
+                            {
+                                if($result->num_rows < 1)
+                                {
+                                    echo '<h2>'.$xml->brakkomentarzy.'</h2>';
+                                    return;
+                                }
+
+                                echo '<h3 style="text-align: center;">'.$xml->najnowszekomentarze.'</h3>
+
+                                <div id="table_wrapper" style="width: 100%; margin: 0 auto; float: none;">
+                                    <table class="table-striped rtable">
+                                    <thead>
+                                        <tr>
+                                            <th>'.$xml->przedmiot.'</th>
+                                            <th>'.$xml->kategoria.'</th>
+                                            <th>'.$xml->komentarz.'</th>
+                                            <th>'.$xml->ktododal.'</th>
+                                            <th>'.$xml->kiedy.'</th>
+
+                                        </tr></thead><tbody>';
+
+                                        while($row = mysqli_fetch_array($result))
+                                        {
+                                            $item_id = $row['item_id'];
+                                            $category = '';
+                                            $nazwa = '';
+
+                                            if($result2 = $polaczenie->query("SELECT category FROM item_category WHERE id='$item_id'")) 
+                                            {
+                                                $row2 = mysqli_fetch_assoc($result2);
+
+                                                $category = $row2['category'];
+                                            }
+
+                                            if($result3 = $polaczenie->query("SELECT name FROM $category WHERE id='$item_id'")) 
+                                            {
+                                                $row3 = mysqli_fetch_assoc($result3);
+
+                                                $nazwa = $row3['name'];
+                                            }
+
+                                            echo '
+
+                                                <tr>
+                                                    <td style="min-width: 100px; text-align: center; white-space: normal;"><a href="./?id='.$item_id.'">'.$nazwa.'</a></td>
+                                                    <td style="min-width: 100px; text-align: center; white-space: normal;"><a href="./?category='.$category.'">'.$xml->$category.'</a></td>
+                                                    <td style="max-width: 820px; min-width: 400px; word-break: break-all; white-space: normal;">'.$row['comment'].'</td>
+                                                    <td>'.$row['who_added'].'</td>
+                                                    <td style="word-spacing: 15px;"><b>'.$row['when_added'].'</b></td>
+                                                </tr>';
+                                        }  
+
+                                echo '</tbody></table></div>';
+                            }
+                            else 
+                            {
+                                echo mysqli_error($polaczenie);
+                            }
+                        }
+                    
+                    echo '</div>
+                    </div>
+                    ';
+                }    
+                
+                //wyszukiwanie według numeru ID oraz kategorii
                 echo  '
                 
                 <div class="col-md-6">
@@ -340,7 +421,7 @@
 
                     </div>
                 </div>
-
+                
                 <div class="col-md-6">  
                     <div class="jumbotron">  
 
@@ -520,6 +601,45 @@
             </div>
             </div>
         </div>
+        
+        <!-- Sprawdzenie czy dostępna jest aktualizacja systemu -->
+        <?php 
+            if($permissions >= 3)
+            {
+                if(!isset($_SESSION['update_checked']))
+                {
+                    $ch = curl_init();
+
+                    curl_setopt($ch, CURLOPT_URL,"http://kroptech.net/oversee/php/check_update.php");
+                    curl_setopt($ch, CURLOPT_POST, 1);
+                    curl_setopt($ch, CURLOPT_POSTFIELDS, 
+                                http_build_query(array('version' => '1.0')));
+
+                    // receive server response ...
+                    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                    $server_output = curl_exec ($ch);
+
+                    curl_close ($ch);
+                    
+                    if($server_output == 'update')
+                    {
+                        echo '
+                        <div id="system_update">
+                                
+                                <p style="font-weight: bold; padding: 10px 10px 0 10px; text-align: center;">'.$xml->updatetekst.'</p>
+                                
+                                <div id="update_btns_wrap" class="btn-group-sm">
+
+                                    <a href="#" target="_blank" class="btn btn-info" role="button" style="margin-right: 40px;">'. $xml->aktualizuj .'</a>
+                                    <button id="nieteraz_update_btn" class="btn btn-info">'. $xml->nieteraz .'</button>
+
+                                </div>
+
+                        </div>';   
+                    }
+                }
+            }
+        ?>
         
         <!-- Alert o używaniu ciasteczek w serwisie -->
         <?php 

@@ -39,7 +39,7 @@
         }
         
         //#################################################### TUTAJ ZMIENIAĆ KATEGORIE ########################################################
-        if($result = $polaczenie->query("SELECT * FROM devices_comments_history WHERE device_id='$id' ORDER BY when_added DESC")) 
+        if($result = $polaczenie->query("SELECT * FROM devices_comments_history WHERE item_id='$id' ORDER BY when_added DESC")) 
         {
             if($result->num_rows < 1)
             {
@@ -98,7 +98,7 @@
         $type = $row['type'];
         $damaged = $row['damaged'];
         
-        if($result = $polaczenie->query("SELECT comment FROM devices_comments_history WHERE device_id='$id' ORDER BY when_added DESC LIMIT 1")) 
+        if($result = $polaczenie->query("SELECT comment FROM devices_comments_history WHERE item_id='$id' ORDER BY when_added DESC LIMIT 1")) 
         {
             $row = mysqli_fetch_assoc($result);
                                 
@@ -173,7 +173,7 @@
         }
         
         //#################################################### TUTAJ ZMIENIAĆ KATEGORIE ########################################################
-        if($result = $polaczenie->query("SELECT * FROM devices_comments_history WHERE device_id='$id'")) 
+        if($result = $polaczenie->query("SELECT * FROM devices_comments_history WHERE item_id='$id'")) 
         {
             $ile_komentarzy = $result->num_rows;
         }

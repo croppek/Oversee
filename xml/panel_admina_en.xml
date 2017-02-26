@@ -12,6 +12,10 @@
     <rozumiem>I understand</rozumiem>
     <dowiedzsiewiecej>Learn more</dowiedzsiewiecej>
     
+    <nieteraz>Not now</nieteraz>
+    <aktualizuj>Update</aktualizuj>
+    <updatetekst>A new version of Oversee Systems is available!</updatetekst>
+    
     <wyloguj>Log out</wyloguj>
     
     <tab1>Website</tab1>
@@ -58,7 +62,10 @@
     <podajnazwisko>Enter the lastname:</podajnazwisko>
     <wybierzpermisje>Select user permissions:</wybierzpermisje>
     <wybierzspecializacje>Select user specialization (optional):</wybierzspecializacje>
+    <wybierzspecializacje2>Select user specialization:</wybierzspecializacje2>
     <logintitle>Login (automatically generated):</logintitle>
+    
+    <edytujinformacjetitle>You are editing data for</edytujinformacjetitle>
     
     <infoopermisjach>Types of permissions</infoopermisjach>
     <permisjetekst>Different permissions give users access to perform specific actions on the site. &lt;br/>&lt;br/> &lt;ul>&lt;li>&lt;b>Moderator&lt;/b> - have access to add comments, change the last location and the state of damage.&lt;/li>&lt;li>&lt;b>Administrator&lt;/b> - has all the powers of a moderator, additionally got access to view the latest comments (on the main page), edit more information about the objects and can delete comments.&lt;/li>&lt;li>&lt;b>Super Administrator (owner)&lt;/b> - It has all the powers of a moderator and administrator also has access to the admin panel, add and delete users, add and delete items, change the look of the page.&lt;/li>&lt;/u></permisjetekst>

@@ -157,7 +157,9 @@
             </div>
         </nav>
         
-        <p>Test o projekcie</p>
+        <div class="jumbotron" style="width: 80%; text-aling: justify; margin: 0 auto;">
+            <p><?php echo $xml->oprojekcietekst; ?></p>
+        </div>
             
         <div id="loginModal" class="modal fade" role="dialog">
             <div class="modal-dialog">
@@ -172,11 +174,11 @@
                 
                 <div id="login_content">
                     
-                    <div class="input-group input-group-lg" style="width: 85%; margin: 0 auto; float: none;">
+                    <div id="login_input_group" class="input-group input-group-lg" style="width: 45%; margin: 0 auto; float: none;">
                         <input id="login_input" type="text" class="form-control" name="login_input" style="text-align: center; border-radius: 5px;" placeholder="<?php echo $xml->placeholder1 ?>" onfocus="this.placeholder = '' " onblur="this.placeholder='<?php echo $xml->placeholder1 ?>'"/>
                     </div>
                     <br/>
-                    <div class="input-group input-group-lg" style="width: 85%; margin: 0 auto; float: none;">
+                    <div id="login_input_group" class="input-group input-group-lg" style="width: 45%; margin: 0 auto; float: none;">
                         <input id="password_input" type="password" class="form-control" name="password_input" style="text-align: center; border-radius: 5px;" placeholder="<?php echo $xml->placeholder2 ?>" onfocus="this.placeholder = '' " onblur="this.placeholder='<?php echo $xml->placeholder2 ?>'"/>
                     </div>
                     <br/>
@@ -197,6 +199,45 @@
             </div>
         </div>
         
+        <!-- Sprawdzenie czy dostępna jest aktualizacja systemu -->
+        <?php 
+            if($permissions >= 3)
+            {
+                if(!isset($_SESSION['update_checked']))
+                {
+                    $ch = curl_init();
+
+                    curl_setopt($ch, CURLOPT_URL,"http://kroptech.net/oversee/php/check_update.php");
+                    curl_setopt($ch, CURLOPT_POST, 1);
+                    curl_setopt($ch, CURLOPT_POSTFIELDS, 
+                                http_build_query(array('version' => '1.0')));
+
+                    // receive server response ...
+                    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                    $server_output = curl_exec ($ch);
+
+                    curl_close ($ch);
+                    
+                    if($server_output == 'update')
+                    {
+                        echo '
+                        <div id="system_update">
+                                
+                                <p style="font-weight: bold; padding: 10px 10px 0 10px; text-align: center;">'.$xml->updatetekst.'</p>
+                                
+                                <div id="update_btns_wrap" class="btn-group-sm">
+
+                                    <a href="#" target="_blank" class="btn btn-info" role="button" style="margin-right: 40px;">'. $xml->aktualizuj .'</a>
+                                    <button id="nieteraz_update_btn" class="btn btn-info">'. $xml->nieteraz .'</button>
+
+                                </div>
+
+                        </div>';   
+                    }
+                }
+            }
+        ?>
+            
         <!-- Alert o używaniu ciasteczek w serwisie -->
         <?php 
             if(!isset($_COOKIE['oversee_cookies']))
