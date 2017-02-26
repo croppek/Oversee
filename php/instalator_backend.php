@@ -595,29 +595,32 @@
         $fh = fopen("home.php", 'w');
         if(fwrite($fh, $file) != false)
         {
-            require_once("connect.php");
-
-            $polaczenie = @new mysqli($host, $db_user, $db_password, $db_name);
-            @mysqli_set_charset($polaczenie,"utf8");
-
-            if($polaczenie->connect_errno != 0)
-            {  
-                echo 'bladpolaczeniazbazadanych';
-            }
-            else
+            if(!isset($_POST['old_logo_url']))
             {
-                if($polaczenie->query("INSERT INTO installation VALUES (NULL,'image','1')"))
-                {
-                    $xml = simplexml_load_file($_COOKIE['oversee_xml_url']) or die("Error: Cannot create object");
-            
-                    add_content6($xml);
+                require_once("connect.php");
+
+                $polaczenie = @new mysqli($host, $db_user, $db_password, $db_name);
+                @mysqli_set_charset($polaczenie,"utf8");
+
+                if($polaczenie->connect_errno != 0)
+                {  
+                    echo 'bladpolaczeniazbazadanych';
                 }
                 else
                 {
-                    echo 'bladpolaczeniazbazadanych'; 
-                }
+                    if($polaczenie->query("INSERT INTO installation VALUES (NULL,'image','1')"))
+                    {
+                        $xml = simplexml_load_file($_COOKIE['oversee_xml_url']) or die("Error: Cannot create object");
 
-                $polaczenie->close();
+                        add_content6($xml);
+                    }
+                    else
+                    {
+                        echo 'bladpolaczeniazbazadanych'; 
+                    }
+
+                    $polaczenie->close();
+                }
             }
         }
         else
@@ -640,7 +643,15 @@
         }
         else
         {
-            $searchF = array('--page_title--');
+            if(isset($_POST['old_name']))
+            {
+                $searchF = array($_POST['old_name']);
+            }
+            else
+            {
+                $searchF = array('--page_title--');    
+            }
+            
             $replaceW = array($page_title);
 
             //nadpisywanie w podstronach
@@ -1141,7 +1152,8 @@
                     //tworzenie podstawowych tabel w bazie danych
                     $polaczenie->query("CREATE TABLE $new_db_name.item_category ( id INT NOT NULL , name TEXT NOT NULL , location TEXT NOT NULL , category TEXT NOT NULL , PRIMARY KEY (id)) ENGINE = InnoDB");
 
-                    $polaczenie->query("CREATE TABLE $new_db_name.installation ( id INT NOT NULL AUTO_INCREMENT , what TEXT NOT NULL, saved TINYINT NOT NULL DEFAULT '0' , PRIMARY KEY (id)) ENGINE = InnoDB");
+                    $polaczenie->query("CREATE TABLE $new_db_name.installation ( id INT NOT NULL AUTO_INCREMENT , what TEXT NOT NULL, saved INT NOT NULL DEFAULT '0' , PRIMARY KEY (id)) ENGINE = InnoDB");
+                    $polaczenie->query("INSERT INTO $new_db_name.installation (id, what, saved) VALUES (NULL, 'lastid', '1')");
 
                     $polaczenie->query("CREATE TABLE $new_db_name.categories ( id INT NOT NULL AUTO_INCREMENT , name TEXT NOT NULL , PRIMARY KEY (id)) ENGINE = InnoDB");
 

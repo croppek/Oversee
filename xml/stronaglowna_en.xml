@@ -13,7 +13,7 @@
     <content2>Search by category:</content2>
     
     <modal_tytul1>ID number</modal_tytul1>
-    <modal_tekst1>ID number is stored in the QR code.</modal_tekst1>
+    <modal_tekst1>ID number is stored in the QR code. &lt;br>&lt;br>You can scan QR code with any device with a camera supporting the application type "QR Scanner" (e.g Smartphone). Free scanners are available in the app stores (Google Play, Apple Store, Microsoft Store).</modal_tekst1>
     
     <modal_tytul2>Log in to the Oversee Systems</modal_tytul2>
     <modal_tekst2></modal_tekst2>

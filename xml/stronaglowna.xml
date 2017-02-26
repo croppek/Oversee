@@ -13,7 +13,7 @@
     <content2>Wyszukaj według kategorii:</content2>
     
     <modal_tytul1>Numer ID</modal_tytul1>
-    <modal_tekst1>Numer ID zapisany jest w kodzie QR.</modal_tekst1>
+    <modal_tekst1>Numer ID zapisany jest w kodzie QR.&lt;br>&lt;br>Kod QR można zeskanować dowolnym urządzeniem z aparatem wspierającym aplikację typu "QR Skaner" (np Smartphone). Darmowe skanery dostępne są w sklepach z aplikacjami (Google Play, Apple Store, Microsoft Store).</modal_tekst1>
     
     <modal_tytul2>Zaloguj się do Oversee Systems</modal_tytul2>
     <modal_tekst2></modal_tekst2>

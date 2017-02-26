@@ -3,6 +3,8 @@
     session_start();
     
     //ustawianie języka strony na podstawie zapisanych ciasteczek
+    $lang = 'pl';
+
     if(isset($_COOKIE['oversee_language']))
     {
         $lang = $_COOKIE['oversee_language'];
@@ -79,7 +81,7 @@
                         <div class="modal-content">
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                <h4 class="modal-title"></h4>
+                                <h4 class="modal-title">'. $xml->zmienlogo .'</h4>
                             </div>
                         <div class="modal-body">
                             <p>'. $xml->modaltekstzmianalogo .'</p>
@@ -103,6 +105,38 @@
                     <br/><br/>
 
                     <button id="change_logo_btn" class="btn btn-primary btn-lg" type="button" style="width: 200px;" disabled>'. $xml->zmienlogobtn .'</button>
+                    
+                    <div style="border-bottom: 1px solid black; margin: 20px auto 15px; width: 100%; display: block;"></div>
+                    
+                    <h3 style="margin-bottom: 20px;">'. $xml->zmiennazwe .'</h3>
+                    
+                    <div class="input-group input-group-lg" style="margin: 0 auto; float: none;">
+                        <span class="input-group-btn">
+                            <button class="btn btn-info" type="button" data-toggle="modal" data-target="#infoModal_zmiananazwy"><span class="glyphicon glyphicon-question-sign"></span></button>
+                        </span>
+                        <input id="set_page_name_input" type="text" class="form-control">
+                    </div>
+
+                    <div id="infoModal_zmiananazwy" class="modal fade" role="dialog">
+                        <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">'. $xml->zmiennazwe .'</h4>
+                            </div>
+                        <div class="modal-body">
+                            <p>'. $xml->modaltekstzmiananazwy .'</p>
+                        </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary" data-dismiss="modal">'. $xml->zamknij .'</button>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+
+                    <br/><br/>
+
+                    <button id="change_page_name_btn" class="btn btn-primary btn-lg" type="button" style="width: 200px;">'. $xml->zmiennazwebtn .'</button>
                 ';
                 break; 
         
@@ -266,9 +300,46 @@
                 break;
                 
             case 'tab3':
+                
+                require 'connect.php';
+
+                $polaczenie = @new mysqli($host, $db_user, $db_password, $db_name);
+                @mysqli_set_charset($polaczenie,"utf8");
+
+                if($polaczenie->connect_errno == 0)
+                {  
+                    $result = $polaczenie -> query("SELECT saved FROM installation WHERE what = 'lastid'");
+                    
+                    $wiersz = $result->fetch_assoc();
+                    
+                    $last_id = $wiersz['saved'];
+                }
+                
                 echo '
                 
-                    QR Codes generator
+                    <h3 style="margin-bottom: 20px;">'. $xml->generujkody .'</h3>
+                    
+                    <h4 style="margin-bottom: 20px;">'. $xml->gdziegenerowac .'</h4>
+                    <br/><br/>
+                    
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i>'. $xml->generujlinki .'</i> &nbsp;&nbsp;|&nbsp;&nbsp; '. $xml->zakresnumerowid .'
+                            <input id="first_id_number_input" class="form-control" type="number" min="1" value="'. (int)$last_id .'" style="text-align: center; width: 100px; display: inline-block;">
+                            &nbsp; - &nbsp;
+                            <input id="second_id_number_input" class="form-control" type="number" min="1" value="'. (int)$last_id .'" style="text-align: center; width: 100px; display: inline-block;">
+                            
+                            &nbsp;&nbsp;&nbsp;
+                            <input id="save_last_id_checkbox" type="checkbox" name="save_last_id_checkbox">
+                            <label id="save_last_id_checkbox" for="save_last_id_checkbox" style="cursor: pointer;">'. $xml->zapiszostatninumerid .'</label>
+                            
+                            <br/><br/>
+                            <button class="btn btn-primary btn-md" id="generate_id_links_btn" style="word-break: normal;">'. $xml->generujbtn .'</button>
+                        </div>
+                        <div class="panel-body">
+                            <textarea style="width: 90%; height: 350px; resize: vertical;" id="generated_links_area"></textarea>
+                        </div>
+                    </div>
                 
                 ';
                 break;
@@ -434,10 +505,46 @@
         return;
     }
 
+    //zapisywanie ostatniego wygenerowanego numeru ID
+    if(isset($_POST['save_last_id']))
+    {
+        $last_id = $_POST['save_last_id'];
+        
+        require 'connect.php';
+
+        $polaczenie = @new mysqli($host, $db_user, $db_password, $db_name);
+        @mysqli_set_charset($polaczenie,"utf8");
+
+        if($polaczenie->connect_errno != 0)
+        {  
+            echo $polaczenie->connect_error;
+        }
+        else
+        {
+            if($polaczenie->query("UPDATE installation SET saved = '$last_id' WHERE what = 'lastid'"))
+            {
+                echo 'success';
+            }
+        }
+        
+        return;
+    }
+
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<?php
+
+    if($lang == 'pl')
+    {
+        echo '<html lang="pl">';
+    }
+    else if($lang == 'en')
+    {
+        echo '<html lang="en">';
+    }
+
+?>
     <head>
         
         <meta charset="utf-8">
@@ -525,7 +632,7 @@
             </div>
         </nav>
         
-        <div class="jumbotron" id="admin_panel_jumbotron">
+        <div class="jumbotron" id="admin_panel_jumbotron" style="padding-bottom: 30px;">
             <ul class="nav nav-tabs">
                 <li role="presentation" class="active" id="tab1"><a class="not-active-link"><?php echo $xml->tab1; ?></a></li>
                 <li role="presentation" id="tab2"><a class="not-active-link"><?php echo $xml->tab2; ?></a></li>
@@ -572,6 +679,38 @@
                 <br/><br/>
 
                 <button id="change_logo_btn" class="btn btn-primary btn-lg" type="button" style="width: 200px;" disabled><?php echo $xml->zmienlogobtn; ?></button>
+                
+                <div style="border-bottom: 1px solid black; margin: 20px auto 15px; width: 100%; display: block;"></div>
+                    
+                <h3 style="margin-bottom: 20px;"><?php echo $xml->zmiennazwe; ?></h3>
+
+                <div class="input-group input-group-lg" style="margin: 0 auto; float: none;">
+                    <span class="input-group-btn">
+                        <button class="btn btn-info" type="button" data-toggle="modal" data-target="#infoModal_zmiananazwy"><span class="glyphicon glyphicon-question-sign"></span></button>
+                    </span>
+                    <input id="set_page_name_input" type="text" class="form-control">
+                </div>
+
+                <div id="infoModal_zmiananazwy" class="modal fade" role="dialog">
+                    <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title"><?php echo $xml->zmiennazwe; ?></h4>
+                        </div>
+                    <div class="modal-body">
+                        <p><?php echo $xml->modaltekstzmiananazwy; ?></p>
+                    </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" data-dismiss="modal"><?php echo $xml->zamknij; ?></button>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                
+                <br/><br/>
+
+                <button id="change_page_name_btn" class="btn btn-primary btn-lg" type="button" style="width: 200px;"><?php echo $xml->zmiennazwebtn; ?></button>
             </div>
         </div>
         

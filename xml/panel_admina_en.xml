@@ -20,15 +20,20 @@
     
     <zmienlogo>Change logo of the page</zmienlogo>
     <zmienlogobtn>Change logo</zmienlogobtn>
+    <zmiennazwe>Change name of the page</zmiennazwe>
+    <zmiennazwebtn>Change name</zmiennazwebtn>
     <adresurllogo>Enter the URL of the image:</adresurllogo>
     
     <modaltekstzmianalogo>Logo in the format 1:1 (square) will be displayed best. To improve the speed of loading images is recommended to upload an image not larger than 200x200px. Supported formats are .jpeg / .jpg / .gif / .png. &lt;br/>&lt;br/>In order to obtain the URL of images, you can use the hosting images such as: &lt;ul>&lt;li>&lt;a href="https://imgur.com" target="_blank">imgur.com&lt;/a>&lt;/li>&lt;li>&lt;a href="https://imgsafe.org" target="_blank">imgsafe.org&lt;/a>&lt;/li>&lt;li>&lt;a href="https://postimage.io" target="_blank">postimage.io&lt;/a>&lt;/li>&lt;li>&lt;a href="https://tinypic.com" target="_blank">tinypic.com&lt;/a>&lt;/li>&lt;/ul> &lt;br/>&lt;br/>The image will be automatically scaled to the desired size.</modaltekstzmianalogo>
+    
+    <modaltekstzmiananazwy>Will be displayed next to the logo on the navigation bar and the tab in the browser.&lt;br/>&lt;br/>It can also be searched for in the search engines (Google, Yahoo!, Bing).&lt;br/>&lt;br/>The name should be 4 to 50 characters.</modaltekstzmiananazwy>
     
     <zamknij>Close</zamknij>
     <podglad>Preview</podglad>
     <usun>Delete</usun>
     <ok>OK</ok>
     <edytuj>Edit</edytuj>
+    <generujbtn>Generate</generujbtn>
     
     <login>Login</login>
     <email>Email</email>
@@ -68,5 +73,11 @@
     <option8>Varnishing</option8>
     <option9>Mechanics</option9>
     <option10>Carpentry</option10>
+    
+    <generujkody>For the smooth operation of the system you should generate QR codes and use them to mark specific items (such as codes in the form of stickers).</generujkody>
+    <gdziegenerowac>The codes in large quantities can be generated at sites such as: &lt;br/>&lt;br/>&lt;ul style="list-style-position: inside;">&lt;li>&lt;a href="https://qrexplore.com/generate/" target="_blank">QRExplore.com&lt;/a>&lt;/li>&lt;li>&lt;a href="http://barcodez.net/bulk_qrcode_generator.php" target="_blank">barcodez.net&lt;/a>&lt;/li>&lt;/ul></gdziegenerowac>
+    <zakresnumerowid>Enter a range of numbers ID:</zakresnumerowid>
+    <generujlinki>Generate links with the ID numbers</generujlinki>
+    <zapiszostatninumerid>Remember last generated ID number</zapiszostatninumerid>
     
 </paneladmina>

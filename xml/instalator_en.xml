@@ -55,7 +55,7 @@
     <modaltekst13>Logo in the format 1:1 (square) will be displayed best. To improve the speed of loading images is recommended to upload an image not larger than 200x200px. Supported formats are .jpeg / .jpg / .gif / .png. &lt;br/>&lt;br/>In order to obtain the URL of images, you can use the hosting images such as: &lt;ul>&lt;li>&lt;a href="https://imgur.com" target="_blank">imgur.com&lt;/a>&lt;/li>&lt;li>&lt;a href="https://imgsafe.org" target="_blank">imgsafe.org&lt;/a>&lt;/li>&lt;li>&lt;a href="https://postimage.io" target="_blank">postimage.io&lt;/a>&lt;/li>&lt;li>&lt;a href="https://tinypic.com" target="_blank">tinypic.com&lt;/a>&lt;/li>&lt;/ul> &lt;br/>&lt;br/>The image will be automatically scaled to the desired size.&lt;br/>&lt;br/>You can later change the logo.</modaltekst13>
     
     <placeholder14>Page name</placeholder14>
-    <modaltekst14>Will be displayed next to the logo on the navigation bar and the tab in the browser.&lt;br/>&lt;br/>It can also be searched for in the search engines (Google, Yahoo!, Bing).&lt;br/>&lt;br/>The name should be 4 to 50 characters.</modaltekst14>
+    <modaltekst14>Will be displayed next to the logo on the navigation bar and the tab in the browser.&lt;br/>&lt;br/>It can also be searched for in the search engines (Google, Yahoo!, Bing).&lt;br/>&lt;br/>The name should be 4 to 50 characters. &lt;br/>&lt;br/>You can later change name of the page.</modaltekst14>
     
     <option1>Architecture</option1>
     <option2>Librarianship</option2>

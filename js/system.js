@@ -449,6 +449,47 @@ $(document).ready(function(){
     
     //#####################################################################
     
+    //obsługa przycisku zmiany nazwy strony
+    $('#admin_panel_content').on('click', '#change_page_name_btn' ,function(){
+        
+        $(this).attr("disabled", "disabled");
+        
+        var page_title = $('#set_page_name_input').val();
+        var old_page_title = $(document).attr('title');
+            
+        if(page_title.length >= 4 && page_title.length <= 50)
+        {
+            $.post("php/instalator_backend.php", {page_title: page_title, old_name: old_page_title}, function(data){
+
+                if(data == 'fail')
+                {
+                    alert('Wystąpił błąd podczas próby zapisu danych do pliku, spróbuj ponownie...\n\nAn error occurred while trying to write data to a file, try again...'); 
+                }
+                else if(data == 'zladlugosc')
+                {
+                    $('#set_page_name_input').addClass("input_error");
+                }
+                else if(data == 'bladpolaczeniazbazadanych')
+                {
+                    alert('Nie udało się ustanowić połączenia z serwerem MySQL, spróbuj ponownie...\n\nFailed to establish a connection to the MySQL server, try again...');
+                }
+                else
+                {
+                    location.reload();
+                }
+            });
+        }
+        else
+        {
+            $('#set_page_name_input').addClass("input_error");
+        }
+
+        setTimeout(function(){$("#change_page_name_btn").removeAttr("disabled")}, 1500);
+        
+    });
+    
+    //#####################################################################
+    
     //obsługa przycisku dodawania nowego użytkownika
     
     $('#admin_panel_content').on('click', '#add_user_btn', function(){
@@ -635,9 +676,10 @@ $(document).ready(function(){
     
     $('#admin_panel_content').on('click', '.remove_user_from_db_btn',function(){
         
-        if(confirm("Czy na pewno chcesz usunąć tego użytkownika?\n\nAre you sure you want to remove this user?"))
+        var login = $(this).parent().prev().prev().prev().prev().prev().prev().prev().text();
+        
+        if(confirm("Czy na pewno chcesz usunąć użytkownika " + login + "?\n\nAre you sure you want to remove user "+ login + "?"))
         {
-            var login = $(this).parent().prev().prev().prev().prev().prev().prev().prev().text();
             var email = $(this).parent().prev().prev().prev().prev().prev().prev().text();
             
             $.post("php/admin_panel.php", {remove_user: login, remove_email: email}, function(data){
@@ -668,9 +710,76 @@ $(document).ready(function(){
     
     //obsługa edytowania danych użytkownika
     
-    $('#admin_panel_content').on('click', '.edit_user_info_btn',function(){
+    $('#admin_panel_content').on('click', '.edit_user_info_btn', function(){
         
         //dopisać w kolejnych UPDATE'ach.
+        
+        // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! zrobić na modalu
+        
+    });
+    
+    //#####################################################################
+    
+    //obsługa przycisku generowania linków
+    $('#admin_panel_content').on('click', '#generate_id_links_btn', function(){
+        
+        $(this).attr("disabled", "disabled");
+        
+        var first_number = $('#first_id_number_input').val();
+        var second_number = $('#second_id_number_input').val();
+        
+        first_number = parseInt(first_number);
+        second_number = parseInt(second_number);
+        
+        var links = '';
+        
+        if((first_number > 0) && (second_number >= first_number) && (second_number <= (500 + first_number)))
+        {   
+            if($('#save_last_id_checkbox').is(":checked"))
+            {
+                $.post("php/admin_panel.php", {save_last_id: second_number}, function(data){
+
+                    if(data != 'success')
+                    {
+                        alert(data);
+                    }
+
+                });
+            }
+            
+            var path = window.location.pathname;
+            var last_path_char = path.substr(path.length - 1);
+            
+            switch(last_path_char)
+            {
+                case 'y':
+                    path = path.slice(0,-21);
+                    break;
+                case 'l':
+                    path = path.slice(0,-20);
+                    break;
+            }
+            
+            for(var i = first_number; i <= second_number; i++)
+            {
+                links += window.location.protocol + "//" + window.location.host + "" + path + '?id=' + i + '\n';
+            }
+            
+            if(links != '')
+            {
+                $('#generated_links_area').empty().val(links);
+            }
+        }
+        else if(second_number > (500 + first_number))
+        {
+            alert('W celu zachowania bezpieczeństwa, limit jednorazowo generowanych linków to 500.\n\nIn order to maintain security, limit once generated links is set to 500.');
+        }
+        else
+        {
+            alert('Pierwszy numer z zakresu musi być większy od 0 oraz drugi numer nie może być mniejszy od pierwszego!\n\nThe first number in the range must be greater than 0 and the second number can not be smaller than the first!');
+        }
+
+        setTimeout(function(){$("#generate_id_links_btn").removeAttr("disabled")}, 1500);
         
     });
     

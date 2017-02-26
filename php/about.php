@@ -3,6 +3,8 @@
     session_start();
     
     //ustawianie języka strony na podstawie zapisanych ciasteczek
+    $lang = 'pl';
+
     if(isset($_COOKIE['oversee_language']))
     {
         $lang = $_COOKIE['oversee_language'];
@@ -56,7 +58,18 @@
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<?php
+
+    if($lang == 'pl')
+    {
+        echo '<html lang="pl">';
+    }
+    else if($lang == 'en')
+    {
+        echo '<html lang="en">';
+    }
+
+?>
     <head>
         
         <meta charset="utf-8">
