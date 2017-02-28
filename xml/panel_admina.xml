@@ -52,6 +52,7 @@
     <moderator>Moderator</moderator>
     <administrator>Administrator</administrator>
     <superadmin>Super Administrator</superadmin>
+    <wlasciciel>Właściciel</wlasciciel>
     
     <uzytkownikdodany>Użytkownik dodany pomyślnie, zapisz te dane:</uzytkownikdodany>
     <wszyscyuzytkownicy>Wszyscy użytkownicy:</wszyscyuzytkownicy>
@@ -70,16 +71,16 @@
     <infoopermisjach>Rodzaje uprawnień</infoopermisjach>
     <permisjetekst>Różne uprawnienia dają użytkownikom dostęp do wykonywania poszczególnych działań na stronie. &lt;br/>&lt;br/> &lt;ul>&lt;li>&lt;b>Moderator&lt;/b> - posiada dostęp do dodawania komentarzy, zmiany ostatniej lokalizacji oraz stanu uszkodzenia.&lt;/li>&lt;li>&lt;b>Administrator&lt;/b> - posiada wszystkie uprawnienia moderatora, dodatkowo ma dostęp do wyświetlania najnowszych kometnarzy (na stronie głównej), edytowania większej ilości informacji o przedmiotach oraz do usuwania komentarzy.&lt;/li>&lt;li>&lt;b>Super Administrator (właściciel)&lt;/b> - posiada wszystkie uprawnienia moderatora oraz administratora, dodatkowo ma dostęp do panelu administratora, dodawania i usuwania użytkowników, dodawania i usuwania przedmiotów, zmiany wyglądu strony.&lt;/li>&lt;/u></permisjetekst>
     
-    <option1>Architektura</option1>
-    <option2>Bibliotekarstwo</option2>
-    <option3>Blacharstwo</option3>
-    <option4>Hydraulika</option4>
-    <option5>Elektronika</option5>
-    <option6>Elektryka</option6>
-    <option7>Informatyka</option7>
-    <option8>Lakiernictwo</option8>
-    <option9>Mechanika</option9>
-    <option10>Stolarstwo</option10>
+    <architektura>Architektura</architektura>
+    <bibliotekarstwo>Bibliotekarstwo</bibliotekarstwo>
+    <blacharstwo>Blacharstwo</blacharstwo>
+    <hydraulika>Hydraulika</hydraulika>
+    <elektronika>Elektronika</elektronika>
+    <elektryka>Elektryka</elektryka>
+    <informatyka>Informatyka</informatyka>
+    <lakiernictwo>Lakiernictwo</lakiernictwo>
+    <mechanika>Mechanika</mechanika>
+    <stolarstwo>Stolarstwo</stolarstwo>
     
     <generujkody>Dla sprawnego działania systemu warto wygenerować kody QR i użyć ich do oznaczenia konkretnych przedmiotów (np kodami w formie naklejek).</generujkody>
     <gdziegenerowac>Kody w dużych ilościach można wygenerować na stronach takich jak: &lt;br/>&lt;br/>&lt;ul style="list-style-position: inside;">&lt;li>&lt;a href="https://qrexplore.com/generate/" target="_blank">QRExplore.com&lt;/a>&lt;/li>&lt;li>&lt;a href="http://barcodez.net/bulk_qrcode_generator.php" target="_blank">barcodez.net&lt;/a>&lt;/li>&lt;/ul></gdziegenerowac>

@@ -94,7 +94,7 @@
         <![endif]-->
       
     </head>
-    <body data-version="0.55">
+    <body data-version="1.0">
         
         <nav class="navbar navbar-inverse navbar-static-top">
             <div class="container-fluid">
@@ -157,7 +157,7 @@
             </div>
         </nav>
         
-        <div class="jumbotron" style="width: 80%; text-aling: justify; margin: 0 auto;">
+        <div class="jumbotron" style="width: 80%; text-aling: justify; margin: 0 auto; padding: 20px;">
             <p><?php echo $xml->oprojekcietekst; ?></p>
         </div>
             

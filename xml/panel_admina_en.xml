@@ -52,6 +52,7 @@
     <moderator>Moderator</moderator>
     <administrator>Administrator</administrator>
     <superadmin>Super Administrator</superadmin>
+    <wlasciciel>Owner</wlasciciel>
     
     <uzytkownikdodany>User added successfully, save this data:</uzytkownikdodany>
     <wszyscyuzytkownicy>All users:</wszyscyuzytkownicy>
@@ -70,16 +71,16 @@
     <infoopermisjach>Types of permissions</infoopermisjach>
     <permisjetekst>Different permissions give users access to perform specific actions on the site. &lt;br/>&lt;br/> &lt;ul>&lt;li>&lt;b>Moderator&lt;/b> - have access to add comments, change the last location and the state of damage.&lt;/li>&lt;li>&lt;b>Administrator&lt;/b> - has all the powers of a moderator, additionally got access to view the latest comments (on the main page), edit more information about the objects and can delete comments.&lt;/li>&lt;li>&lt;b>Super Administrator (owner)&lt;/b> - It has all the powers of a moderator and administrator also has access to the admin panel, add and delete users, add and delete items, change the look of the page.&lt;/li>&lt;/u></permisjetekst>
     
-    <option1>Architecture</option1>
-    <option2>Librarianship</option2>
-    <option3>Tin-smithing </option3>
-    <option4>Hydraulics</option4>
-    <option5>Electronics</option5>
-    <option6>Electricity</option6>
-    <option7>Informatics</option7>
-    <option8>Varnishing</option8>
-    <option9>Mechanics</option9>
-    <option10>Carpentry</option10>
+    <architektura>Architecture</architektura>
+    <bibliotekarstwo>Librarianship</bibliotekarstwo>
+    <blacharstwo>Tin-smithing</blacharstwo>
+    <hydraulika>Hydraulics</hydraulika>
+    <elektronika>Electronics</elektronika>
+    <elektryka>Electricity</elektryka>
+    <informatyka>Informatics</informatyka>
+    <lakiernictwo>Varnishing</lakiernictwo>
+    <mechanika>Mechanics</mechanika>
+    <stolarstwo>Carpentry</stolarstwo>
     
     <generujkody>For the smooth operation of the system you should generate QR codes and use them to mark specific items (such as codes in the form of stickers).</generujkody>
     <gdziegenerowac>The codes in large quantities can be generated at sites such as: &lt;br/>&lt;br/>&lt;ul style="list-style-position: inside;">&lt;li>&lt;a href="https://qrexplore.com/generate/" target="_blank">QRExplore.com&lt;/a>&lt;/li>&lt;li>&lt;a href="http://barcodez.net/bulk_qrcode_generator.php" target="_blank">barcodez.net&lt;/a>&lt;/li>&lt;/ul></gdziegenerowac>

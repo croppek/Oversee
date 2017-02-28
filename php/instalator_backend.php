@@ -459,7 +459,7 @@
                     $kod .= $znaki[rand(0, strlen($znaki) - 1)];
                 }
                 
-                $permissions = 3;
+                $permissions = 4;
 
                 if($polaczenie->query("INSERT INTO users VALUES(NULL,'$login','$password_hash','$email','$name','$lastname','$specialization','$kod','$permissions',0)"))
                 {
@@ -634,7 +634,7 @@
             }
             else
             {
-                $polaczenie->query("INSERT INTO page_info VALUES (NULL,'logo','$logo_url')");
+                $polaczenie->query("UPDATE page_info SET info = '$logo_url' WHERE type = 'logo'");
 
                 $polaczenie->close();
             }
@@ -714,7 +714,7 @@
                 }
                 else
                 {
-                    $polaczenie->query("INSERT INTO page_info VALUES (NULL,'name','$page_title')");
+                    $polaczenie->query("UPDATE page_info SET info = '$page_title' WHERE type = 'name'");
 
                     $polaczenie->close();
                 }
@@ -1192,6 +1192,8 @@
                     $polaczenie->query("INSERT INTO $new_db_name.installation (id, what, saved) VALUES (NULL, 'lastid', '1')");
                     
                     $polaczenie->query("CREATE TABLE $new_db_name.page_info ( id INT NOT NULL AUTO_INCREMENT , type TEXT NOT NULL, info TEXT NOT NULL, PRIMARY KEY (id)) ENGINE = InnoDB");
+                    $polaczenie->query("INSERT INTO $new_db_name.page_info VALUES (NULL,'logo','')");
+                    $polaczenie->query("INSERT INTO $new_db_name.page_info VALUES (NULL,'name','')");
                     
                     //#### główna tabela z listą wszystkich kategorii
                     $polaczenie->query("CREATE TABLE $new_db_name.categories ( id INT NOT NULL AUTO_INCREMENT , name TEXT NOT NULL , PRIMARY KEY (id)) ENGINE = InnoDB");

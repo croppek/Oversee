@@ -7,6 +7,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
         <title>Instalator</title>
+        
+        <!-- FAVICON LINKING -->
+        <link rel="icon" type="image/png" sizes="32x32" href="img/oversee-logo.png">
 
         <!-- Bootstrap -->
         <link href="css/bootstrap.min.css" rel="stylesheet">

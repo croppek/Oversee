@@ -182,16 +182,16 @@
                             <label for="specialization_input">'. $xml->wybierzspecializacje .'</label>
                             <select class="form-control" id="specialization_input">
                                 <option value="brak"></option>
-                                <option value="architektura">'. $xml->option1 .'</option>
-                                <option value="bibliotekarstwo">'. $xml->option2 .'</option>
-                                <option value="blacharstwo">'. $xml->option3 .'</option>
-                                <option value="hydraulika">'. $xml->option4 .'</option>
-                                <option value="elektronika">'. $xml->option5 .'</option>
-                                <option value="elektryka">'. $xml->option6 .'</option>
-                                <option value="informatyka">'. $xml->option7 .'</option>
-                                <option value="lakiernictwo">'. $xml->option8 .'</option>
-                                <option value="mechanika">'. $xml->option9 .'</option>
-                                <option value="stolarstwo">'. $xml->option10 .'</option>
+                                <option value="architektura">'. $xml->architektura .'</option>
+                                <option value="bibliotekarstwo">'. $xml->bibliotekarstwo .'</option>
+                                <option value="blacharstwo">'. $xml->blacharstwo .'</option>
+                                <option value="hydraulika">'. $xml->hydraulika .'</option>
+                                <option value="elektronika">'. $xml->elektronika .'</option>
+                                <option value="elektryka">'. $xml->elektryka .'</option>
+                                <option value="informatyka">'. $xml->informatyka .'</option>
+                                <option value="lakiernictwo">'. $xml->lakiernictwo .'</option>
+                                <option value="mechanika">'. $xml->mechanika .'</option>
+                                <option value="stolarstwo">'. $xml->stolarstwo .'</option>
                             </select>
                         </div>
 
@@ -262,7 +262,12 @@
                                     case '3':
                                         $permissions = $xml->superadmin;
                                         break;
+                                    case '4':
+                                        $permissions = $xml->wlasciciel;
+                                        break;
                                 }
+                                
+                                $specialization = $row['specialization'];
                                 
                                 echo '
 
@@ -271,10 +276,22 @@
                                     <td>'.$row['email'].'</td>
                                     <td>'.$row['name'].'</td>
                                     <td>'.$row['lastname'].'</td>
-                                    <td>'.$row['specialization'].'</td>
-                                    <td>'.$permissions.'</td>
-                                    <td><button class="btn btn-info btn-sm edit_user_info_btn" style="word-break: normal;" data-toggle="modal" data-target="#modal_edit_user_info">'. $xml->edytuj .'</button></td>
-                                    <td><button class="btn btn-danger btn-sm remove_user_from_db_btn" style="word-break: normal;">'. $xml->usun .'</button></td>
+                                    <td>'.$xml->$specialization.'</td>
+                                    <td>'.$permissions.'</td>';
+                                    
+                                    if($row['permissions'] <= 3)
+                                    {
+                                        echo '<td><button class="btn btn-info btn-sm edit_user_info_btn" style="word-break: normal;" data-toggle="modal" data-target="#modal_edit_user_info">'. $xml->edytuj .'</button></td>
+                                        <td><button class="btn btn-danger btn-sm remove_user_from_db_btn" style="word-break: normal;">'. $xml->usun .'</button></td>';   
+                                    }
+                                    else
+                                    {
+                                        echo '<td></td><td></td>';
+                                    }
+                                        
+                                echo '
+                                    <td style="display: none;">'.$row['permissions'].'</td>
+                                    <td style="display: none;">'.$row['specialization'].'</td>
                                 </tr>';
                             }
                             
@@ -302,16 +319,16 @@
                                         <label for="edit_specialization_input">'. $xml->wybierzspecializacje2 .'</label>
                                         <select class="form-control" id="edit_specialization_input">
                                             <option value="brak"></option>
-                                            <option value="architektura">'. $xml->option1 .'</option>
-                                            <option value="bibliotekarstwo">'. $xml->option2 .'</option>
-                                            <option value="blacharstwo">'. $xml->option3 .'</option>
-                                            <option value="hydraulika">'. $xml->option4 .'</option>
-                                            <option value="elektronika">'. $xml->option5 .'</option>
-                                            <option value="elektryka">'. $xml->option6 .'</option>
-                                            <option value="informatyka">'. $xml->option7 .'</option>
-                                            <option value="lakiernictwo">'. $xml->option8 .'</option>
-                                            <option value="mechanika">'. $xml->option9 .'</option>
-                                            <option value="stolarstwo">'. $xml->option10 .'</option>
+                                            <option value="architektura">'. $xml->architektura .'</option>
+                                            <option value="bibliotekarstwo">'. $xml->bibliotekarstwo .'</option>
+                                            <option value="blacharstwo">'. $xml->blacharstwo .'</option>
+                                            <option value="hydraulika">'. $xml->hydraulika .'</option>
+                                            <option value="elektronika">'. $xml->elektronika .'</option>
+                                            <option value="elektryka">'. $xml->elektryka .'</option>
+                                            <option value="informatyka">'. $xml->informatyka .'</option>
+                                            <option value="lakiernictwo">'. $xml->lakiernictwo .'</option>
+                                            <option value="mechanika">'. $xml->mechanika .'</option>
+                                            <option value="stolarstwo">'. $xml->stolarstwo .'</option>
                                         </select>
                                         
                                     </div>
@@ -550,6 +567,34 @@
         return;
     }
 
+    //edytowanie danych uzytkownika
+    if(isset($_POST['edit_login']) && isset($_POST['edit_email']) && isset($_POST['new_permission']) && isset($_POST['new_specialization']))
+    {
+        $user = $_POST['edit_login'];
+        $email = $_POST['edit_email'];
+        $new_permission = $_POST['new_permission'];
+        $new_specialization = $_POST['new_specialization'];
+
+        require 'connect.php';
+
+        $polaczenie = @new mysqli($host, $db_user, $db_password, $db_name);
+        @mysqli_set_charset($polaczenie,"utf8");
+
+        if($polaczenie->connect_errno != 0)
+        {  
+            echo $polaczenie->connect_error;
+        }
+        else
+        {
+            if($polaczenie->query("UPDATE users SET specialization = '$new_specialization', permissions = '$new_permission' WHERE login = '$user' AND email = '$email'"))
+            {
+                echo 'success';
+            }
+        }
+        
+        return;
+    }
+
     //zapisywanie ostatniego wygenerowanego numeru ID
     if(isset($_POST['save_last_id']))
     {
@@ -614,7 +659,7 @@
         <![endif]-->
       
     </head>
-    <body data-version="0.55">
+    <body data-version="1.0">
         
         <nav class="navbar navbar-inverse navbar-static-top">
             <div class="container-fluid">

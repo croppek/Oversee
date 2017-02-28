@@ -714,6 +714,11 @@ $(document).ready(function(){
         
         var login = $(this).parent().prev().prev().prev().prev().prev().prev().text();
         var email = $(this).parent().prev().prev().prev().prev().prev().text();
+        var old_specialization = $(this).parent().next().next().next().text();
+        var old_permissions = $(this).parent().next().next().text();
+        
+        $('#edit_permissions_input').val(old_permissions);
+        $('#edit_specialization_input').val(old_specialization);
         
         $('#edit_username_span').empty().text(login);
         $('#edit_email_span').empty().text(email);
@@ -744,7 +749,7 @@ $(document).ready(function(){
             }
             else
             {
-                //hadnle errors
+                alert(data);
             }
 
         });

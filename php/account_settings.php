@@ -123,7 +123,7 @@
         <![endif]-->
       
     </head>
-    <body data-version="0.55">
+    <body data-version="1.0">
         
         <nav class="navbar navbar-inverse navbar-static-top">
             <div class="container-fluid">

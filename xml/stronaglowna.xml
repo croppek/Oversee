@@ -9,8 +9,9 @@
     <naglowek4>Ustawienia konta</naglowek4>
     <naglowek5>Panel administratora</naglowek5>
     
-    <content1>Podaj ID:</content1>
+    <content1>Wyszukaj według numeru ID:</content1>
     <content2>Wyszukaj według kategorii:</content2>
+    <content3>Wyszukaj według nazwy przedmiotu:</content3>
     
     <modal_tytul1>Numer ID</modal_tytul1>
     <modal_tekst1>Numer ID zapisany jest w kodzie QR.&lt;br>&lt;br>Kod QR można zeskanować dowolnym urządzeniem z aparatem wspierającym aplikację typu "QR Skaner" (np Smartphone). Darmowe skanery dostępne są w sklepach z aplikacjami (Google Play, Apple Store, Microsoft Store).</modal_tekst1>
@@ -80,6 +81,8 @@
     <nieteraz>Nie teraz</nieteraz>
     <aktualizuj>Aktualizuj</aktualizuj>
     <updatetekst>Dostępna jest nowa wersja Oversee Systems!</updatetekst>
+    <brakprzedmiotowonazwie>Brak przedmiotów o podanej nazwie.</brakprzedmiotowonazwie>
+    <przedmiotyopodanejnazwie>Lista przedmiotów pasujących do podanej nazwy</przedmiotyopodanejnazwie>
     
     <wybierzkategorie>Wybierz do jakiej kategorii dodać przedmiot:</wybierzkategorie>
     <usunprzedmiot>Usuń przedmiot z bazy danych</usunprzedmiot>
