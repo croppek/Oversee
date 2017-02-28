@@ -127,6 +127,17 @@
         //#################################################### TUTAJ ZMIENIAĆ KATEGORIE ########################################################
         switch($permissions)
         {
+            case 4:
+                devices('ID',$id,'',$edit);
+                devices($xml->nazwa,$name,'name',$edit);
+                devices($xml->ulokowanie,$placement,'placement',$edit);
+                devices($xml->ostatnialokalizacja,$last_location,'last_location',$edit);
+                devices($xml->typ,$type,'',$edit);
+                devices($xml->uszkodzony,$damaged,'damaged',$edit);
+                devices($xml->uwagi,$comment,'',$edit);
+                
+                break;
+                
             case 3:
                 devices('ID',$id,'',$edit);
                 devices($xml->nazwa,$name,'name',$edit);
@@ -258,7 +269,7 @@
         //#################################################### TUTAJ ZMIENIAĆ KATEGORIE ########################################################
         echo '
         
-        <p id="category_title" style="text-align: center; font-size: 25px; margin-bottom: 15px;">'.$xml->naglowekkategorii.' <b>'.$xml->devices.'</b> ('.$all_items_in_category.')</p>
+        <h3 style="text-align: center; font-size: 25px; margin-bottom: 15px;">'.$xml->naglowekkategorii.' <b>'.$xml->devices.'</b> ('.$all_items_in_category.')</h3>
         
         <div id="table_wrapper" style="width: 90%; margin: 0 auto; float: none;">
             <table class="table-striped rtable">

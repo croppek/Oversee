@@ -332,7 +332,7 @@
                         {
                             if($result->num_rows > 0)
                             {
-                                echo '<h3 style="text-align: center;">'.$xml->przedmiotyopodanejnazwie.' ('.$result->num_rows.'):</h3>
+                                echo '<h3 style="text-align: center; padding: 0 10px 0;">'.$xml->przedmiotyopodanejnazwie.' ('.$result->num_rows.'):</h3>
                             
                                 <br/>
                                 <div id="table_wrapper" style="width: 90%; margin: 0 auto; float: none;">
@@ -534,7 +534,7 @@
                     </div>
                 </div>
                 
-                <div class="col-md-6" style="margin-bottom: 40px;">
+                <div class="col-md-6" style="margin-bottom: 55px;">
                     <div class="jumbotron">
 
                         <h2 style="text-align: center; margin-bottom: 15px;">' . $xml->content3 . '</h2>

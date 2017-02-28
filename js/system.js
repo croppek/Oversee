@@ -50,7 +50,8 @@ $(document).ready(function(){
             $('#change_password_inputs, #error_alert, #login_input_group, #admin_panel_content, .add_new_user_inputs').css('width', '75%');
             $('#search_input_group, #search_input_group2').css('width', '65%');
             $('#table_wrapper').css('width', '90%');
-            $('#category_title').css('font-size', '25px');
+            $('h3').css('font-size', '22px');
+            $('h2').css('font-size', '25px');
         }
         else
         {
@@ -62,7 +63,8 @@ $(document).ready(function(){
             $('#change_password_inputs, #error_alert, #login_input_group, #admin_panel_content, .add_new_user_inputs').css('width', '95%');
             $('#search_input_group, #search_input_group2').css('width', '90%');
             $('#table_wrapper').css('width', '100%');
-            $('#category_title').css('font-size', '15px');
+            $('h3').css('font-size', '15px');
+            $('h2').css('font-size', '20px');
         }
         
     });
@@ -75,7 +77,8 @@ $(document).ready(function(){
         $('#change_password_inputs, #error_alert, #login_input_group, #admin_panel_content, .add_new_user_inputs').css('width', '95%');
         $('#search_input_group, #search_input_group2').css('width', '90%');
         $('#table_wrapper').css('width', '100%');
-        $('#category_title').css('font-size', '15px');
+        $('h3').css('font-size', '15px');
+        $('h2').css('font-size', '20px');
     }
     
     //#####################################################################
