@@ -175,7 +175,7 @@
         <?php
             
             //jeśli istnieje któraś ze zmiennych, wyświetlam konkretne informację zamiast strony głównej
-            if(isset($_GET['id']) || isset($_GET['category']) || isset($_GET['history']) || isset($_GET['name']))
+            if(isset($_GET['id']) || isset($_GET['category']) || isset($_GET['history']) || isset($_GET['name']) || isset($_GET['location']))
             {
                 //odczytywanie i wyświetlanie danych z historią komentarzy 
                 if(isset($_GET['history']))
@@ -328,7 +328,7 @@
 
                     if($polaczenie->connect_errno == 0)
                     {  
-                        if($result = $polaczenie->query("SELECT * FROM item_category WHERE LOWER(name) LIKE LOWER('%$name%')")) 
+                        if($result = $polaczenie->query("SELECT * FROM item_category WHERE LOWER(name) LIKE LOWER('%$name%') ORDER BY name ASC")) 
                         {
                             if($result->num_rows > 0)
                             {
@@ -341,6 +341,7 @@
                                         <tr>
                                             <th>ID</th>
                                             <th>'.$xml->nazwa.'</th>
+                                            <th>'.$xml->ulokowanie.'</th>
                                             <th>'.$xml->kategoria.'</th>
 
                                         </tr></thead><tbody>';
@@ -352,6 +353,7 @@
                                                 <tr>
                                                     <td><a href="./?id='.$row['id'].'">'.$row['id'].'</a></td>
                                                     <td style="min-width: 100px; text-align: center; white-space: normal;"><a href="./?id='.$row['id'].'">'.$row['name'].'</a></td>
+                                                    <td style="min-width: 100px; text-align: center; white-space: normal;">'.$row['location'].'</td>
                                                     <td style="min-width: 100px; text-align: center; white-space: normal;"><a href="./?category='.$row['category'].'">'.$xml->$row['category'].'</a></td>
                                                 </tr>';
                                         }  
@@ -375,6 +377,65 @@
                         echo $xml_errors->blad6;
                     }
                 }
+                //odczytywanie i wyświetlanie przedmiotów o podanej lokalizacji
+                else if(isset($_GET['location']))
+                {
+                    $location = $_GET['location'];
+                    
+                    $polaczenie = @new mysqli($host, $db_user, $db_password, $db_name);
+                    @mysqli_set_charset($polaczenie,"utf8");
+
+                    if($polaczenie->connect_errno == 0)
+                    {  
+                        if($result = $polaczenie->query("SELECT * FROM item_category WHERE LOWER(location) LIKE LOWER('%$location%') ORDER BY name ASC")) 
+                        {
+                            if($result->num_rows > 0)
+                            {
+                                echo '<h3 style="text-align: center; padding: 0 10px 0;">'.$xml->przedmiotyopodanejlokacji.' ('.$result->num_rows.'):</h3>
+                            
+                                <br/>
+                                <div id="table_wrapper" style="width: 90%; margin: 0 auto; float: none;">
+                                    <table class="table-striped rtable">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>'.$xml->nazwa.'</th>
+                                            <th>'.$xml->ulokowanie.'</th>
+                                            <th>'.$xml->kategoria.'</th>
+
+                                        </tr></thead><tbody>';
+
+                                        while($row = mysqli_fetch_array($result))
+                                        {   
+                                            echo '
+
+                                                <tr>
+                                                    <td><a href="./?id='.$row['id'].'">'.$row['id'].'</a></td>
+                                                    <td style="min-width: 100px; text-align: center; white-space: normal;"><a href="./?id='.$row['id'].'">'.$row['name'].'</a></td>
+                                                    <td style="min-width: 100px; text-align: center; white-space: normal;">'.$row['location'].'</td>
+                                                    <td style="min-width: 100px; text-align: center; white-space: normal;"><a href="./?category='.$row['category'].'">'.$xml->$row['category'].'</a></td>
+                                                </tr>';
+                                        }  
+
+                                echo '</tbody></table></div>';   
+                            }
+                            else
+                            {
+                                echo '<h2 style="text-align: center;">'.$xml->brakprzedmiotowzlokacji.'</h2>';
+                            }
+                        }
+                        else 
+                        {
+                            echo $xml_errors->blad6;
+                        }
+
+                        $polaczenie->close();
+                    }
+                    else
+                    {
+                        echo $xml_errors->blad6;
+                    }
+                }
             }
             else
             {
@@ -382,6 +443,7 @@
                 if($permissions >= 2)
                 {
                     echo  '
+                    
                     <div class="col-md-12">
                         <div class="jumbotron" style="max-height: 350px; overflow: auto; padding-top: 0;">';
 
@@ -534,7 +596,7 @@
                     </div>
                 </div>
                 
-                <div class="col-md-6" style="margin-bottom: 55px;">
+                <div class="col-md-6">
                     <div class="jumbotron">
 
                         <h2 style="text-align: center; margin-bottom: 15px;">' . $xml->content3 . '</h2>
@@ -550,6 +612,25 @@
 
                     </div>
                 </div>
+                
+                <div class="col-md-6">
+                    <div class="jumbotron">
+
+                        <h2 style="text-align: center; margin-bottom: 15px;">' . $xml->content4 . '</h2>
+
+                        <form method="get">
+                            <div id="search_input_group" class="input-group" style="width: 65%; margin: 0 auto;"> 
+                                <input id="item_location_search_input" class="form-control" name="location" type="text" style="text-align: center;" required> 
+                                <div class="input-group-btn">  
+                                    <button id="search_by_location" type="submit" class="btn btn-default">' . $xml->szukaj . '</button> 
+                                </div>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+                
+                <div class="col-md-12" style="display: block; height: 50px;"></div>
 
                 <div id="infoModal1" class="modal fade" role="dialog">
                     <div class="modal-dialog">
@@ -653,11 +734,11 @@
                 <div id="login_content">
                     
                     <div id="login_input_group" class="input-group input-group-lg" style="width: 45%; margin: 0 auto; float: none;">
-                        <input id="login_input" type="text" class="form-control" name="login_input" style="text-align: center; border-radius: 5px;" placeholder="<?php echo $xml->placeholder1 ?>" onfocus="this.placeholder = '' " onblur="this.placeholder='<?php echo $xml->placeholder1 ?>'"/>
+                        <input id="login_input" type="text" class="form-control" name="login_input" style="text-align: center; border-radius: 5px;" placeholder="<?php echo $xml->placeholder1; ?>" onfocus="this.placeholder = '' " onblur="this.placeholder='<?php echo $xml->placeholder1; ?>'"/>
                     </div>
                     <br/>
                     <div id="login_input_group" class="input-group input-group-lg" style="width: 45%; margin: 0 auto; float: none;">
-                        <input id="password_input" type="password" class="form-control" name="password_input" style="text-align: center; border-radius: 5px;" placeholder="<?php echo $xml->placeholder2 ?>" onfocus="this.placeholder = '' " onblur="this.placeholder='<?php echo $xml->placeholder2 ?>'"/>
+                        <input id="password_input" type="password" class="form-control" name="password_input" style="text-align: center; border-radius: 5px;" placeholder="<?php echo $xml->placeholder2; ?>" onfocus="this.placeholder = '' " onblur="this.placeholder='<?php echo $xml->placeholder2; ?>'"/>
                     </div>
                     <br/>
 
@@ -771,5 +852,19 @@
         <script src="js/system.js"></script>
         <script src="js/login.js"></script>
         <script src="js/cookies.js"></script>
+        <script src="js/jquery.idle.min.js"></script>
+        
+        <?php
+        
+        if($permissions >= 2)
+        {
+            if(!isset($_GET['id']) && !isset($_GET['category']) && !isset($_GET['history']) && !isset($_GET['name']) && !isset($_GET['location']))
+            {
+                echo '<script src="js/idle_refresher.js"></script>';   
+            }
+        }
+        
+        ?>
+        
     </body>
 </html>

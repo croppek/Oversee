@@ -12,6 +12,7 @@
     <content1>Wyszukaj według numeru ID:</content1>
     <content2>Wyszukaj według kategorii:</content2>
     <content3>Wyszukaj według nazwy przedmiotu:</content3>
+    <content4>Wyszukaj według lokalizacji przedmiotu:</content4>
     
     <modal_tytul1>Numer ID</modal_tytul1>
     <modal_tekst1>Numer ID zapisany jest w kodzie QR.&lt;br>&lt;br>Kod QR można zeskanować dowolnym urządzeniem z aparatem wspierającym aplikację typu "QR Skaner" (np Smartphone). Darmowe skanery dostępne są w sklepach z aplikacjami (Google Play, Apple Store, Microsoft Store).</modal_tekst1>
@@ -82,7 +83,9 @@
     <aktualizuj>Aktualizuj</aktualizuj>
     <updatetekst>Dostępna jest nowa wersja Oversee Systems!</updatetekst>
     <brakprzedmiotowonazwie>Brak przedmiotów o podanej nazwie.</brakprzedmiotowonazwie>
+    <brakprzedmiotowzlokacji>Brak przedmiotów pasujących do podanej lokacji.</brakprzedmiotowzlokacji>
     <przedmiotyopodanejnazwie>Lista przedmiotów pasujących do podanej nazwy</przedmiotyopodanejnazwie>
+    <przedmiotyopodanejlokacji>Lista przedmiotów pasujących do podanej lokacji:</przedmiotyopodanejlokacji>
     
     <wybierzkategorie>Wybierz do jakiej kategorii dodać przedmiot:</wybierzkategorie>
     <usunprzedmiot>Usuń przedmiot z bazy danych</usunprzedmiot>

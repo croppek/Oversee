@@ -12,6 +12,7 @@
     <content1>Search by ID number:</content1>
     <content2>Search by category:</content2>
     <content3>Search by item name:</content3>
+    <content4>Search by item location:</content4>
     
     <modal_tytul1>ID number</modal_tytul1>
     <modal_tekst1>ID number is stored in the QR code. &lt;br>&lt;br>You can scan QR code with any device with a camera supporting the application type "QR Scanner" (e.g Smartphone). Free scanners are available in the app stores (Google Play, Apple Store, Microsoft Store).</modal_tekst1>
@@ -82,7 +83,9 @@
     <aktualizuj>Update</aktualizuj>
     <updatetekst>A new version of Oversee Systems is available!</updatetekst>
     <brakprzedmiotowonazwie>No items with specified name.</brakprzedmiotowonazwie>
+    <brakprzedmiotowzlokacji>There are no items that match the specified location.</brakprzedmiotowzlokacji>
     <przedmiotyopodanejnazwie>List of items that match the given name</przedmiotyopodanejnazwie>
+    <przedmiotyopodanejlokacji>List of items that match the specified location:</przedmiotyopodanejlokacji>
     
     <wybierzkategorie>Choose which category to add an item:</wybierzkategorie>
     <usunprzedmiot>Remove an item from the database</usunprzedmiot>
