@@ -1,4 +1,5 @@
 RewriteEngine on
+RewriteBase /
 
 RewriteRule ^o-projekcie ./php/about.php [NC]
 RewriteRule ^about-project ./php/about.php [NC]

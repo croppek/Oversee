@@ -773,7 +773,7 @@
                                 
                                 $ch = curl_init();
 
-                                curl_setopt($ch, CURLOPT_URL,"http://kroptech.net/oversee/php/global_mailer.php");
+                                curl_setopt($ch, CURLOPT_URL,"http://oversee.zspwrzesnia.pl/php/global_mailer.php");
                                 curl_setopt($ch, CURLOPT_POST, 1);
                                 curl_setopt($ch, CURLOPT_POSTFIELDS, 
                                             http_build_query(array('sender' => 'notifier', 'code' => 'E5rdaZK9', 'author_title' => 'Oversee Systems (no-reply)', 'recipient' => $email, 'subject' => 'Ważny komentarz o przedmiocie w systemie Oversee.', 'content' => $wiadomosc)));

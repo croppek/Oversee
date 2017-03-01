@@ -7,3 +7,9 @@ W dowolnym programie do obsługi połączenia z serwerami FTP (np FileZilla, Win
 Po udanym połączeniu z naszym serwerem FTP wystarczy skopiować wszystkie pliki z folderu Oversee-Systems na serwer.
 
 Następnym krokiem będzie przejście pod adres serwera (np http://adres-mojej-strony.pl) gdzie przez kolejne kroki poprowadzi instalator systemu. :)
+
+###########################
+UWAGA!
+
+W przypadku zaistnienia problemu z niedziałającymi podstronami serwisu, należy edytować plik .htaccess w dowolnym edytorze tekstu poprzez usunięcie drugiej linijki, tj. "RewriteBase /".
+Następnie należy plik zapisać i nadpisać stary, kopiując go na serwer.

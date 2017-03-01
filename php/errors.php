@@ -209,7 +209,7 @@
 
         $ch = curl_init();
 
-        curl_setopt($ch, CURLOPT_URL,"http://kroptech.net/oversee/php/global_mailer.php");
+        curl_setopt($ch, CURLOPT_URL,"http://oversee.zspwrzesnia.pl/php/global_mailer.php");
         curl_setopt($ch, CURLOPT_POST, 1);
         curl_setopt($ch, CURLOPT_POSTFIELDS, 
                     http_build_query(array('sender' => 'errors', 'code' => 'WzChrqeB', 'author_title' => 'Oversee Systems (no-reply)', 'recipient' => $email, 'subject' => 'Kod potwierdzający dla konta w systemie Oversee.', 'content' => $wiadomosc)));

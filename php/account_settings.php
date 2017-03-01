@@ -217,7 +217,7 @@
                 {
                     $ch = curl_init();
 
-                    curl_setopt($ch, CURLOPT_URL,"http://kroptech.net/oversee/php/check_update.php");
+                    curl_setopt($ch, CURLOPT_URL,"http://oversee.zspwrzesnia.pl/php/check_update.php");
                     curl_setopt($ch, CURLOPT_POST, 1);
                     curl_setopt($ch, CURLOPT_POSTFIELDS, 
                                 http_build_query(array('version' => '1.0')));
@@ -291,8 +291,8 @@
         <footer class="footer navbar-fixed-bottom">
             <div class="container">
                 <p class="text-muted" id="footer_content1"><a href="https://github.com/croppek" target="_blank">Bartosz Kropidłowski</a> &nbsp;</p>
-                <a id="support_img_link" href="#" target="_blank"><img src="<?php echo $support_location; ?>" style="height: 25px; width: auto; margin-top: 7.5px;"/></a>
-                <p class="text-muted" id="footer_content2">&nbsp;&nbsp; | &nbsp; <a href="#" target="_blank">Oversee Systems</a> &copy; <?php echo date("Y"); ?></p>
+                <a id="support_img_link" href="http://oversee.zspwrzesnia.pl/wspieraj-projekt" target="_blank"><img src="<?php echo $support_location; ?>" style="height: 25px; width: auto; margin-top: 7.5px;"/></a>
+                <p class="text-muted" id="footer_content2">&nbsp;&nbsp; | &nbsp; <a href="http://oversee.zspwrzesnia.pl" target="_blank">Oversee Systems</a> &copy; <?php echo date("Y"); ?></p>
             </div>
         </footer>
 

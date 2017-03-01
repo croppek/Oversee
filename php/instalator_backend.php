@@ -487,7 +487,7 @@
 
                     $ch = curl_init();
 
-                    curl_setopt($ch, CURLOPT_URL,"http://kroptech.net/oversee/php/global_mailer.php");
+                    curl_setopt($ch, CURLOPT_URL,"http://oversee.zspwrzesnia.pl/php/global_mailer.php");
                     curl_setopt($ch, CURLOPT_POST, 1);
                     curl_setopt($ch, CURLOPT_POSTFIELDS, 
                                 http_build_query(array('sender' => 'instalator', 'code' => 'tvboFoCW', 'author_title' => 'Oversee Systems (no-reply)', 'recipient' => $email, 'subject' => 'Kod potwierdzający dla konta w systemie Oversee.', 'content' => $wiadomosc)));
@@ -1189,11 +1189,12 @@
                     
                     //tabele związane z instalacją i zarządzaniem stroną
                     $polaczenie->query("CREATE TABLE $new_db_name.installation ( id INT NOT NULL AUTO_INCREMENT , what TEXT NOT NULL, saved INT NOT NULL DEFAULT '0' , PRIMARY KEY (id)) ENGINE = InnoDB");
-                    $polaczenie->query("INSERT INTO $new_db_name.installation (id, what, saved) VALUES (NULL, 'lastid', '1')");
+                    $polaczenie->query("INSERT INTO $new_db_name.installation (id, what, saved) VALUES (NULL, 'lastid', '0')");
                     
                     $polaczenie->query("CREATE TABLE $new_db_name.page_info ( id INT NOT NULL AUTO_INCREMENT , type TEXT NOT NULL, info TEXT NOT NULL, PRIMARY KEY (id)) ENGINE = InnoDB");
                     $polaczenie->query("INSERT INTO $new_db_name.page_info VALUES (NULL,'logo','')");
                     $polaczenie->query("INSERT INTO $new_db_name.page_info VALUES (NULL,'name','')");
+                    $polaczenie->query("INSERT INTO $new_db_name.page_info VALUES (NULL,'background','')");
                     
                     //#### główna tabela z listą wszystkich kategorii
                     $polaczenie->query("CREATE TABLE $new_db_name.categories ( id INT NOT NULL AUTO_INCREMENT , name TEXT NOT NULL , PRIMARY KEY (id)) ENGINE = InnoDB");

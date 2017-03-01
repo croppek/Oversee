@@ -1009,7 +1009,7 @@ function validateEmail()
 //Funkcja zamieniająca pierwsze litery na wielkie, poźniejsze na małe w inpucie imienia i nazwiska
 function FirstLetterToUpperCase(text, which)
 {
-    text = text.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+    text = text.charAt(0).toUpperCase() + text.slice(1);
     
     if(which == 'name')
     {

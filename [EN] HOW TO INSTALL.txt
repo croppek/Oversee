@@ -7,3 +7,9 @@ In any program to handle the connection to the FTP servers (eg FileZilla, WinSCP
 After a successful connection to our FTP server just copy all the files from the folder Oversee-Systems server.
 
 The next step will be to pass the address of the server (eg http://my-site-url.com) where the next steps will guide the installer of the system. :)
+
+###########################
+WARNING!
+
+In case of a problem with the service inoperative subpages, edit the .htaccess file in a text editor by removing the second line, that is. "RewriteBase /".
+Then save the file and overwrite the old file copying it to the server.
