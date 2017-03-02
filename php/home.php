@@ -348,13 +348,15 @@
 
                                         while($row = mysqli_fetch_array($result))
                                         {   
+											$category = $row['category'];
+									
                                             echo '
 
                                                 <tr>
                                                     <td><a href="./?id='.$row['id'].'">'.$row['id'].'</a></td>
                                                     <td style="min-width: 100px; text-align: center; white-space: normal;"><a href="./?id='.$row['id'].'">'.$row['name'].'</a></td>
                                                     <td style="min-width: 100px; text-align: center; white-space: normal;">'.$row['location'].'</td>
-                                                    <td style="min-width: 100px; text-align: center; white-space: normal;"><a href="./?category='.$row['category'].'">'.$xml->$row['category'].'</a></td>
+                                                    <td style="min-width: 100px; text-align: center; white-space: normal;"><a href="./?category='.$row['category'].'">'.$xml->$category.'</a></td>
                                                 </tr>';
                                         }  
 
@@ -407,13 +409,15 @@
 
                                         while($row = mysqli_fetch_array($result))
                                         {   
+                                            $category = $row['category'];
+                                            
                                             echo '
 
                                                 <tr>
                                                     <td><a href="./?id='.$row['id'].'">'.$row['id'].'</a></td>
                                                     <td style="min-width: 100px; text-align: center; white-space: normal;"><a href="./?id='.$row['id'].'">'.$row['name'].'</a></td>
                                                     <td style="min-width: 100px; text-align: center; white-space: normal;">'.$row['location'].'</td>
-                                                    <td style="min-width: 100px; text-align: center; white-space: normal;"><a href="./?category='.$row['category'].'">'.$xml->$row['category'].'</a></td>
+                                                    <td style="min-width: 100px; text-align: center; white-space: normal;"><a href="./?category='.$row['category'].'">'.$xml->$category.'</a></td>
                                                 </tr>';
                                         }  
 

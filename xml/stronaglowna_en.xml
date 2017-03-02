@@ -49,7 +49,7 @@
     
     <!-- Nagłówki dla wyświetlania informacji o przedmiotach -->
     <nazwa>Name</nazwa>
-    <ulokowanie>Placement</ulokowanie>
+    <ulokowanie>Location</ulokowanie>
     <ostatnialokalizacja>Last location</ostatnialokalizacja>
     <typ>Type</typ>
     <uwagi>Last comment</uwagi>

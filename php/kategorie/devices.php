@@ -295,13 +295,15 @@
                         $damaged = $xml->tak;
                     }
                     
+					$type = $row['type'];
+					
                     echo '
                     
                         <tr>
                             <td><a href="./?id='.$row['id'].'">'.$row['id'].'</a></td>
                             <td><a href="./?id='.$row['id'].'">'.$row['name'].'</a></td>
                             <td>'.$row['placement'].'</td>
-                            <td>'.$xml->$row['type'].'</td>
+                            <td>'.$xml->$type.'</td>
                             <td>'.$damaged.'</td>
                         </tr>
                     ';
