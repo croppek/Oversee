@@ -13,6 +13,6 @@ Stworzono z wykorzystaniem:
 * HTML
 * CSS3
 * Bootstrap
-* Javascript / jQuery
+* JavaScript / jQuery
 * PHP
 * MySQL
