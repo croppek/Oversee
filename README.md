@@ -6,3 +6,13 @@ Jego działanie opiera się o kody QR, dzięki którym możemy mieć łatwy i sz
 * ###[Strona główna projektu](http://www.oversee.zspwrzesnia.pl)
 
 * ####[Przykład zastosowania systemu](http://www.tech.zspwrzesnia.pl)
+
+---
+
+Stworzono z wykorzystaniem: 
+* HTML
+* CSS3
+* Bootstrap
+* Javascript / jQuery
+* PHP
+* MySQL
