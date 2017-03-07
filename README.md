@@ -35,3 +35,4 @@ Jego działanie opiera się o kody QR, dzięki którym możemy mieć łatwy i sz
 * JavaScript / jQuery (+ AJAX)
 * PHP
 * MySQL
+* XML
