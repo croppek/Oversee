@@ -11,18 +11,17 @@ Jego działanie opiera się o kody QR, dzięki którym możemy mieć łatwy i sz
 
 ![alt text](http://i.imgur.com/zxUBRqP.gif "Instalator graficzny Oversee")
 
-
 ###Przykłady zaimplementowanych funkcji: 
 * Graficzny instalator systemu
 * Sprawdzanie aktualizacji systemu
 * Panel administratora (zmiana loga i nazwy strony, zarządzanie użytkownikami, generowanie masowo linków [QR])
 * Ułatwiony proces dodawania nowych użytkowników (automatyczne generowanie loginów i haseł)
 * Ustawienia konta (zmiana hasła)
+* Powiadomienia email o ważnych komentarzach dla wybranych specjalistów
 * Wyszukiwanie przedmiotów według numeru ID, kategorii, nazwy lub lokalizacji
 * Szybka edycja informacji o przedmiocie
+* Historia komentarzy dla danego przedmiotu
 * Dwa języki strony (PL / EN)
-
-
 
 ![alt text](http://i.imgur.com/ASrQowA.gif "Dodawanie nowego przedmiotu do bazy danych")
 
@@ -36,3 +35,7 @@ Jego działanie opiera się o kody QR, dzięki którym możemy mieć łatwy i sz
 * PHP
 * MySQL
 * XML
+
+---
+
+![alt text](http://i.imgur.com/7DMUl1O.gif "Mobilne wyświetlanie informacji o przedmiocie")
