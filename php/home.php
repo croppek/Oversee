@@ -737,16 +737,16 @@
                 
                 <div id="login_content">
                     
-                    <div id="login_input_group" class="input-group input-group-lg" style="width: 45%; margin: 0 auto; float: none;">
+                    <div class="input-group input-group-lg login_input_group">
                         <input id="login_input" type="text" class="form-control" name="login_input" style="text-align: center; border-radius: 5px;" placeholder="<?php echo $xml->placeholder1; ?>" onfocus="this.placeholder = '' " onblur="this.placeholder='<?php echo $xml->placeholder1; ?>'"/>
                     </div>
                     <br/>
-                    <div id="login_input_group" class="input-group input-group-lg" style="width: 45%; margin: 0 auto; float: none;">
+                    <div class="input-group input-group-lg login_input_group">
                         <input id="password_input" type="password" class="form-control" name="password_input" style="text-align: center; border-radius: 5px;" placeholder="<?php echo $xml->placeholder2; ?>" onfocus="this.placeholder = '' " onblur="this.placeholder='<?php echo $xml->placeholder2; ?>'"/>
                     </div>
                     <br/>
 
-                    <div id="error_alert" class="alert alert-danger" role="alert" style="width: 90%; margin: 10px auto 10px; display: none;"></div>
+                    <div id="error_alert" class="alert alert-danger" role="alert"></div>
 
                     <br/>
 

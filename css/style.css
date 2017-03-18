@@ -4,6 +4,16 @@ body
     padding: 0 0 115px;
 }
 
+h2
+{
+    font-size: 24px;
+}
+
+h3
+{
+    font-size: 19px;
+}
+
 .vertical-center 
 {
     min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
@@ -288,6 +298,20 @@ a:hover
     margin: 5px auto;
     width: 200px;
     height: 40px;
+}
+
+.login_input_group
+{
+    width: 45%; 
+    margin: 0 auto; 
+    float: none;
+}
+
+#error_alert
+{
+    width: 95%; 
+    margin: 10px auto 10px;
+    display: none;
 }
 
 /*!

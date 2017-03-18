@@ -85,7 +85,7 @@
     <brakprzedmiotowonazwie>No items with specified name.</brakprzedmiotowonazwie>
     <brakprzedmiotowzlokacji>There are no items that match the specified location.</brakprzedmiotowzlokacji>
     <przedmiotyopodanejnazwie>List of items that match the given name</przedmiotyopodanejnazwie>
-    <przedmiotyopodanejlokacji>List of items that match the specified location:</przedmiotyopodanejlokacji>
+    <przedmiotyopodanejlokacji>List of items that match the specified location</przedmiotyopodanejlokacji>
     
     <wybierzkategorie>Choose which category to add an item:</wybierzkategorie>
     <usunprzedmiot>Remove an item from the database</usunprzedmiot>
