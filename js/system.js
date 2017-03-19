@@ -114,18 +114,24 @@ var mobile_elements_position = (function(){
 //#####################################################################
 
 //obsługa zmiany języka strony
+var change_page_language = (function(){
+    
+    //bind events
+    $('#lang_btn_pl, #lang_btn_en').on('click', function(){ _change_language( $(this) ) });
+    
+    //functions
+    function _change_language($btn){
+        
+        var lang = $btn.data('language');
 
-$('#lang_btn_pl, #lang_btn_en').on('click', function(){
+        $.post("php/set_page_language.php", {language: lang}, function(data){
 
-    var lang = $(this).data('language');
+            location.reload();
+            
+        });
+    };
 
-    $.post("php/set_page_language.php", {language: lang}, function(data){
-
-        location.reload();
-
-    });
-
-});
+})();
 
 //#####################################################################
 
