@@ -3,43 +3,8 @@
     session_start();
     
     //ustawianie języka strony na podstawie zapisanych ciasteczek
-    $lang = 'pl';
-
-    if(isset($_COOKIE['oversee_language']))
-    {
-        $lang = $_COOKIE['oversee_language'];
-        
-        if($lang == 'pl')
-        {
-            $xml = simplexml_load_file("../xml/oprojekcie.xml");  
-            $xml_errors = simplexml_load_file("../xml/bledy.xml"); 
-            $support_location = "img/support-btn-pl.png";
-            
-            $link1 = './o-projekcie';
-            $link2 = './ustawienia-konta';
-            $link3 = './panel-administracyjny';
-        }
-        else if($lang == 'en')
-        {
-            $xml = simplexml_load_file("../xml/oprojekcie_en.xml");
-            $xml_errors = simplexml_load_file("../xml/bledy_en.xml"); 
-            $support_location = "img/support-btn-en.png";
-            
-            $link1 = './about-project';
-            $link2 = './account-settings';
-            $link3 = './administration-panel';
-        }
-    }
-    else
-    {
-        $xml = simplexml_load_file("../xml/oprojekcie.xml");
-        $xml_errors = simplexml_load_file("../xml/bledy.xml"); 
-        $support_location = "img/support-btn-pl.png";
-        
-        $link1 = './o-projekcie';
-        $link2 = './ustawienia-konta';
-        $link3 = './panel-administracyjny';
-    }
+    $file_about = true;
+    require 'moduły/choose_language.php';
     
     //sprawdzenie czy użytkownik jest zalogowany oraz ustalenie jego permisji
     $logged = false;
@@ -94,7 +59,7 @@
         <![endif]-->
       
     </head>
-    <body data-version="1.0">
+    <body>
         
         <nav class="navbar navbar-inverse navbar-static-top">
             <div class="container-fluid">
@@ -205,12 +170,17 @@
             {
                 if(!isset($_SESSION['update_checked']))
                 {
+                    //odczyt aktualnej wersji z pliku
+                    $myfile = fopen("wersja.txt", "r") or die("Unable to open file!");
+                    $actual_version = fread($myfile,filesize("wersja.txt"));
+                    fclose($myfile);
+                    
                     $ch = curl_init();
 
                     curl_setopt($ch, CURLOPT_URL,"http://oversee.zspwrzesnia.pl/php/check_update.php");
                     curl_setopt($ch, CURLOPT_POST, 1);
                     curl_setopt($ch, CURLOPT_POSTFIELDS, 
-                                http_build_query(array('version' => '1.0')));
+                                http_build_query(array('version' => $actual_version)));
 
                     // receive server response ...
                     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -227,7 +197,7 @@
                                 
                                 <div id="update_btns_wrap" class="btn-group-sm">
 
-                                    <a href="#" target="_blank" class="btn btn-info" role="button" style="margin-right: 40px;">'. $xml->aktualizuj .'</a>
+                                    <a href="http://oversee.zspwrzesnia.pl" target="_blank" class="btn btn-info" role="button" style="margin-right: 40px;">'. $xml->aktualizuj .'</a>
                                     <button id="nieteraz_update_btn" class="btn btn-info">'. $xml->nieteraz .'</button>
 
                                 </div>
