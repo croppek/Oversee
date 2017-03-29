@@ -30,16 +30,9 @@
     
     //tabela pokazująca historię dodanych komentarzy do danego przedmiotu
     if(isset($_GET['history']) && isset($id))
-    {  
-        if($result = $polaczenie->query("SELECT name FROM $category WHERE id='$id'")) 
-        {
-            $row = mysqli_fetch_assoc($result);
-
-            $nazwa = $row['name'];
-        }
-        
+    {   
         //#################################################### TUTAJ ZMIENIAĆ KATEGORIE ########################################################
-        if($result = $polaczenie->query("SELECT * FROM devices_comments_history WHERE item_id='$id' ORDER BY when_added DESC")) 
+        if($result = $polaczenie->query("SELECT * FROM furniture_comments_history WHERE item_id='$id' ORDER BY when_added DESC")) 
         {
             if($result->num_rows < 1)
             {
@@ -52,7 +45,7 @@
                 <table class="table-striped rtable">
                 <thead>
                     <tr>
-                        <th>'.$xml->urzadzenie.'</th>
+                        <th>ID</th>
                         <th>'.$xml->komentarz.'</th>
                         <th>'.$xml->ktododal.'</th>
                         <th>'.$xml->kiedy.'</th>';
@@ -70,9 +63,8 @@
                         echo '
 
                             <tr>
-                                <td style="display: none;">'.$row['id'].'</td>
-                                <td style="display: none;">devices</td>
-                                <td style="min-width: 100px; text-align: center; white-space: normal;"><a href="./?id='.$id.'">'.$nazwa.'</a></td>
+                                <td style="text-align: center; font-weight: bold;"><a href="./?id='.$id.'">'.$id.'</a></td>
+                                <td style="display: none;">furniture</td>
                                 <td style="max-width: 820px; min-width: 400px; word-break: break-all; white-space: normal;">'.$row['comment'].'</td>
                                 <td>'.$row['who_added'].'</td>
                                 <td style="word-spacing: 15px;"><b>'.$row['when_added'].'</b></td>';
@@ -92,13 +84,12 @@
     else if(isset($id))
     {
         $id = $row['id'];
-        $name = $row['name'];
         $placement = $row['placement'];
         $last_location = $row['last_location'];
         $type = $row['type'];
         $damaged = $row['damaged'];
         
-        if($result = $polaczenie->query("SELECT comment FROM devices_comments_history WHERE item_id='$id' ORDER BY when_added DESC LIMIT 1")) 
+        if($result = $polaczenie->query("SELECT comment FROM furniture_comments_history WHERE item_id='$id' ORDER BY when_added DESC LIMIT 1")) 
         {
             $row = mysqli_fetch_assoc($result);
                                 
@@ -129,8 +120,7 @@
         {
             case 4:
                 render('ID',$id,'',$edit);
-                render($xml->kategoria,$xml->devices,'',$edit);
-                render($xml->nazwa,$name,'name',$edit);
+                render($xml->kategoria,$xml->furniture,'',$edit);
                 render($xml->ulokowanie,$placement,'placement',$edit);
                 render($xml->ostatnialokalizacja,$last_location,'last_location',$edit);
                 render($xml->typ,$type,'',$edit);
@@ -141,8 +131,7 @@
                 
             case 3:
                 render('ID',$id,'',$edit);
-                render($xml->kategoria,$xml->devices,'',$edit);
-                render($xml->nazwa,$name,'name',$edit);
+                render($xml->kategoria,$xml->furniture,'',$edit);
                 render($xml->ulokowanie,$placement,'placement',$edit);
                 render($xml->ostatnialokalizacja,$last_location,'last_location',$edit);
                 render($xml->typ,$type,'',$edit);
@@ -153,8 +142,7 @@
             
             case 2:
                 render('ID',$id,'',$edit);
-                render($xml->kategoria,$xml->devices,'',$edit);
-                render($xml->nazwa,$name,'name',$edit);
+                render($xml->kategoria,$xml->furniture,'',$edit);
                 render($xml->ulokowanie,$placement,'placement',$edit);
                 render($xml->ostatnialokalizacja,$last_location,'last_location',$edit);
                 render($xml->typ,$type,'',$edit);
@@ -165,8 +153,7 @@
                 
             case 1:
                 render('ID',$id,'',$edit);
-                render($xml->kategoria,$xml->devices,'',$edit);
-                render($xml->nazwa,$name,'',$edit);
+                render($xml->kategoria,$xml->furniture,'',$edit);
                 render($xml->ulokowanie,$placement,'',$edit);
                 render($xml->ostatnialokalizacja,$last_location,'last_location',$edit);
                 render($xml->typ,$type,'',$edit);
@@ -177,8 +164,7 @@
                 
             default:
                 render('ID',$id,'',$edit);
-                render($xml->kategoria,$xml->devices,'',$edit);
-                render($xml->nazwa,$name,'',$edit);
+                render($xml->kategoria,$xml->furniture,'',$edit);
                 render($xml->ulokowanie,$placement,'',$edit);
                 render($xml->ostatnialokalizacja,$last_location,'',$edit);
                 render($xml->typ,$type,'',$edit);
@@ -189,7 +175,7 @@
         }
         
         //#################################################### TUTAJ ZMIENIAĆ KATEGORIE ########################################################
-        if($result = $polaczenie->query("SELECT * FROM devices_comments_history WHERE item_id='$id'")) 
+        if($result = $polaczenie->query("SELECT * FROM furniture_comments_history WHERE item_id='$id'")) 
         {
             $ile_komentarzy = $result->num_rows;
         }
@@ -274,14 +260,13 @@
         //#################################################### TUTAJ ZMIENIAĆ KATEGORIE ########################################################
         echo '
         
-        <h3 style="text-align: center; font-size: 25px; margin-bottom: 15px;">'.$xml->naglowekkategorii.' <b>'.$xml->devices.'</b> ('.$all_items_in_category.')</h3>
+        <h3 style="text-align: center; font-size: 25px; margin-bottom: 15px;">'.$xml->naglowekkategorii.' <b>'.$xml->furniture.'</b> ('.$all_items_in_category.')</h3>
         
         <div id="table_wrapper" style="width: 90%; margin: 0 auto; float: none;">
             <table class="table-striped rtable">
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>'.$xml->nazwa.'</th>
                     <th>'.$xml->ulokowanie.'</th>
                     <th>'.$xml->typ.'</th>
                     <th>'.$xml->uszkodzony.'</th>
@@ -306,7 +291,6 @@
                     
                         <tr>
                             <td><a href="./?id='.$row['id'].'">'.$row['id'].'</a></td>
-                            <td><a href="./?id='.$row['id'].'">'.$row['name'].'</a></td>
                             <td>'.$row['placement'].'</td>
                             <td>'.$xml->$type.'</td>
                             <td>'.$damaged.'</td>
@@ -348,16 +332,6 @@
             echo '
 
             <form id="add_item_to_db_form">
-                <div class="col-md-3">
-                    <div class="panel panel-info">
-                        <div class="panel-heading">
-                            <h3 class="panel-title" style="text-align: center;">'. $xml->nazwa .'</h3>
-                        </div>
-                        <div class="panel-body" style="height: 55px;">
-                            <input id="adddb_name_input" type="text" style="width: 100%;" required>
-                        </div>
-                    </div>
-                </div>
 
                 <div class="col-md-3">
                     <div class="panel panel-info">
@@ -379,78 +353,9 @@
                             <div class="input-group input-group-sm" style="width: 100%;">
                                 <select class="form-control" name="type" id="adddb_type_input" required>
                                     <option value="" selected disabled>' . $xml->wybierz . '</option>
-                                    <option value="stacjarobocza">' . $xml->stacjarobocza . '</option>
-                                    <option value="serwer">' . $xml->serwer . '</option>
-                                    <option value="laptop">' . $xml->laptop . '</option>
-                                    <option value="terminal">' . $xml->terminal . '</option>
-                                    <option value="monitor">' . $xml->monitor . '</option>
-                                    <option value="myszkomputerowa">' . $xml->myszkomputerowa . '</option>
-                                    <option value="klawiatura">' . $xml->klawiatura . '</option>
-                                    <option value="glosniki">' . $xml->glosniki . '</option>
-                                    <option value="sluchawki">' . $xml->sluchawki . '</option>
-                                    <option value="mikrofon">' . $xml->mikrofon . '</option>
-                                    <option value="kalkulator">' . $xml->kalkulator . '</option>
-                                    <option value="projektor">' . $xml->projektor . '</option>
-                                    <option value="kamerkainternetowa">' . $xml->kamerkainternetowa . '</option>
-                                    <option value="powerbank">' . $xml->powerbank . '</option>
-                                    <option disabled="disabled">------------------------------------------------</option>
-                                    <option value="telefon">' . $xml->telefon . '</option>
-                                    <option value="smartphone">' . $xml->smartphone . '</option>
-                                    <option value="automatycznasekretarka">' . $xml->automatycznasekretarka . '</option>
-                                    <option value="faks">' . $xml->faks . '</option>
-                                    <option disabled="disabled">------------------------------------------------</option>
-                                    <option value="drukarka">' . $xml->drukarka . '</option>
-                                    <option value="ksero">' . $xml->ksero . '</option>
-                                    <option value="skaner">' . $xml->skaner . '</option>
-                                    <option value="urzadzeniewielofunkcyjne">' . $xml->urzadzeniewielofunkcyjne . '</option>
-                                    <option disabled="disabled">------------------------------------------------</option>
-                                    <option value="telewizor">' . $xml->telewizor . '</option>
-                                    <option value="dekoder">' . $xml->dekoder . '</option>
-                                    <option value="radio">' . $xml->radio . '</option>
-                                    <option value="odtwarzaczvideo">' . $xml->odtwarzaczvideo . '</option>
-                                    <option value="wierzahifi">' . $xml->wierzahifi . '</option>
-                                    <option value="wzmacniacz">' . $xml->wzmacniacz . '</option>
-                                    <option value="kamera">' . $xml->kamera . '</option>
-                                    <option value="tablicainteraktywna">' . $xml->tablicainteraktywna . '</option>
-                                    <option disabled="disabled">------------------------------------------------</option>
-                                    <option value="lodowka">' . $xml->lodowka . '</option>
-                                    <option value="pralka">' . $xml->pralka . '</option>
-                                    <option value="zmywarka">' . $xml->zmywarka . '</option>
-                                    <option value="mikrofalowka">' . $xml->mikrofalowka . '</option>
-                                    <option value="grzejnikelektryczny">' . $xml->grzejnikelektryczny . '</option>
-                                    <option value="wentylator">' . $xml->wentylator . '</option>
-                                    <option value="klimatyzator">' . $xml->klimatyzator . '</option>
-                                    <option disabled="disabled">------------------------------------------------</option>
-                                    <option value="odkurzacz">' . $xml->odkurzacz . '</option>
-                                    <option value="toster">' . $xml->toster . '</option>
-                                    <option value="frytkownica">' . $xml->frytkownica . '</option>
-                                    <option value="suszarka">' . $xml->suszarka . '</option>
-                                    <option value="waga">' . $xml->waga . '</option>
-                                    <option value="zegar">' . $xml->zegar . '</option>
-                                    <option value="lampa">' . $xml->lampa . '</option>
-                                    <option disabled="disabled">------------------------------------------------</option>
-                                    <option value="pila">' . $xml->pila . '</option>
-                                    <option value="wiertarka">' . $xml->wiertarka . '</option>
-                                    <option value="maszynadoszycia">' . $xml->maszynadoszycia . '</option>
-                                    <option value="spawarka">' . $xml->spawarka . '</option>
-                                    <option value="kosiarkaelektryczna">' . $xml->kosiarkaelektryczna . '</option>
-                                    <option value="dmuchawa">' . $xml->dmuchawa . '</option>
-                                    <option disabled="disabled">------------------------------------------------</option>
-                                    <option value="sprzetdoradioterapii">' . $xml->sprzetdoradioterapii . '</option>
-                                    <option value="sprzetdobadankardiologicznych">' . $xml->sprzetdobadankardiologicznych . '</option>
-                                    <option value="sprzetdodializoterapii">' . $xml->sprzetdodializoterapii . '</option>
-                                    <option value="sprzetdowentylacjipluc">' . $xml->sprzetdowentylacjipluc . '</option>
-                                    <option value="urzadzeniemedycznewykorzystujacetechnikenuklearna">' . $xml->urzadzeniemedycznewykorzystujacetechnikenuklearna . '</option>
-                                    <option disabled="disabled">------------------------------------------------</option>
-                                    <option value="czujnikdymu">' . $xml->czujnikdymu . '</option>
-                                    <option value="regulatorciepla">' . $xml->regulatorciepla . '</option>
-                                    <option value="termostat">' . $xml->termostat . '</option>
-                                    <option disabled="disabled">------------------------------------------------</option>
-                                    <option value="automatdowydawanianajopowgoracych">' . $xml->automatdowydawanianajopowgoracych . '</option>
-                                    <option value="automatdowydawaniabutelekipuszek">' . $xml->automatdowydawaniabutelekipuszek . '</option>
-                                    <option value="automatdowydawaniaproduktowstalych">' . $xml->automatdowydawaniaproduktowstalych . '</option>
-                                    <option value="bankomat">' . $xml->bankomat . '</option>
-                                    <option value="innyautomat">' . $xml->innyautomat . '</option>
+                                    <option value="krzeslo">' . $xml->krzeslo . '</option>
+                                    <option value="stol">' . $xml->stol . '</option>
+                                    <option value="biurko">' . $xml->biurko . '</option>
                                     <option disabled="disabled">------------------------------------------------</option>
                                     <option value="inny" style="font-weight: bold;">' . $xml->inny . '</option>
                                     <option disabled="disabled">------------------------------------------------</option>
@@ -490,13 +395,13 @@
             ';
         }
         //dodanie informacji o przedmiocie do bazy danych
-        else if(isset($_POST['id']) && isset($_POST['name']) && isset($_POST['type']) && isset($_POST['damaged']))
+        else if(isset($_POST['id']) && isset($_POST['type']) && isset($_POST['damaged']))
         {        
             //#################################################### TUTAJ ZMIENIAĆ KATEGORIE ########################################################
             if(isset($_SESSION['permissions']) && $_SESSION['permissions'] >= 3)
             {
                 $id = $_POST['id'];
-                $name = $_POST['name'];
+                $name = $xml->furniture . '(id '. $id .')';
                 $placement = $_POST['placement'];
                 $type = $_POST['type'];
                 $damaged = $_POST['damaged'];
@@ -522,13 +427,13 @@
 
                 if($polaczenie->connect_errno == 0)
                 {  
-                    if($polaczenie->query("INSERT INTO devices VALUES ('$id', '$name', '$placement', '$placement', '$type', '$damaged')")) 
+                    if($polaczenie->query("INSERT INTO furniture VALUES ('$id', '$placement', '$placement', '$type', '$damaged')")) 
                     {
-                        if($polaczenie->query("INSERT INTO item_category VALUES ('$id', '$name', '$placement', 'devices')")) 
+                        if($polaczenie->query("INSERT INTO item_category VALUES ('$id', '$name', '$placement', 'furniture')")) 
                         {
                             if($comment != NULL)
                             {
-                                if($polaczenie->query("INSERT INTO devices_comments_history VALUES (NULL, '$comment', '$who_added', CURRENT_TIMESTAMP, '$id')")) 
+                                if($polaczenie->query("INSERT INTO furniture_comments_history VALUES (NULL, '$comment', '$who_added', CURRENT_TIMESTAMP, '$id')")) 
                                 {
                                     echo 'success';
                                 }
@@ -573,11 +478,11 @@
                 {  
                     //#################################################### TUTAJ ZMIENIAĆ KATEGORIE ########################################################
                     
-                    if($polaczenie->query("DELETE FROM devices WHERE id='$id'")) 
+                    if($polaczenie->query("DELETE FROM furniture WHERE id='$id'")) 
                     {
                         if($polaczenie->query("DELETE FROM item_category WHERE id='$id'")) 
                         {
-                            if($polaczenie->query("DELETE FROM devices_comments_history WHERE item_id='$id'")) 
+                            if($polaczenie->query("DELETE FROM furniture_comments_history WHERE item_id='$id'")) 
                             {
                                 echo 'success';
                             }
@@ -618,7 +523,7 @@
                     
                     //#################################################### TUTAJ ZMIENIAĆ KATEGORIE ########################################################
                     
-                    if($polaczenie->query("DELETE FROM devices_comments_history WHERE id='$id'")) 
+                    if($polaczenie->query("DELETE FROM furniture_comments_history WHERE id='$id'")) 
                     {
                         echo 'success';
                     }
@@ -649,13 +554,7 @@
             //#################################################### TUTAJ ZMIENIAĆ KATEGORIE ########################################################
             
             switch($item_header)
-            {
-                case 'name':
-                    
-                    echo '<input id="new_value" style="width: 100%;" type="text" value="'. $current_content. '"><div id="error_alert" class="alert alert-danger" role="alert" style="width: 100%; margin: 20px auto 0; display: none;">'. $xml_errors->blad20 .'</div><div style="display: block; margin: 15px auto 0; width: 205px;"><button id="confirm_edit_btn" class="btn btn-default btn-md" style="margin: 0 40px 0 0">'. $xml->potwierdz .'</button><button id="close_edit_btn" class="btn btn-default btn-md">'. $xml->anuluj .'</button></div>';
-                    
-                    break;
-                    
+            {  
                 case 'placement':
                     
                     echo '<input id="new_value" style="width: 100%;" type="text" value="'. $current_content. '"><div style="display: block; margin: 15px auto 0; width: 205px;"><button id="confirm_edit_btn" class="btn btn-default btn-md" style="margin: 0 40px 0 0">'. $xml->potwierdz .'</button><button id="close_edit_btn" class="btn btn-default btn-md">'. $xml->anuluj .'</button></div>';
@@ -707,7 +606,7 @@
 
             if($polaczenie->connect_errno == 0)
             {  
-                if($polaczenie->query("UPDATE devices SET $header = '$new_value' WHERE id = '$id'")) 
+                if($polaczenie->query("UPDATE furniture SET $header = '$new_value' WHERE id = '$id'")) 
                 {
                     echo 'success';
                 }
@@ -815,7 +714,7 @@
 
                     if($polaczenie->connect_errno == 0)
                     {  
-                        if($polaczenie->query("INSERT INTO devices_comments_history VALUES(NULL, '$comment', '$who_added', CURRENT_TIMESTAMP, '$id')")) 
+                        if($polaczenie->query("INSERT INTO furniture_comments_history VALUES(NULL, '$comment', '$who_added', CURRENT_TIMESTAMP, '$id')")) 
                         {
                             echo 'success';
                         }

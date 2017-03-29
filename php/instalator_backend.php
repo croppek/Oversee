@@ -1201,12 +1201,15 @@
 
                     //#### tworzenie tabel z kategoriami
                     $polaczenie->query("CREATE TABLE $new_db_name.devices ( id INT NOT NULL , name TEXT NOT NULL , placement TEXT NOT NULL , last_location TEXT NOT NULL , type TEXT NOT NULL , damaged BOOLEAN NOT NULL , PRIMARY KEY (id)) ENGINE = InnoDB");
+                    $polaczenie->query("CREATE TABLE $new_db_name.furniture ( id INT NOT NULL , placement TEXT NOT NULL , last_location TEXT NOT NULL , type TEXT NOT NULL , damaged BOOLEAN NOT NULL , PRIMARY KEY (id)) ENGINE = InnoDB");
 
                     //#### tworzenie tabeli z historią komentarzy dla kategorii "urządzenia"
                     $polaczenie->query("CREATE TABLE $new_db_name.devices_comments_history ( id INT NOT NULL AUTO_INCREMENT , comment TEXT NOT NULL , who_added TEXT NOT NULL , when_added TIMESTAMP NOT NULL , item_id INT NOT NULL , PRIMARY KEY (id)) ENGINE = InnoDB");
+                    $polaczenie->query("CREATE TABLE $new_db_name.furniture_comments_history ( id INT NOT NULL AUTO_INCREMENT , comment TEXT NOT NULL , who_added TEXT NOT NULL , when_added TIMESTAMP NOT NULL , item_id INT NOT NULL , PRIMARY KEY (id)) ENGINE = InnoDB");
 
                     //#### dodawanie wszystkich kategorii do zbiorczej tabeli
                     $polaczenie->query("INSERT INTO $new_db_name.categories (id, name) VALUES (NULL, 'devices')");
+                    $polaczenie->query("INSERT INTO $new_db_name.categories (id, name) VALUES (NULL, 'furniture')");
 
                     echo 'saved';
                 }

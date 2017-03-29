@@ -38,6 +38,7 @@
     
     <!-- Nazwy kategorii -->
     <devices>Urządzenia elektryczne i elektroniczne</devices>
+    <furniture>Meble</furniture>
     
     <!-- Informację związane z kategoriami -->
     <brakkategorii>Brak kategorii do wyświetlenia</brakkategorii>
@@ -121,6 +122,8 @@
     <mikrofon>Mikrofon</mikrofon>
     <kalkulator>Kalkulator</kalkulator>
     <projektor>Projektor</projektor>
+    <kamerkainternetowa>Kamerka internetowa</kamerkainternetowa>
+    <powerbank>Power Bank</powerbank>
     <telefon>Telefon</telefon>
     <smartphone>Smartphone</smartphone>
     <automatycznasekretarka>Automatyczna sekretarka</automatycznasekretarka>
@@ -171,5 +174,10 @@
     <bankomat>Bankomat</bankomat>
     <innyautomat>Inny automat</innyautomat>
     <inny>Inny</inny>
+    
+    <!-- Typy mebli -->
+    <krzeslo>Krzesło</krzeslo>
+    <stol>Stół</stol>
+    <biurko>Biurko</biurko>
     
 </stronaglowna>
