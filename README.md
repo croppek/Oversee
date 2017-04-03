@@ -14,11 +14,12 @@ Jego działanie opiera się o kody QR, dzięki którym możemy mieć łatwy i sz
 ### Przykłady zaimplementowanych funkcji: 
 * Graficzny instalator systemu
 * Sprawdzanie aktualizacji systemu
+* Automatyczna aktualizacja systemu bez utraty danych i konieczności ponownej konfiguracji
 * Panel administratora (zmiana loga i nazwy strony, zarządzanie użytkownikami, generowanie masowo linków [QR])
 * Ułatwiony proces dodawania nowych użytkowników (automatyczne generowanie loginów i haseł)
 * Ustawienia konta (zmiana hasła)
 * Powiadomienia email o ważnych komentarzach dla wybranych specjalistów
-* Wyszukiwanie przedmiotów według numeru ID, kategorii, nazwy lub lokalizacji
+* Wyszukiwanie przedmiotów według numeru ID, kategorii, nazwy lub lokalizacji + podstawowe filtrowanie wyników
 * Szybka edycja informacji o przedmiocie
 * Historia komentarzy dla danego przedmiotu
 * Dwa języki strony (PL / EN)
