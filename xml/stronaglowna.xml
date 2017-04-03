@@ -87,6 +87,13 @@
     <brakprzedmiotowzlokacji>Brak przedmiotów pasujących do podanej lokacji.</brakprzedmiotowzlokacji>
     <przedmiotyopodanejnazwie>Lista przedmiotów pasujących do podanej nazwy</przedmiotyopodanejnazwie>
     <przedmiotyopodanejlokacji>Lista przedmiotów pasujących do podanej lokacji</przedmiotyopodanejlokacji>
+    <wyczyscfiltry>Wyczyść filtry</wyczyscfiltry>
+    <tylkouszkodzone>Tylko uszkodzone</tylkouszkodzone>
+    <tylkosprawne>Tylko sprawne</tylkosprawne>
+    <nazwarosnaco>Nazwa rosnąco</nazwarosnaco>
+    <nazwamalejaco>Nazwa malejąco</nazwamalejaco>
+    <lokalizacjarosnaco>Lokalizacja rosnąco</lokalizacjarosnaco>
+    <lokalizacjamalejaco>Lokalizacja malejąco</lokalizacjamalejaco>
     
     <wybierzkategorie>Wybierz do jakiej kategorii dodać przedmiot:</wybierzkategorie>
     <usunprzedmiot>Usuń przedmiot z bazy danych</usunprzedmiot>
@@ -179,5 +186,34 @@
     <krzeslo>Krzesło</krzeslo>
     <stol>Stół</stol>
     <biurko>Biurko</biurko>
+    <fotel>Fotel</fotel>
+    <lawka>Ławka</lawka>
+    <taboret>Taboret</taboret>
+    <kanapa>Kanapa</kanapa>
+    <sofa>Sofa</sofa>
+    <lozko>Łóżko</lozko>
+    <lezanka>Leżanka</lezanka>
+    <lawkaszkolna>Ławka szkolna</lawkaszkolna>
+    <lawa>Ława</lawa>
+    <sekretarzyk>Sekretarzyk</sekretarzyk>
+    <skrzynia>Skrzynia</skrzynia>
+    <komoda>Komoda</komoda>
+    <szafa>Szafa</szafa>
+    <szfka>Szafka</szfka>
+    <kredens>Kredens</kredens>
+    <regal>Regał</regal>
+    <sekreter>Sekreter</sekreter>
+    <kabinet>Kabinet</kabinet>
+    <toaleta>Toaletka</toaleta>
+    <etazerka>Etażerka</etazerka>
+    <mebloscianka>Meblościanka</mebloscianka>
+    <lada>Lada</lada>
+    <bufet>Bufet</bufet>
+    <bar>Bar</bar>
+    <katedra>Katedra</katedra>
+    <podnozek>Podnóżek</podnozek>
+    <kwietnik>Kwietnik</kwietnik>
+    <ambona>Ambona</ambona>
+    <konfesjonal>Konfesjonał</konfesjonal>
     
 </stronaglowna>

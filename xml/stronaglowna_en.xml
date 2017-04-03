@@ -87,6 +87,13 @@
     <brakprzedmiotowzlokacji>There are no items that match the specified location.</brakprzedmiotowzlokacji>
     <przedmiotyopodanejnazwie>List of items that match the given name</przedmiotyopodanejnazwie>
     <przedmiotyopodanejlokacji>List of items that match the specified location</przedmiotyopodanejlokacji>
+    <wyczyscfiltry>Clear filters</wyczyscfiltry>
+    <tylkouszkodzone>Only damaged</tylkouszkodzone>
+    <tylkosprawne>Only efficient</tylkosprawne>
+    <nazwarosnaco>Name ascending</nazwarosnaco>
+    <nazwamalejaco>Name descending</nazwamalejaco>
+    <lokalizacjarosnaco>Location ascending</lokalizacjarosnaco>
+    <lokalizacjamalejaco>Location descending</lokalizacjamalejaco>
     
     <wybierzkategorie>Choose which category to add an item:</wybierzkategorie>
     <usunprzedmiot>Remove an item from the database</usunprzedmiot>
@@ -179,5 +186,34 @@
     <krzeslo>Chair</krzeslo>
     <stol>Table</stol>
     <biurko>Desk</biurko>
+    <fotel>Armchair</fotel>
+    <lawka>Bench</lawka>
+    <taboret>Stool</taboret>
+    <kanapa>Sette</kanapa>
+    <sofa>Sofa</sofa>
+    <lozko>Bed</lozko>
+    <lezanka>Couch</lezanka>
+    <lawkaszkolna>School desk</lawkaszkolna>
+    <lawa>Bench (table)</lawa>
+    <sekretarzyk>Bureau</sekretarzyk>
+    <skrzynia>Chest</skrzynia>
+    <komoda>Commode</komoda>
+    <szafa>Wardrobe</szafa>
+    <szfka>Cupboard</szfka>
+    <kredens>Dresser</kredens>
+    <regal>Shelving</regal>
+    <sekreter>Sekreter</sekreter>
+    <kabinet>Kabinet</kabinet>
+    <toaleta>Dressing table</toaleta>
+    <etazerka>Whatnot</etazerka>
+    <mebloscianka>The wall unit</mebloscianka>
+    <lada>Counter</lada>
+    <bufet>Buffet</bufet>
+    <bar>Bar</bar>
+    <katedra>Cathedral</katedra>
+    <podnozek>Footrest</podnozek>
+    <kwietnik>Flowerbed</kwietnik>
+    <ambona>Pulpit</ambona>
+    <konfesjonal>Confessional</konfesjonal>
     
 </stronaglowna>

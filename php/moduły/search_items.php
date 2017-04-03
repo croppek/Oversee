@@ -102,13 +102,40 @@
         else if(isset($_GET['category']))
         {
             $category = $_GET['category'];
+            
+            $query = "SELECT * FROM $category ORDER BY id ASC";
+            
+            if(isset($_GET['damaged']))
+            {
+                $query = "SELECT * FROM $category WHERE damaged = '1' ORDER BY id ASC";
+            }
+            else if(isset($_GET['not-damaged']))
+            {
+                $query = "SELECT * FROM $category WHERE damaged = '0' ORDER BY id ASC";
+            }
+            else if(isset($_GET['name-asc']))
+            {
+                $query = "SELECT * FROM $category ORDER BY name ASC";
+            }
+            else if(isset($_GET['name-desc']))
+            {
+                $query = "SELECT * FROM $category ORDER BY name DESC";
+            }
+            else if(isset($_GET['location-asc']))
+            {
+                $query = "SELECT * FROM $category ORDER BY placement ASC";
+            }
+            else if(isset($_GET['locataion-desc']))
+            {
+                $query = "SELECT * FROM $category ORDER BY placement DESC";
+            }
 
             $polaczenie = @new mysqli($host, $db_user, $db_password, $db_name);
             @mysqli_set_charset($polaczenie,"utf8");
 
             if($polaczenie->connect_errno == 0)
             {  
-                if($result = $polaczenie->query("SELECT * FROM $category ORDER BY id ASC")) 
+                if($result = $polaczenie->query($query)) 
                 {
                     if($result->num_rows > 0) 
                     {
@@ -275,7 +302,7 @@
                 if($polaczenie->connect_errno == 0)
                 {  
                     //if($result = $polaczenie->query("SELECT * FROM devices_comments_history UNION SELECT * FROM innakategoria UNION SELECT * FROM innakategoria ORDER BY when_added DESC LIMIT 25")) 
-                    if($result = $polaczenie->query("SELECT * FROM devices_comments_history ORDER BY when_added DESC LIMIT 25")) 
+                    if($result = $polaczenie->query("SELECT * FROM devices_comments_history UNION SELECT * FROM furniture_comments_history ORDER BY when_added DESC LIMIT 25"))
                     {
                         echo '<h3 style="text-align: center;">'.$xml->najnowszekomentarze.'</h3>';
 
@@ -285,6 +312,7 @@
                                 <table class="table-striped rtable">
                                 <thead>
                                     <tr>
+                                        <th>ID</th>
                                         <th>'.$xml->przedmiot.'</th>
                                         <th>'.$xml->kategoria.'</th>
                                         <th>'.$xml->komentarz.'</th>
@@ -306,7 +334,7 @@
                                             $category = $row2['category'];
                                         }
 
-                                        if($result3 = $polaczenie->query("SELECT name FROM $category WHERE id='$item_id'")) 
+                                        if($result3 = $polaczenie->query("SELECT name FROM item_category WHERE id='$item_id'")) 
                                         {
                                             $row3 = mysqli_fetch_assoc($result3);
 
@@ -316,6 +344,7 @@
                                         echo '
 
                                             <tr>
+                                                <td style="min-width: 50px; text-align: center; white-space: normal;"><a href="./?id='.$item_id.'">'.$item_id.'</a></td>
                                                 <td style="min-width: 100px; text-align: center; white-space: normal;"><a href="./?id='.$item_id.'">'.$nazwa.'</a></td>
                                                 <td style="min-width: 100px; text-align: center; white-space: normal;"><a href="./?category='.$category.'">'.$xml->$category.'</a></td>
                                                 <td style="max-width: 820px; min-width: 400px; word-break: break-all; white-space: normal;">'.$row['comment'].'</td>

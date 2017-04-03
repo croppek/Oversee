@@ -276,6 +276,69 @@
         
         <h3 style="text-align: center; font-size: 25px; margin-bottom: 15px;">'.$xml->naglowekkategorii.' <b>'.$xml->devices.'</b> ('.$all_items_in_category.')</h3>
         
+        <div class="col-md-12">
+            <div class="jumbotron" style="min-height: 0;">
+
+                    <a href="./?category=devices"><button class="btn btn-success btn-sm" style="margin: 5px 5px 5px 0;">'. $xml->wyczyscfiltry .'</button></a>';
+        
+                    if(isset($_GET['damaged']))
+                    {
+                        echo '<a href="./?category=devices&damaged"><button class="btn btn-default btn-sm active" style="margin: 5px 5px 5px 0;">'. $xml->tylkouszkodzone .'</button></a>';
+                    }
+                    else
+                    {
+                        echo '<a href="./?category=devices&damaged"><button class="btn btn-default btn-sm" style="margin: 5px 5px 5px 0;">'. $xml->tylkouszkodzone .'</button></a>';
+                    }
+        
+                    if(isset($_GET['not-damaged']))
+                    {
+                        echo '<a href="./?category=devices&amp;not-damaged"><button class="btn btn-default btn-sm active" style="margin: 5px 5px 5px 0;">'. $xml->tylkosprawne .'</button></a>';
+                    }
+                    else
+                    {
+                        echo '<a href="./?category=devices&amp;not-damaged"><button class="btn btn-default btn-sm" style="margin: 5px 5px 5px 0;">'. $xml->tylkosprawne .'</button></a>';
+                    }
+        
+                    if(isset($_GET['name-asc']))
+                    {
+                        echo '<a href="./?category=devices&name-asc"><button class="btn btn-default btn-sm active" style="margin: 5px 5px 5px 0;">'. $xml->nazwarosnaco .'</button></a>';
+                    }
+                    else
+                    {
+                        echo '<a href="./?category=devices&name-asc"><button class="btn btn-default btn-sm" style="margin: 5px 5px 5px 0;">'. $xml->nazwarosnaco .'</button></a>';
+                    }
+        
+                    if(isset($_GET['name-desc']))
+                    {
+                        echo '<a href="./?category=devices&name-desc"><button class="btn btn-default btn-sm active" style="margin: 5px 5px 5px 0;">'. $xml->nazwamalejaco .'</button></a>';
+                    }
+                    else
+                    {
+                        echo '<a href="./?category=devices&name-desc"><button class="btn btn-default btn-sm" style="margin: 5px 5px 5px 0;">'. $xml->nazwamalejaco .'</button></a>';
+                    }
+        
+                    if(isset($_GET['location-asc']))
+                    {
+                        echo '<a href="./?category=devices&location-asc"><button class="btn btn-default btn-sm active" style="margin: 5px 5px 5px 0;">'. $xml->lokalizacjarosnaco .'</button></a>';
+                    }
+                    else
+                    {
+                        echo '<a href="./?category=devices&location-asc"><button class="btn btn-default btn-sm" style="margin: 5px 5px 5px 0;">'. $xml->lokalizacjarosnaco .'</button></a>';
+                    }
+        
+                    if(isset($_GET['location-desc']))
+                    {
+                        echo '<a href="./?category=devices&location-desc"><button class="btn btn-default btn-sm active" style="margin: 5px 5px 5px 0;">'. $xml->lokalizacjamalejaco .'</button></a>';
+                    }
+                    else
+                    {
+                        echo '<a href="./?category=devices&location-desc"><button class="btn btn-default btn-sm" style="margin: 5px 5px 5px 0;">'. $xml->lokalizacjamalejaco .'</button></a>';
+                    }
+        
+                    echo '
+            </div>
+        </div>
+        
         <div id="table_wrapper" style="width: 90%; margin: 0 auto; float: none;">
             <table class="table-striped rtable">
             <thead>
@@ -709,6 +772,15 @@
             {  
                 if($polaczenie->query("UPDATE devices SET $header = '$new_value' WHERE id = '$id'")) 
                 {
+                    if($header == 'placement')
+                    {
+                        $polaczenie->query("UPDATE item_category SET location = '$new_value' WHERE id = '$id'");
+                    }
+                    else if($header == 'name')
+                    {
+                        $polaczenie->query("UPDATE item_category SET name = '$new_value' WHERE id = '$id'");
+                    }
+                    
                     echo 'success';
                 }
                 else 

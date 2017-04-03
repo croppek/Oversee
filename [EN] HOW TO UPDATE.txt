@@ -1,0 +1,2 @@
+To update your system to a newer version, simply copy the data from the Update folder to your server by OVERWRITING the previous files.
+During the first page visit, the system will automatically add new page elements.

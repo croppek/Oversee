@@ -237,6 +237,32 @@ var add_item_to_db = (function(){
                 }
 
                 break;
+                
+            case 'furniture':
+
+                var id = $('#item_id_holder').text();
+                var placement = $('#adddb_placement_input').val();
+                var type = $('#adddb_type_input').val();
+                var damaged = $('input[name=damaged]:checked').val();
+                var comment = $('#adddb_comment_input').val();
+
+                if(id != '' && name != '' && type != null && damaged != '')
+                {
+                    $.post("php/kategorie/furniture.php", {id: id, placement: placement, type: type, damaged: damaged, comment: comment}, function(data){
+
+                        if(data == 'success')
+                        {
+                            location.reload();
+                        }
+                        else
+                        {
+                            alert(data);
+                        }
+
+                    });
+                }
+
+                break;
         }
 
         setTimeout(function(){$("#add_item_to_db").removeAttr("disabled")}, 1500);

@@ -1,0 +1,2 @@
+W celu zaktualizowania systemu do nowszej wersji wystarczy skopiować dane z folderu Aktualizacja na swój serwer NADPISUJĄC poprzednie pliki.
+Podczas pierwszego odwiedzenia strony system automatycznie doda nowe elementy strony.

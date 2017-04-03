@@ -262,6 +262,51 @@
         
         <h3 style="text-align: center; font-size: 25px; margin-bottom: 15px;">'.$xml->naglowekkategorii.' <b>'.$xml->furniture.'</b> ('.$all_items_in_category.')</h3>
         
+        <div class="col-md-12">
+            <div class="jumbotron" style="min-height: 0;">
+
+                    <a href="./?category=furniture"><button class="btn btn-success btn-sm" style="margin: 5px 5px 5px 0;">'. $xml->wyczyscfiltry .'</button></a>';
+        
+                    if(isset($_GET['damaged']))
+                    {
+                        echo '<a href="./?category=furniture&damaged"><button class="btn btn-default btn-sm active" style="margin: 5px 5px 5px 0;">'. $xml->tylkouszkodzone .'</button></a>';
+                    }
+                    else
+                    {
+                        echo '<a href="./?category=furniture&damaged"><button class="btn btn-default btn-sm" style="margin: 5px 5px 5px 0;">'. $xml->tylkouszkodzone .'</button></a>';
+                    }
+        
+                    if(isset($_GET['not-damaged']))
+                    {
+                        echo '<a href="./?category=furniture&amp;not-damaged"><button class="btn btn-default btn-sm active" style="margin: 5px 5px 5px 0;">'. $xml->tylkosprawne .'</button></a>';
+                    }
+                    else
+                    {
+                        echo '<a href="./?category=furniture&amp;not-damaged"><button class="btn btn-default btn-sm" style="margin: 5px 5px 5px 0;">'. $xml->tylkosprawne .'</button></a>';
+                    }
+        
+                    if(isset($_GET['location-asc']))
+                    {
+                        echo '<a href="./?category=furniture&location-asc"><button class="btn btn-default btn-sm active" style="margin: 5px 5px 5px 0;">'. $xml->lokalizacjarosnaco .'</button></a>';
+                    }
+                    else
+                    {
+                        echo '<a href="./?category=furniture&location-asc"><button class="btn btn-default btn-sm" style="margin: 5px 5px 5px 0;">'. $xml->lokalizacjarosnaco .'</button></a>';
+                    }
+        
+                    if(isset($_GET['location-desc']))
+                    {
+                        echo '<a href="./?category=furniture&location-desc"><button class="btn btn-default btn-sm active" style="margin: 5px 5px 5px 0;">'. $xml->lokalizacjamalejaco .'</button></a>';
+                    }
+                    else
+                    {
+                        echo '<a href="./?category=furniture&location-desc"><button class="btn btn-default btn-sm" style="margin: 5px 5px 5px 0;">'. $xml->lokalizacjamalejaco .'</button></a>';
+                    }
+        
+                    echo '
+            </div>
+        </div>
+        
         <div id="table_wrapper" style="width: 90%; margin: 0 auto; float: none;">
             <table class="table-striped rtable">
             <thead>
@@ -354,8 +399,40 @@
                                 <select class="form-control" name="type" id="adddb_type_input" required>
                                     <option value="" selected disabled>' . $xml->wybierz . '</option>
                                     <option value="krzeslo">' . $xml->krzeslo . '</option>
+                                    <option value="fotel">' . $xml->fotel . '</option>
+                                    <option value="lawka">' . $xml->lawka . '</option>
+                                    <option value="taboret">' . $xml->taboret . '</option>
+                                    <option value="kanapa">' . $xml->kanapa . '</option>
+                                    <option value="sofa">' . $xml->sofa . '</option>
+                                    <option value="lozko">' . $xml->lozko . '</option>
+                                    <option value="lezanka">' . $xml->lezanka . '</option>
+                                    <option disabled="disabled">------------------------------------------------</option>
                                     <option value="stol">' . $xml->stol . '</option>
                                     <option value="biurko">' . $xml->biurko . '</option>
+                                    <option value="lawkaszkolna">' . $xml->lawkaszkolna . '</option>
+                                    <option value="lawa">' . $xml->lawa . '</option>
+                                    <option value="sekretarzyk">' . $xml->sekretarzyk . '</option>
+                                    <option disabled="disabled">------------------------------------------------</option>
+                                    <option value="skrzynia">' . $xml->skrzynia . '</option>
+                                    <option value="komoda">' . $xml->komoda . '</option>
+                                    <option value="szafa">' . $xml->szafa . '</option>
+                                    <option value="szfka">' . $xml->szfka . '</option>
+                                    <option value="kredens">' . $xml->kredens . '</option>
+                                    <option value="regal">' . $xml->regal . '</option>
+                                    <option value="sekreter">' . $xml->sekreter . '</option>
+                                    <option value="kabinet">' . $xml->kabinet . '</option>
+                                    <option value="toaleta">' . $xml->toaleta . '</option>
+                                    <option value="etazerka">' . $xml->etazerka . '</option>
+                                    <option value="mebloscianka">' . $xml->mebloscianka . '</option>
+                                    <option disabled="disabled">------------------------------------------------</option>
+                                    <option value="lada">' . $xml->lada . '</option>
+                                    <option value="bufet">' . $xml->bufet . '</option>
+                                    <option value="bar">' . $xml->bar . '</option>
+                                    <option value="katedra">' . $xml->katedra . '</option>
+                                    <option value="podnozek">' . $xml->podnozek . '</option>
+                                    <option value="kwietnik">' . $xml->kwietnik . '</option>
+                                    <option value="ambona">' . $xml->ambona . '</option>
+                                    <option value="konfesjonal">' . $xml->konfesjonal . '</option>
                                     <option disabled="disabled">------------------------------------------------</option>
                                     <option value="inny" style="font-weight: bold;">' . $xml->inny . '</option>
                                     <option disabled="disabled">------------------------------------------------</option>
@@ -401,7 +478,7 @@
             if(isset($_SESSION['permissions']) && $_SESSION['permissions'] >= 3)
             {
                 $id = $_POST['id'];
-                $name = $xml->furniture . '(id '. $id .')';
+                $name = $xml->furniture . ' (id '. $id .')';
                 $placement = $_POST['placement'];
                 $type = $_POST['type'];
                 $damaged = $_POST['damaged'];
@@ -608,6 +685,15 @@
             {  
                 if($polaczenie->query("UPDATE furniture SET $header = '$new_value' WHERE id = '$id'")) 
                 {
+                    if($header == 'placement')
+                    {
+                        $polaczenie->query("UPDATE item_category SET location = '$new_value' WHERE id = '$id'");
+                    }
+                    else if($header == 'name')
+                    {
+                        $polaczenie->query("UPDATE item_category SET name = '$new_value' WHERE id = '$id'");
+                    }
+                    
                     echo 'success';
                 }
                 else 
