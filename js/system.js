@@ -124,7 +124,7 @@ var change_page_language = (function(){
         
         var lang = $btn.data('language');
 
-        $.post("php/moduły/set_page_language.php", {language: lang}, function(data){
+        $.post("php/moduly/set_page_language.php", {language: lang}, function(data){
 
             location.reload();
             

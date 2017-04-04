@@ -4,10 +4,10 @@
     
     //ustawianie języka strony na podstawie zapisanych ciasteczek
     $file_homepage = true;
-    require 'php/moduły/choose_language.php';
+    require 'php/moduly/choose_language.php';
     
     //sprawdzenie czy użytkownik jest zalogowany oraz ustalenie jego permisji
-    require 'php/moduły/check_permissions.php';
+    require 'php/moduly/check_permissions.php';
 
     require 'connect.php';
 
@@ -128,7 +128,7 @@
         
         <!-- Wczytanie modułu odpowiedzialnego za wyszukiwanie przedmiotów -->
         <?php
-            require 'php/moduły/search_items.php';
+            require 'php/moduly/search_items.php';
         ?>
         
         <div id="loginModal" class="modal fade" role="dialog">
@@ -171,12 +171,12 @@
         
         <!-- Sprawdzenie czy dostępna jest aktualizacja systemu -->
         <?php 
-            require 'php/moduły/check_update.php';
+            require 'php/moduly/check_update.php';
         ?>
         
         <!-- Alert o używaniu ciasteczek w serwisie -->
         <?php 
-            require 'php/moduły/cookies_alert.php';
+            require 'php/moduly/cookies_alert.php';
         ?>
     
         <!-- Stopka z odnośnikami do stron autora -->

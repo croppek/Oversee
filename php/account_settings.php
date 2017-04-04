@@ -4,10 +4,10 @@
     
     //ustawianie języka strony na podstawie zapisanych ciasteczek
     $file_usersettings = true;
-    require 'moduły/choose_language.php';
+    require 'moduly/choose_language.php';
 
     //sprawdzenie czy użytkownik jest zalogowany oraz ustalenie jego permisji
-    require 'moduły/check_permissions.php';
+    require 'moduly/check_permissions.php';
 
     if($logged != true)
     {
@@ -166,12 +166,12 @@
         
         <!-- Sprawdzenie czy dostępna jest aktualizacja systemu -->
         <?php 
-            require 'moduły/check_update.php';
+            require 'moduly/check_update.php';
         ?>
             
         <!-- Alert o używaniu ciasteczek w serwisie -->
         <?php 
-            require 'moduły/cookies_alert.php';
+            require 'moduly/cookies_alert.php';
         ?>
             
         <!-- Stopka z odnośnikami do stron autora -->
